@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+<title>Nick's SSB64 Resource</title>
+</head>
+<body>
+<h1>Some notes on Pika's up-b</h1>
+<p>
+In addition to determining the direction of the up-b, your input decides the distance the up-b travels.
+</p>
+
+<p>
+Here's a couple gifs to illustrate the point. Both are showing non-extended up-bs starting from the side plat:
+</p>
+<img src="upb_gifs/horizontal_upb.gif">
+<img src="upb_gifs/diag_upb.gif">
+
+<p>
+If you're paying attention, you might notice that in the second gif, I didn't show results for all the way to X=-80, Y=80. The reason for this is that for pika's up-b, unlike for DI, what matters is the distance from the center of the joystick, not the value of each coordinate. The maximum up-b distance is always 80 units away from the center, in a circle.
+</p>
+<p>
+If that didn't make sense, here's a graph:
+</p>
+
+<img src="upb_gifs/upb_range.png" width=90% height=90%>
+<p>
+The red area represents the area for an up-b input. Any input on or before the blue circle will result in an up-b straight up (so any input at x=60 y=0, or x=42 y=42, etc). Any input further than 80 units from the center will cause the up-b to be max range.
+</p>
+
+<p>
+That the up-b uses a circle instead of a square like DI is good news for OG users, since even worn OGs can usually reach 80 units on each cardinal and x=57 y=57 on each diagonal, so using hori is no advantage here.
+</p>
+
+<p>
+There's one last weird quirk with the way SSB truncates the inputs. You might expect inputs past 80 to not increase up-b distance, but still have their angles preserved. This is not quite how it works. Instead, X and Y values greater than 80 are cut off BEFORE the angle is calculated. To understand what this means, here are a few pairs of inputs that you might expect to produce different up-b angles, but don't:
+</p>
+<img src="upb_gifs/input_1.png">
+<br />
+<br />
+<br />
+<img src="upb_gifs/input_2.png">
+
+<p>
+Seems potentially annoying for users of high-range controllers, not sure why they designed it that way.
+</p>
+</body>
+</html>

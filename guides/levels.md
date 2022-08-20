@@ -4,6 +4,9 @@ title: "Describing skill levels in competitive 64"
 date: 2017-12-07
 draft: false
 ---
+
+> <b>⚠️ Note</b>: This page was written in 2017. The concept is still interesting, but the skill levels and player examples should be considered only for historical value.
+
 I occasionally run into situations where I want to describe someone's skill quickly to a 3rd party, but I don't have an easy way to do it. The current popular system seems to be to use the "D1 D2 D3 D4" results of waterfall brackets to categorize players, but I'm not a huge fan of this system because division results for the same player can vary widely from tournament to tournament.
 
 For that reason and because i'm bored at work, I've made a set of 5 (technically 6) groups that I think roughly describe player skill, as follows:

@@ -8,23 +8,23 @@ title: Nick's SSB64 Resources
 
 # Writings
 
-[DI Mechanics Guide](guides/dimechanics.html) - In-depth guide to the mechanics of DI in 64. Discusses the importance of range, must-read for anyone working on controller mods.
+[Controller Guide](guides/controllers.html) - A guide to the most commonly used controller types in competitive SSB64, going over their pros, cons, special attributes and where to buy them.
 
 [Guide to Learning DI](guides/learningdi.html) - A guide to DI techniques and how to practice/implement them.
 
-[Controller Guide](guides/controllers.html) - A guide to the most commonly used controller types in competitive SSB64, going over their pros, cons, special attributes and where to buy them.
+[DI Mechanics Guide](guides/dimechanics.html) - In-depth guide to the mechanics of DI in 64. Discusses the importance of range, must-read for anyone working on controller mods.
 
-[Skill Levels](guides/levels.html) - A writeup of a system to catagorize players based on skill levels. Helped spawn the Discord rating system.
+[Matchup Guide: Pika vs Fox](guides/pikafox.html) - An outline of both sides of the Pikachu vs Fox matchup
 
 [Buffered Pivot Utilts](guides/utilts.html) - A picture guide to a technique to perform pivot utilts. Especially helpful for derek stick users, or others that have problems accidentally jumping while trying to pivot utilt.
 
 [Pika up-b Fun Facts](guides/pikaupb.html) - Some information about how controller range affects Pika's up-b distance and angle.
 
-[Knockoff Stick Review](guides/thumbstick.html) - Review of a "perfect" replacement stick from eBay.
-
 [Testing Range on Emulator](guides/rangetest.html) - How to test your controller's range on emulator
 
-[Matchup Guide: Pika vs Fox](guides/pikafox.html) - An outline of both sides of the Pikachu vs Fox matchup
+[Knockoff Stick Review](guides/thumbstick.html) - Review of a "perfect" replacement stick from eBay.
+
+[Skill Levels](guides/levels.html) - A writeup of a system to catagorize players based on skill levels. Helped spawn the Discord rating system.
 
 # Videos
 

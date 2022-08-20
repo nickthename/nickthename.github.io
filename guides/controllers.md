@@ -13,7 +13,7 @@ Every controller has its advantages and disadvantages, but none are objectively 
 
 \* See the [appendix](/guides/controllers.html#appendix) for rules regarding bindings for controllers with adapters.
 
-## <a href="/guides/controllers.html#original-og-n64">Original (OG) N64</a>
+## Original (OG) N64
 
 ![OG](/guides/img/controllers/OG.png){:width="40%"}<br>
 Estimated Price: $20 - $50

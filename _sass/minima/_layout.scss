@@ -228,6 +228,7 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
+  position: relative; // makes it the positioning parent of post-sidebar
 
   h2 {
     @include relative-font-size(2);

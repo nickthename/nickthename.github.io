@@ -1,0 +1,58 @@
+$sidebar-spacing-increment: 5px;
+#post-sidebar {
+  position: absolute;
+  left: -240px;
+  width: 220px;
+  height: 100%;
+
+  &.empty {
+    display: none;
+  }
+
+  .sidebar-inner {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 1;
+    }
+
+    .sidebar-link {
+      display: block;
+      color: #444;
+
+      // replace line height with padding so its easy to tell when one item wraps onto multiple lines
+      line-height: 1.1;
+      padding: 5px 0;
+
+      &.level-h2 {
+        font-weight: bold;
+      }
+      &.level-h3 {
+        padding-left: $sidebar-spacing-increment;
+      }
+      &.level-h4 {
+        padding-left: $sidebar-spacing-increment * 2;
+        color: #666;
+      }
+      &.level-h5 {
+        padding-left: $sidebar-spacing-increment * 3;
+        color: #666;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1249px) {
+  #post-sidebar {
+    position: static;
+    width: 100%;
+    background: #f0f0f0;
+    .sidebar-inner {
+      position: static;
+      opacity: 1;
+      margin-bottom: 40px;
+    }
+  }
+}

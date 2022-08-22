@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-noside
 title: "Review of the 'Best Redesigned Replacement Joystick'"
 date: 2017-11-4
 draft: false

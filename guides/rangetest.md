@@ -30,5 +30,6 @@ Launch SSB with the gameshark code 800A4AD0 0003 and press Z. The hundreds place
 This is your range display. Move the stick around and the top two numbers will display the X and Y values you're inputting. The only caveat is that they max out at 3 characters, so negative values aren't displayed properly. If your controller has high range and you input say -113, it'll be displayed as -13. It's reading the value fine, it just won't display the leading 1 if the value is less than -99. If you're using the raw plugin, this should be accurate to console.
 
 ## Remix Version
+![Remix Debug](/guides/img/remix_debug.png)
 
 The debug menu can also be accessed on emulator or console using the Smash Remix rom. From the main menu, go to Settings -> Debug, then hit the Z button when you see the Kirby box.

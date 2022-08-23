@@ -44,7 +44,7 @@ In Person at Tournaments - Most large tournaments will have someone looking to o
 ![Knockoff1](/guides/img/controllers/knockoff1.png)
 ![Knockoff2](/guides/img/controllers/knockoff2.jpg){:width="40%"}
 
-OG knockoffs come in two forms: knockoff replacement joysticks, and complete knockoff controllers. Both are generally terrible, with parts that feel cheap and break easily. Knockoff joysticks are known to break completely during play. However, there are some knockoff joysticks which more closely imitate the original and may have parts useful as replacements. Durability of knockoff joysticks tends to be very poor,  and even lubed they will wear out quickly. You can read a review of one knockoff here, and another here. 
+OG knockoffs come in two forms: knockoff replacement joysticks, and complete knockoff controllers. Both are generally terrible, with parts that feel cheap and break easily. Knockoff joysticks are known to break completely during play. However, there are some knockoff joysticks which more closely imitate the original and may have parts useful as replacements. Durability of knockoff joysticks tends to be very poor,  and even lubed they will wear out quickly. You can read a review of one knockoff [here](/guides/thumbstick.html), and another [here](/guides/img/controllers/knockoff_review.png). 
 
 **WARNING**: Knockoff joystick suppliers are extremely unreliable; just because the picture looks like the original doesn’t mean what you get won’t be total crap. These should only be bought by those that are looking to experiment with new sources and don’t mind possibly wasting their money.
 
@@ -53,12 +53,18 @@ OG knockoffs come in two forms: knockoff replacement joysticks, and complete kno
 
 The SteelStick64 is a project currently in progress to create a steel/titanium replacement N64 joystick for greatly increased durability. The project is currently slowly selling sticks to those on a full wait list of 500 people, with full retail release likely years away. Up-to-date information about the project can be found at <http://steelsticks64.com/> and <https://twitter.com/steelsticks64>. 
 
-## Steel Bowl
+### Steel Bowl
 ![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}
 
 The creator of the SteelStick has recently begun selling stand-alone steel bowls. Because the bowl of the OG wears quickly and has few good replacements, these bowls have been very well  received. They’re reported to improve stick lifespan and feel, and cost far less than the complete SteelStick.
 
-Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=product>. Follow SteelSticks on Twitter [@SteelSticks64](https://twitter.com/steelsticks64) for news when a new batch goes up for sale.
+Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=product>. Follow SteelSticks on Twitter [@SteelSticks64](https://twitter.com/steelsticks64) or sign up for email alerts on the store page for news when a new batch goes up for sale.
+
+## ReTech Parts
+![ReTech Stick](/guides/img/controllers/retech.jpg)
+
+The [ReTech](https://www.retechmn.com/shop) project is developing a variety of replacement parts, including bowls and sticks. They've experienced production delays, but have delivered some prototypes suitable for competitive play to smashers. They also offer a variety of other products, such as controller shells and ready-to-play refurbished controllers. The latter aren't 10/10 quality, but might be a good option for a new player. Follow them at [@retechmn](https://twitter.com/retechmn) on Twitter for updates on their progress.
+
 
 ## eL maN Parts
 ![El Man stick](/guides/img/controllers/elman.png){:width="40%"}
@@ -67,7 +73,7 @@ California Smash player eL maN has experimented with various 3D printed and CNC 
 
 His latest work can be found on his [Twitter](https://twitter.com/el_man_ton) and website, <https://elman64.com/>
 
-## Derek/”GC Style Replacement” Stick
+## GC-Style Replacement Stick
 ![Derek stick 1](/guides/img/controllers/derekstick1.png){:width="45%"}
 ![Derek stick 2](/guides/img/controllers/derekstick2.png){:width="45%"}<br>
 Estimated Price: $10
@@ -200,14 +206,15 @@ The adapter can be purchased at [https://www.raphnet-tech.com](https://www.raphn
 The popularity of playing Smash 64 online using an emulator has given rise to strong players only used to playing the game on a keyboard. Keyboard play has significant disadvantages over using a controller, but that hasn’t stopped players like StarKing and Killer from scoring big wins with them. 
 
 Keyboards can be used on an N64 console with the help of an adapter, however these adapters are currently not mass produced and so are usually custom-made. 
-How to Obtain
-Although there is no keyboard adapter currently in production, Ownasaurus is currently developing one. You can follow that project here.
-Pros/Cons
+#### How to Obtain
+There are no keyboard adapters currently in production, so you might need to assemble one on your own. Developer Ownasaurus created a successful design in the past, you may be able to find one second-hand or resources to make a new one on the [discord](https://discord.com/invite/ssb64).
+
+#### Pros/Cons
 <p>
 <font color="green">+</font> High range and digital inputs allows for very strong DI<br>
 <font color="green">+</font> Controls can easily be remapped to fit personal preference<br>
 <font color="red">-</font> Many important techniques that rely on analog inputs, such as tilt attacks, firefox angles, shield drop up airs, and many others, are either much more difficult or impossible on keyboard.<br>
-<font color="red">-</font> Keyboard and controller are very different to play on, making transitioning between the two very difficult, especially for high-level players.<br>
+<font color="red">-</font> Keyboard and controller are very different to play on, making transitioning between the two very difficult, especially for players with years of experience on one or the other.<br>
 </p>
 
 ## Lodgenet
@@ -217,7 +224,7 @@ The LodgeNet controller was created for use in hotel LodgeNet systems, which all
 
 Both versions of the Lodgenet controller are not natively compatible with home N64 systems, and require heavy modification to be usable. The LodgeNet can fail due to wear in a variety of ways (Joystick stalk damage, stickbox failure, Z-trigger pad misalignment) that require understanding of the modded LodgeNet’s internals to fix. Competitive players looking to use the LodgeNet should be aware of these potential problems and keep backups and/or know how to fix possible issues.
 #### How to Obtain
-Unmodified Lodgenet controllers can occasionally be found on Ebay. A guide on how to perform the mod can be found here.
+Unmodified Lodgenet controllers can occasionally be found on Ebay. A guide on how to perform the mod can be found [here](https://www.youtube.com/watch?v=vH1tthMz_YI).
 
 From time to time they may be sold in the N64 Controller Market Group or by modders at tournaments.
 #### Pros/Cons

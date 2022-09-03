@@ -19,7 +19,7 @@ How matches are determined is a bit opaque. The system seems to try at least a l
 
 
 It's impossible to leave queue manually. This is a bit annoying when playing in low population ladders online. Once a match is found, you'll have a minute or two to check-in or else get kicked out of the queue. To prevent dodging, the opponent's name isn't visible before checking in.
-Ranking in a ladder uses **peak rank, not current rank**, with win % used as a tiebreaker. A player who was once Rookie 3★ but has fallen to Rookie 0★ will still be ranked above a player whose current and highest rank is Roolie 2★.
+Ranking in a ladder uses **peak rank, not current rank**, with win % used as a tiebreaker. A player who was once Rookie 3★ but has fallen to Rookie 0★ will still be ranked above a player whose current and highest rank is Rookie 2★.
 
 ## Problems with Ladder
 

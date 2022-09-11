@@ -16,7 +16,7 @@ Every controller has its advantages and disadvantages, but none are objectively 
 ## Original (OG) N64
 
 ![OG](/guides/img/controllers/OG.png){:width="40%"}<br>
-Estimated Price: $20 - $50
+Estimated Price: **$20 - $50**
 
 The original N64 controller is by far the most popular controller among casual and competitive players alike. Often called the OG (‘original’) or OEM (‘original equipment manufacturer’) stick, the OG is great in new condition, but degrades very quickly if not lubricated. As a result, although the OG controller is extremely common, it can sometimes pose a challenge to find one in excellent condition. Worn OG joysticks become loose and rough feeling, and make moving quickly and performing advanced techniques more difficult.
 
@@ -39,7 +39,7 @@ In Person at Tournaments - Most large tournaments will have someone looking to o
 <font color="red">-</font> Joystick wears down quickly without lube, making it feel and perform worse<br>
 <font color="red">-</font> Three-prong design can be uncomfortable for some players
 </p>
-## Knockoff Replacement
+### Knockoff Replacement
 
 ![Knockoff1](/guides/img/controllers/knockoff1.png)
 ![Knockoff2](/guides/img/controllers/knockoff2.jpg){:width="40%"}
@@ -48,25 +48,25 @@ OG knockoffs come in two forms: knockoff replacement joysticks, and complete kno
 
 **WARNING**: Knockoff joystick suppliers are extremely unreliable; just because the picture looks like the original doesn’t mean what you get won’t be total crap. These should only be bought by those that are looking to experiment with new sources and don’t mind possibly wasting their money.
 
-## Steel Stick
+### Steel Stick
 ![Steel Stick](/guides/img/controllers/steelstick.png){:width="50%"}
 
 The SteelStick64 is a project currently in progress to create a steel/titanium replacement N64 joystick for greatly increased durability. The project is currently slowly selling sticks to those on a full wait list of 500 people, with full retail release likely years away. Up-to-date information about the project can be found at <http://steelsticks64.com/> and <https://twitter.com/steelsticks64>. 
 
-### Steel Bowl
+#### Steel Bowl
 ![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}
 
 The creator of the SteelStick has recently begun selling stand-alone steel bowls. Because the bowl of the OG wears quickly and has few good replacements, these bowls have been very well  received. They’re reported to improve stick lifespan and feel, and cost far less than the complete SteelStick.
 
 Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=product>. Follow SteelSticks on Twitter [@SteelSticks64](https://twitter.com/steelsticks64) or sign up for email alerts on the store page for news when a new batch goes up for sale.
 
-## ReTech Parts
+### ReTech Parts
 ![ReTech Stick](/guides/img/controllers/retech.jpg)
 
 The [ReTech](https://www.retechmn.com/shop) project is developing a variety of replacement parts, including bowls and sticks. They've experienced production delays, but have delivered some prototypes suitable for competitive play to smashers. They also offer a variety of other products, such as controller shells and ready-to-play refurbished controllers. The latter aren't 10/10 quality, but might be a good option for a new player. Follow them at [@retechmn](https://twitter.com/retechmn) on Twitter for updates on their progress.
 
 
-## eL maN Parts
+### eL maN Parts
 ![El Man stick](/guides/img/controllers/elman.png){:width="40%"}
 
 California Smash player eL maN has experimented with various 3D printed and CNC milled replacement parts, such as thinner plastic sticks, brass gears, and brass bowl inserts. His projects have started to catch on as a more affordable way to imitate the SteelStick’s durability and feel. 
@@ -76,11 +76,13 @@ His latest work can be found on his [Twitter](https://twitter.com/el_man_ton) an
 ## GC-Style Replacement Stick
 ![Derek stick 1](/guides/img/controllers/derekstick1.png){:width="45%"}
 ![Derek stick 2](/guides/img/controllers/derekstick2.png){:width="45%"}<br>
-Estimated Price: $10
+Estimated Price: **$12**
 
 The “OEM Gamecube Style Replacement Stick”, aka the Derek stick, is a replacement joystick for the OG N64 controller, designed to somewhat mimic the gamecube joystick. The nickname “Derek stick” comes from online player Derek, who brought the stick to the attention of the SSB community in [this thread](https://smashboards.com/threads/n64-controllers-discussion.335532/page-10#post-18614939). The Derek stick is popular among beginning and intermediate players, but aside from [Derek’s legendary GOML](https://www.youtube.com/watch?v=lBBEPqTsIVk) run has seen little use in high-level play. 
 
-The Derek stick can be found in multiple versions, two of which are pictured above. The earliest Derek stick models had severe flaws in input detection that prevented them from being usable in competitive play, but some sellers have since updated to newer revisions which resolve the worst of these issues. Buyer beware, some stores may still stock older versions.
+The Derek stick is unusually short and small, but has input range which slightly exceeds the OG. As a result moves that require small movements, like tilts and uairs, more difficult than usual, while fast inputs like dash dancing feel very responsive.
+
+The are multiple versions of this module, two of which are pictured above. The earliest Derek stick models had severe flaws in input detection that prevented them from being usable in competitive play, but sellers have since updated to newer revisions which resolve the worst of these issues. Buyer beware, some stores may still stock older versions.
 
 There also exists an extensive mod for the Derek Stick that fixes most of the stick’s range and angle-skipping issues. Currently these modded Derek Sticks are not widely distributed and see little use in competitive play, but they show promise. For those with the technical chops to put one together, the modded Derek Stick is an affordable way to make a great stick. More information can be found at the development [thread here](http://nfggames.com/forum2/index.php?topic=5803.0).
 #### How to Obtain
@@ -90,19 +92,16 @@ Many resellers across many websites sell various versions of the Derek stick. [T
 <font color="green">+</font> Always snaps back quickly to the exact center, with little to no wobble or overshooting<br>
 <font color="green">+</font> Very easy to install<br>
 <font color="green">+</font> High range allows for easier DI<br>
-<font color="green">+</font> Cheap (<\$11) and extremely easy to obtain<br>
+<font color="green">+</font> Cheap easy to obtain<br>
 <font color="green">+</font> Little to no change in feel, even with heavy use<br>
-= Does not output as many distinct angles as the OG, making some moves that require a precise angle easier, and some impossible. <br>
 <font color="red">-</font> Used sticks may drift during play<br>
 <font color="red">-</font> Small and short, making precise inputs difficult<br>
 <font color="red">-</font> Although it doesn’t wobble, it has a small deadzone<br>
-<font color="red">-</font> High range makes moves requiring low ranges (tilts, uairs without jumping, etc.) hard<br>
-<font color="red">-</font> Skips some range values, especially low ones, making precise low range inputs even harder than on other higher range joysticks<br>
+<font color="red">-</font> High sensitivity makes moves requiring low ranges (tilts, uairs without jumping, etc.) hard<br>
 </p>
 ## Hori Mini Pad
 ![Hori](/guides/img/controllers/hori.png){:width="40%"}<br>
-Estimated Price: $60-90
-
+Estimated Price: **$60-90**
 
 
 The Hori Mini Pad, usually just called the Hori, is a 3rd party N64 released in Japan by Hori Co., a Japanese company known for their fighting game accessories. The Hori differentiates itself from the OG with it’s small size, two handle design, and four triggers, but it’s mostly known for its joystick. 
@@ -124,37 +123,58 @@ The Hori is relatively expensive and takes some getting used to for players fami
 = Joystick has a large rubber cap instead of the more common plastic<br>
 <font color="red">-</font> Triggers are small and stiff<br>
 <font color="red">-</font> Start button cannot be temporarily removed<br>
-<font color="red">-</font> Start button is very difficult to press if removed<br>
 <font color="red">-</font> Expensive (Often $70+)<br>
-<font color="red">-</font> Horis have been known to have issues with joystick flickback. This is possible to fix through hardware modding<br>
+<font color="red">-</font> Been known to have issues with joystick flickback. This is possible to fix through <a href="https://docs.google.com/document/d/1Ql9lpv-qrU2j7pkasYUWFIG4oip5JZdUGtYpLdr3Dz8/edit">hardware modding</a><br>
 </p>
-## Retrobit Tribute 64
+
+## Hori Clones
+
+In the past few years, a variety of Hori-like controllers have emerged onto the market. Due to their low price and continued production, they're a very accessible option. Their build quality isn't as high as the original Hori, but they're all competitively viable. The current big 3 clones are the Warrior 64, the Retrobit Tribute, and the Chori. The Brawler64 is not quite a Hori clone, but fills a similar function with a more modern form-factor.
+
+### Warrior 64
+![Warrior1](/guides/img/controllers/warrior1.png){:width="40%"}
+
+Estimated Price: **$20**
+
+Originally released as part of a Kickstarter campaign, the Warrior 64 is the controller that most fully embodies the title of "Hori clone", with an almost exactly identical body design. The shell components aren't quite interchangeable with original Hori parts, but they are exactly the same size. The triggers and buttons are the exact same size and design although the buttons are slightly stiffer.
+
+Like other Hori clones, the Warrior's joystick is a bit stiffer than the ultra-loose one on the original Hori. The stick is also has slightly lower range than Hori, making it less sensitive, although it's still higher than a standard N64 controller.
+
+#### How to Obtain
+[Amazon](https://www.amazon.com/s?k=warrior+64+controller)/eBay - The Warrior is currently being produced and is readily available on most online marketplaces. The MSRP appears to be $20. 
+
+
+### Chori
+![Chori](/guides/img/controllers/chori1.jpg){:width="40%"}
+![Chori](/guides/img/controllers/chori2.jpg){:width="40%"}<br>
+Estimated Price: 1 for **$15**, 2 for **$20**
+
+Given the community name "Chori", this controller is sold under a variety of gibberish brand names, such as miadore, MODESLAB, iNNEXT, kiwitatá, etc. The cheapest of any competitively viable controller, the Chori is frequently sold in packs of two for less than a single controller from an actual brand would cost.
+
+Other than its price, the most noticeable characteristic of the Chori is its wider body and long handles, making it more suitable for players with large hands than the somewhat cramped Hori. Like other Hori clones, the stick is somewhat stiffer and buttons are a bit cheaper feeling, but both are quite functional. The triggers of the Chori are arguably the best of the Hori clones, with a large and flat design that's easy to press from any angle.
+
+
+#### How to Obtain
+Amazon - As mentioned, the Chori is available under a variety of names with no real consistency, the easiest way to identify it is by picture. Searching for "N64 Mini Pad" seems to come up with a lot of Chori results. Make sure the listing you find is for the N64 plug version, and USB versions are available.
+
+### Retro-Bit Tribute 64
 ![Tribute2](/guides/img/controllers/tribute2.png){:width="40%"}
 ![Tribute1](/guides/img/controllers/tribute1.png){:width="40%"}<br>
-Estimated Price: $25
+MSRP:  **$20**
 
-Released in 2019, the Tribute 64 is a modern remake/knockoff of the original Hori. Although the form factor is roughly the same as the Hori, some minor adjustments have been made. The Tribute is larger, and has a slightly different button layout. The back/bottom triggers have been made larger and flatter. The overall build quality of the Tribute is noticeably worse than the original. The buttons and plastic, and the button and trigger actuation is stiffer and mushier. The stick is similar to the Hori, but doesn’t feel quite as loose. 
+Released in 2019, the Tribute 64 was the first of the modern Hori remakes. Although the form factor is similar to the Hori, some minor adjustments have been made. The Tribute is larger, and has a slightly different button layout. The back/bottom triggers have been made larger and flatter than the rather small Hori triggers, but unfortunately the new triggers are poorly made and are picky about the angle they're pressed, making it a bit of a wash. The overall build quality of the Tribute's buttons and pads are noticeably worse than the original. The stick is virtually identical to the Warrior, less loose than the Hori. 
 
 Reviews suggest the Tribute’s durability is worse than the Hori’s. Sticky buttons are reported especially often, along with the Hori style joystick malfunctions. 
 
-Despite these flaws, the Tribute’s much lower price and easy availability makes it a competitor to the Hori, especially for new players or those on a budget.
-
 Retrobit has recently announced a wireless version of the Tribute. It has yet to be tested for competitive play.
 #### How to Obtain
-Ebay/Amazon - The Tribute is currently being produced and is readily available on most online marketplaces. The MSRP appears to be $25. 
-#### Pros/Cons (compared to Hori, see above)
-<p>
-<font color="green">+</font> Significantly cheaper<br>
-<font color="green">+</font> Can be easily bought new<br>
-<font color="green">+</font> Start button can be more easily removed<br>
-= Larger than the original<br>
-= Triggers are larger, with a different shape<br>
-<font color="red">-</font> Mediocre build quality<br>
-</p>
+[Amazon](https://www.amazon.com/s?k=tribute+64)/[Retro-Bit](http://retro-bit.com/tribute64#wired-n64) - The Tribute is currently being produced and is readily available on most online marketplaces. Some stores seem to charge more than others based on color; avoid high-priced listings as the official MSRP is $20.
+
+
 ## Retro Fighters Brawler64
 ![Brawler 64](/guides/img/controllers/brawler1.png){:width="45%"}
 ![Brawler 2](/guides/img/controllers/brawler2.png){:width="45%"}<br>
-Estimated Price: $30-$35
+Estimated Price: **$35**
 
 
 The Brawler64 is a 3rd-party controller that attempts to more closely mimic modern controller designs. As such it deviates a lot from both the OG and the Hori, and probably as a result, hasn’t caught on much with N64 die-hards. 
@@ -163,14 +183,16 @@ The Brawler’s back triggers are unusual, with springs that feel like Xbox or P
 
 The buttons on the Brawler have a non-standard layout, with the A and B buttons further away from the C buttons than normal. This is inconvenient for characters that emphasize sliding motions from C to A or B, such as Fox and Ness. The buttons are slightly larger than that of the OG, and completely flat with a matte finish. They’re somewhat stiff, and not at all mushy, with very clear tactile feedback.
 
-The Brawler’s joystick is snappy and stiffer than the Hori’s, with range lower than the Hori but higher than the OG. Internally it uses a standard potentiometer similar to other modern controllers. Because it’s so rarely used by competitive players, it’s hard to estimate its durability. 
+The Brawler’s joystick is snappy and stiffer than the Hori’s, with range lower than the Hori but higher than the OG. The stick cap is contemporary, without the giant rubber cap of the Hori and its clones. Internally it uses a standard potentiometer similar to other modern controllers. Because it’s so rarely used by competitive players, it’s hard to estimate its durability. 
 
 Although rarely enforced, the Brawler’s TURBO button technically violates tournament rules and should be removed. 
+
+The Brawler is also available in a wireless version at a slightly higher price (~$45). This version hasn't been tested for competitive play.
 #### How to Obtain
-Retrofighters website/Ebay/Amazon - The Brawler is currently being produced and is readily available on most online marketplaces, although the price seems to vary. Expect to pay ~$30-35.
+[Retrofighters website](https://retrofighters.com/our-collection/brawler64-nextgen-n64-controller-original-v2/)/Amazon - The Brawler is currently being produced and is readily available on most online marketplaces, although the price seems to vary. Expect to pay ~$30-35.
 #### Pros/Cons
 <p>
-<font color="green">+</font> Affordable and easy to acquire<br>
+<font color="green">+</font> Easy to acquire<br>
 <font color="green">+</font> Modern joystick design with consistent feel<br>
 <font color="green">+</font> Start button is far from the joystick and can be removed<br>
 = Larger than the original<br>
@@ -181,7 +203,7 @@ Retrofighters website/Ebay/Amazon - The Brawler is currently being produced and 
 </p>
 ## Gamecube + Raphnet GC to N64 Adapter
 ![Gamecube Adapter](/guides/img/controllers/gcadapter.jpg){:width="70%"}<br>
-Adapter Price: $28
+Adapter Price: **$28**
 
 With the aid of a Raphnet adapter, it’s possible to use a Gamecube controller on the N64. This option is especially popular among Melee and Sm4sh players picking up Smash 64, but its advantages are numerous enough to make it worth considering for Smash 64-only players as well.
 #### How to Obtain
@@ -234,7 +256,6 @@ From time to time they may be sold in the N64 Controller Market Group or by modd
 <font color="green">+</font> All buttons and triggers are clickier and less mushy than OG<br>
 <font color="green">+</font> Start button is slightly recessed and stiffer, making accidental presses less common<br>
 <font color="green">+</font> Start button can be temporarily removed<br>
-<font color="green">+</font> Start can still be pressed with the button removed <br>
 = Joystick does not have the loose feeling of the Hori<br>
 = Joystick is solid plastic with no rubber cap<br>
 <font color="red">-</font> Sides of joystick wear from collision with gate<br>

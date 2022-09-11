@@ -61,7 +61,7 @@ Your goal is to teach your muscle memory that DI is something you should always 
 
 One good way to get into the habit of consciously DIing, especially when first learning a new DI technique, is to play games where all your focus is on DI. Play an opponent that's capable of standard combos and only think about DIing every hit and combo, don't worry about neutral or what else is going on in the game. This will quickly get your hands in the habit of using DI.
 
-#### DI Direction Guidelines
+### DI Direction Guidelines
 
 In general, you'll want to DI away from your opponent, to avoid followups. Some moves and combos are best dealt with by DIing one specific way, which you'll mostly need to find through experimentation, but here's a few guidelines:
 

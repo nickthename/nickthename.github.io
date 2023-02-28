@@ -4,7 +4,7 @@ title: "Smash 64 Controller Guide"
 draft: false
 ---
 ## Introduction
-Welcome to the Smash 64 controller guide. Unlike the other Smash games, Smash 64 has a wide variety of different controller types, almost all of which see use at high levels of play. This guide outlines the basics of the most popular controller types for competitive play. All controllers listed in this guide are LEGAL\* for tournament play in all major tournaments in North America. 
+Welcome to the Smash 64 controller guide. Unlike the other Smash games, Smash 64 has a wide variety of different controller types, almost all of which see use at high levels of play. This guide outlines the basics of the most popular controller types for competition. All controllers listed in this guide are LEGAL[\*](/guides/controllers.html#appendix) for tournament play in all major tournaments in North America.
 Note that this guide is not exhaustive: any controller that follows the SSB64 League Guidelines (See appendix) may be used in most tournaments, and may not be listed here.
 
 
@@ -20,7 +20,7 @@ Estimated Price: **$20 - $50**
 
 The original N64 controller is by far the most popular controller among casual and competitive players alike. Often called the OG (‘original’) or OEM (‘original equipment manufacturer’) stick, the OG is great in new condition, but degrades very quickly if not lubricated. As a result, although the OG controller is extremely common, it can sometimes pose a challenge to find one in excellent condition. Worn OG joysticks become loose and rough feeling, and make moving quickly and performing advanced techniques more difficult.
 
-The OG’s start button can be accidentally pressed during play, disastrous in a tournament setting. Luckily, it’s easy to open the controller and remove the start button. Even without the button, you’ll still be able to press start if you have skinny fingers.
+The OG’s start button can be accidentally pressed during play, disastrous in a tournament setting. Luckily, it’s easy to open the controller and remove the start button. Even without the button, you’ll still be able to press start if you have skinny fingers. The hold-to-pause feature in most patched ROMs makes this less of a concern.
 
 The OG is popular at all levels of competitive play, and is used by many of the strongest players in the world, such as Jouske, Isai, Alvin, and Wario.
 #### How to Obtain
@@ -39,46 +39,71 @@ In Person at Tournaments - Most large tournaments will have someone looking to o
 <font color="red">-</font> Joystick wears down quickly without lube, making it feel and perform worse<br>
 <font color="red">-</font> Three-prong design can be uncomfortable for some players
 </p>
-### Knockoff Replacement
+### Knockoff Sticks
 
 ![Knockoff1](/guides/img/controllers/knockoff1.png)
 ![Knockoff2](/guides/img/controllers/knockoff2.jpg){:width="40%"}
 
-OG knockoffs come in two forms: knockoff replacement joysticks, and complete knockoff controllers. Both are generally terrible, with parts that feel cheap and break easily. Knockoff joysticks are known to break completely during play. However, there are some knockoff joysticks which more closely imitate the original and may have parts useful as replacements. Durability of knockoff joysticks tends to be very poor,  and even lubed they will wear out quickly. You can read a review of one knockoff [here](/guides/thumbstick.html), and another [here](/guides/img/controllers/knockoff_review.png). 
+OG knockoffs come in two forms: knockoff replacement joysticks, and complete knockoff controllers. Both are generally terrible, with parts that feel cheap and break easily. Knockoff joysticks are known to break completely during play. However, there are some knockoff joysticks which more closely imitate the original and may have parts useful as replacements. Durability of knockoff joysticks tends to be very poor,  and even lubed they will wear out quickly. You can read a review of one knockoff [here](/guides/thumbstick.html), and another [here](/guides/img/controllers/knockoff_review.png).
 
 **WARNING**: Knockoff joystick suppliers are extremely unreliable; just because the picture looks like the original doesn’t mean what you get won’t be total crap. These should only be bought by those that are looking to experiment with new sources and don’t mind possibly wasting their money.
 
-### Steel Stick
-![Steel Stick](/guides/img/controllers/steelstick.png){:width="50%"}
+## Metal Replacement Parts
 
-The SteelStick64 is a project currently in progress to create a steel/titanium replacement N64 joystick for greatly increased durability. The project is currently slowly selling sticks to those on a full wait list of 500 people, with full retail release likely years away. Up-to-date information about the project can be found at <http://steelsticks64.com/> and <https://twitter.com/steelsticks64>. 
+
+### Steel Stick 64
+[![Steel Stick](/guides/img/controllers/steelstick.png){:width="50%"}](http://steelsticks64.com)
+
+The SteelStick64 is a project currently in progress to create a steel/titanium replacement N64 joystick for greatly increased durability. The project is currently slowly selling sticks to those on a full wait list of 500 people, with full retail release likely years away. Up-to-date information about the project can be found at <http://steelsticks64.com/> and <https://twitter.com/steelsticks64>.
 
 #### Steel Bowl
-![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}
+[![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}](https://steelsticks64.com/?post_type=product)
 
-The creator of the SteelStick has recently begun selling stand-alone steel bowls. Because the bowl of the OG wears quickly and has few good replacements, these bowls have been very well  received. They’re reported to improve stick lifespan and feel, and cost far less than the complete SteelStick.
+The creator of the SteelStick occasionally sells stand-alone steel bowls. Because the bowl of the OG wears quickly and has few good replacements, these bowls have been very well  received. They improve stick lifespan and feel, and cost far less than the complete SteelStick.
 
 Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=product>. Follow SteelSticks on Twitter [@SteelSticks64](https://twitter.com/steelsticks64) or sign up for email alerts on the store page for news when a new batch goes up for sale.
 
-### ReTech Parts
-![ReTech Stick](/guides/img/controllers/retech.jpg)
+### Oudini Sticks
+[![Oudini Stick](/guides/img/controllers/oudinistick.jpg){:width="40%"}](https://oudini-shop.com/index.php?route=common/home)
 
-The [ReTech](https://www.retechmn.com/shop) project is developing a variety of replacement parts, including bowls and sticks. They've experienced production delays, but have delivered some prototypes suitable for competitive play to smashers. They also offer a variety of other products, such as controller shells and ready-to-play refurbished controllers. The latter aren't 10/10 quality, but might be a good option for a new player. Follow them at [@retechmn](https://twitter.com/retechmn) on Twitter for updates on their progress.
+Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArtherOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.co/)
+
+### TaoStyx64
+[![TaoStyx](/guides/img/controllers/taostyx64.jpg){:width="40%"}](https://taostyx64.com/)
+
+Taostyx has created multiple replacement parts, including their own steel bowls and a variety of joystick caps. They've also released metal buttons and bronze gear teeth available on their [shapeways](https://www.shapeways.com/shops/alinktotao). Reviews in the Smash community so far are scarce. More information at [https://taostyx64.com/](https://taostyx64.com).
+
+## Other replacement parts
+
+### Kitsch-Bent Parts
+[![Kitsch-bent parts](/guides/img/controllers/kitschbent.png){:width="40%"}](https://store.kitsch-bent.com/collections/replacement-parts?filter.p.product_type=Home+Game+Console+Accessories)
+
+Kitsch-Bent sells injection-moulded replacement bowls, sticks, and gears. These parts are extremely cheap but somewhat unrealiable, with some parts coming defective or needing sanding. As such it's usually recommend to order multiples for redudancy and to save on shipping. Due to their low price, KB parts are often used as a starting point for other mods, or paired with more durible steel components.
+
+### N64Gears.com
+[![N64Gears](/guides/img/controllers/n64gearslogo.jpg){:width="40%"}](https://www.n64gears.com/)
+
+Injection moulded gears. More expensive than Kitsch-Bent gears, but have recieved some better reviews. Frequently paired with steel sticks and bowls.
 
 
 ### eL maN Parts
-![El Man stick](/guides/img/controllers/elman.png){:width="40%"}
+[![El Man stick](/guides/img/controllers/elman.png){:width="40%"}](https://elman64.com)
 
-California Smash player eL maN has experimented with various 3D printed and CNC milled replacement parts, such as thinner plastic sticks, brass gears, and brass bowl inserts. His projects have started to catch on as a more affordable way to imitate the SteelStick’s durability and feel. 
+California Smash player eL maN has experimented with various 3D printed and CNC milled replacement parts, such as thinner plastic sticks, brass gears, and brass bowl inserts. His projects have started to catch on as a more affordable way to imitate the SteelStick’s durability and feel.
 
 His latest work can be found on his [Twitter](https://twitter.com/el_man_ton) and website, <https://elman64.com/>
+
+### ReTech Parts
+[![ReTech Stick](/guides/img/controllers/retech.jpg)](https://www.retechmn.com/shop)
+
+The [ReTech](https://www.retechmn.com/shop) project developed a variety of replacement parts, including bowls and sticks, but is currently defunct, and haven't fulfilled all orders.  Follow them at [@retechmn](https://twitter.com/retechmn) on Twitter for updates on their progress.
 
 ## GC-Style Replacement Stick
 ![Derek stick 1](/guides/img/controllers/derekstick1.png){:width="45%"}
 ![Derek stick 2](/guides/img/controllers/derekstick2.png){:width="45%"}<br>
 Estimated Price: **$12**
 
-The “OEM Gamecube Style Replacement Stick”, aka the Derek stick, is a replacement joystick for the OG N64 controller, designed to somewhat mimic the gamecube joystick. The nickname “Derek stick” comes from online player Derek, who brought the stick to the attention of the SSB community in [this thread](https://smashboards.com/threads/n64-controllers-discussion.335532/page-10#post-18614939). The Derek stick is popular among beginning and intermediate players, but aside from [Derek’s legendary GOML](https://www.youtube.com/watch?v=lBBEPqTsIVk) run has seen little use in high-level play. 
+The “OEM Gamecube Style Replacement Stick”, aka the Derek stick, is a replacement joystick for the OG N64 controller, designed to somewhat mimic the gamecube joystick. The nickname “Derek stick” comes from online player Derek, who brought the stick to the attention of the SSB community in [this thread](https://smashboards.com/threads/n64-controllers-discussion.335532/page-10#post-18614939). The Derek stick is popular among beginning and intermediate players, but aside from [Derek’s legendary GOML](https://www.youtube.com/watch?v=lBBEPqTsIVk) run has seen little use in high-level play.
 
 The Derek stick is unusually short and small, but has input range which slightly exceeds the OG. As a result moves that require small movements, like tilts and uairs, more difficult than usual, while fast inputs like dash dancing feel very responsive.
 
@@ -104,7 +129,7 @@ Many resellers across many websites sell various versions of the Derek stick. [T
 Estimated Price: **$60-90**
 
 
-The Hori Mini Pad, usually just called the Hori, is a 3rd party N64 released in Japan by Hori Co., a Japanese company known for their fighting game accessories. The Hori differentiates itself from the OG with it’s small size, two handle design, and four triggers, but it’s mostly known for its joystick. 
+The Hori Mini Pad, usually just called the Hori, is a 3rd party N64 released in Japan by Hori Co., a Japanese company known for their fighting game accessories. The Hori differentiates itself from the OG with it’s small size, two handle design, and four triggers, but it’s mostly known for its joystick.
 
 The Hori’s joystick is potentiometer based, similar to the Gamecube’s, which allows for a much longer life with less observable wear than the OG’s. The Hori’s joystick is also much larger than the OG’s, and has a rubber cap instead of the OG’s pure plastic. Perhaps the most distinctive feature of the Hori’s joystick is its looseness. The Hori joystick has extremely little resistance to movement, which gives it a unique feel. The Hori also has high range, which combined with its low resistance makes it extremely good for DI.
 
@@ -141,7 +166,7 @@ Originally released as part of a Kickstarter campaign, the Warrior 64 is the con
 Like other Hori clones, the Warrior's joystick is a bit stiffer than the ultra-loose one on the original Hori. The stick is also has slightly lower range than Hori, making it less sensitive, although it's still higher than a standard N64 controller.
 
 #### How to Obtain
-[Amazon](https://www.amazon.com/s?k=warrior+64+controller)/eBay - The Warrior is currently being produced and is readily available on most online marketplaces. The MSRP appears to be $20. 
+[Amazon](https://www.amazon.com/s?k=warrior+64+controller)/eBay - The Warrior is currently being produced and is readily available on most online marketplaces. The MSRP appears to be $20.
 
 
 ### Chori
@@ -162,9 +187,9 @@ Amazon - As mentioned, the Chori is available under a variety of names with no r
 ![Tribute1](/guides/img/controllers/tribute1.png){:width="40%"}<br>
 MSRP:  **$20**
 
-Released in 2019, the Tribute 64 was the first of the modern Hori remakes. Although the form factor is similar to the Hori, some minor adjustments have been made. The Tribute is larger, and has a slightly different button layout. The back/bottom triggers have been made larger and flatter than the rather small Hori triggers, but unfortunately the new triggers are poorly made and are picky about the angle they're pressed, making it a bit of a wash. The overall build quality of the Tribute's buttons and pads are noticeably worse than the original. The stick is virtually identical to the Warrior, less loose than the Hori. 
+Released in 2019, the Tribute 64 was the first of the modern Hori remakes. Although the form factor is similar to the Hori, some minor adjustments have been made. The Tribute is larger, and has a slightly different button layout. The back/bottom triggers have been made larger and flatter than the rather small Hori triggers, but unfortunately the new triggers are poorly made and are picky about the angle they're pressed, making it a bit of a wash. The overall build quality of the Tribute's buttons and pads are noticeably worse than the original. The stick is virtually identical to the Warrior, less loose than the Hori.
 
-Reviews suggest the Tribute’s durability is worse than the Hori’s. Sticky buttons are reported especially often, along with the Hori style joystick malfunctions. 
+Reviews suggest the Tribute’s durability is worse than the Hori’s. Sticky buttons are reported especially often, along with the Hori style joystick malfunctions.
 
 Retrobit has recently announced a wireless version of the Tribute. It has yet to be tested for competitive play.
 #### How to Obtain
@@ -177,15 +202,15 @@ Retrobit has recently announced a wireless version of the Tribute. It has yet to
 Estimated Price: **$35**
 
 
-The Brawler64 is a 3rd-party controller that attempts to more closely mimic modern controller designs. As such it deviates a lot from both the OG and the Hori, and probably as a result, hasn’t caught on much with N64 die-hards. 
+The Brawler64 is a 3rd-party controller that attempts to more closely mimic modern controller designs. As such it deviates a lot from both the OG and the Hori, and probably as a result, hasn’t caught on much with N64 die-hards.
 
 The Brawler’s back triggers are unusual, with springs that feel like Xbox or Playstation R2 triggers. However the N64 doesn’t have analog trigger support, so a very small push is enough to activate them. Both are Z, like on the Hori. The front main triggers are very large, but don’t actuate very far.
 
 The buttons on the Brawler have a non-standard layout, with the A and B buttons further away from the C buttons than normal. This is inconvenient for characters that emphasize sliding motions from C to A or B, such as Fox and Ness. The buttons are slightly larger than that of the OG, and completely flat with a matte finish. They’re somewhat stiff, and not at all mushy, with very clear tactile feedback.
 
-The Brawler’s joystick is snappy and stiffer than the Hori’s, with range lower than the Hori but higher than the OG. The stick cap is contemporary, without the giant rubber cap of the Hori and its clones. Internally it uses a standard potentiometer similar to other modern controllers. Because it’s so rarely used by competitive players, it’s hard to estimate its durability. 
+The Brawler’s joystick is snappy and stiffer than the Hori’s, with range lower than the Hori but higher than the OG. The stick cap is contemporary, without the giant rubber cap of the Hori and its clones. Internally it uses a standard potentiometer similar to other modern controllers. Because it’s so rarely used by competitive players, it’s hard to estimate its durability.
 
-Although rarely enforced, the Brawler’s TURBO button technically violates tournament rules and should be removed. 
+Although rarely enforced, the Brawler’s TURBO button technically violates tournament rules and should be removed.
 
 The Brawler is also available in a wireless version at a slightly higher price (~$45). This version hasn't been tested for competitive play.
 #### How to Obtain
@@ -207,7 +232,7 @@ Adapter Price: **$28**
 
 With the aid of a Raphnet adapter, it’s possible to use a Gamecube controller on the N64. This option is especially popular among Melee and Sm4sh players picking up Smash 64, but its advantages are numerous enough to make it worth considering for Smash 64-only players as well.
 #### How to Obtain
-The adapter can be purchased at [https://www.raphnet-tech.com](https://www.raphnet-tech.com/products/gc_to_n64_adapter_v3_with_builtin_controller_pak/index.php). Gamecube controllers themselves can be bought used on Ebay, Craigslist, retro game stores, etc. 
+The adapter can be purchased at [https://www.raphnet-tech.com](https://www.raphnet-tech.com/products/gc_to_n64_adapter_v3_with_builtin_controller_pak/index.php). Gamecube controllers themselves can be bought used on Ebay, Craigslist, retro game stores, etc.
 #### Pros/Cons
 <p>
 <font color="green">+</font> Can be configured to use a square or OG-style octagon gate<br>
@@ -225,9 +250,9 @@ The adapter can be purchased at [https://www.raphnet-tech.com](https://www.raphn
 ## Keyboard
 ![Keyboard](/guides/img/controllers/keyboard.png){:width="60%"}
 
-The popularity of playing Smash 64 online using an emulator has given rise to strong players only used to playing the game on a keyboard. Keyboard play has significant disadvantages over using a controller, but that hasn’t stopped players like StarKing and Killer from scoring big wins with them. 
+The popularity of playing Smash 64 online using an emulator has given rise to strong players only used to playing the game on a keyboard. Keyboard play has significant disadvantages over using a controller, but that hasn’t stopped players like StarKing and Killer from scoring big wins with them.
 
-Keyboards can be used on an N64 console with the help of an adapter, however these adapters are currently not mass produced and so are usually custom-made. 
+Keyboards can be used on an N64 console with the help of an adapter, however these adapters are currently not mass produced and so are usually custom-made.
 #### How to Obtain
 There are no keyboard adapters currently in production, so you might need to assemble one on your own. Developer Ownasaurus created a successful design in the past, you may be able to find one second-hand or resources to make a new one on the [discord](https://discord.com/invite/ssb64).
 
@@ -242,7 +267,7 @@ There are no keyboard adapters currently in production, so you might need to ass
 ## Lodgenet
 ![Lodgenet](/guides/img/controllers/lodgenet.png){:width="40%"}
 
-The LodgeNet controller was created for use in hotel LodgeNet systems, which allowed guests to pay for playtime on N64 games on their room TV. The V1 Lodgenet controller, not pictured, was essentially identical to the OG, with the addition of the Lodgenet buttons replacing the Nintendo logo. The later Lodgenet V2, shown above, improved on its predecessor by replacing the OG joystick with a potentiometer based design created by Hori, and by replacing all button pads with stiffer, clickier versions. 
+The LodgeNet controller was created for use in hotel LodgeNet systems, which allowed guests to pay for playtime on N64 games on their room TV. The V1 Lodgenet controller, not pictured, was essentially identical to the OG, with the addition of the Lodgenet buttons replacing the Nintendo logo. The later Lodgenet V2, shown above, improved on its predecessor by replacing the OG joystick with a potentiometer based design created by Hori, and by replacing all button pads with stiffer, clickier versions.
 
 Both versions of the Lodgenet controller are not natively compatible with home N64 systems, and require heavy modification to be usable. The LodgeNet can fail due to wear in a variety of ways (Joystick stalk damage, stickbox failure, Z-trigger pad misalignment) that require understanding of the modded LodgeNet’s internals to fix. Competitive players looking to use the LodgeNet should be aware of these potential problems and keep backups and/or know how to fix possible issues.
 #### How to Obtain
@@ -267,19 +292,19 @@ From time to time they may be sold in the N64 Controller Market Group or by modd
 ![keyboard](/guides/img/controllers/keyboard.png){:width="40%"}
 
 Alongside keyboard, many other non-standard controllers see use for online play. All of these currently depend on custom-made adapters, although this may change with the advancement of Ownasaurus’ USB adapter (see Keyboard “How to Obtain” section above). These controllers vary wildly in capability, including many different types joysticks, as well as controllers with no joysticks at all.
-## Appendix 
+## Appendix
 #### Official Controller Ruleset
 The official SSB64 League ruleset includes a section on controllers restrictions:
 
 > All controllers are subject to the following restrictions:
 - Maximum 1:1 mapping of original buttons on first party controller allowed (Hori) (1 A button, 2 Z's, 1 R, etc. No extra buttons that aren't on the controller)
-- Maximum 4 directional mappings or 2 joystick axes allowed, combinations of the two are not allowed 
+- Maximum 4 directional mappings or 2 joystick axes allowed, combinations of the two are not allowed
 - Macros, other than Z+A, are illegal
 - Turbo buttons and functions are illegal
 
 Violation of above rules will result in immediate disqualification from an event and all previous wins in the event are forfeited.  Examples of legal controllers are, but not limited to, the original N64 controller, Hori Mini Pad, GameCube controller, Xbox/keyboard/other wired input devices as long as they meet the restrictions above.
 
-In essence, these rules restrict using additional duplicate buttons that aren’t present on either the OG or the Hori, and prevent the use modifiers or multiple sets of joystick keys on keyboards. 
+In essence, these rules restrict using additional duplicate buttons that aren’t present on either the OG or the Hori, and prevent the use modifiers or multiple sets of joystick keys on keyboards.
 
 Please note that this is just the suggested ruleset! Any individual tournament may have its own rules regarding controllers, and you should check the rules of any tournament you plan to attend before you sign up.
 
@@ -291,5 +316,5 @@ A few important cases under the League ruleset:
 **Dpad Binding** - Some GC controller users have rebound their dpads to additional joystick inputs to improve their DI. This is banned under the official ruleset, under the “Maximum of 4 directional mappings” clause.
 
 #### Credits
-This guide was created by nickthename from the SSB64 Discord server. Send complaints or questions to me there. Thanks to Zantetsu, Annex, and Pizza for suggestions.
+This guide was created by nickthename from the [SSB64 Discord](https://discord.gg/ssb64) server. Send complaints or questions to me there. Thanks to Zantetsu, Annex, and Pizza for suggestions.
 

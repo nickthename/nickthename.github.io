@@ -66,7 +66,7 @@ Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=produc
 ### Oudini Sticks
 [![Oudini Stick](/guides/img/controllers/oudinistick.jpg){:width="40%"}](https://oudini-shop.com/index.php?route=common/home)
 
-Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArtherOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.com/)
+Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.com/)
 
 ### TaoStyx64
 [![TaoStyx](/guides/img/controllers/taostyx64.jpg){:width="40%"}](https://taostyx64.com/)
@@ -78,7 +78,7 @@ Taostyx has created multiple replacement parts, including their own steel bowls 
 ### Kitsch-Bent Parts
 [![Kitsch-bent parts](/guides/img/controllers/kitschbent.png){:width="40%"}](https://store.kitsch-bent.com/collections/replacement-parts?filter.p.product_type=Home+Game+Console+Accessories)
 
-Kitsch-Bent sells injection-moulded replacement bowls, sticks, and gears. These parts are extremely cheap but somewhat unrealiable, with some parts coming defective or needing sanding. As such it's usually recommend to order multiples for redudancy and to save on shipping. Due to their low price, KB parts are often used as a starting point for other mods, or paired with more durible steel components.
+Kitsch-Bent sells injection-moulded replacement bowls, sticks, and gears. These parts are extremely cheap but somewhat unrealiable, with some parts coming defective or needing sanding. As such it's usually recommend to order multiples for redudancy and to save on shipping. Due to their low price, KB parts are often used as a starting point for other mods, or paired with more durible steel components. [https://store.kitsch-bent.com](https://store.kitsch-bent.com/collections/replacement-parts?filter.p.product_type=Home+Game+Console+Accessories).
 
 ### N64Gears.com
 [![N64Gears](/guides/img/controllers/n64gearslogo.jpg){:width="40%"}](https://www.n64gears.com/)

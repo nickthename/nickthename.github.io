@@ -66,7 +66,7 @@ Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=produc
 ### Oudini Sticks
 [![Oudini Stick](/guides/img/controllers/oudinistick.jpg){:width="40%"}](https://oudini-shop.com/index.php?route=common/home)
 
-Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArtherOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.co/)
+Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArtherOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.com/)
 
 ### TaoStyx64
 [![TaoStyx](/guides/img/controllers/taostyx64.jpg){:width="40%"}](https://taostyx64.com/)

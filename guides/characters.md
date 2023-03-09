@@ -96,15 +96,19 @@ Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/playe
 
 #### Guides and Combo Videos
 
+- [Armor Break Percents](https://nickthename.github.io/ssbframedata/Armor/Armor.html)
+- [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
+
 #### Players and Vods
 
 Players: [Kurabba](https://vods.co/smash64/character/Yoshi/player/Kurabba), [Wizzrobe](https://vods.co/smash64/character/Yoshi/player/Wizzrobe), [Prince](https://vods.co/smash64/character/Yoshi/player/Prince), [Tacos](https://vods.co/smash64/player/tacos/character/Yoshi), [Hiyo](https://vods.co/smash64/character/Yoshi/player/Hiyo)
 
 ## ![](/guides/img/chars/full/kirby.png) Kirby
 #### Advanced Techniques
+- [Platform Perfect Lands \| Crovy](https://www.youtube.com/watch?v=vhtLPHrHVlA)
+- [Advanced Kirby Movement \| Crovy](https://www.youtube.com/watch?v=nIYsKXHI5xI)
 
 #### Guides and Combo Videos
-- [Stranded Kirby Movement](https://www.youtube.com/watch?v=nIYsKXHI5xI)
 - [Kirby Ditto Guide \| Handsometom](https://thesmashwriter.wordpress.com/2017/10/26/handsometoms-guide-to-the-kirby-ditto/)
 
 #### Players and Vods

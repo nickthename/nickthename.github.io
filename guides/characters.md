@@ -7,6 +7,7 @@ draft: false
 
 This page serves as a collection of resources for each character in Smash 64. If you have suggestions for more content, reach out to me @nickthename on the [smash 64 discord](https://discord.gg/ssb64).
 
+<hr>
 ## ![](/guides/img/chars/full/luigi.png) Luigi
 #### Advanced Techniques
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
@@ -19,6 +20,7 @@ Players (links to vods): [Freean](https://vods.co/smash64/character/Luigi/player
 
 Matches: [Isai vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://youtu.be/KXVgkENOuN8?t=1225)
 
+<hr>
 ## ![](/guides/img/chars/full/mario.png) Mario
 #### Advanced Techniques
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
@@ -31,6 +33,7 @@ Matches: [Isai vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.p
 
 Players: [Czar](https://vods.co/smash64/character/Mario/player/Czar), [Hydra](https://vods.co/smash64/character/Mario/player/Hydra), [Kimimaru](https://vods.co/smash64/character/Mario/player/Kimimaru), [Fireblaster](https://vods.co/smash64/character/Mario/player/Fireblaster)
 
+<hr>
 ## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong
 <!--- #### Advanced Techniques --->
 
@@ -43,6 +46,7 @@ Vods:
 
 - [Tacos vs Josh Brody (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/cYljJAj4DwI)
 
+<hr>
 ## ![](/guides/img/chars/full/link.png) Link
 <!-- #### Advanced Techniques --->
 
@@ -53,8 +57,12 @@ Vods:
 
 Players: [Sekirei](https://vods.co/smash64/character/Link/player/sekirei), [Gyaki](https://vods.co/smash64/character/Link/player/Gyaki), [Isai](https://vods.co/smash64/character/Link/player/Isai)
 
+<hr>
 ## ![](/guides/img/chars/full/samus.png) Samus
-<!-- #### Advanced Techniques --->
+#### Advanced Techniques
+
+- [Run off dair without fast fall \| emptyW](https://www.youtube.com/watch?v=rtnILkp5ebI)
+- [Countering drills on shield at ledge \| emptyW](https://www.youtube.com/watch?v=g14G6UbVZsE)
 
 <!-- #### Guides and Combo Videos --->
 
@@ -63,21 +71,26 @@ Players: [Sekirei](https://vods.co/smash64/character/Link/player/sekirei), [Gyak
 Players: [Jouske](https://vods.co/smash64/player/Jousuke/character/Samus), [emptyW](https://vods.co/smash64/character/Samus/player/emptyW), [SotoH](https://vods.co/smash64/character/Samus/player/SotoH)
 
 Vods:
+- [Jouske vs Kurabba (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg)
+- [Jouske vs Wario (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=mTvuRt5rbbg)
 - [Jouske video archive](https://photos.google.com/share/AF1QipNqNGK-H7q8z4jIlGKNHiqObspEoWHie67onKpF8aGR77xAf3nRrQWeodP3UBqAhA?pli=1&key=dWdKUGFleVBSSC04b2RTdkw3dmdONWhxQjBEcXdn)
+- [Jouske boomfan vods (mostly vs ![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) falcon)](https://www.youtube.com/@jouskevssuperboomfanoctove2869/videos)
 
+<hr>
 ## ![](/guides/img/chars/full/captainfalcon.png) Captain Falcon
 #### Advanced Techniques
 - [Advanced Falcon Movement \|  Stranded](https://www.youtube.com/watch?v=qLnJdf1y6MY)
 
 #### Guides and Combo Videos
-- [Combo Video, Janitor](https://youtu.be/AOKElll6cAk)
-- [Edgeguarding Mario by Superboomfan](https://www.youtube.com/watch?v=q8ZfC4nOIuo)
-- [Simple Falcon Combos](https://www.youtube.com/playlist?list=PLJcgCaWoFblytHHIyxILm6SNx2oibs3ty)
+- [Combo Video \|  Janitor](https://youtu.be/AOKElll6cAk)
+- [Edgeguarding Mario \|  Superboomfan](https://www.youtube.com/watch?v=q8ZfC4nOIuo)
+- [Simple Falcon Combos \| Kristoff](https://www.youtube.com/playlist?list=PLJcgCaWoFblytHHIyxILm6SNx2oibs3ty)
 
 #### Players and Vods
 
 Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn), [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin), [Zero](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29), [KeroKeroppi](https://vods.co/smash64/character/Captain%20Falcon/player/KeroKeroppi), [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3), [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww)
 
+<hr>
 ## ![](/guides/img/chars/full/ness.png) Ness
 #### Advanced Techniques
  - [DJC Rush \| Kristoff](https://www.youtube.com/watch?v=eptWNovlbGc)
@@ -90,6 +103,7 @@ Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/playe
 
 #### Players and Vods
 
+<hr>
 ## ![](/guides/img/chars/full/yoshi.png) Yoshi
 #### Advanced Techniques
 - [Advanced Yoshi Movement \| Stranded](https://www.youtube.com/watch?v=I53r8DE0DaY)
@@ -103,16 +117,34 @@ Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/playe
 
 Players: [Kurabba](https://vods.co/smash64/character/Yoshi/player/Kurabba), [Wizzrobe](https://vods.co/smash64/character/Yoshi/player/Wizzrobe), [Prince](https://vods.co/smash64/character/Yoshi/player/Prince), [Tacos](https://vods.co/smash64/player/tacos/character/Yoshi), [Hiyo](https://vods.co/smash64/character/Yoshi/player/Hiyo)
 
+Vods:
+
+- [Kurabba vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/OiUZVXtMd3I)
+- [Hotline vs epad10 (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=GWhebsKk7R4)
+- [Kurabba vs Nax (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/OjF06v54TvQ)
+- [Hotline vs Spongy (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/uu-z6SAst0E?t=22554)
+- [Wizzrobe vs Alvin (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://www.youtube.com/watch?v=zZwiZmqUdTY&t=619s)
+- [Kurabba  vs Superboomfan (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)
+- [Wizzrobe vs Alvin (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://www.youtube.com/watch?v=zZwiZmqUdTY)
+
+<hr>
 ## ![](/guides/img/chars/full/kirby.png) Kirby
 #### Advanced Techniques
 - [Platform Perfect Lands \| Crovy](https://www.youtube.com/watch?v=vhtLPHrHVlA)
 - [Advanced Kirby Movement \| Crovy](https://www.youtube.com/watch?v=nIYsKXHI5xI)
 
 #### Guides and Combo Videos
+- [Simple Kirby Combos \| Ringedge](https://youtu.be/3Z5JehC91OU)
 - [Kirby Ditto Guide \| Handsometom](https://thesmashwriter.wordpress.com/2017/10/26/handsometoms-guide-to-the-kirby-ditto/)
+- [Edgeguarding Yoshi \| Handsometom](https://www.youtube.com/watch?v=V1uP9Pw8quE)
+- [Platform techchasing \| Handsometom](https://www.youtube.com/watch?v=ykIr6L86kQo)
+- [Combos by Ledge \| Handsometom](https://www.youtube.com/watch?v=FkmQsp90hAI)
 
 #### Players and Vods
 
+Players: [Fukurou](https://vods.co/smash64/character/Kirby/player/Fukurou), [K Y S K](https://vods.co/smash64/character/Kirby/player/kysk), [Superboomfan](https://vods.co/smash64/character/Kirby/player/SuPeRbOoMfAn), [Isai](https://vods.co/smash64/character/Kirby/player/Isai), [Hammerheart](https://vods.co/smash64/character/Kirby/player/HAMMERHEART), [Revan](https://vods.co/smash64/character/Kirby/player/Revan)
+
+<hr>
 ## ![](/guides/img/chars/full/fox.png) Fox
 #### Advanced Techniques
 - [Short Hop Double Laser \| Nate L](https://youtu.be/8lOpfwS5NMs)
@@ -136,6 +168,7 @@ Vods:
 - [Silver Spoon vs Zero (Falcon)](https://youtu.be/bYbPnu1iA_0)
 - [Huntsman vs Fireblaster (Yoshi)](https://www.youtube.com/watch?v=AnV6mSEjSBs)
 
+<hr>
 ## ![](/guides/img/chars/full/pikachu.png) Pikachu
 #### Advanced Techniques
 - [Extended Up-B](https://youtu.be/8lOpfwS5NMs?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn&t=898)
@@ -152,7 +185,7 @@ Vods:
 #### Players and Vods
 Players: [Wario](https://vods.co/smash64/player/wario/character/Pikachu), [Nax](https://vods.co/smash64/character/Pikachu/player/Nax), [Alvin](https://vods.co/smash64/character/Pikachu/player/Alvin), [SuperBoomFan](https://vods.co/smash64/character/Pikachu/player/SuPeRbOoMfAn), [Isai](https://vods.co/smash64/character/Pikachu/player/Isai), [Josh Brody](https://vods.co/smash64/character/Pikachu/player/Josh%20Brody), [Kero](https://vods.co/smash64/character/Pikachu/player/KeroKeroppi), [Mariguas](https://vods.co/smash64/character/Pikachu/player/Mariguas)
 
-Vods: 
+Vods:
 - [Nax vs Isai (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/UnyKv7qqrIo?t=71)
 - [Alvin vs Fukurou (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/S1v6D3-_PyM?t=1)
 - [Nax vs KD3 (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/qUAtlkmo_yM?t=300)
@@ -166,8 +199,9 @@ Vods:
 - [Mariguas vs Gyaki (![](https://vods.co/files/icons/smash64/16px-Link.png) Link)](https://youtu.be/51-Rpqea6VM)
 - [Sonjo vs Freean (![](https://vods.co/files/icons/smash64/16px-Luigi.png) Luigi)](https://youtu.be/ataSnLdK4Ug)
 
-- [Wario vs EXE![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Ft5](https://youtu.be/zL-lA6VjP2w) - First to 5 match between Wario, #1 Japanese Pika, and EXE, an online only Pika and one of the strongest players on Japanese netplay. Played on J version. 
+- [Wario vs exe (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay. Played on J version.
 
+<hr>
 ## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff
 #### Advanced Techniques
 
@@ -175,11 +209,16 @@ See R3$T crew puff guide, below.
 
 #### Guides and Combo Videos
 - [R3$T Crew Puff Guide](https://docs.google.com/document/d/1wm30EMPL1UGIONEoxyc6uNxAgni1xIjHCurgDp63j0w/edit)
-- [Ringedge Jigglypuff Combo tutorial](https://www.youtube.com/watch?v=yUrW-34EDjQ)
+- [Jigglypuff Combo tutorial \| Ringedge](https://www.youtube.com/watch?v=yUrW-34EDjQ)
+- [4 Tips for Puff vs Yoshi \| Isai](https://www.youtube.com/watch?v=5LJ--tVc5Bw)
+
 
 #### Players and Vods
 
 Players: [Wangera](https://vods.co/smash64/player/wangera/character/Jigglypuff), [CTG](https://vods.co/smash64/character/Jigglypuff/player/CTG)
+
+Vods:
+- [Wangera vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi) ](https://youtu.be/YS_ZCrfteHc)
 
 ![](https://vods.co/files/icons/smash64/16px-Pikachu.png)
 ![](https://vods.co/files/icons/smash64/16px-Kirby.png)

@@ -112,6 +112,8 @@ Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/playe
 
 - [Armor Break Percents](https://nickthename.github.io/ssbframedata/Armor/Armor.html)
 - [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
+- [Killer Yoshi Practice \| Hotline](/guides/yoshitech.html)
+- [Yoshi R&D Discord](discord.gg/G5yRgUmEKG)
 
 #### Players and Vods
 
@@ -131,7 +133,7 @@ Vods:
 ## ![](/guides/img/chars/full/kirby.png) Kirby
 #### Advanced Techniques
 - [Platform Perfect Lands \| Crovy](https://www.youtube.com/watch?v=vhtLPHrHVlA)
-- [Advanced Kirby Movement \| Crovy](https://www.youtube.com/watch?v=nIYsKXHI5xI)
+- [Advanced Kirby Movement \| Stranded](https://www.youtube.com/watch?v=nIYsKXHI5xI)
 
 #### Guides and Combo Videos
 - [Simple Kirby Combos \| Ringedge](https://youtu.be/3Z5JehC91OU)
@@ -204,7 +206,6 @@ Vods:
 <hr>
 ## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff
 #### Advanced Techniques
-
 See R3$T crew puff guide, below.
 
 #### Guides and Combo Videos

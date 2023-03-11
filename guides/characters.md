@@ -7,13 +7,13 @@ draft: false
 
 This page serves as a collection of resources for each character in Smash 64. If you have suggestions for more content, reach out to me @nickthename on the [smash 64 discord](https://discord.gg/ssb64).
 
-## General Resources
-### Guides
+## All Characters
+#### Guides
 - [Basic Techniques Playlist \| Nate L](https://www.youtube.com/playlist?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn) -  **Watch these first!**
 - [Four Pillars of Smash \| Nate L](https://www.youtube.com/playlist?list=PLRRp1_oLOK_E3U6kXU8CsMvHVTs8GkIYo)
 - [Learning DI](/guides/learningdi.html)
 
-### Resources
+#### Resources
 - [Hitbox Display](https://nickthename.github.io/ssbframedata/webfd/framedisplay.html)
 - [Move details spreadsheet](https://drive.google.com/file/d/0B_arUxj76oi7aDh2TWlubGZHYkE/view)
 

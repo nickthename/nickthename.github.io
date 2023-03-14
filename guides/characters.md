@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "UNFINISHED: Smash 64 Character Resources"
+title: "Smash 64 Character Guides"
 date: 2023-03-08
 draft: false
 ---
 
-This page serves as a collection of resources for each character in Smash 64. If you have suggestions for more content, reach out to me @nickthename on the [smash 64 discord](https://discord.gg/ssb64).
+This page serves as a collection of resources for each character in Super Smash Bros. If you have suggestions for more content, reach out to me @nickthename on the [SSB64 discord](https://discord.gg/ssb64).
 
 ## All Characters
 #### Guides
@@ -20,6 +20,7 @@ This page serves as a collection of resources for each character in Smash 64. If
 <hr>
 ## ![](/guides/img/chars/full/luigi.png) Luigi
 #### Advanced Techniques
+ - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
 
@@ -38,8 +39,9 @@ Matches:
 <hr>
 ## ![](/guides/img/chars/full/mario.png) Mario
 #### Advanced Techniques
- - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
+ - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
+ - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
 
 #### Guides and Combo Videos
 - [100 Marios (Japanese, on J version)](https://sp.nicovideo.jp/watch/sm18317373)
@@ -102,17 +104,34 @@ Vods:
 
 <hr>
 ## ![](/guides/img/chars/full/captainfalcon.png) Captain Falcon
+
+Known for his incredible speed and 0-to-death combos, Captain Falcon is one of the Smash's most popular characters. His powerful combo game is easy to pick up but has a high skill ceiling, making him a great character for beginners and experienced players alike. If you're looking to pick up Falcon, you'll first want to learn his bread-and-butter uair combos. Check out [Nate L's Falcon Combos For Beginners](https://www.youtube.com/watch?v=GX4Vebv2PM8) video, then see if you can replicate the kills in Kristoff's [Simple Falcon Combos](https://www.youtube.com/playlist?list=PLJcgCaWoFblytHHIyxILm6SNx2oibs3ty) playlist.
+
+Strong ground movement is key to Falcon's gameplan in most matchups, so make sure to rewatch the [pivoting section of Nate L's advanced techniques guide](https://youtu.be/nUVPq5RZ9Ko?t=40), and start working on incorporating pivots and dash dancing into your play. If you're used to another Smash game, you'll find dashing works a bit different in 64, but Falcon is a great character to learn it with.
+
+Due to his popularity, there's no shortage of role models to look to for techniques. [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn) is an obvious choice as indisputably the strongest Falcon player in the world. Patience your thing? Study some matches from [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin) or [JaimeHR](https://vods.co/smash64/character/Captain%20Falcon/player/JaimeHR) to learn how discipline can make the Captain untouchable. Prefer to style on your opponents? Watch some of [Janitor's](https://vods.co/smash64/player/Janitor/character/Captain%20Falcon) [combo](https://youtu.be/AOKElll6cAk) [videos](https://www.youtube.com/watch?v=SX-FeJC4jM0), or check out [Zero's matches](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29). Prefer to focus on winning, plain and simple? The surgical styles of [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww) and [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3) are a must watch.
+
+
 #### Advanced Techniques
+- [Basic Movement: Pivots \| Nate L](https://youtu.be/nUVPq5RZ9Ko?t=40)
 - [Advanced Falcon Movement \|  Stranded](https://www.youtube.com/watch?v=qLnJdf1y6MY)
 
-#### Guides and Combo Videos
-- [Combo Video \|  Janitor](https://youtu.be/AOKElll6cAk)
-- [Edgeguarding Mario \|  Superboomfan](https://www.youtube.com/watch?v=q8ZfC4nOIuo)
+#### Guides
+- [Falcon Combos For Beginners \| Nate L](https://www.youtube.com/watch?v=GX4Vebv2PM8)
 - [Simple Falcon Combos \| Kristoff](https://www.youtube.com/playlist?list=PLJcgCaWoFblytHHIyxILm6SNx2oibs3ty)
+- [Comboing Pika at 0% \| Nate L](https://www.youtube.com/watch?v=4eAxdVokeFI)
+- [Techchasing in the Falcon Ditto \| Nate L](https://www.youtube.com/watch?v=CNBL7cJQnM8)
+- [Edgeguarding Mario \|  Superboomfan](https://www.youtube.com/watch?v=q8ZfC4nOIuo)
+
+#### Combo Videos
+- [SuPeRbOoMfAn: Capt. Falcon](https://www.youtube.com/watch?v=1DlM-jOxYig)
+- [The Filthiest Janitor](https://youtu.be/AOKElll6cAk)
+- [Slippery When Rekt \| Janitor](https://www.youtube.com/watch?v=SX-FeJC4jM0)
+- [Zero to Death \| Dishier Wand](https://www.youtube.com/watch?v=IdvhPCTFRO0)
 
 #### Players and Vods
 
-Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn), [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin), [Zero](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29), [KeroKeroppi](https://vods.co/smash64/character/Captain%20Falcon/player/KeroKeroppi), [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3), [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww)
+Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn), [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin), [Zero](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29), [KeroKeroppi](https://vods.co/smash64/character/Captain%20Falcon/player/KeroKeroppi), [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3), [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww), [Janitor](https://vods.co/smash64/player/Janitor/character/Captain%20Falcon)
 
 Vods:
 - [KD3 vs Josh Brody (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/eh3sWydPAvA)
@@ -130,7 +149,7 @@ Vods:
 
 #### Guides and Combo Videos
  - [Training mode combos](https://www.youtube.com/watch?v=Mn76TpwlJRw)
- - [Up-B Applications \| Sekirei](https://www.youtube.com/watch?v=_xsNEI8WoxM) - "Sekirei's video being in untraslated japanese is unfortunate but I think it goes over an extremely important recovery concept that most people don't think about. The basic gist of the concept is that ness's up b projectile has a maximum turning speed, so if you input an up b that makes the thunder travel in the tightest circle possible you can have the up b result in a consistent angle for ness. The only variance comes from ness's air drift (both up/down and side to side) going into the up b." -- Fray
+ - [Up-B Applications \| Sekirei](https://www.youtube.com/watch?v=_xsNEI8WoxM) - "Sekirei's video being in untranslated japanese is unfortunate but I think it goes over an extremely important recovery concept that most people don't think about. The basic gist of the concept is that ness's up b projectile has a maximum turning speed, so if you input an up b that makes the thunder travel in the tightest circle possible you can have the up b result in a consistent angle for ness. The only variance comes from ness's air drift (both up/down and side to side) going into the up b." -- Fray
  - [Training mode tech chase combos \| Kristoff](https://www.youtube.com/watch?v=28_S54WVO5Q)
 
 #### Players and Vods
@@ -199,6 +218,11 @@ Vods:
 
 <hr>
 ## ![](/guides/img/chars/full/fox.png) Fox
+
+Fox is a ultra-mobile glass cannon that can dominate neutral or die off of a single throw and rewards technical accuracy. When you start playing fox, you'll want to check out [Nate L's tutorial on short-hop double lasers](https://youtu.be/8lOpfwS5NMs), an important technique for racking up damage in neutral. To convert your neutral wins into stocks, practice some of Isai's [fox-a-day combos](https://www.youtube.com/playlist?list=PLa2UFXOI_bqlnvunVze9rRR46wzBXVn-H), or copy a few from Huntsman's [Fox is Fox combo video](https://youtu.be/Z6eoJNnxQQM). Expect to get thrown off stage quite a bit, but don't give up! Practice using your double jump to grab the ledge from the maximum distance, and mix up your opponent with fox's fantastic aerial drift after up-b. Watch [LD's recovery montage](https://www.youtube.com/watch?v=rGkQD4nKNiA) for some great examples.
+
+The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack of rest hasn't stopped him from racking up wins against the likes of Alvin, Josh Brody, and Revan. His distinctive reaction-heavy playstyle and famous "archetype" combos make him a great entry point for those looking to study Fox vods. His incredibly recoveries should be inspirational for any Fox that's tired of dying off of a single backthrow. From there, make sure to check out the ultra-technical Stranded, laser-heavy Silver Spoon, and precise edgeguarding of Lowww Power.
+
 #### Advanced Techniques
 - [Short Hop Double Laser \| Nate L](https://youtu.be/8lOpfwS5NMs)
 - [Shine Cancel \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1465)
@@ -224,6 +248,13 @@ Vods:
 
 <hr>
 ## ![](/guides/img/chars/full/pikachu.png) Pikachu
+
+In Smash Brothers, the king wears not a crown, but a party hat. Pikachu is indisputably the strongest character in 64, with a wide assortment of tools and potential playstyles. As a result, Pikachu is one of the most popular characters in the game, and has a wide assortment of resources to learn from and players to study.
+
+The most basic and crucial technique for Pikachu is his extended up-b, which you can learn from Nate L's [excellent tutorial video](https://youtu.be/8lOpfwS5NMs?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn&t=898). Then check out the [intermediate pikachu techniques guide](https://www.youtube.com/watch?v=A3Smg4MNWuA) for some more basic options and movement tricks. To develop your combo game, practice some examples from Kamui's [dreamland combos playlist](https://www.youtube.com/playlist?list=PLHJCRuTC6VjpNgdBnlqYUQzm8IPPcjsBi). Pikachu tends to benefit a lot from deliberate combo practice, as his combo starters and routes can be a little less intuitive than other characters, and vary from matchup to matchup.
+
+Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility to change up his gameplan for each opposing character. For example, against Fox and Falcon Pikachu looks to dominate the ground game and take stocks with a single grab into edgeguard, while matches against Kirby and Jigglypuff are a cautious game of aerial positioning. Take a look at some of the matchup specific resources in the Guides and Videos section below, and make use of match videos to learn the right approach.
+
 #### Advanced Techniques
 - [Extended Up-B \| Nate L](https://youtu.be/8lOpfwS5NMs?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn&t=898)
 - [Intermediate Pikachu Techniques](https://www.youtube.com/watch?v=A3Smg4MNWuA)
@@ -236,6 +267,7 @@ Vods:
 - [Rat dittos for Intermediate Players \| Isai](https://www.youtube.com/watch?v=FYt8bjMFX0o)
 - [Pika vs Kirby Tips \| Superboomfan](https://www.youtube.com/watch?v=5nONCd2puzc)
 - [Falcon edgeguards compilation \| Wario](https://www.youtube.com/watch?v=GgoUOY6lYec)
+- [Pikachu Combos Playlist \| Kamui, other sources](https://www.youtube.com/playlist?list=PLHJCRuTC6VjpNgdBnlqYUQzm8IPPcjsBi)
 
 #### Players and Vods
 Players: [Wario](https://vods.co/smash64/player/wario/character/Pikachu), [Nax](https://vods.co/smash64/character/Pikachu/player/Nax), [Alvin](https://vods.co/smash64/character/Pikachu/player/Alvin), [SuperBoomFan](https://vods.co/smash64/character/Pikachu/player/SuPeRbOoMfAn), [Isai](https://vods.co/smash64/character/Pikachu/player/Isai), [Josh Brody](https://vods.co/smash64/character/Pikachu/player/Josh%20Brody), [Kero](https://vods.co/smash64/character/Pikachu/player/KeroKeroppi), [Mariguas](https://vods.co/smash64/character/Pikachu/player/Mariguas)
@@ -270,7 +302,7 @@ See R3$T crew puff guide, below.
 
 #### Players and Vods
 
-Players: [Wangera](https://vods.co/smash64/player/wangera/character/Jigglypuff), [Isai](https://vods.co/smash64/character2/Jigglypuff/player/Isai), [CTG](https://vods.co/smash64/character/Jigglypuff/player/CTG)
+Players: [Wangera](https://vods.co/smash64/player/wangera/character/Jigglypuff), [Isai](https://vods.co/smash64/character2/Jigglypuff/player/Isai), [CTG](https://vods.co/smash64/character/Jigglypuff/player/CTG), [KD3](https://vods.co/smash64/player/KD3/character/Jigglypuff)
 
 Vods:
 - [Wangera vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) ](https://youtu.be/aOH84Mf06Xk)

@@ -10,9 +10,11 @@ title: Nick's SSB64 Resources
 
 [Controller Guide](guides/controllers.html) - A guide to the most commonly used controller types in competitive SSB64, going over their pros, cons, special attributes and where to buy them.
 
+[Character Resource Guide](guides/characters.html) - List of useful tutorials, combo videos, players, and vods for each character in Smash 64.
+
 [Guide to Learning DI](guides/learningdi.html) - A guide to DI techniques and how to practice/implement them.
 
-[DI Mechanics Guide](guides/dimechanics.html) - In-depth guide to the mechanics of DI in 64. Discusses the importance of range, must-read for anyone working on controller mods.
+[DI Mechanics Reference](guides/dimechanics.html) - In-depth guide to the mechanics of DI in 64. Discusses the importance of range, must-read for anyone working on controller mods.
 
 [Matchup Guide: Pika vs Fox](guides/pikafox.html) - An outline of both sides of the Pikachu vs Fox matchup
 
@@ -24,7 +26,7 @@ title: Nick's SSB64 Resources
 
 [Knockoff Stick Review](guides/thumbstick.html) - Review of a "perfect" replacement stick from eBay.
 
-[Skill Levels](guides/levels.html) - A writeup of a system to catagorize players based on skill levels. Helped spawn the Discord rating system.
+[Skill Levels](guides/levels.html) - An old writeup of a system to catagorize players based on skill levels. Helped spawn the Discord rating system.
 
 # Videos
 

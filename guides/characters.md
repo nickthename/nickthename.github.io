@@ -15,7 +15,8 @@ This page serves as a collection of resources for each character in Super Smash 
 
 #### Resources
 - [Hitbox Display](https://nickthename.github.io/ssbframedata/webfd/framedisplay.html)
-- [Move details spreadsheet](https://drive.google.com/file/d/0B_arUxj76oi7aDh2TWlubGZHYkE/view)
+- [Move details spreadsheet](https://docs.google.com/spreadsheets/d/12AA0uoBkHMFmMWaaYGYe4x8dEp69d5UlxJ1dGwBKIR4/)
+- [Indepth mechanics encyclopedia \| Kamui](https://bit.ly/thesmashguide)
 
 <hr>
 ## ![](/guides/img/chars/full/luigi.png) Luigi
@@ -204,6 +205,8 @@ Vods:
 - [Edgeguarding Yoshi \| Handsometom](https://www.youtube.com/watch?v=V1uP9Pw8quE)
 - [Platform techchasing \| Handsometom](https://www.youtube.com/watch?v=ykIr6L86kQo)
 - [Combos by Ledge \| Handsometom](https://www.youtube.com/watch?v=FkmQsp90hAI)
+- [Beginner Kirby Techniques \| くーちゃん](https://www.nicovideo.jp/watch/sm18819474) - Text in Japanese. Covers basic movement, combos, and edgeguarding.
+- [Basic Kirby Combos \| でじくろ](https://www.nicovideo.jp/watch/sm21531937) - Text in Japanese. Practical combos against the cast. Some may be J version specific.
 
 #### Players and Vods
 

@@ -209,13 +209,17 @@ Vods:
 - [Platform Perfect Lands \| Crovy](https://www.youtube.com/watch?v=vhtLPHrHVlA)
 - [Advanced Kirby Movement \| Stranded](https://www.youtube.com/watch?v=nIYsKXHI5xI)
 
-#### Guides and Combo Videos
-- [Simple Kirby Combos \| Ringedge](https://youtu.be/3Z5JehC91OU)
+#### Guides
 - [Kirby Ditto Guide \| Handsometom](https://thesmashwriter.wordpress.com/2017/10/26/handsometoms-guide-to-the-kirby-ditto/)
 - [Edgeguarding Yoshi \| Handsometom](https://www.youtube.com/watch?v=V1uP9Pw8quE)
 - [Platform techchasing \| Handsometom](https://www.youtube.com/watch?v=ykIr6L86kQo)
+- [Beginner Kirby Techniques \| くーちゃん](https://www.nicovideo.jp/watch/sm18819474) - Text in Japanese. Covers basic movement, combos, and edgeguarding. J version.
+
+#### Combos
+- [Simple Kirby Combos \| Spongy](https://www.youtube.com/watch?v=5gne7WS7f80)
+- [Kirby Combos for Beginners \| Ringedge](https://youtu.be/3Z5JehC91OU)
 - [Combos by Ledge \| Handsometom](https://www.youtube.com/watch?v=FkmQsp90hAI)
-- [Beginner Kirby Techniques \| くーちゃん](https://www.nicovideo.jp/watch/sm18819474) - Text in Japanese. Covers basic movement, combos, and edgeguarding.
+- [kirby simple combo video \| Moyashi](https://www.youtube.com/watch?v=izBxZHkdb-g) - J Version
 - [Basic Kirby Combos \| でじくろ](https://www.nicovideo.jp/watch/sm21531937) - Text in Japanese. Practical combos against the cast. Some may be J version specific.
 
 #### Players and Vods

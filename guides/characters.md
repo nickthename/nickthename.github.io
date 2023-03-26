@@ -25,7 +25,12 @@ This page serves as a collection of resources for each character in Super Smash 
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
 
-<!-- #### Guides and Combo Videos --->
+#### Guides and Combo Videos
+ - [Luigi Basics Tutorial \| Lord Narwhal](https://www.youtube.com/watch?v=iaTH8pKYJ_A)
+ - [Movement Practice \| Isai](https://www.youtube.com/watch?v=K_FKCXgxGRA)
+ - [Neutral and Platform Fireballs \| Purtle](https://www.youtube.com/watch?v=ydbVNjTLjGw)
+ - [Edge Fireballs Guide \| Purtle](https://www.youtube.com/watch?v=4jYEKeJJmgg)
+ - [Luigi Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jDKs8Kon2r9mhorQCf7qg29)
 
 #### Players and Vods
 Players (links to vods): [Freean](https://vods.co/smash64/character/Luigi/player/Freean), [Isai](https://vods.co/smash64/character/Luigi/player/Isai), [Yoshifan](https://vods.co/smash64/character/Luigi/character2/Kirby/player/YoshiFan)
@@ -46,6 +51,9 @@ Matches:
 
 #### Guides and Combo Videos
 - [100 Marios (Japanese, on J version)](https://sp.nicovideo.jp/watch/sm18317373)
+- [Various Tech Drills \| Kimimaru](https://www.youtube.com/watch?v=KOJeCzgiFbk)
+- [Ledge Cancel Drills \| Hydra](https://www.youtube.com/watch?v=80ATKqLdjOQ)
+- [Mario Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jD2f7Fs8LMm18XAhKpUN2W5)
 
 #### Players and Vods
 
@@ -61,7 +69,9 @@ Vods:
 ## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong
 <!--- #### Advanced Techniques --->
 
-<!-- #### Guides and Combo Videos --->
+#### Guides and Combo Videos
+- [DK Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jAHRT7rvygQXyQ3g-FhE5fp)
+
 #### Players and Vods
 
 Players: [Tacos](https://vods.co/smash64/player/tacos/character/Donkey%20Kong), [Superboomfan](https://vods.co/smash64/player/SuPeRbOoMfAn/character/Donkey%20Kong), [Darkhorse](https://vods.co/smash64/character/Donkey%20Kong/player/Darkhorse), [Lorenzo](https://vods.co/smash64/character/Donkey%20Kong/player/Lorenzo)

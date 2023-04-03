@@ -251,6 +251,7 @@ The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack o
 - [Isai Combo a Day playlist](https://www.youtube.com/playlist?list=PLa2UFXOI_bqlnvunVze9rRR46wzBXVn-H)
 - [Fox is Fox Combo Video](https://youtu.be/Z6eoJNnxQQM)
 - [LD Recovery Montage](https://www.youtube.com/watch?v=rGkQD4nKNiA)
+- [120 Seconds of LD Combo Video](https://www.youtube.com/watch?v=l87KXGArkgU)
 
 #### Players and Vods
 Players: [LD (aka Sleepy Fox)](https://vods.co/smash64/character/Fox/player/LD), [Stranded](https://vods.co/smash64/character/Fox/player/Stranded), [Silver Spoon](https://vods.co/smash64/character/Fox/player/Silver%20Spoon), [Lowww](https://vods.co/smash64/character/Fox/player/Lowww), [Huntsman](https://vods.co/smash64/character/Fox/player/Huntsman)

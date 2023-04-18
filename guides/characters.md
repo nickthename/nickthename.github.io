@@ -7,6 +7,8 @@ draft: false
 
 This page serves as a collection of resources for each character in Super Smash Bros. If you have suggestions for more content, reach out to me @nickthename on the [SSB64 discord](https://discord.gg/ssb64).
 
+The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese and/or played on the Japanese version of the game. Some characters have different moves or properties in J version, a full list can be found [here](https://www.ssbwiki.com/List_of_regional_version_differences_(SSB)) and this should be taken into account when imitating techniques.
+
 ## All Characters
 #### Guides
 - [Basic Techniques Playlist \| Nate L](https://www.youtube.com/playlist?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn) -  **Watch these first!**
@@ -50,7 +52,7 @@ Matches:
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
 
 #### Guides and Combo Videos
-- [100 Marios (Japanese, on J version)](https://sp.nicovideo.jp/watch/sm18317373)
+- [100 Marios \| Red](https://sp.nicovideo.jp/watch/sm18317373) ![](/guides/img/japan-flag-icon-16.png)
 - [Various Tech Drills \| Kimimaru](https://www.youtube.com/watch?v=KOJeCzgiFbk)
 - [Ledge Cancel Drills \| Hydra](https://www.youtube.com/watch?v=80ATKqLdjOQ)
 - [Mario Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jD2f7Fs8LMm18XAhKpUN2W5)
@@ -67,7 +69,8 @@ Vods:
 
 <hr>
 ## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong
-<!--- #### Advanced Techniques --->
+#### Advanced Techniques
+- [Neutral B Turnaround \| Nate L](https://www.youtube.com/watch?v=8lOpfwS5NMs&t=41s)
 
 #### Guides and Combo Videos
 - [DK Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jAHRT7rvygQXyQ3g-FhE5fp)
@@ -87,7 +90,8 @@ Vods:
 <!-- #### Advanced Techniques --->
 
 #### Guides and Combo Videos
-- [100 Links \| Sekirei](https://www.youtube.com/watch?v=A5aDFmPf8PQ) - In Japanese and on J version.
+- [100 Links \| Sekirei](https://www.youtube.com/watch?v=A5aDFmPf8PQ) ![](/guides/img/japan-flag-icon-16.png)
+- [Link Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jAnd6GhuiZeEg_5cIa9S1-7)
 
 #### Players and Vods
 
@@ -107,10 +111,10 @@ Players: [Sekirei](https://vods.co/smash64/character/Link/player/sekirei), [Gyak
 Players: [Jouske](https://vods.co/smash64/player/Jousuke/character/Samus), [emptyW](https://vods.co/smash64/character/Samus/player/emptyW), [SotoH](https://vods.co/smash64/character/Samus/player/SotoH)
 
 Vods:
-- [Jouske vs Kurabba (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg)
-- [Jouske vs Wario (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=mTvuRt5rbbg)
+- [Jouske vs Kurabba (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg) ![](/guides/img/japan-flag-icon-16.png)
+- [Jouske vs Wario (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=mTvuRt5rbbg) ![](/guides/img/japan-flag-icon-16.png)
 
-- [Jouske video archive](https://photos.google.com/share/AF1QipNqNGK-H7q8z4jIlGKNHiqObspEoWHie67onKpF8aGR77xAf3nRrQWeodP3UBqAhA?pli=1&key=dWdKUGFleVBSSC04b2RTdkw3dmdONWhxQjBEcXdn)
+- [Jouske video archive](https://photos.google.com/share/AF1QipNqNGK-H7q8z4jIlGKNHiqObspEoWHie67onKpF8aGR77xAf3nRrQWeodP3UBqAhA?pli=1&key=dWdKUGFleVBSSC04b2RTdkw3dmdONWhxQjBEcXdn) ![](/guides/img/japan-flag-icon-16.png)
 - [Jouske boomfan vods (mostly vs ![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) falcon)](https://www.youtube.com/@jouskevssuperboomfanoctove2869/videos)
 
 <hr>
@@ -160,7 +164,7 @@ Vods:
 
 #### Guides and Combo Videos
  - [Training mode combos](https://www.youtube.com/watch?v=Mn76TpwlJRw)
- - [Up-B Applications \| Sekirei](https://www.youtube.com/watch?v=_xsNEI8WoxM) - "Sekirei's video being in untranslated japanese is unfortunate but I think it goes over an extremely important recovery concept that most people don't think about. The basic gist of the concept is that ness's up b projectile has a maximum turning speed, so if you input an up b that makes the thunder travel in the tightest circle possible you can have the up b result in a consistent angle for ness. The only variance comes from ness's air drift (both up/down and side to side) going into the up b." -- Fray
+ - [Up-B Applications \| Sekirei](https://www.youtube.com/watch?v=_xsNEI8WoxM) ![](/guides/img/japan-flag-icon-16.png) - "Sekirei's video being in untranslated japanese is unfortunate but I think it goes over an extremely important recovery concept that most people don't think about. The basic gist of the concept is that ness's up b projectile has a maximum turning speed, so if you input an up b that makes the thunder travel in the tightest circle possible you can have the up b result in a consistent angle for ness. The only variance comes from ness's air drift (both up/down and side to side) going into the up b." -- Fray
  - [Training mode tech chase combos \| Kristoff](https://www.youtube.com/watch?v=28_S54WVO5Q)
 
 #### Players and Vods
@@ -213,14 +217,14 @@ Vods:
 - [Kirby Ditto Guide \| Handsometom](https://thesmashwriter.wordpress.com/2017/10/26/handsometoms-guide-to-the-kirby-ditto/)
 - [Edgeguarding Yoshi \| Handsometom](https://www.youtube.com/watch?v=V1uP9Pw8quE)
 - [Platform techchasing \| Handsometom](https://www.youtube.com/watch?v=ykIr6L86kQo)
-- [Beginner Kirby Techniques \| くーちゃん](https://www.nicovideo.jp/watch/sm18819474) - Text in Japanese. Covers basic movement, combos, and edgeguarding. J version.
+- [Beginner Kirby Techniques \| くーちゃん](https://www.nicovideo.jp/watch/sm18819474) ![](/guides/img/japan-flag-icon-16.png) - Covers basic movement, combos, and edgeguarding.
 
 #### Combos
 - [Simple Kirby Combos \| Spongy](https://www.youtube.com/watch?v=5gne7WS7f80)
 - [Kirby Combos for Beginners \| Ringedge](https://youtu.be/3Z5JehC91OU)
 - [Combos by Ledge \| Handsometom](https://www.youtube.com/watch?v=FkmQsp90hAI)
 - [kirby simple combo video \| Moyashi](https://www.youtube.com/watch?v=izBxZHkdb-g) - J Version
-- [Basic Kirby Combos \| でじくろ](https://www.nicovideo.jp/watch/sm21531937) - Text in Japanese. Practical combos against the cast. Some may be J version specific.
+- [Basic Kirby Combos \| でじくろ](https://www.nicovideo.jp/watch/sm21531937) ![](/guides/img/japan-flag-icon-16.png) - Practical combos against the cast. Some may be J version specific.
 
 #### Players and Vods
 
@@ -244,9 +248,10 @@ The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack o
 - [Short Hop Double Laser \| Nate L](https://youtu.be/8lOpfwS5NMs)
 - [Shine Cancel \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1465)
 - [Advanced Fox Movement \| Stranded](https://www.youtube.com/watch?v=LNuJ69nxwX4)
+- [Hard Fox Training Mode Drills \| LETSGO](https://www.youtube.com/watch?v=GHQ5_r0yTgU)
 
 #### Guides and Combo Videos
-- [Matchup Guide: Pikachu vs Fox](/guides/pikafox.html)
+- [Matchup Guide: Pikachu vs Fox](/guides/pikafox.h tml)
 - [Pikachu vs Fox video notes](https://www.youtube.com/watch?v=SPX9cvfIagY)
 - [Isai Combo a Day playlist](https://www.youtube.com/playlist?list=PLa2UFXOI_bqlnvunVze9rRR46wzBXVn-H)
 - [Fox is Fox Combo Video](https://youtu.be/Z6eoJNnxQQM)
@@ -280,7 +285,7 @@ Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility 
 - [Advanced Pikachu Movement \| Stranded](https://www.youtube.com/watch?v=r1XOBCY-vfE)
 
 #### Guides and Combo Videos
-- [Pikachu Basics (Japanese) \| Shizuku](https://www.youtube.com/watch?v=2i_Lv52Y0k8)
+- [Pikachu Basics \| Shizuku](https://www.youtube.com/watch?v=2i_Lv52Y0k8) ![](/guides/img/japan-flag-icon-16.png)
 - [Matchup Guide: Pikachu vs Fox](/guides/pikafox.html)
 - [Pikachu vs Fox video notes](https://www.youtube.com/watch?v=SPX9cvfIagY)
 - [Rat dittos for Intermediate Players \| Isai](https://www.youtube.com/watch?v=FYt8bjMFX0o)
@@ -306,7 +311,7 @@ Vods:
 - [Mariguas vs Gyaki (![](https://vods.co/files/icons/smash64/16px-Link.png) Link)](https://youtu.be/51-Rpqea6VM)
 - [Sonjo vs Freean (![](https://vods.co/files/icons/smash64/16px-Luigi.png) Luigi)](https://youtu.be/ataSnLdK4Ug)
 
-- [Wario vs exe (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay. Played on J version.
+- [Wario vs exe (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) ![](/guides/img/japan-flag-icon-16.png) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay.
 
 <hr>
 ## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff

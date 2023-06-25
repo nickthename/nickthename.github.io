@@ -35,7 +35,7 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
  - [Luigi Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jDKs8Kon2r9mhorQCf7qg29)
 
 #### Players and Vods
-Players (links to vods): [Freean](https://vods.co/smash64/character/Luigi/player/Freean), [Isai](https://vods.co/smash64/character/Luigi/player/Isai), [Yoshifan](https://vods.co/smash64/character/Luigi/character2/Kirby/player/YoshiFan)
+Players (links to vods): [Freean](https://vods.co/smash64?player=13014&selection=24), [Isai](https://vods.co/smash64?player=14451&selection=24), Yoshifan
 
 Matches:
 - [Freean vs Paco (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/Eq4TYCfmkIA)
@@ -59,7 +59,7 @@ Matches:
 
 #### Players and Vods
 
-Players: [Isai](https://vods.co/smash64/character/Mario/player/Isai), [Czar](https://vods.co/smash64/character/Mario/player/Czar), [Hydra](https://vods.co/smash64/character/Mario/player/Hydra), [Kimimaru](https://vods.co/smash64/character/Mario/player/Kimimaru), [Fireblaster](https://vods.co/smash64/character/Mario/player/Fireblaster)
+Players: [Isai](https://vods.co/smash64?player=14451&selection=4), [Czar](https://vods.co/smash64?player=14574&selection=4), [Hydra](https://vods.co/smash64?player=11916&selection=4), [Kimimaru](https://vods.co/smash64?player=14488&selection=4), [Fireblaster](https://vods.co/smash64?player=14334&selection=4)
 
 Vods:
 - [JaimeHR vs B33F (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/uugwpuEB6YI)
@@ -77,7 +77,7 @@ Vods:
 
 #### Players and Vods
 
-Players: [Tacos](https://vods.co/smash64/player/tacos/character/Donkey%20Kong), [Superboomfan](https://vods.co/smash64/player/SuPeRbOoMfAn/character/Donkey%20Kong), [Darkhorse](https://vods.co/smash64/character/Donkey%20Kong/player/Darkhorse), [Lorenzo](https://vods.co/smash64/character/Donkey%20Kong/player/Lorenzo)
+Players: [Tacos](https://vods.co/smash64?player=14422&selection=42), [Superboomfan](https://vods.co/smash64?player=14324&selection=42), [Darkhorse](https://vods.co/smash64?player=14326&selection=42), [Lorenzo](https://vods.co/smash64?player=14353&selection=42)
 
 Vods:
 
@@ -95,7 +95,7 @@ Vods:
 
 #### Players and Vods
 
-Players: [Sekirei](https://vods.co/smash64/character/Link/player/sekirei), [Gyaki](https://vods.co/smash64/character/Link/player/Gyaki), [Isai](https://vods.co/smash64/character/Link/player/Isai)
+Players: [Sekirei](https://vods.co/smash64?player=14417&selection=37), [Gyaki](https://vods.co/smash64?player=18988&selection=37), [Isai](https://vods.co/smash64?player=14451&selection=37)
 
 <hr>
 ## ![](/guides/img/chars/full/samus.png) Samus
@@ -108,7 +108,7 @@ Players: [Sekirei](https://vods.co/smash64/character/Link/player/sekirei), [Gyak
 
 #### Players and Vods
 
-Players: [Jouske](https://vods.co/smash64/player/Jousuke/character/Samus), [emptyW](https://vods.co/smash64/character/Samus/player/emptyW), [SotoH](https://vods.co/smash64/character/Samus/player/SotoH)
+Players: [Jouske](https://vods.co/smash64?player=14624&selection=34), [emptyW](https://vods.co/smash64?player=20160&selection=34), [SotoH](https://vods.co/smash64?player=14325&selection=34), [JaimeHR](https://vods.co/smash64?player=14183&selection=34)
 
 Vods:
 - [Jouske vs Kurabba (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg) ![](/guides/img/japan-flag-icon-16.png)
@@ -124,7 +124,7 @@ Known for his incredible speed and 0-to-death combos, Captain Falcon is one of t
 
 Strong ground movement is key to Falcon's gameplan in most matchups, so make sure to rewatch the [pivoting section of Nate L's advanced techniques guide](https://youtu.be/nUVPq5RZ9Ko?t=40), and start working on incorporating pivots and dash dancing into your play. If you're used to another Smash game, you'll find dashing works a bit different in 64, but Falcon is a great character to learn it with.
 
-Due to his popularity, there's no shortage of role models to look to for techniques. [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn) is an obvious choice as indisputably the strongest Falcon player in the world. Patience your thing? Study some matches from [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin) or [JaimeHR](https://vods.co/smash64/character/Captain%20Falcon/player/JaimeHR) to learn how discipline can make the Captain untouchable. Prefer to style on your opponents? Watch some of [Janitor's](https://vods.co/smash64/player/Janitor/character/Captain%20Falcon) [combo](https://youtu.be/AOKElll6cAk) [videos](https://www.youtube.com/watch?v=SX-FeJC4jM0), or check out [Zero's matches](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29). Prefer to focus on winning, plain and simple? The surgical styles of [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww) and [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3) are a must watch.
+Due to his popularity, there's no shortage of role models to look to for techniques. [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn) is an obvious choice as indisputably the strongest Falcon player in the world. Patience your thing? Study some matches from [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin) or [JaimeHR](https://vods.co/smash64/character/Captain%20Falcon/player/JaimeHR) to learn how discipline can make the Captain untouchable. Prefer to style on your opponents? Watch some of [Janitor's](https://vods.co/smash64?player=14374&selection=29) [combo](https://youtu.be/AOKElll6cAk) [videos](https://www.youtube.com/watch?v=SX-FeJC4jM0), or check out [Zero's matches](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29). Prefer to focus on winning, plain and simple? The surgical styles of [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww) and [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3) are a must watch.
 
 
 #### Advanced Techniques
@@ -146,7 +146,7 @@ Due to his popularity, there's no shortage of role models to look to for techniq
 
 #### Players and Vods
 
-Players: [Superboomfan](https://vods.co/smash64/character/Captain%20Falcon/player/SuPeRbOoMfAn), [Alvin](https://vods.co/smash64/character/Captain%20Falcon/player/Alvin), [Zero](https://vods.co/smash64/character/Captain%20Falcon/player/Zero%20%28TX%29), [KeroKeroppi](https://vods.co/smash64/character/Captain%20Falcon/player/KeroKeroppi), [KD3](https://vods.co/smash64/character/Captain%20Falcon/player/KD3), [Lowww](https://vods.co/smash64/character/Captain%20Falcon/player/Lowww), [Janitor](https://vods.co/smash64/player/Janitor/character/Captain%20Falcon)
+Players: [Superboomfan](https://vods.co/smash64?player=14324&selection=29), [Alvin](https://vods.co/smash64?player=14323&selection=29), [Zero](https://vods.co/smash64?player=14454&selection=29), [KeroKeroppi](https://vods.co/smash64?player=14330&selection=29), [KD3](https://vods.co/smash64?player=17977&selection=29), [Lowww](https://vods.co/smash64?player=14386&selection=29), [Janitor](https://vods.co/smash64?player=14374&selection=29)
 
 Vods:
 - [KD3 vs Josh Brody (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/eh3sWydPAvA)
@@ -169,7 +169,7 @@ Vods:
 
 #### Players and Vods
 
-Players: [Nangoku](https://vods.co/smash64/character/Ness/player/Nangoku), [Tokiwa](https://vods.co/smash64/character/Ness/player/Tokiwa), [Taimai](https://vods.co/smash64/character/Ness/player/Taimai), [Fray](https://vods.co/smash64/character/Ness/player/Fray%20%28CAN%29), [Raychu](https://vods.co/smash64/character/Ness/player/Raychu)
+Players: [Nangoku](https://vods.co/smash64?player=14618&selection=20), [Tokiwa](https://vods.co/smash64?player=20536&selection=20), [Taimai](https://vods.co/smash64?player=17672&selection=20), [Fray](https://vods.co/smash64?player=20427&selection=20), [Raychu](https://vods.co/smash64?player=17981&selection=20)
 
 Vods:
 - [Fray vs B33F (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/qop-jCiDIV8)
@@ -191,7 +191,7 @@ Vods:
 
 #### Players and Vods
 
-Players: [Kurabba](https://vods.co/smash64/character/Yoshi/player/Kurabba), [Wizzrobe](https://vods.co/smash64/character/Yoshi/player/Wizzrobe), [Prince](https://vods.co/smash64/character/Yoshi/player/Prince), [Tacos](https://vods.co/smash64/player/tacos/character/Yoshi), [Hiyo](https://vods.co/smash64/character/Yoshi/player/Hiyo)
+Players: [Kurabba](https://vods.co/smash64?player=14452&selection=10), [Wizzrobe](https://vods.co/smash64?player=11587&selection=10), [Prince](https://vods.co/smash64?player=14453&selection=10), [Tacos](https://vods.co/smash64?player=14422&selection=10), [Hiyo](https://vods.co/smash64?player=18989&selection=10)
 
 Vods:
 
@@ -228,7 +228,7 @@ Vods:
 
 #### Players and Vods
 
-Players: [Fukurou](https://vods.co/smash64/character/Kirby/player/Fukurou), [kysk](https://vods.co/smash64/character/Kirby/player/kysk), [Superboomfan](https://vods.co/smash64/character/Kirby/player/SuPeRbOoMfAn), [Isai](https://vods.co/smash64/character/Kirby/player/Isai), [Hammerheart](https://vods.co/smash64/character/Kirby/player/HAMMERHEART), [Revan](https://vods.co/smash64/character/Kirby/player/Revan)
+Players: [Fukurou](https://vods.co/smash64?player=14413&selection=35), [kysk](https://vods.co/smash64?player=14328&selection=35), [Superboomfan](https://vods.co/smash64?player=14324&selection=35), [Isai](https://vods.co/smash64?player=14451&selection=35), [Hammerheart](https://vods.co/smash64?player=17976&selection=35), [Revan](https://vods.co/smash64?player=14379&selection=35)
 
 Vods:
 - [kysk vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/DVh9UeJQvdg)
@@ -259,7 +259,7 @@ The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack o
 - [120 Seconds of LD Combo Video](https://www.youtube.com/watch?v=l87KXGArkgU)
 
 #### Players and Vods
-Players: [LD (aka Sleepy Fox)](https://vods.co/smash64/character/Fox/player/LD), [Stranded](https://vods.co/smash64/character/Fox/player/Stranded), [Silver Spoon](https://vods.co/smash64/character/Fox/player/Silver%20Spoon), [Lowww](https://vods.co/smash64/character/Fox/player/Lowww), [Huntsman](https://vods.co/smash64/character/Fox/player/Huntsman)
+Players: [LD (aka Sleepy Fox)](https://vods.co/smash64?player=12011&selection=13), [Stranded](https://vods.co/smash64?player=14389&selection=13), [Silver Spoon](https://vods.co/smash64?player=23441&selection=13), [Lowww](https://vods.co/smash64?player=14386&selection=13), [Huntsman](https://vods.co/smash64?player=25489&selection=13)
 
 Vods:
 
@@ -294,7 +294,7 @@ Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility 
 - [Pikachu Combos Playlist \| Kamui, other sources](https://www.youtube.com/playlist?list=PLHJCRuTC6VjpNgdBnlqYUQzm8IPPcjsBi)
 
 #### Players and Vods
-Players: [Wario](https://vods.co/smash64/player/wario/character/Pikachu), [Nax](https://vods.co/smash64/character/Pikachu/player/Nax), [Alvin](https://vods.co/smash64/character/Pikachu/player/Alvin), [SuperBoomFan](https://vods.co/smash64/character/Pikachu/player/SuPeRbOoMfAn), [Isai](https://vods.co/smash64/character/Pikachu/player/Isai), [Josh Brody](https://vods.co/smash64/character/Pikachu/player/Josh%20Brody), [Kero](https://vods.co/smash64/character/Pikachu/player/KeroKeroppi), [Mariguas](https://vods.co/smash64/character/Pikachu/player/Mariguas)
+Players: [Wario](https://vods.co/smash64?player=14546&selection=11), [Nax](https://vods.co/smash64?player=24706&selection=11), [Alvin](https://vods.co/smash64?player=14323&selection=11), [SuperBoomFan](https://vods.co/smash64?player=14324&selection=11), [Isai](https://vods.co/smash64?player=14451&selection=11), [Josh Brody](https://vods.co/smash64?player=14332&selection=11), [Kero](https://vods.co/smash64?player=14330&selection=11), [Mariguas](https://vods.co/smash64?player=14331&selection=11)
 
 Vods:
 - [Nax vs Isai (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/UnyKv7qqrIo?t=71)
@@ -326,7 +326,7 @@ See R3$T crew puff guide, below.
 
 #### Players and Vods
 
-Players: [Wangera](https://vods.co/smash64/player/wangera/character/Jigglypuff), [Isai](https://vods.co/smash64/character2/Jigglypuff/player/Isai), [CTG](https://vods.co/smash64/character/Jigglypuff/player/CTG), [KD3](https://vods.co/smash64/player/KD3/character/Jigglypuff)
+Players: [Wangera](https://vods.co/smash64?player=14414&selection=19), [Isai](https://vods.co/smash64?player=14451&selection=19), [CTG](https://vods.co/smash64?player=14373&selection=19), [KD3](https://vods.co/smash64?player=17977&selection=19)
 
 Vods:
 - [Wangera vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) ](https://youtu.be/aOH84Mf06Xk)

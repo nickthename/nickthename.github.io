@@ -38,11 +38,11 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
 Players (links to vods): [Freean](https://vods.co/smash64?player=13014&selection=24), [Isai](https://vods.co/smash64?player=14451&selection=24), Yoshifan
 
 Matches:
-- [Freean vs Paco (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/Eq4TYCfmkIA)
-- [YoshiFanGM vs Janco (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/Mo4p1lz0Fuw?t=340)
-- [YoshiFanGM vs Finio (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Captain Falcon)](https://youtu.be/T4K59v-TpWQ)
-- [Isai vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://youtu.be/KXVgkENOuN8?t=1225)
-- [YoshiFanGM vs IsaiFanLink (![](https://vods.co/files/icons/smash64/16px-Link.png) Link)](https://youtu.be/bbMzEz2dknk)
+- [Freean vs Paco (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/Eq4TYCfmkIA)
+- [YoshiFanGM vs Janco (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/Mo4p1lz0Fuw?t=340)
+- [YoshiFanGM vs Finio (![](https://vods.co/icons/smash64/20px-Captain%20Falcon.png) Captain Falcon)](https://youtu.be/T4K59v-TpWQ)
+- [Isai vs Wizzrobe (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://youtu.be/KXVgkENOuN8?t=1225)
+- [YoshiFanGM vs IsaiFanLink (![](https://vods.co/icons/smash64/20px-Link.png) Link)](https://youtu.be/bbMzEz2dknk)
 
 <hr>
 ## ![](/guides/img/chars/full/mario.png) Mario
@@ -62,10 +62,10 @@ Matches:
 Players: [Isai](https://vods.co/smash64?player=14451&selection=4), [Czar](https://vods.co/smash64?player=14574&selection=4), [Hydra](https://vods.co/smash64?player=11916&selection=4), [Kimimaru](https://vods.co/smash64?player=14488&selection=4), [Fireblaster](https://vods.co/smash64?player=14334&selection=4)
 
 Vods:
-- [JaimeHR vs B33F (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/uugwpuEB6YI)
-- [Superboomfan vs EG (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/cVGGOywl0sw)
-- [Isai vs Sombrero (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/fRFX8ejjI5M)
-- [Kimimaru vs LETSGO (![](https://vods.co/files/icons/smash64/16px-Fox.png) Fox)](https://youtu.be/x3usIRpWGS0)
+- [JaimeHR vs B33F (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/uugwpuEB6YI)
+- [Superboomfan vs EG (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/cVGGOywl0sw)
+- [Isai vs Sombrero (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/fRFX8ejjI5M)
+- [Kimimaru vs LETSGO (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://youtu.be/x3usIRpWGS0)
 
 <hr>
 ## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong
@@ -81,9 +81,9 @@ Players: [Tacos](https://vods.co/smash64?player=14422&selection=42), [Superboomf
 
 Vods:
 
-- [Tacos vs Josh Brody (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/cYljJAj4DwI)
-- [JaimeHR vs Box (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=RJ4AR9NfqF4)
-- [Superboomfan vs JaimeHR (![](https://vods.co/files/icons/smash64/16px-Donkey Kong.png) DK)](https://www.youtube.com/watch?v=MgI2K2ToREk)
+- [Tacos vs Josh Brody (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/cYljJAj4DwI)
+- [JaimeHR vs Box (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=RJ4AR9NfqF4)
+- [Superboomfan vs JaimeHR (![](https://vods.co/icons/smash64/20px-Donkey Kong.png) DK)](https://www.youtube.com/watch?v=MgI2K2ToREk)
 
 <hr>
 ## ![](/guides/img/chars/full/link.png) Link
@@ -111,11 +111,11 @@ Players: [Sekirei](https://vods.co/smash64?player=14417&selection=37), [Gyaki](h
 Players: [Jouske](https://vods.co/smash64?player=14624&selection=34), [emptyW](https://vods.co/smash64?player=20160&selection=34), [SotoH](https://vods.co/smash64?player=14325&selection=34), [JaimeHR](https://vods.co/smash64?player=14183&selection=34)
 
 Vods:
-- [Jouske vs Kurabba (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg) ![](/guides/img/japan-flag-icon-16.png)
-- [Jouske vs Wario (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=mTvuRt5rbbg) ![](/guides/img/japan-flag-icon-16.png)
+- [Jouske vs Kurabba (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=D_BjDsiCwYg) ![](/guides/img/japan-flag-icon-16.png)
+- [Jouske vs Wario (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=mTvuRt5rbbg) ![](/guides/img/japan-flag-icon-16.png)
 
 - [Jouske video archive](https://photos.google.com/share/AF1QipNqNGK-H7q8z4jIlGKNHiqObspEoWHie67onKpF8aGR77xAf3nRrQWeodP3UBqAhA?pli=1&key=dWdKUGFleVBSSC04b2RTdkw3dmdONWhxQjBEcXdn) ![](/guides/img/japan-flag-icon-16.png)
-- [Jouske boomfan vods (mostly vs ![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) falcon)](https://www.youtube.com/@jouskevssuperboomfanoctove2869/videos)
+- [Jouske boomfan vods (mostly vs ![](https://vods.co/icons/smash64/20px-Captain Falcon.png) falcon)](https://www.youtube.com/@jouskevssuperboomfanoctove2869/videos)
 
 <hr>
 ## ![](/guides/img/chars/full/captainfalcon.png) Captain Falcon
@@ -149,12 +149,12 @@ Due to his popularity, there's no shortage of role models to look to for techniq
 Players: [Superboomfan](https://vods.co/smash64?player=14324&selection=29), [Alvin](https://vods.co/smash64?player=14323&selection=29), [Zero](https://vods.co/smash64?player=14454&selection=29), [KeroKeroppi](https://vods.co/smash64?player=14330&selection=29), [KD3](https://vods.co/smash64?player=17977&selection=29), [Lowww](https://vods.co/smash64?player=14386&selection=29), [Janitor](https://vods.co/smash64?player=14374&selection=29)
 
 Vods:
-- [KD3 vs Josh Brody (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/eh3sWydPAvA)
-- [Zero vs Revan (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=RcISTTjWIt4)
-- [Alvin vs Mariguas (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/puUpZrewIjg?t=484)
-- [KeroKeroppi vs EG (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Captain Falcon)](https://youtu.be/ZBi0wkYF6Yw)
-- [Superboomfan vs Fireblaster (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://youtu.be/cKoHLl-F4xo?t=85)
-- [Superboomfan vs Sekirei (![](https://vods.co/files/icons/smash64/16px-Link.png) Link)](https://www.youtube.com/watch?v=RTg50lzNzFc&t=300s) and [Game 4](https://youtu.be/RTg50lzNzFc?t=773)
+- [KD3 vs Josh Brody (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/eh3sWydPAvA)
+- [Zero vs Revan (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=RcISTTjWIt4)
+- [Alvin vs Mariguas (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/puUpZrewIjg?t=484)
+- [KeroKeroppi vs EG (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Captain Falcon)](https://youtu.be/ZBi0wkYF6Yw)
+- [Superboomfan vs Fireblaster (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/cKoHLl-F4xo?t=85)
+- [Superboomfan vs Sekirei (![](https://vods.co/icons/smash64/20px-Link.png) Link)](https://www.youtube.com/watch?v=RTg50lzNzFc&t=300s) and [Game 4](https://youtu.be/RTg50lzNzFc?t=773)
 
 <hr>
 ## ![](/guides/img/chars/full/ness.png) Ness
@@ -172,10 +172,10 @@ Vods:
 Players: [Nangoku](https://vods.co/smash64?player=14618&selection=20), [Tokiwa](https://vods.co/smash64?player=20536&selection=20), [Taimai](https://vods.co/smash64?player=17672&selection=20), [Fray](https://vods.co/smash64?player=20427&selection=20), [Raychu](https://vods.co/smash64?player=17981&selection=20)
 
 Vods:
-- [Fray vs B33F (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/qop-jCiDIV8)
-- [Fray vs Stranded (![](https://vods.co/files/icons/smash64/16px-Fox.png) Fox)](https://www.youtube.com/watch?v=jsUfMAOiOqE)
-- [Fray vs Czar (![](https://vods.co/files/icons/smash64/16px-Luigi.png) Luigi)](https://youtu.be/xqFV7g5XhX0)
-- [Fray vs Freean (![](https://vods.co/files/icons/smash64/16px-Luigi.png) Luigi)](https://youtu.be/-vjMi_aEUgA)
+- [Fray vs B33F (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/qop-jCiDIV8)
+- [Fray vs Stranded (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://www.youtube.com/watch?v=jsUfMAOiOqE)
+- [Fray vs Czar (![](https://vods.co/icons/smash64/20px-Luigi.png) Luigi)](https://youtu.be/xqFV7g5XhX0)
+- [Fray vs Freean (![](https://vods.co/icons/smash64/20px-Luigi.png) Luigi)](https://youtu.be/-vjMi_aEUgA)
 
 <hr>
 ## ![](/guides/img/chars/full/yoshi.png) Yoshi
@@ -195,17 +195,17 @@ Players: [Kurabba](https://vods.co/smash64?player=14452&selection=10), [Wizzrobe
 
 Vods:
 
-- [Kurabba vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/OiUZVXtMd3I)
-- [Hotline vs epad10 (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=GWhebsKk7R4)
-- [Kurabba vs Nax (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/OjF06v54TvQ)
-- [Hotline vs Spongy (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/uu-z6SAst0E?t=22554)
-- [Wizzrobe vs Alvin (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://www.youtube.com/watch?v=zZwiZmqUdTY&t=619s)
-- [Kurabba  vs Superboomfan (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)
-- [Kurabba vs Wangera (![](https://vods.co/files/icons/smash64/16px-Jigglypuff.png) Jigglypuff)](https://youtu.be/woDphFynICM)
-- [Kurabba vs KD3 (![](https://vods.co/files/icons/smash64/16px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=lCsmAVm-t8w)
-- [Wizzrobe vs Alvin (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://www.youtube.com/watch?v=zZwiZmqUdTY)
-- [Hotline vs Czar (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://youtu.be/Mt_RWyCSvjw)
-- [Kurabba vs Fray (![](https://vods.co/files/icons/smash64/16px-Ness.png) Ness)](https://www.youtube.com/watch?v=X95HFpBKKKk)
+- [Kurabba vs KeroKeroppi (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/OiUZVXtMd3I)
+- [Hotline vs epad10 (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=GWhebsKk7R4)
+- [Kurabba vs Nax (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/OjF06v54TvQ)
+- [Hotline vs Spongy (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/uu-z6SAst0E?t=22554)
+- [Wizzrobe vs Alvin (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://www.youtube.com/watch?v=zZwiZmqUdTY&t=619s)
+- [Kurabba  vs Superboomfan (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)
+- [Kurabba vs Wangera (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://youtu.be/woDphFynICM)
+- [Kurabba vs KD3 (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=lCsmAVm-t8w)
+- [Wizzrobe vs Alvin (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://www.youtube.com/watch?v=zZwiZmqUdTY)
+- [Hotline vs Czar (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/Mt_RWyCSvjw)
+- [Kurabba vs Fray (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://www.youtube.com/watch?v=X95HFpBKKKk)
 
 <hr>
 ## ![](/guides/img/chars/full/kirby.png) Kirby
@@ -231,11 +231,11 @@ Vods:
 Players: [Fukurou](https://vods.co/smash64?player=14413&selection=35), [kysk](https://vods.co/smash64?player=14328&selection=35), [Superboomfan](https://vods.co/smash64?player=14324&selection=35), [Isai](https://vods.co/smash64?player=14451&selection=35), [Hammerheart](https://vods.co/smash64?player=17976&selection=35), [Revan](https://vods.co/smash64?player=14379&selection=35)
 
 Vods:
-- [kysk vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/DVh9UeJQvdg)
-- [Isai vs Prince (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://youtu.be/zdh40qnAdvU)
-- [Superboomfan vs EG (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Captain Falcon)](https://youtu.be/xM2_GjC07Oc?t=192)
-- [Fukurou vs LD (![](https://vods.co/files/icons/smash64/16px-Fox.png) Fox)](https://youtu.be/B_Jh75Fe_oI)
-- [Hammerheart vs Isai (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://youtu.be/ZP3KWkx0wtw)
+- [kysk vs KeroKeroppi (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/DVh9UeJQvdg)
+- [Isai vs Prince (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://youtu.be/zdh40qnAdvU)
+- [Superboomfan vs EG (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Captain Falcon)](https://youtu.be/xM2_GjC07Oc?t=192)
+- [Fukurou vs LD (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://youtu.be/B_Jh75Fe_oI)
+- [Hammerheart vs Isai (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/ZP3KWkx0wtw)
 
 <hr>
 ## ![](/guides/img/chars/full/fox.png) Fox
@@ -263,11 +263,11 @@ Players: [LD (aka Sleepy Fox)](https://vods.co/smash64?player=12011&selection=13
 
 Vods:
 
-- [LD vs Alvin (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/89p60TCLuXE)
-- [LD vs Revan (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby) ](https://youtu.be/q9gV85kQsq0)
-- [Silver Spoon vs Zero (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/bYbPnu1iA_0)
-- [Huntsman vs Fireblaster (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=AnV6mSEjSBs)
-- [LD vs CTG (![](https://vods.co/files/icons/smash64/16px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=C2kMRXeTh-A) - Shines only!
+- [LD vs Alvin (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/89p60TCLuXE)
+- [LD vs Revan (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby) ](https://youtu.be/q9gV85kQsq0)
+- [Silver Spoon vs Zero (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/bYbPnu1iA_0)
+- [Huntsman vs Fireblaster (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=AnV6mSEjSBs)
+- [LD vs CTG (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=C2kMRXeTh-A) - Shines only!
 
 <hr>
 ## ![](/guides/img/chars/full/pikachu.png) Pikachu
@@ -297,21 +297,21 @@ Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility 
 Players: [Wario](https://vods.co/smash64?player=14546&selection=11), [Nax](https://vods.co/smash64?player=24706&selection=11), [Alvin](https://vods.co/smash64?player=14323&selection=11), [SuperBoomFan](https://vods.co/smash64?player=14324&selection=11), [Isai](https://vods.co/smash64?player=14451&selection=11), [Josh Brody](https://vods.co/smash64?player=14332&selection=11), [Kero](https://vods.co/smash64?player=14330&selection=11), [Mariguas](https://vods.co/smash64?player=14331&selection=11)
 
 Vods:
-- [Nax vs Isai (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu)](https://youtu.be/UnyKv7qqrIo?t=71)
-- [Alvin vs Fukurou (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby)](https://youtu.be/S1v6D3-_PyM?t=1)
-- [Nax vs KD3 (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Falcon)](https://youtu.be/qUAtlkmo_yM?t=300)
-- [Wario vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi)](https://youtu.be/BETO9qmvQls)
-- [Superboomfan vs LD (![](https://vods.co/files/icons/smash64/16px-Fox.png) Fox)](https://youtu.be/57Y_9WDd8mc)
-- [Isai vs Wangera (![](https://vods.co/files/icons/smash64/16px-Jigglypuff.png) Jigglypuff)](https://youtu.be/nOrdzok4Ngk)
-- [Dexter vs Hydra (![](https://vods.co/files/icons/smash64/16px-Mario.png) Mario)](https://youtu.be/De4XCTLXubU)
-- [Robert vs Tacos (![](https://vods.co/files/icons/smash64/16px-Donkey Kong.png) Donkey Kong)](https://youtu.be/QBsMW5txJRE)
-- [Shalaka vs Meipon (![](https://vods.co/files/icons/smash64/16px-Samus.png) Samus)](https://youtu.be/cxgrzqBK-0c)
-- [Wario vs Raychu (![](https://vods.co/files/icons/smash64/16px-Ness.png) Ness)](https://youtu.be/IkM3H7ty_ho)
-- [Lowww vs Fray (![](https://vods.co/files/icons/smash64/16px-Ness.png) Ness)](https://youtu.be/Te_xrc87rPA?t=4814)
-- [Mariguas vs Gyaki (![](https://vods.co/files/icons/smash64/16px-Link.png) Link)](https://youtu.be/51-Rpqea6VM)
-- [Sonjo vs Freean (![](https://vods.co/files/icons/smash64/16px-Luigi.png) Luigi)](https://youtu.be/ataSnLdK4Ug)
+- [Nax vs Isai (![pika](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/UnyKv7qqrIo?t=71)
+- [Alvin vs Fukurou (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/S1v6D3-_PyM?t=1)
+- [Nax vs KD3 (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/qUAtlkmo_yM?t=300)
+- [Wario vs Wizzrobe (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://youtu.be/BETO9qmvQls)
+- [Superboomfan vs LD (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://youtu.be/57Y_9WDd8mc)
+- [Isai vs Wangera (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://youtu.be/nOrdzok4Ngk)
+- [Dexter vs Hydra (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/De4XCTLXubU)
+- [Robert vs Tacos (![](https://vods.co/icons/smash64/20px-Donkey Kong.png) Donkey Kong)](https://youtu.be/QBsMW5txJRE)
+- [Shalaka vs Meipon (![](https://vods.co/icons/smash64/20px-Samus.png) Samus)](https://youtu.be/cxgrzqBK-0c)
+- [Wario vs Raychu (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://youtu.be/IkM3H7ty_ho)
+- [Lowww vs Fray (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://youtu.be/Te_xrc87rPA?t=4814)
+- [Mariguas vs Gyaki (![](https://vods.co/icons/smash64/20px-Link.png) Link)](https://youtu.be/51-Rpqea6VM)
+- [Sonjo vs Freean (![](https://vods.co/icons/smash64/20px-Luigi.png) Luigi)](https://youtu.be/ataSnLdK4Ug)
 
-- [Wario vs exe (![pika](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) ![](/guides/img/japan-flag-icon-16.png) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay.
+- [Wario vs exe (![pika](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) ![](/guides/img/japan-flag-icon-16.png) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay.
 
 <hr>
 ## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff
@@ -329,9 +329,9 @@ See R3$T crew puff guide, below.
 Players: [Wangera](https://vods.co/smash64?player=14414&selection=19), [Isai](https://vods.co/smash64?player=14451&selection=19), [CTG](https://vods.co/smash64?player=14373&selection=19), [KD3](https://vods.co/smash64?player=17977&selection=19)
 
 Vods:
-- [Wangera vs KeroKeroppi (![](https://vods.co/files/icons/smash64/16px-Pikachu.png) Pikachu) ](https://youtu.be/aOH84Mf06Xk)
-- [Wangera vs Fukurou (![](https://vods.co/files/icons/smash64/16px-Kirby.png) Kirby) ](https://youtu.be/LnS4Be_15Vk)
-- [Wangera vs Stranded (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Captain Falcon) ](https://youtu.be/WK5v6gnt6mw)
-- [Isai vs JaimeHR (![](https://vods.co/files/icons/smash64/16px-Captain Falcon.png) Captain Falcon) ](https://youtu.be/IY83a29PKhk)
-- [Wangera vs Wizzrobe (![](https://vods.co/files/icons/smash64/16px-Yoshi.png) Yoshi) ](https://youtu.be/YS_ZCrfteHc)
-- [Wangera vs LD (![](https://vods.co/files/icons/smash64/16px-Fox.png) Fox) ](https://youtu.be/v5he6bT1-Wo)
+- [Wangera vs KeroKeroppi (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu) ](https://youtu.be/aOH84Mf06Xk)
+- [Wangera vs Fukurou (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby) ](https://youtu.be/LnS4Be_15Vk)
+- [Wangera vs Stranded (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Captain Falcon) ](https://youtu.be/WK5v6gnt6mw)
+- [Isai vs JaimeHR (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Captain Falcon) ](https://youtu.be/IY83a29PKhk)
+- [Wangera vs Wizzrobe (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi) ](https://youtu.be/YS_ZCrfteHc)
+- [Wangera vs LD (![](https://vods.co/icons/smash64/20px-Fox.png) Fox) ](https://youtu.be/v5he6bT1-Wo)

@@ -36,6 +36,8 @@ title: Nick's SSB64 Resources
 
 [Beginner/Intermediate Pikachu Techniques](https://www.youtube.com/watch?v=A3Smg4MNWuA) - A bunch of simple tricks and techniques all pika players should learn. Probably my best video.
 
+[How Kero wins with Yoshi](https://www.youtube.com/watch?v=-HX8ZV2Q-WQ) - Tips and tricks with Yoshi, focusing on the Pika matchup.
+
 [Answering a simple question with BizHawk](https://www.youtube.com/watch?v=x-JaJkRfCDs) - Simple demo of how to use BizHawk (a TAS emulator) to answer frame data questions.
 
 [Some notes on Pika vs Fox](https://www.youtube.com/watch?v=SPX9cvfIagY) - Self explanatory, some assorted matchup notes from a session in the mu.

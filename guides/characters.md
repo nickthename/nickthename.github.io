@@ -187,6 +187,7 @@ Vods:
 - [Armor Break Percents](https://nickthename.github.io/ssbframedata/Armor/Armor.html)
 - [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
 - [Killer Yoshi Practice \| Hotline](/guides/yoshitech.html)
+- [How Kero Wins with Yoshi](https://www.youtube.com/watch?v=-HX8ZV2Q-WQ)
 - [Yoshi R&D Discord](https://discord.gg/G5yRgUmEKG)
 
 #### Players and Vods

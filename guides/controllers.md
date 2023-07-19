@@ -172,15 +172,15 @@ Like other Hori clones, the Warrior's joystick is a bit stiffer than the ultra-l
 ### Chori
 ![Chori](/guides/img/controllers/chori1.jpg){:width="40%"}
 ![Chori](/guides/img/controllers/chori2.jpg){:width="40%"}<br>
-Estimated Price: 1 for **$15**, 2 for **$20**
+Estimated Price: 1 for **$15**. Packs of multiple can be under $10 per controller.
 
-Given the community name "Chori", this controller is sold under a variety of gibberish brand names, such as miadore, MODESLAB, iNNEXT, kiwitatá, etc. The cheapest of any competitively viable controller, the Chori is frequently sold in packs of two for less than a single controller from an actual brand would cost.
+Although given the community name "Chori", this controller is sold under a variety of gibberish brand names, such as miadore, MODESLAB, iNNEXT, kiwitatá, etc. The cheapest of any competitively viable controller, the Chori is frequently sold in packs of two for less than a single controller from an actual brand would cost.
 
 Other than its price, the most noticeable characteristic of the Chori is its wider body and long handles, making it more suitable for players with large hands than the somewhat cramped Hori. Like other Hori clones, the stick is somewhat stiffer and buttons are a bit cheaper feeling, but both are quite functional. The triggers of the Chori are arguably the best of the Hori clones, with a large and flat design that's easy to press from any angle.
 
 
 #### How to Obtain
-Amazon - As mentioned, the Chori is available under a variety of names with no real consistency, the easiest way to identify it is by picture. Searching for "N64 Mini Pad" seems to come up with a lot of Chori results. Make sure the listing you find is for the N64 plug version, and USB versions are available.
+Amazon - As mentioned, the Chori is available under a variety of names with no real consistency, the easiest way to identify it is by picture. Searching for "N64 Mini Pad" seems to come up with a lot of Chori results, as well as "N64 controller pack" for bundles. Make sure the listing you find is for the N64 plug version, and USB versions are available.
 
 ### Retro-Bit Tribute 64
 ![Tribute2](/guides/img/controllers/tribute2.png){:width="40%"}

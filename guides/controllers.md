@@ -48,6 +48,28 @@ OG knockoffs come in two forms: knockoff replacement joysticks, and complete kno
 
 **WARNING**: Knockoff joystick suppliers are extremely unreliable; just because the picture looks like the original doesn’t mean what you get won’t be total crap. These should only be bought by those that are looking to experiment with new sources and don’t mind possibly wasting their money.
 
+### Lubricants
+
+The OG stick's design causes a lot of wear, especially between the stick and gears and the stick tip and bowl. Most competitive OG users apply lubricant to the internals of their stick to reduce this wear. Sticks may need to be re-lubed every few months, depending on the amount of use. There are many videos online showing the lubrication process, such as [this one](https://www.youtube.com/watch?v=Ar5dF4gp7b8) by top Smash player Fireblaster, which also describes how to install replacement gears. The most important thing to keep in mind when lubing is to avoid getting any lube or dirt in the small encoder wheels, which can cause stick drift and other issues.
+
+Below are some of the most popular lubricants. Lubricant choice is far from an exact science and not every promising lube has been tested, so if you have something you think might work and a spare controller, give it a shot, just make sure it's plastic-safe.
+
+#### Taylor Lube HP
+![taylor lube](/guides/img/controllers/lube/taylor.jpg){:width="20%"}
+
+The ol' reliable, for years this was the only lube in use in the Smash community. Originally meant for frozen yogurt machines, it comes in a giant tube that lasts forever. Gives a smooth feeling. Can be purchased on [Amazon](https://www.amazon.com/Taylor-48232-Tube-Soft-Serve-Lubricant/dp/B009T8PZR2) or various restaurant supply websites.
+
+#### Super Lube PTFE Grease
+![taylor lube](/guides/img/controllers/lube/superlube_small.png){:width="30%"}
+![taylor lube](/guides/img/controllers/lube/superlube_tube.jpg){:width="10%"}
+
+Super Lube is popular with replacement part manufacturers due to its conveniently sized and cheap demo packets (left above) which are good for several sticks. It's also available in more traditional tube sizes. Has a slightly slow or thick feeling. Can be found on [Amazon](https://www.amazon.com/s?k=super+lube+ptfe+grease), eBay, or most hardware stores.
+
+#### Permatex Dielectric Grease
+![Permatex Dielectric Grease](/guides/img/controllers/lube/dielectric.jpg){:width="40%"}
+
+A less widely used grease with a fast and smooth feel. My personal favorite. Can be found on [Amazon](https://www.amazon.com/Permatex-22058-Dielectric-Tune-Up-Grease/dp/B000AL8VD2/), the 0.33 oz tube is plenty for most people.
+
 ## Metal Replacement Parts
 
 
@@ -115,15 +137,41 @@ Many resellers across many websites sell various versions of the Derek stick. [T
 #### Pros/Cons
 <p>
 <font color="green">+</font> Always snaps back quickly to the exact center, with little to no wobble or overshooting<br>
-<font color="green">+</font> Very easy to install<br>
+<font color="green">+</font> Easy to install<br>
 <font color="green">+</font> High range allows for easier DI<br>
-<font color="green">+</font> Cheap easy to obtain<br>
+<font color="green">+</font> Cheap and easy to obtain<br>
 <font color="green">+</font> Little to no change in feel, even with heavy use<br>
-<font color="red">-</font> Used sticks may drift during play<br>
-<font color="red">-</font> Small and short, making precise inputs difficult<br>
+<font color="red">-</font> Used sticks may develop drift<br>
 <font color="red">-</font> Although it doesn’t wobble, it has a small deadzone<br>
 <font color="red">-</font> High sensitivity makes moves requiring low ranges (tilts, uairs without jumping, etc.) hard<br>
+<font color="red">-</font> Lack of consistent labeling between brands and versions<br>
 </p>
+
+## 8BitDo Hall Effect Joystick
+![8bitdo1](/guides/img/controllers/8bitdo1.jpg){:width="45%"}<br>
+Estimated Price: **$20**
+
+8BitDo, a Chinese manufacturer of popular replacement controllers for modern consoles, released this OG replacement stick in 2023 using hall effect technology. Hall effect sensors are thought to provide better durability than the potentiometers used in normal joysticks, and have become popular in replacement sticks, including the Phob Gamecube controller for Smash Melee.
+
+Like the Derek stick, the 8bitdo stick is an easy-to-install drop-in replacement for the OG's joystick. The cap is larger and made of a nice soft rubber, similar to a Gamecube controller stick. The stick moves smoothly, feels good, and returns to exact center with no wobble. 
+
+Although the 8BitDo's range isn't very high (max of 80), the short cap results in low travel distance and makes the joystick feel fairly sensitive. Those switching from worn OGs may find subtle movements like tilt attacks difficult to perform at first. Higher-level players may find the low range a little limiting for DI.
+
+The stick's durability has yet to be empirically tested due to its recent release, but it should in theory be very long-lasting.
+
+#### How to Obtain
+The 8BitDo stick is available on [their official website](https://shop.8bitdo.com/products/8bitdo-mod-kit-for-original-n64-controller?variant=42721361920177). It's listed alongside their controller mod kit and rumble pack, but neither is required for use. As of July 2023, it requires a backorder, with shipments coming in every month or so.
+#### Pros/Cons
+<p>
+<font color="green">+</font> Always snaps back quickly to the exact center, with little to no wobble or overshooting<br>
+<font color="green">+</font> Easy to install<br>
+<font color="green">+</font> Cheap<br>
+<font color="green">+</font> Comfortable rubber cap<br>
+<font color="green">+</font> Durable design with few points of failure<br>
+<font color="red">-</font> Small and short, making precise inputs difficult<br>
+<font color="red">-</font> Low range hurts DI, and short stick makes some grip changes hard<br>
+</p>
+
 ## Hori Mini Pad
 ![Hori](/guides/img/controllers/hori.png){:width="40%"}<br>
 Estimated Price: **$60-90**

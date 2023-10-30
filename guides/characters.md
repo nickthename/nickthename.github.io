@@ -187,6 +187,7 @@ Vods:
 - [Armor Break Percents](https://nickthename.github.io/ssbframedata/Armor/Armor.html)
 - [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
 - [Killer Yoshi Practice \| Hotline](/guides/yoshitech.html)
+- [Yoshi Combos Playlist](https://www.youtube.com/playlist?list=PL2bnzwVIy5jBuR-xfuzcrX6KzKu3vGYLz)
 - [How Kero Wins with Yoshi](https://www.youtube.com/watch?v=-HX8ZV2Q-WQ)
 - [Yoshi R&D Discord](https://discord.gg/G5yRgUmEKG)
 
@@ -323,6 +324,7 @@ See R3$T crew puff guide, below.
 - [R3$T Crew Puff Guide](https://docs.google.com/document/d/1wm30EMPL1UGIONEoxyc6uNxAgni1xIjHCurgDp63j0w/edit)
 - [Jigglypuff Combo tutorial \| Ringedge](https://www.youtube.com/watch?v=yUrW-34EDjQ)
 - [4 Tips for Puff vs Yoshi \| Isai](https://www.youtube.com/watch?v=5LJ--tVc5Bw)
+- [Puff Punish Game VOD Matrix | Tercero](https://docs.google.com/spreadsheets/d/e/2PACX-1vShfSFAtp9kjsQn-3ozmy3s3c2_ITP8FO_tJmR-BvgVBg8ZW8lVtELNT_CfnWufcRb_bzmM_72tKzGv/pubhtml?gid=525366345&single=true)
 
 
 #### Players and Vods

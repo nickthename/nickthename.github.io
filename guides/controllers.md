@@ -172,6 +172,16 @@ The 8BitDo stick is available on [their official website](https://shop.8bitdo.co
 <font color="red">-</font> Low range hurts DI, and short stick makes some grip changes hard<br>
 </p>
 
+## Retro-bit Analog Repair Module
+![retrobit stick](/guides/img/controllers/retrobit_stick.png){:width="25%"}<br>
+Estimated Price: $15
+
+**DO NOT BUY**. Completely unusable for Smash due to massive input delay, which makes even basic inputs impossible.
+
+
+#### How to Obtain
+Don't.
+
 ## Hori Mini Pad
 ![Hori](/guides/img/controllers/hori.png){:width="40%"}<br>
 Estimated Price: **$60-90**

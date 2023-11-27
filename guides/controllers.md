@@ -63,7 +63,7 @@ The ol' reliable, for years this was the only lube in use in the Smash community
 ![taylor lube](/guides/img/controllers/lube/superlube_small.png){:width="30%"}
 ![taylor lube](/guides/img/controllers/lube/superlube_tube.jpg){:width="10%"}
 
-Super Lube is popular with replacement part manufacturers due to its conveniently sized and cheap demo packets (left above) which are good for several sticks. It's also available in more traditional tube sizes. Has a slightly slow or thick feeling. Can be found on [Amazon](https://www.amazon.com/s?k=super+lube+ptfe+grease), eBay, or most hardware stores.
+Super Lube is popular with replacement part manufacturers due to its conveniently sized and cheap demo packets (left above) which are good for several sticks. It's also available in more traditional tube sizes. Has a slightly slower or thicker feeling than Taylor Lube. Can be found on [Amazon](https://www.amazon.com/s?k=super+lube+ptfe+grease), eBay, or most hardware stores.
 
 #### Permatex Dielectric Grease
 ![Permatex Dielectric Grease](/guides/img/controllers/lube/dielectric.jpg){:width="40%"}

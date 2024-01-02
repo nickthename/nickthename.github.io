@@ -62,7 +62,9 @@ Matches:
 Players: [Isai](https://vods.co/smash64?player=14451&selection=4), [Czar](https://vods.co/smash64?player=14574&selection=4), [Hydra](https://vods.co/smash64?player=11916&selection=4), [Kimimaru](https://vods.co/smash64?player=14488&selection=4), [Fireblaster](https://vods.co/smash64?player=14334&selection=4)
 
 Vods:
-- [JaimeHR vs B33F (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/uugwpuEB6YI)
+- [JaimeHR vs KD3 (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=DCl53HdBcvc)
+- [JaimeHR vs Josh Brody (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=s84NDWYq2Lo)
+- [JaimeHR vs SuPeRbOoMfAn (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Pikachu)](https://www.youtube.com/watch?v=0R51ZttWLmY)
 - [Superboomfan vs EG (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/cVGGOywl0sw)
 - [Isai vs Sombrero (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/fRFX8ejjI5M)
 - [Kimimaru vs LETSGO (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://youtu.be/x3usIRpWGS0)

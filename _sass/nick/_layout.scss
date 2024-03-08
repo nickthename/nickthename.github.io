@@ -391,3 +391,8 @@
 .home {
   position: relative;
 }
+
+.videoembed {
+  max-width: calc(100vw - 60px);
+  max-height: calc(56vw - 34px);
+}

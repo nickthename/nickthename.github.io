@@ -133,7 +133,7 @@ The are multiple versions of this module, two of which are pictured above. The e
 
 There also exists an extensive mod for the Derek Stick that fixes most of the stick’s range and angle-skipping issues. Currently these modded Derek Sticks are not widely distributed and see little use in competitive play, but they show promise. For those with the technical chops to put one together, the modded Derek Stick is an affordable way to make a great stick. More information can be found at the development [thread here](http://nfggames.com/forum2/index.php?topic=5803.0).
 #### How to Obtain
-Many resellers across many websites sell various versions of the Derek stick. [This source](https://www.amazon.com/Redesigned-REPLACEMENT-Joystick-Controller-Thumbstick/dp/B009MRZAUC/) is recommended for its fast shipping, decent price, and reliably newer revision stick. However, you may be able to find a model you prefer from another source.
+Many resellers across many websites sell various versions of the Derek stick, and it can be difficult to predict exactly which one you'll recieve. [This source](https://www.amazon.com/gp/product/B0136JPKIS/) seems to have new version along with fast shipping. However, you may be able to find a model you prefer from another source.
 #### Pros/Cons
 <p>
 <font color="green">+</font> Always snaps back quickly to the exact center, with little to no wobble or overshooting<br>

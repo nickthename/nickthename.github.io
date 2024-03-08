@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Smash 64 Controller Guide"
+title: "Controller Guide"
 draft: false
 ---
 ## Introduction

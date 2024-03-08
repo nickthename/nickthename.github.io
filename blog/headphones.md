@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Headphones and Smash"
+excerpt_separator: <!--more-->
 date: 2023-04-24
 draft: false
 ---
@@ -9,6 +10,7 @@ After Spring Time a bunch of people asked me what I listen to in my headphones w
 
 #### Why?
 I have a hard time tuning out background noise, especially noise with meaning, like people talking. Even if it's irrelevant, I'll end up thinking about what they're saying, so I use noise canceling headphones to block it out. I don't have game audio in my headphones, which means unless the TV volume is high I play without game audio. I practice this way as well, with no sound on emulator, which is convenient since I don't have to deal with pj64k's broken audio plugin. Occasionally people tell me this puts me at some huge disadvantage in terms of reaction time, which I'm skeptical of, but maybe I'm just really skilled to compensate, who knows. It is possible to have game audio in your headphones, but it requires plugging in a splitter and adapter to the console audio line.
+<!--more-->
 
 #### Headphones 
 The headphones I use are the Sony WH-1000XM3s, which are fantastic. The XM4s are apparently better still. The XM5s are the newest, but for some reason don't fold up for portability like their predecessors, so I wouldn't recommend them for travel despite their sound quality. Bose competes with their QC line, which are also very good. I got mine "refurbished" (they were indistiguishable from brand new) for about $200. I'd recommend them if you travel a lot or work in an office even if you don't plan to wear them in tournament.

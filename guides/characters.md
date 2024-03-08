@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Smash 64 Character Guides"
+title: "Character Guides"
 date: 2023-03-08
 draft: false
 ---
@@ -202,6 +202,7 @@ Vods:
 - [Kurabba vs KeroKeroppi (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/OiUZVXtMd3I)
 - [Hotline vs epad10 (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=GWhebsKk7R4)
 - [Kurabba vs Nax (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/OjF06v54TvQ)
+- [Take vs KD3 (![](https://vods.co/icons/smash64/20px-Jigglypuff.png)/![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=5HUVOrmt7vM)
 - [Hotline vs Spongy (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/uu-z6SAst0E?t=22554)
 - [Wizzrobe vs Alvin (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://www.youtube.com/watch?v=zZwiZmqUdTY&t=619s)
 - [Kurabba  vs Superboomfan (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)

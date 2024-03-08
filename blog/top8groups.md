@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Groups on the Top 8 Bubble at SSC"
+excerpt_separator: <!--more-->
 date: 2024-01-02
 draft: false
 ---
@@ -8,6 +9,7 @@ draft: false
 Football has [Monday Morning Quarterback](https://www.si.com/tag/monday-morning-quarterback). Melee has [Monday Morning Marth](https://meleestats.co/category/mmm/). Now get ready for **~~Monday~~ Tuesday Morning Pikachu**, here to tackle the topic on all your minds in January -  Super Smash Con.
 
 Everyone wants to make top 8 at SSC and play on the big stage, but what does it take to get there? There are some players that we expect to be a shoo-in to make it any year they're there,, like Isai, SuPeRbOoMfAn, Kurabba, Wario, and (recently) Nax. But there are rarely 8 players of this caliber in attendance, leaving 1 or 2 spots open for the much larger group of players on the bubble. Some examples of those who went the distance include Josh Brody in 2019, Shihman in 2022, and Stranded in 2023.  I'm going to group these players by character, and look at who you'd need to beat if you want to take that spot.
+<!--more-->
 
 ### Group 1 - Yoshi Mains 
 Examples include Shihman, Tacos, Stranded, and Take.  These players often have secondaries, but they tend to be somewhat erratic in how they use them, with Kirby being the most frequent target for a character switch. They've had a strong track record recently, and with 4 (5 if you count Kero) Yoshi players in top 8 at SSC 2023 and Shihman right behind them at 9th, Yoshi stock is at an all-time high.

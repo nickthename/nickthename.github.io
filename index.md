@@ -90,9 +90,9 @@ Vod reviews of [Breakthrough](https://www.youtube.com/watch?v=yu_XWZHSY8U) and [
   <h2>Around the web</h2>
   <hr />
   <br />
-  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/smash64online-logo.svg" width=30><a>Smash64 Online</a><br /></div>
-  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbl-logo.png" width=30><a>SSB League</a><br /></div>
-  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbwiki-logo.webp" width=30><a>Smash Wiki</a><br /></div>
+  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/smash64online-logo.svg" width=30><a href="https://smash64.online/">Smash64 Online</a><br /></div>
+  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbl-logo.png" width=30><a href="https://supersmashbros.org/">SSB League</a><br /></div>
+  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbwiki-logo.webp" width=30><a href="https://ssbwiki.com/">Smash Wiki</a><br /></div>
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/discord-logo.png" width=30><a href="https://discord.gg/ssb64">SSB64 Discord</a><br /></div>
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/facebook-logo.png" width=30><a href="https://www.facebook.com/groups/Smash64Community/">NA 64 Facebook</a></div><br />
   <br />

@@ -35,7 +35,7 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
  - [Luigi Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jDKs8Kon2r9mhorQCf7qg29)
 
 #### Players and Vods
-Players (links to vods): [Freean](https://vods.co/smash64?player=13014&selection=24), [Isai](https://vods.co/smash64?player=14451&selection=24), Yoshifan
+Players: [Freean](https://vods.co/smash64?player=13014&selection=24), [Isai](https://vods.co/smash64?player=14451&selection=24), YoshifanGM
 
 Matches:
 - [Freean vs Paco (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/Eq4TYCfmkIA)

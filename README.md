@@ -18,7 +18,7 @@ Go to install directory and run:
 
 Then serve with
 
-`bundle exec jekyll serve`
+`bundle exec jekyll serve --livereload`
 
 If serving in a VM, use:
 

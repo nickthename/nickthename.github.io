@@ -164,12 +164,11 @@ An official tier list for Smash 64 hasn't been made in a long time, making the [
 
 A rough sketch of current opinion might be:
 
-| S | Pikachu               |
-| A | Kirby, Falcon, Yoshi  |
-| B | Fox, Jigglypuff, Mario|
-| D | Samus, DK, Ness, Link, Luigi |
+| A | Pikachu, Kirby, Falcon, Yoshi  |
+| B | Fox, Jigglypuff, Mario |
+| C | Samus, DK, Ness, Link, Luigi |
 
-People will argue endlessly about the order of the weakest characters or the divisions between tiers, but the above should be fine for any practical purpose, like cheering loudly when a low-tier player makes an upset. Probably the most controversial point right now is whether Mario should be in B or C. Some people might reorder A a bit; see [what character should I play to win](/FAQ.html#what-character-should-i-play-what-character-is-good-for-beginners) below for a more in-depth discussion.
+People will argue endlessly about the order of the weakest characters or the divisions between tiers, but the above should be fine for any practical purpose, like cheering loudly when a low-tier player makes an upset. Some people might reorder A a bit or separate out an S tier; see [what character should I play to win](/FAQ.html#what-character-should-i-play-what-character-is-good-for-beginners) below for a more in-depth discussion.
 
 ### I found this matchup chart, but some of the matchups seem wrong!
 

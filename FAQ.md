@@ -160,7 +160,7 @@ Link:
 
 ### What's the current tier list?
 
-An official tier list for Smash 64 hasn't been made in a long time, making the [one that currently exists]() out of step with both popular opinion and recent tournament results.
+An official tier list for Smash 64 hasn't been made in a long time, making the [one that currently exists](https://www.ssbwiki.com/Tier_list#Super_Smash_Bros._tier_list) out of step with both popular opinion and recent tournament results.
 
 A rough sketch of current opinion might be:
 

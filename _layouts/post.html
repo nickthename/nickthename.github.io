@@ -16,7 +16,7 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <aside id="post-sidebar">
+    <aside id="post-sidebar" data-outline-levels="{{ page.outline-levels | default: 'h2,h3' }}">
       <div class="sidebar-inner"></div>
     </aside>
     {{ content }}
@@ -30,4 +30,3 @@ layout: default
 </article>
 
 <script type="module" src="/assets/post-sidebar.js"></script>
-<!--  <script>for(let h of document.querySelectorAll('div.post-content > h2[id]'))h.innerHTML+=` <a href="#${h.id}" aria-hidden="true">#</a>`</script> -->

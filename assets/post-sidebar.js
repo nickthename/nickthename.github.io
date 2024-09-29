@@ -1,7 +1,8 @@
 let sidebar = document.getElementById('post-sidebar');
+let sidebarLevels = sidebar.getAttribute('data-outline-levels');
 let sidebarInner = sidebar.querySelector('.sidebar-inner');
-//let headings = document.querySelector('.post-content').querySelectorAll('h2,h3,h4,h5');
-let headings = document.querySelector('.post-content').querySelectorAll('h2,h3');
+
+let headings = document.querySelector('.post-content').querySelectorAll(sidebarLevels);
 
 for (let i = 0; i < headings.length; i++) {
     let heading = headings[i];

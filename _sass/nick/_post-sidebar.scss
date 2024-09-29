@@ -27,6 +27,10 @@ $sidebar-spacing-increment: 5px;
       line-height: 1.1;
       padding: 5px 0;
 
+      &.level-h1 {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
       &.level-h2 {
         font-weight: bold;
       }
@@ -81,6 +85,10 @@ $sidebar-spacing-increment: 5px;
       line-height: 1.1;
       padding: 5px 0;
 
+      &.level-h1 {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
       &.level-h2 {
         font-weight: bold;
       }

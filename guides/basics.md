@@ -1,8 +1,9 @@
 ---
-layout: post-noside
+layout: post
 title: "Learning Smash 64"
 date: 2024-02-09
 draft: false
+sidebar_hidden: true
 ---
 
 # Basics

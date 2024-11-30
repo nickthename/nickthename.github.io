@@ -83,6 +83,7 @@ Players: [Tacos](https://vods.co/smash64?player=14422&selection=42), [Superboomf
 
 Vods:
 
+- [SuPeRbOoMfAn vs KD3 (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=icUU507G9ag)
 - [Tacos vs Josh Brody (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/cYljJAj4DwI)
 - [JaimeHR vs Box (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=RJ4AR9NfqF4)
 - [Superboomfan vs JaimeHR (![](https://vods.co/icons/smash64/20px-Donkey Kong.png) DK)](https://www.youtube.com/watch?v=MgI2K2ToREk)
@@ -94,6 +95,7 @@ Vods:
 #### Guides and Combo Videos
 - [100 Links \| Sekirei](https://www.youtube.com/watch?v=A5aDFmPf8PQ) ![](/guides/img/japan-flag-icon-16.png)
 - [Link Combo Playlist \| Moto, various players](https://www.youtube.com/playlist?list=PL2bnzwVIy5jAnd6GhuiZeEg_5cIa9S1-7)
+- [Link Manifesto \| Radiant](https://docs.google.com/document/d/1TwztDNY_OgUT6wZD_mqeviI69ATU-OI5mM1ILuJztAM/edit?usp=sharing)
 
 #### Players and Vods
 
@@ -250,7 +252,7 @@ Fox is a ultra-mobile glass cannon that can dominate neutral or die off of a sin
 The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack of rest hasn't stopped him from racking up wins against the likes of Alvin, Josh Brody, and Revan. His distinctive reaction-heavy playstyle and famous "archetype" combos make him a great entry point for those looking to study Fox vods. His incredibly recoveries should be inspirational for any Fox that's tired of dying off of a single backthrow. From there, make sure to check out the ultra-technical Stranded, laser-heavy Silver Spoon, and precise edgeguarding of Lowww Power.
 
 #### Advanced Techniques
-- [Short Hop Double Laser \| Nate L](https://youtu.be/8lOpfwS5NMs)
+- [Short Hop Double Laser \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1198)
 - [Shine Cancel \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1465)
 - [Advanced Fox Movement \| Stranded](https://www.youtube.com/watch?v=LNuJ69nxwX4)
 - [Hard Fox Training Mode Drills \| LETSGO](https://www.youtube.com/watch?v=GHQ5_r0yTgU)
@@ -269,6 +271,7 @@ Players: [LD (aka Sleepy Fox)](https://vods.co/smash64?player=12011&selection=13
 Vods:
 
 - [LD vs Alvin (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/89p60TCLuXE)
+- [SuPeRbOoMfAn vs Zero (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby) ](https://youtu.be/DAe3j32Ke2Q)
 - [LD vs Revan (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby) ](https://youtu.be/q9gV85kQsq0)
 - [Silver Spoon vs Zero (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/bYbPnu1iA_0)
 - [Huntsman vs Fireblaster (![](https://vods.co/icons/smash64/20px-Yoshi.png) Yoshi)](https://www.youtube.com/watch?v=AnV6mSEjSBs)

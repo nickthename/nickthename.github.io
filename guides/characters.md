@@ -259,7 +259,7 @@ The gold standard for NA fox play has long been LD, aka Sleepy Fox. whose lack o
 - [Hard Fox Training Mode Drills \| LETSGO](https://www.youtube.com/watch?v=GHQ5_r0yTgU)
 
 #### Guides and Combo Videos
-- [Matchup Guide: Pikachu vs Fox](/guides/pikafox.h tml)
+- [Matchup Guide: Pikachu vs Fox](/guides/pikafox.html)
 - [Pikachu vs Fox video notes](https://www.youtube.com/watch?v=SPX9cvfIagY)
 - [Isai Combo a Day playlist](https://www.youtube.com/playlist?list=PLa2UFXOI_bqlnvunVze9rRR46wzBXVn-H)
 - [Fox is Fox Combo Video](https://youtu.be/Z6eoJNnxQQM)

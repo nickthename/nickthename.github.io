@@ -1,8 +1,9 @@
 ---
-layout: post-noside
+layout: post
 title: "Where to Play"
 date: 2024-02-09
 draft: false
+sidebar_hidden: true
 ---
 There are two main ways to play *Smash*: in-person using an N64 console, or online using an emulator program on PC.
 

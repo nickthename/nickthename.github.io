@@ -1,8 +1,9 @@
 ---
-layout: post-noside
+layout: post
 title: "Review of the 'Best Redesigned Replacement Joystick'"
 date: 2017-11-4
 draft: false
+sidebar_hidden: true
 ---
 Original Listing:
 ![listing](/guides/img/thumbstick/listing.png)  

@@ -321,11 +321,11 @@ table {
 /**
  * Header links
  */
-h2 {
-    &[id] > a {
+h2,h3,h4,h5,h6 {
+    &[id] > a[aria-hidden="true"] {
         display: none;
     }
-    &[id]:hover > a {
+    &[id]:hover > a[aria-hidden="true"] {
         display: inline;
         color: #2a7ae26e;
     }

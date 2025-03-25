@@ -194,6 +194,7 @@ Vods:
 - [Yoshi Combos Playlist](https://www.youtube.com/playlist?list=PL2bnzwVIy5jBuR-xfuzcrX6KzKu3vGYLz)
 - [How Kero Wins with Yoshi](https://www.youtube.com/watch?v=-HX8ZV2Q-WQ)
 - [Yoshi R&D Discord](https://discord.gg/G5yRgUmEKG)
+- [Yoshi Combos vs Yoshi and Pika \| Mr. Stonefallow](https://www.youtube.com/watch?v=CH9XiBhBW_U)
 
 #### Players and Vods
 

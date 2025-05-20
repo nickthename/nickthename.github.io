@@ -21,7 +21,7 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
 - [Indepth mechanics encyclopedia \| Kamui](https://bit.ly/thesmashguide)
 
 <hr>
-## ![](/guides/img/chars/full/luigi.png) Luigi
+## ![](/guides/img/chars/full/luigi.png) Luigi {#luigi}
 #### Advanced Techniques
  - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
  - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
@@ -45,7 +45,7 @@ Matches:
 - [YoshiFanGM vs IsaiFanLink (![](https://vods.co/icons/smash64/20px-Link.png) Link)](https://youtu.be/bbMzEz2dknk)
 
 <hr>
-## ![](/guides/img/chars/full/mario.png) Mario
+## ![](/guides/img/chars/full/mario.png) Mario {#mario}
 #### Advanced Techniques
  - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
@@ -70,7 +70,7 @@ Vods:
 - [Kimimaru vs LETSGO (![](https://vods.co/icons/smash64/20px-Fox.png) Fox)](https://youtu.be/x3usIRpWGS0)
 
 <hr>
-## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong
+## ![](/guides/img/chars/full/donkeykong.png) Donkey Kong {#donkey-Kong}
 #### Advanced Techniques
 - [Neutral B Turnaround \| Nate L](https://www.youtube.com/watch?v=8lOpfwS5NMs&t=41s)
 
@@ -89,7 +89,7 @@ Vods:
 - [Superboomfan vs JaimeHR (![](https://vods.co/icons/smash64/20px-Donkey Kong.png) DK)](https://www.youtube.com/watch?v=MgI2K2ToREk)
 
 <hr>
-## ![](/guides/img/chars/full/link.png) Link
+## ![](/guides/img/chars/full/link.png) Link {#link}
 <!-- #### Advanced Techniques --->
 
 #### Guides and Combo Videos
@@ -102,7 +102,7 @@ Vods:
 Players: [Sekirei](https://vods.co/smash64?player=14417&selection=37), [Gyaki](https://vods.co/smash64?player=18988&selection=37), [Isai](https://vods.co/smash64?player=14451&selection=37)
 
 <hr>
-## ![](/guides/img/chars/full/samus.png) Samus
+## ![](/guides/img/chars/full/samus.png) Samus {#samus}
 #### Advanced Techniques
 
 - [Run off dair without fast fall \| emptyW](https://www.youtube.com/watch?v=rtnILkp5ebI)
@@ -122,7 +122,7 @@ Vods:
 - [Jouske boomfan vods (mostly vs ![](https://vods.co/icons/smash64/20px-Captain Falcon.png) falcon)](https://www.youtube.com/@jouskevssuperboomfanoctove2869/videos)
 
 <hr>
-## ![](/guides/img/chars/full/captainfalcon.png) Captain Falcon
+## ![](/guides/img/chars/full/captainfalcon.png) Captain Falcon {#captain-Falcon}
 
 Known for his incredible speed and 0-to-death combos, Captain Falcon is one of the Smash's most popular characters. His powerful combo game is easy to pick up but has a high skill ceiling, making him a great character for beginners and experienced players alike. If you're looking to pick up Falcon, you'll first want to learn his bread-and-butter uair combos. Check out [Nate L's Falcon Combos For Beginners](https://www.youtube.com/watch?v=GX4Vebv2PM8) video, then see if you can replicate the kills in Kristoff's [Simple Falcon Combos](https://www.youtube.com/playlist?list=PLJcgCaWoFblytHHIyxILm6SNx2oibs3ty) playlist.
 
@@ -161,7 +161,7 @@ Vods:
 - [Superboomfan vs Sekirei (![](https://vods.co/icons/smash64/20px-Link.png) Link)](https://www.youtube.com/watch?v=RTg50lzNzFc&t=300s) and [Game 4](https://youtu.be/RTg50lzNzFc?t=773)
 
 <hr>
-## ![](/guides/img/chars/full/ness.png) Ness
+## ![](/guides/img/chars/full/ness.png) Ness {#ness}
 #### Advanced Techniques
  - [DJC Rush \| Kristoff](https://www.youtube.com/watch?v=eptWNovlbGc)
  - Advanced Movement [Part 1](https://www.youtube.com/watch?v=4m7TVeTjt5M), [Part 2](https://youtu.be/4m7TVeTjt5M) \| Kristoff
@@ -182,7 +182,7 @@ Vods:
 - [Fray vs Freean (![](https://vods.co/icons/smash64/20px-Luigi.png) Luigi)](https://youtu.be/-vjMi_aEUgA)
 
 <hr>
-## ![](/guides/img/chars/full/yoshi.png) Yoshi
+## ![](/guides/img/chars/full/yoshi.png) Yoshi {#yoshi}
 #### Advanced Techniques
 - [Advanced Yoshi Movement \| Stranded](https://www.youtube.com/watch?v=I53r8DE0DaY)
 
@@ -216,7 +216,7 @@ Vods:
 - [Kurabba vs Fray (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://www.youtube.com/watch?v=X95HFpBKKKk)
 
 <hr>
-## ![](/guides/img/chars/full/kirby.png) Kirby
+## ![](/guides/img/chars/full/kirby.png) Kirby {#kirby}
 #### Advanced Techniques
 - [Platform Perfect Lands \| Crovy](https://www.youtube.com/watch?v=vhtLPHrHVlA)
 - [Advanced Kirby Movement \| Stranded](https://www.youtube.com/watch?v=nIYsKXHI5xI)
@@ -246,7 +246,7 @@ Vods:
 - [Hammerheart vs Isai (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/ZP3KWkx0wtw)
 
 <hr>
-## ![](/guides/img/chars/full/fox.png) Fox
+## ![](/guides/img/chars/full/fox.png) Fox {#fox}
 
 Fox is a ultra-mobile glass cannon that can dominate neutral or die off of a single throw and rewards technical accuracy. When you start playing fox, you'll want to check out [Nate L's tutorial on short-hop double lasers](https://youtu.be/8lOpfwS5NMs), an important technique for racking up damage in neutral. To convert your neutral wins into stocks, practice some of Isai's [fox-a-day combos](https://www.youtube.com/playlist?list=PLa2UFXOI_bqlnvunVze9rRR46wzBXVn-H), or copy a few from Huntsman's [Fox is Fox combo video](https://youtu.be/Z6eoJNnxQQM). Expect to get thrown off stage quite a bit, but don't give up! Practice using your double jump to grab the ledge from the maximum distance, and mix up your opponent with fox's fantastic aerial drift after up-b. Watch [LD's recovery montage](https://www.youtube.com/watch?v=rGkQD4nKNiA) for some great examples.
 
@@ -279,7 +279,7 @@ Vods:
 - [LD vs CTG (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=C2kMRXeTh-A) - Shines only!
 
 <hr>
-## ![](/guides/img/chars/full/pikachu.png) Pikachu
+## ![](/guides/img/chars/full/pikachu.png) Pikachu {#pikachu}
 
 In Smash Brothers, the king wears not a crown, but a party hat. Pikachu is indisputably the strongest character in 64, with a wide assortment of tools and potential playstyles. As a result, Pikachu is one of the most popular characters in the game, and has a wide assortment of resources to learn from and players to study.
 
@@ -323,7 +323,7 @@ Vods:
 - [Wario vs exe (![pika](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu) Ft5](https://youtu.be/zL-lA6VjP2w) ![](/guides/img/japan-flag-icon-16.png) - First to 5 match between Wario, #1 Japanese Pika, and exe, an online only Pika and one of the strongest players on Japanese netplay.
 
 <hr>
-## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff
+## ![](/guides/img/chars/full/jigglypuff.png) Jigglypuff {#jigglypuff}
 #### Advanced Techniques
 See R3$T crew puff guide, below.
 

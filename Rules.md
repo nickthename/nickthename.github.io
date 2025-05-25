@@ -109,6 +109,11 @@ Any other external adapters outside of the ones mentioned here are
 
  A Player refusing to play natural costumes will be penalized a full game.
 
+#### Colorblind Clause
+Players may request that their opponent change colors to accommodate
+colorblindness or if their color is indistinguishable from either the other team color
+or the stage background. The request must be made before the match starts.
+
 #### Neutral Start
 If a Player requests Neutral Start, the Players must use the neutral port
 configuration below:
@@ -224,11 +229,6 @@ Player gives another Player permission to take their spot. The only exception to
 this rule is if the Player notifies a TO prior to the event, and the TO approves the
 change. The TO is not required to approve any change regarding Player
 substitutions.
-
-#### Colorblind Clause
-Players may request that their opponent change colors to accommodate
-colorblindness or if their color is indistinguishable from either the other team color
-or the stage background. The request must be made before the match starts.
 
 #### Headphone Usage
 If a tournament setup does not have any audio, or if the available audio is not

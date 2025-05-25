@@ -127,7 +127,7 @@ first.
 The TOs may approve a game restart due to exceptional circumstances, such as
 a power outage.
 
-#### Misinterpretation / Misconfiguration
+#### Misinterpretation / Misconfiguration {#misconfiguration}
 If a game was played under a misconfiguration of the Game Settings that could
 have materially affected the result of the game, a Player may petition the TO to
 have that game replayed. The final decision is at the discretion of the TO. This

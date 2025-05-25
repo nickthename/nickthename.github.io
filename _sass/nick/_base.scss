@@ -330,3 +330,20 @@ h2 {
         color: #2a7ae26e;
     }
 }
+h3 {
+    &[id] > a {
+        display: none;
+    }
+    &[id]:hover > a {
+        display: inline;
+        color: #2a7ae26e;
+    }
+}h4 {
+    &[id] > a {
+        display: none;
+    }
+    &[id]:hover > a {
+        display: inline;
+        color: #c6c9cb;
+    }
+}

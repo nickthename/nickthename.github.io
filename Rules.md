@@ -49,33 +49,6 @@ lose their last stock simultaneously, a 1 stock tiebreaker will be played with t
 limit equal to the regular time limit divided by the regular number of stocks,
 rounded up.
 
-#### Controllers
-
- All controllers are subject to the following restrictions:
- - Button counts must not exceed the number on the Hori Mini Pad. This
- means a maximum of one each of A, B, L, R, and Start buttons, two Z
- buttons, and four C buttons.
- - Joystick inputs may be performed with either 1 Joystick, or 4 digital
- buttons/keys mapped to each of cardinal directions left, right, up, and
- down. Combinations of the two or additional input methods are not
- permitted.
- - Macros are not permitted. This includes "C-sticks" combining a joystick
- input with an attack, and any input that performs multiple functions,
- modifies another button, or otherwise does not act as a 1:1 mapping to a
- button on an original N64 controller/Hori mini pad. The game's built-in
- functionality of the R button does not fall under this rule.
- - Angle modifiers, tilt keys, and any other modifier key or input that
- adjusts joystick inputs, such as those on Melee-style "Box" controllers,
- are not permitted.
-
-Any other external adapters outside of the ones mentioned here are
- subject to the TO's discretion.
- Violation of above rules will result in immediate disqualification from an
- event and all previous wins in the event are forfeited. Examples of legal
- controllers are, but not limited to, the original N64 controller, Hori Mini
- Pad, GameCube controller, and Xbox/keyboard/other wired input devices
- as long as they meet the restrictions above.
-
 #### Stalling
  Excessive unwillingness to engage the opponent is disallowed at the risk
  of being forced to forfeit the match by the TO. If there is no movement
@@ -200,6 +173,34 @@ In Doubles, Players may not switch controllers with their teammate.
 #### Missing Teammate Clause
 If a Player’s teammate is not present for a match, that Player may not replace
 their teammate with a CPU Player. They may not play without a teammate.
+
+### Controller Rules
+
+ All controllers are subject to the following restrictions:
+ - Button counts must not exceed the number on the Hori Mini Pad. This
+ means a maximum of one each of A, B, L, R, and Start buttons, two Z
+ buttons, and four C buttons.
+ - Joystick inputs may be performed with either 1 Joystick, or 4 digital
+ buttons/keys mapped to each of cardinal directions left, right, up, and
+ down. Combinations of the two or additional input methods are not
+ permitted.
+ - Macros are not permitted. This includes "C-sticks" combining a joystick
+ input with an attack, and any input that performs multiple functions,
+ modifies another button, or otherwise does not act as a 1:1 mapping to a
+ button on an original N64 controller/Hori mini pad. The game's built-in
+ functionality of the R button does not fall under this rule.
+ - Angle modifiers, tilt keys, and any other modifier key or input that
+ adjusts joystick inputs, such as those on Melee-style "Box" controllers,
+ are not permitted.
+
+Any other external adapters outside of the ones mentioned here are
+ subject to the TO's discretion.
+ Violation of above rules will result in immediate disqualification from an
+ event and all previous wins in the event are forfeited. Examples of legal
+ controllers are, but not limited to, the original N64 controller, Hori Mini
+ Pad, GameCube controller, and Xbox/keyboard/other wired input devices
+ as long as they meet the restrictions above.
+
 
 ### Event Rules
 

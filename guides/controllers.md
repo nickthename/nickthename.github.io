@@ -95,10 +95,10 @@ Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) ha
 
 Taostyx has created multiple replacement parts, including their own steel bowls and a variety of joystick caps. They've also released metal buttons and bronze gear teeth available on their [shapeways](https://www.shapeways.com/shops/alinktotao). Reviews in the Smash community so far are scarce. More information at [https://taostyx64.com/](https://taostyx64.com).
 
-### Koomba64
-[![Komba sticks](/guides/img/controllers/koomba_wide.png)](https://koomba64.com/)
+### Koomba Components {#koomba}
+[![Komba sticks](/guides/img/controllers/koomba_wide.jpg)](https://koomba64.com/)
 
-[Koomba64](https://koomba64.com/) is a relatively new project creating replacement sticks and bowls out of multiple materials. In addition to steel/titanium/brass, they offer parts made of the cheaper and lighter delrin plastic. Their parts go in and out of stock, you can follow their progress on their [Twitter](https://x.com/KoombaC) and [Discord](https://discord.com/invite/ue4F5rDCkK).
+[Koomba](https://koomba64.com/) is a relatively new project creating replacement sticks and bowls out of multiple materials. In addition to steel/titanium/brass, they offer parts made of the cheaper and lighter delrin plastic. Their parts go in and out of stock, you can follow their progress on their [Twitter](https://x.com/KoombaC) and [Discord](https://discord.com/invite/ue4F5rDCkK).
 
 ## Other replacement parts
 

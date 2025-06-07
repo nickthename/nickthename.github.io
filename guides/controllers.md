@@ -95,6 +95,11 @@ Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) ha
 
 Taostyx has created multiple replacement parts, including their own steel bowls and a variety of joystick caps. They've also released metal buttons and bronze gear teeth available on their [shapeways](https://www.shapeways.com/shops/alinktotao). Reviews in the Smash community so far are scarce. More information at [https://taostyx64.com/](https://taostyx64.com).
 
+### Koomba64
+[![Komba sticks](/guides/img/controllers/koomba_wide.png)](https://koomba64.com/)
+
+[Koomba64](https://koomba64.com/) is a relatively new project creating replacement sticks and bowls out of multiple materials. In addition to steel/titanium/brass, they offer parts made of the cheaper and lighter delrin plastic. Their parts go in and out of stock, you can follow their progress on their [Twitter](https://x.com/KoombaC) and [Discord](https://discord.com/invite/ue4F5rDCkK).
+
 ## Other replacement parts
 
 ### Kitsch-Bent Parts
@@ -114,11 +119,6 @@ Injection moulded gears. More expensive than Kitsch-Bent gears, but have recieve
 California Smash player eL maN has experimented with various 3D printed and CNC milled replacement parts, such as thinner plastic sticks, brass gears, and brass bowl inserts. His projects have started to catch on as a more affordable way to imitate the SteelStick’s durability and feel.
 
 His latest work can be found on his [Twitter](https://twitter.com/el_man_ton) and website, <https://elman64.com/>
-
-### ReTech Parts
-[![ReTech Stick](/guides/img/controllers/retech.jpg)](https://www.retechmn.com/shop)
-
-The [ReTech](https://www.retechmn.com/shop) project developed a variety of replacement parts, including bowls and sticks, but is currently defunct, and haven't fulfilled all orders.  Follow them at [@retechmn](https://twitter.com/retechmn) on Twitter for updates on their progress.
 
 ## GC-Style Replacement Stick
 ![Derek stick 1](/guides/img/controllers/derekstick1.png){:width="45%"}

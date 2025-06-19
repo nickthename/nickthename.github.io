@@ -9,7 +9,7 @@ Me: Do you know how to DI?
 Them: Yeah, but I don't really implement it
 Me: Oh, you should try practicing it more
 ```
-I've had this conversation 20+ times at this point, so I figured it's about time to write something aimed at these players. The thing about DI is that it's a very different skill from the rest of the game, so without deliberately putting time towards it, you'll simply never learn it. 
+I've had this conversation 20+ times at this point, so I figured it's about time to write something aimed at these players. The thing about DI is that it's a very different skill from the rest of the game, so without deliberately putting time towards it, you'll simply never learn it.
 
 This is bad enough, but it's made worse by the presence of many local scenes where few or none of the players actually use it well. When none of your frequent opponents DI, not only do you not learn how to play against it, but the huge impact it has on the game isn't obvious. However, this is something **a single player can have a huge impact on**. By practicing DI, you'll be helping yourself improve, but also be helping your community improve as a whole.
 
@@ -17,17 +17,19 @@ This guide is divided into two parts: **technique**, which outlines what I feel 
 
 ## DI Technique
 
-Techniques for performing DI fall into two groups: 
+> **tl;dr DI left and right [like this](https://www.youtube.com/watch?v=O8F13WU6ERY) ![](/guides/img/youtube-logo.png){:width="20" }. DI up and down [like this](https://www.youtube.com/watch?v=oUV8toQngWs) ![](/guides/img/youtube-logo.png){:width="20" }**. Practice a lot!
+
+Techniques for performing DI fall into two groups:
 * Smash DI, which involves quickly hitting the stick in the direction you want to travel, and returning it to center in between each hit
 * Slide DI, which involves quickly sliding the stick up and down across a cardinal direction
 
-Of the two, slide DI gives the most powerful DI in terms of movement distance, but this doesn't mean the smash DI is useless, as we'll see. 
+Of the two, slide DI gives the most powerful DI in terms of movement distance, but this doesn't mean the smash DI is useless, as we'll see.
 
 One tricky element of DI is that using it often requires switching hand position or grip, which can be difficult to switch to in the middle of a skirmish and to act immediately after. For this reason, I suggest using the following 3 different DI techniques, based on the type of move you're hit with.
 
 **Technique 1** - Simple Smash DI
 
-This technique is extremely straightforward, just hit the stick in the direction you want to move when you get hit. This is most useful when you're hit by a move you don't expect in advance, or when you don't need to move very far. The two most common cases for this are when hit by a quick drill unexpectedly, since you won't have time to switch grip to a better type of DI but have enough time for multiple smash inputs, and ledge DI during recovery, where you don't need much distance but might not be able to predict your opponent's attack. 
+This technique is extremely straightforward, just hit the stick in the direction you want to move when you get hit. This is most useful when you're hit by a move you don't expect in advance, or when you don't need to move very far. The two most common cases for this are when hit by a quick drill unexpectedly, since you won't have time to switch grip to a better type of DI but have enough time for multiple smash inputs, and ledge DI during recovery, where you don't need much distance but might not be able to predict your opponent's attack.
 
 **Technique 2** - Wank DI
 
@@ -52,10 +54,10 @@ When it comes to DI, the issue most players struggle with isn't performing the D
 Once you know a skill exists, you need to go through three stages to master it:
 
 1. Conscious Incompetence   <--- You are here
-2. Conscious Competence 
+2. Conscious Competence
 3. Unconscious Competence
 
-The goal is to get to Unconscious Competence at the bottom, but to get there, you need to spend a long time consciously performing good DI. What this means in practice is that you need to DI in every game you play. Note that I didn't say "every serious game against an opponent your level when you're not tired", I said **every game**. When you play a level 9 CPU, DI its random downsmashes. When you're playing against the guy down the street that thinks kirby's down-b is the best move in the game, you should be using DI. When you're blazed as hell playing falcon dittos with your best friend at 2AM, DI his terrible falcon punch setups. 
+The goal is to get to Unconscious Competence at the bottom, but to get there, you need to spend a long time consciously performing good DI. What this means in practice is that you need to DI in every game you play. Note that I didn't say "every serious game against an opponent your level when you're not tired", I said **every game**. When you play a level 9 CPU, DI its random downsmashes. When you're playing against the guy down the street that thinks kirby's down-b is the best move in the game, you should be using DI. When you're blazed as hell playing falcon dittos with your best friend at 2AM, DI his terrible falcon punch setups.
 
 Your goal is to teach your muscle memory that DI is something you should always be doing and shouldn't have to think about it, you should just do it as soon as you see that attack about to hit you. Any time you play that you're not actively trying to DI is going against that goal. Yes, even if you're really tired.
 
@@ -65,7 +67,7 @@ One good way to get into the habit of consciously DIing, especially when first l
 
 In general, you'll want to DI away from your opponent, to avoid followups. Some moves and combos are best dealt with by DIing one specific way, which you'll mostly need to find through experimentation, but here's a few guidelines:
 
-**Light** characters, like Kirby and Puff, can get a lot of mileage out of upward DI. Some characters have their entire combo games shutdown if you DI their initial launcher up well enough. Fox's combos are particularly vulnerable to this, made even better by the fact that his high speed allows him to follow horizontal DI pretty easily. Vertical DI is also the key to escaping his silly jab walks. 
+**Light** characters, like Kirby and Puff, can get a lot of mileage out of upward DI. Some characters have their entire combo games shutdown if you DI their initial launcher up well enough. Fox's combos are particularly vulnerable to this, made even better by the fact that his high speed allows him to follow horizontal DI pretty easily. Vertical DI is also the key to escaping his silly jab walks.
 
 **Platforms** are key to escaping combos in a variety of ways. Ness and Samus rely on keeping their opponent on platforms for techchases, so DI their spikes away from the platform to reach safety. Jigglypuff is similar. Although she doesn't rely on techchases, her slow ground movement means she'd much prefer her targets stayed in place on a small platform she can easily cover with utilt and grab. Meanwhile, Kirby and Falcon players will often drop their prepared combos if you can DI towards a platform to land on.
 

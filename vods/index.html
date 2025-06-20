@@ -13,6 +13,8 @@
     .filter-group input { padding:.6rem .8rem; font-size:1rem; border:1px solid #bbb; border-radius:.5rem; }
     .filter-group select:focus,
     .filter-group input:focus { border-color:#888; }
+    .clearable { position: relative; }
+    .clearable input { width: 100%; box-sizing: border-box; }
     table { border-collapse:collapse; width:100%; font-size:.95rem; }
     thead th { background:#dcd9d9; position:sticky; top:0; z-index:1; }
     th, td { border:1px solid #ddd; padding:.6rem; text-align:left; white-space:nowrap; }
@@ -112,14 +114,14 @@
   <div class="filters">
     <div class="filter-group">
       <label for="eventFilterInput">Event:</label>
-      <div class="searchable-select" id="eventSelect">
+      <div class="searchable-select clearable" id="eventSelect">
         <input
           type="text"
           id="eventFilterInput"
           placeholder="All events"
           autocomplete="off"
         />
-        <button class="clear-btn" id="clearEvent">×</button>
+        <button class="clear-btn" data-target="eventFilterInput" id="clearEvent">×</button>
         <ul class="options"></ul>
       </div>
     </div>
@@ -133,11 +135,17 @@
     </div>
     <div class="filter-group">
       <label for="player1Filter">Player 1:</label>
-      <input type="text" id="player1Filter" placeholder="Search player 1"/>
+      <div class="clearable">
+        <input type="text" id="player1Filter" placeholder="Search player 1"/>
+        <button class="clear-btn" data-target="player1Filter">×</button>
+      </div>
     </div>
     <div class="filter-group">
       <label for="player2Filter">Player 2:</label>
-      <input type="text" id="player2Filter" placeholder="Search player 2"/>
+      <div class="clearable">
+        <input type="text" id="player2Filter" placeholder="Search player 2"/>
+        <button class="clear-btn" data-target="player2Filter">×</button>
+      </div>
     </div>
     <div class="filter-group">
       <label for="dateFromFilter">Date From:</label>
@@ -183,6 +191,22 @@
           nextPage      = document.getElementById('nextPage'),
           pageInfo      = document.getElementById('pageInfo');
           clearBtn      = document.getElementById('clearEvent');
+
+
+    document.querySelectorAll('.clear-btn').forEach(btn => {
+      const input = document.getElementById(btn.dataset.target);
+      // show when there’s text
+      input.addEventListener('input', () => {
+        btn.style.display = input.value ? 'block' : 'none';
+      });
+      // clear + re‑apply filters
+      btn.addEventListener('click', () => {
+        input.value = '';
+        btn.style.display = 'none';
+        applyFilters();
+      });
+    });
+
 
     // read all filter values into an object
     function getFilterParams() {
@@ -341,6 +365,13 @@
       if (qs.has("p2"))     player2Filter.value   = qs.get("p2");
       if (qs.has("from"))   dateFromFilter.value  = qs.get("from");
       if (qs.has("to"))     dateToFilter.value    = qs.get("to");
+
+      // Show any clear‑btns for prefilled inputs
+      document.querySelectorAll('.clear-btn').forEach(btn => {
+        const input = document.getElementById(btn.dataset.target);
+        btn.style.display = input.value ? 'block' : 'none';
+      });
+
       applyFilters(true);
 
       // searchable-select toggling & filtering

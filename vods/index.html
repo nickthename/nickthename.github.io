@@ -20,39 +20,64 @@
     tbody tr:hover { background:#f5faff; }
     .pagination { margin-top:1rem; text-align:center; }
     .pagination button { margin:0 .2rem; padding:.4rem .8rem; }
+    /* Old mobile CSS
     @media(max-width:600px){
-      .filters { flex-direction:column; }
+      .filters {
+        flex-direction:column;
+        gap: 0.5rem;
+      }
       table { display:block; overflow-x:auto; }
     }
-		.searchable-select {
-			position: relative;
-			font-family: inherit;
-		}
+    */
+    @media (max-width: 600px) {
+      .filters {
+        /* turn off flex-gap stacking quirks on mobile */
+        display: block;
+        gap: 0;                /* disable the old gap */
+      }
+      /* stack as normal block-level divs with controlled spacing */
+      .filter-group {
+        display: block;
+        margin-bottom: 0.5rem; /* adjust this to taste */
+      }
+      /* kill the extra bottom‑margin on the last one */
+      .filter-group:last-child {
+        margin-bottom: 0;
+      }
 
-		.searchable-select input {
-			width: 100%;
-			padding: 0.6rem 0.8rem;
-			font-size: 1rem;
-			border: 1px solid #bbb;
-			border-radius: 0.5rem;
-			outline: none;
-			box-sizing: border-box;
-		}
+      /* keep table horizontal scroll */
+      table { display: block; overflow-x: auto; }
+    }
 
-		.clear-btn {
-			position: absolute;
-			top: 50%;                    /* vertically center */
-			right: 0.8rem;               /* inset from right edge of input */
-			transform: translateY(-50%); /* shift up by half its height */
-			background: transparent;
-			border: none;
-			font-size: 2rem;
-			cursor: pointer;
-			display: none;
-			padding: 0;
-			line-height: 1;
-			opacity: 50%;
-		}
+    .searchable-select {
+      position: relative;
+      font-family: inherit;
+    }
+
+    .searchable-select input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #bbb;
+      border-radius: 0.5rem;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .clear-btn {
+      position: absolute;
+      top: 50%;                    /* vertically center */
+      right: 0.8rem;               /* inset from right edge of input */
+      transform: translateY(-50%); /* shift up by half its height */
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      display: none;
+      padding: 0;
+      line-height: 1;
+      opacity: 50%;
+    }
 
     .searchable-select .options {
       position: absolute;
@@ -71,33 +96,33 @@
       display: none;
     }
 
-		.searchable-select .options li {
-			padding: 0.5rem;
-			cursor: pointer;
-		}
+    .searchable-select .options li {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
 
-		.searchable-select .options li:hover {
-			background: #f0f0f0;
-		}
+    .searchable-select .options li:hover {
+      background: #f0f0f0;
+    }
 
   </style>
 </head>
 <body>
   <h1>Smash 64 Vod Search</h1>
   <div class="filters">
-		<div class="filter-group">
-			<label for="eventFilterInput">Event:</label>
-			<div class="searchable-select" id="eventSelect">
-				<input
-					type="text"
-					id="eventFilterInput"
-					placeholder="All events"
-					autocomplete="off"
-				/>
-				<button class="clear-btn" id="clearEvent">×</button>
-				<ul class="options"></ul>
-			</div>
-		</div>
+    <div class="filter-group">
+      <label for="eventFilterInput">Event:</label>
+      <div class="searchable-select" id="eventSelect">
+        <input
+          type="text"
+          id="eventFilterInput"
+          placeholder="All events"
+          autocomplete="off"
+        />
+        <button class="clear-btn" id="clearEvent">×</button>
+        <ul class="options"></ul>
+      </div>
+    </div>
     <div class="filter-group">
       <label for="char1Filter">Character 1:</label>
       <select id="char1Filter"><option value="">All</option></select>
@@ -157,7 +182,35 @@
           prevPage      = document.getElementById('prevPage'),
           nextPage      = document.getElementById('nextPage'),
           pageInfo      = document.getElementById('pageInfo');
-					clearBtn      = document.getElementById('clearEvent');
+          clearBtn      = document.getElementById('clearEvent');
+
+    // read all filter values into an object
+    function getFilterParams() {
+      return {
+        event:   eventInput.value,
+        char1:   char1Filter.value,
+        char2:   char2Filter.value,
+        p1:      player1Filter.value,
+        p2:      player2Filter.value,
+        from:    dateFromFilter.value,
+        to:      dateToFilter.value
+      };
+    }
+
+    function updateURL() {
+      const params = new URLSearchParams();
+      // only add non‑empty values
+      Object.entries(getFilterParams()).forEach(([k, v]) => {
+        if (v) params.set(k, v);
+      });
+
+      const qs = params.toString();
+      history.replaceState(
+        null,
+        "",
+        qs ? `?${qs}` : window.location.pathname
+      );
+    }
 
     function parseDate(str){
       const [m,d,y]=str.split('-').map(n=>+n);
@@ -190,7 +243,7 @@
         li.textContent = ev;
         li.addEventListener('click', () => {
           eventInput.value = ev;
-					clearBtn.style.display = 'block'; // ← new
+          clearBtn.style.display = 'block'; // ← new
           optionsUL.style.display = 'none';
           applyFilters();
         });
@@ -208,7 +261,8 @@
       });
     }
 
-    function applyFilters(){
+    function applyFilters(skipURLUpdate = false){
+      console.log(skipURLUpdate);
       const ev = eventInput.value,
             c1 = char1Filter.value, c2 = char2Filter.value,
             p1v=player1Filter.value.toLowerCase(),
@@ -245,6 +299,7 @@
 
       currentPage = 1;
       renderPage();
+      if (!skipURLUpdate) updateURL();
     }
 
     function renderPage(){
@@ -278,8 +333,15 @@
     document.addEventListener('DOMContentLoaded', async()=>{
       rawData = await loadCSV();
       populateFilters(rawData);
-      filtered = [...rawData];
-      renderPage();
+      const qs = new URLSearchParams(window.location.search);
+      if (qs.has("event"))  eventInput.value      = qs.get("event");
+      if (qs.has("char1"))  char1Filter.value     = qs.get("char1");
+      if (qs.has("char2"))  char2Filter.value     = qs.get("char2");
+      if (qs.has("p1"))     player1Filter.value   = qs.get("p1");
+      if (qs.has("p2"))     player2Filter.value   = qs.get("p2");
+      if (qs.has("from"))   dateFromFilter.value  = qs.get("from");
+      if (qs.has("to"))     dateToFilter.value    = qs.get("to");
+      applyFilters(true);
 
       // searchable-select toggling & filtering
       eventInput.addEventListener('focus', ()=> optionsUL.style.display = 'block');
@@ -292,18 +354,18 @@
           li.style.display = li.textContent.toLowerCase().includes(val) ? 'block' : 'none';
         });
       }));
-			clearBtn.addEventListener('click', () => {
-				eventInput.value = '';
-				clearBtn.style.display = 'none';
-				applyFilters();
-			});
+      clearBtn.addEventListener('click', () => {
+        eventInput.value = '';
+        clearBtn.style.display = 'none';
+        applyFilters();
+      });
 
 
       // other filters
       [char1Filter, char2Filter, dateFromFilter, dateToFilter]
-        .forEach(el=>el.addEventListener('change', applyFilters));
+        .forEach(el=>el.addEventListener('change', () => applyFilters()));
       [player1Filter, player2Filter]
-        .forEach(el=>el.addEventListener('input', debounce(applyFilters)));
+        .forEach(el => el.addEventListener('input', debounce(() => applyFilters())));
 
       // pagination
       prevPage.addEventListener('click', ()=>{

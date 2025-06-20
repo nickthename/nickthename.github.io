@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Smash 64 Vod Search</title>
+  <style>
+    body { font-family: sans-serif; padding:1rem; line-height: 1.4;}
+    .filters { display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1rem; }
+    .filter-group { flex:1 1 150px; display:flex; flex-direction:column; }
+    .filter-group label { font-size:1rem; margin-bottom:0.3rem; }
+    .filter-group select,
+    .filter-group input { padding:.6rem .8rem; font-size:1rem; border:1px solid #bbb; border-radius:.5rem; }
+    .filter-group select:focus,
+    .filter-group input:focus { border-color:#888; }
+    table { border-collapse:collapse; width:100%; font-size:.95rem; }
+    thead th { background:#dcd9d9; position:sticky; top:0; z-index:1; }
+    th, td { border:1px solid #ddd; padding:.6rem; text-align:left; white-space:nowrap; }
+    tbody tr:nth-child(even) { background:#fcfcfc; }
+    tbody tr:hover { background:#f5faff; }
+    .pagination { margin-top:1rem; text-align:center; }
+    .pagination button { margin:0 .2rem; padding:.4rem .8rem; }
+    @media(max-width:600px){
+      .filters { flex-direction:column; }
+      table { display:block; overflow-x:auto; }
+    }
+		.searchable-select {
+			position: relative;
+			font-family: inherit;
+		}
+
+		.searchable-select input {
+			width: 100%;
+			padding: 0.6rem 0.8rem;
+			font-size: 1rem;
+			border: 1px solid #bbb;
+			border-radius: 0.5rem;
+			outline: none;
+			box-sizing: border-box;
+		}
+
+		.clear-btn {
+			position: absolute;
+			top: 50%;                    /* vertically center */
+			right: 0.8rem;               /* inset from right edge of input */
+			transform: translateY(-50%); /* shift up by half its height */
+			background: transparent;
+			border: none;
+			font-size: 2rem;
+			cursor: pointer;
+			display: none;
+			padding: 0;
+			line-height: 1;
+			opacity: 50%;
+		}
+
+    .searchable-select .options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 300px;       /* ↑ taller list */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 1px solid #bbb;
+      border-top: none;
+      background: #fff;
+      overflow-y: auto;
+      z-index: 10;
+      display: none;
+    }
+
+		.searchable-select .options li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		.searchable-select .options li:hover {
+			background: #f0f0f0;
+		}
+
+  </style>
+</head>
+<body>
+  <h1>Smash 64 Vod Search</h1>
+  <div class="filters">
+		<div class="filter-group">
+			<label for="eventFilterInput">Event:</label>
+			<div class="searchable-select" id="eventSelect">
+				<input
+					type="text"
+					id="eventFilterInput"
+					placeholder="All events"
+					autocomplete="off"
+				/>
+				<button class="clear-btn" id="clearEvent">×</button>
+				<ul class="options"></ul>
+			</div>
+		</div>
+    <div class="filter-group">
+      <label for="char1Filter">Character 1:</label>
+      <select id="char1Filter"><option value="">All</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="char2Filter">Character 2:</label>
+      <select id="char2Filter"><option value="">All</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="player1Filter">Player 1:</label>
+      <input type="text" id="player1Filter" placeholder="Search player 1"/>
+    </div>
+    <div class="filter-group">
+      <label for="player2Filter">Player 2:</label>
+      <input type="text" id="player2Filter" placeholder="Search player 2"/>
+    </div>
+    <div class="filter-group">
+      <label for="dateFromFilter">Date From:</label>
+      <input type="date" id="dateFromFilter"/>
+    </div>
+    <div class="filter-group">
+      <label for="dateToFilter">Date To:</label>
+      <input type="date" id="dateToFilter"/>
+    </div>
+  </div>
+
+  <table id="vodTable">
+    <thead>
+      <tr>
+        <th>Event</th><th>Round</th><th>Player 1</th><th>Character 1</th>
+        <th>Player 2</th><th>Character 2</th><th>Date</th><th>VOD</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="pagination">
+    <button id="prevPage">« Prev</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage">Next »</button>
+  </div>
+
+  <script>
+    const ROWS_PER_PAGE = 50;
+    let rawData = [], filtered = [], currentPage = 1;
+
+    // cache filter elements
+    const eventInput    = document.getElementById('eventFilterInput'),
+          optionsUL     = document.querySelector('#eventSelect .options'),
+          char1Filter   = document.getElementById('char1Filter'),
+          char2Filter   = document.getElementById('char2Filter'),
+          player1Filter = document.getElementById('player1Filter'),
+          player2Filter = document.getElementById('player2Filter'),
+          dateFromFilter= document.getElementById('dateFromFilter'),
+          dateToFilter  = document.getElementById('dateToFilter'),
+          tbody         = document.querySelector('#vodTable tbody'),
+          prevPage      = document.getElementById('prevPage'),
+          nextPage      = document.getElementById('nextPage'),
+          pageInfo      = document.getElementById('pageInfo');
+					clearBtn      = document.getElementById('clearEvent');
+
+    function parseDate(str){
+      const [m,d,y]=str.split('-').map(n=>+n);
+      return new Date(y,m-1,d);
+    }
+
+    async function loadCSV(){
+      const resp = await fetch('vods.csv');
+      const text = await resp.text();
+      return text.trim().split('\n').map(l=>l.split(',').map(s=>s.trim()))
+        .map(([event,round,p1,c1r,p2,c2r,date,url])=>({
+          event, round, p1,
+          c1:c1r.split(';').map(s=>s.trim()).filter(Boolean),
+          p2,  c2:c2r.split(';').map(s=>s.trim()).filter(Boolean),
+          date, dateObj:parseDate(date), url
+        }));
+    }
+
+    function populateFilters(data) {
+      const events = new Set(), chars = new Set();
+      data.forEach(d => {
+        events.add(d.event);
+        d.c1.forEach(c=>chars.add(c));
+        d.c2.forEach(c=>chars.add(c));
+      });
+
+      optionsUL.innerHTML = '';
+      [...events].sort().forEach(ev => {
+        const li = document.createElement('li');
+        li.textContent = ev;
+        li.addEventListener('click', () => {
+          eventInput.value = ev;
+					clearBtn.style.display = 'block'; // ← new
+          optionsUL.style.display = 'none';
+          applyFilters();
+        });
+        optionsUL.appendChild(li);
+      });
+
+      char1Filter.innerHTML = '<option value="">All</option>';
+      char2Filter.innerHTML = '<option value="">All</option>';
+      [...chars].sort().forEach(c => {
+        [char1Filter, char2Filter].forEach(sel => {
+          const opt = document.createElement('option');
+          opt.value = opt.textContent = c;
+          sel.appendChild(opt);
+        });
+      });
+    }
+
+    function applyFilters(){
+      const ev = eventInput.value,
+            c1 = char1Filter.value, c2 = char2Filter.value,
+            p1v=player1Filter.value.toLowerCase(),
+            p2v=player2Filter.value.toLowerCase(),
+            dfrom = dateFromFilter.value && new Date(dateFromFilter.value),
+            dto   = dateToFilter.value   && new Date(dateToFilter.value);
+
+      filtered = rawData.filter(d => {
+        // event match
+        if (ev && d.event !== ev) return false;
+
+        // character match (allow swapped)
+        let cm;
+        if (c1 && c2 && c1===c2) {
+          cm = d.c1.includes(c1) && d.c2.includes(c2);
+        } else {
+          const m1 = !c1 || d.c1.includes(c1) || d.c2.includes(c1);
+          const m2 = !c2 || d.c1.includes(c2) || d.c2.includes(c2);
+          cm = m1 && m2;
+        }
+        if (!cm) return false;
+
+        // player text match
+        const players = (d.p1 + ' ' + d.p2).toLowerCase();
+        if (p1v && !players.includes(p1v)) return false;
+        if (p2v && !players.includes(p2v)) return false;
+
+        // date match
+        if (dfrom && d.dateObj < dfrom) return false;
+        if (dto   && d.dateObj > dto)   return false;
+
+        return true;
+      });
+
+      currentPage = 1;
+      renderPage();
+    }
+
+    function renderPage(){
+      filtered.sort((a,b)=>b.dateObj - a.dateObj);
+      const start = (currentPage-1)*ROWS_PER_PAGE,
+            pageData = filtered.slice(start, start+ROWS_PER_PAGE);
+
+      tbody.innerHTML = pageData.map(d=>`
+        <tr>
+          <td>${d.event}</td><td>${d.round}</td><td>${d.p1}</td>
+          <td>${d.c1.join(', ')}</td><td>${d.p2}</td><td>${d.c2.join(', ')}</td>
+          <td>${d.date}</td>
+          <td><a href="https://www.youtube.com/watch?v=${d.url}" target="_blank">Watch</a></td>
+        </tr>
+      `).join('');
+
+      const totalPages = Math.max(1, Math.ceil(filtered.length/ROWS_PER_PAGE));
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevPage.disabled = currentPage===1;
+      nextPage.disabled = currentPage===totalPages;
+    }
+
+    function debounce(fn, delay=200){
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(()=>fn(...args), delay);
+      };
+    }
+
+    document.addEventListener('DOMContentLoaded', async()=>{
+      rawData = await loadCSV();
+      populateFilters(rawData);
+      filtered = [...rawData];
+      renderPage();
+
+      // searchable-select toggling & filtering
+      eventInput.addEventListener('focus', ()=> optionsUL.style.display = 'block');
+      document.addEventListener('click', e => {
+        if (!e.target.closest('#eventSelect')) optionsUL.style.display = 'none';
+      });
+      eventInput.addEventListener('input', debounce(()=>{
+        const val = eventInput.value.toLowerCase();
+        optionsUL.querySelectorAll('li').forEach(li=>{
+          li.style.display = li.textContent.toLowerCase().includes(val) ? 'block' : 'none';
+        });
+      }));
+			clearBtn.addEventListener('click', () => {
+				eventInput.value = '';
+				clearBtn.style.display = 'none';
+				applyFilters();
+			});
+
+
+      // other filters
+      [char1Filter, char2Filter, dateFromFilter, dateToFilter]
+        .forEach(el=>el.addEventListener('change', applyFilters));
+      [player1Filter, player2Filter]
+        .forEach(el=>el.addEventListener('input', debounce(applyFilters)));
+
+      // pagination
+      prevPage.addEventListener('click', ()=>{
+        if (currentPage>1) { currentPage--; renderPage(); }
+      });
+      nextPage.addEventListener('click', ()=>{
+        const max = Math.ceil(filtered.length/ROWS_PER_PAGE);
+        if (currentPage<max) { currentPage++; renderPage(); }
+      });
+    });
+  </script>
+</body>
+</html>
+

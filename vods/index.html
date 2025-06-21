@@ -297,14 +297,20 @@
         // event match
         if (ev && d.event !== ev) return false;
 
-        // character match (allow swapped)
         let cm;
-        if (c1 && c2 && c1===c2) {
-          cm = d.c1.includes(c1) && d.c2.includes(c2);
+        if (c1 && c2) {
+          // both filters set → require one-per-player, either order
+          const match12 = d.c1.includes(c1) && d.c2.includes(c2);
+          const match21 = d.c1.includes(c2) && d.c2.includes(c1);
+          cm = match12 || match21;
+        } else if (c1) {
+          // only first filter set → either player played it
+          cm = d.c1.includes(c1) || d.c2.includes(c1);
+        } else if (c2) {
+          // only second filter set → either player played it
+          cm = d.c1.includes(c2) || d.c2.includes(c2);
         } else {
-          const m1 = !c1 || d.c1.includes(c1) || d.c2.includes(c1);
-          const m2 = !c2 || d.c1.includes(c2) || d.c2.includes(c2);
-          cm = m1 && m2;
+          cm = true;  // no character filters
         }
         if (!cm) return false;
 

@@ -4,13 +4,33 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Smash 64 Vod Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.js"></script>
   <style>
-    body { font-family: sans-serif; padding:1rem; line-height: 1.4;}
-    .filters { display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1rem; }
-    .filter-group { flex:1 1 150px; display:flex; flex-direction:column; }
-    .filter-group label { font-size:1rem; margin-bottom:0.3rem; }
+    body { font-family: sans-serif; padding:1rem; line-height: 1.4; max-width: 1400px; margin: 0 auto; }
+
+    .main-layout {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .filters {
+      flex: 0 0 250px;
+    }
+
+    .filter-group {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .content-panel {
+      flex: 1;
+    }
+
+    .filter-group label { font-size:1rem; margin-bottom:0.3rem; display: block; }
     .filter-group select,
-    .filter-group input { padding:.6rem .8rem; font-size:1rem; border:1px solid #bbb; border-radius:.5rem; }
+    .filter-group input { padding:.6rem .8rem; font-size:1rem; border:1px solid #bbb; border-radius:.5rem; width: 100%; box-sizing: border-box; }
     .filter-group select:focus,
     .filter-group input:focus { border-color:#888; }
     .clearable { position: relative; }
@@ -22,33 +42,114 @@
     tbody tr:hover { background:#f5faff; }
     .pagination { margin-top:1rem; text-align:center; }
     .pagination button { margin:0 .2rem; padding:.4rem .8rem; }
-    /* Old mobile CSS
-    @media(max-width:600px){
-      .filters {
-        flex-direction:column;
+
+    @media (max-width: 800px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filters, .content-panel {
+        flex-basis: auto;
+        width: 100%;
+      }
+      table {
+        display: block;
+        width: 100%;
+      }
+      tbody tr td[data-label="Date"] { display: none; }
+      .date-in-event { display: block; margin-top: 0; margin-left: auto; color: #555; font-size: 0.9rem; }
+      .event-cell { display: flex; align-items: center; gap: 0.25rem; }
+      tbody tr td[data-label="Round"]:empty { display: none; }
+      thead { display: none; }
+      tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        padding: 0;
+      }
+      tbody tr td {
+        /* remove default cell borders, only horizontal dividers */
+        border: none;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        white-space: normal;
+        padding: 0.5rem;
+      }
+      tbody tr td:last-child { border-bottom: none; }
+      tbody tr td::before {
+        display: none;
+      }
+      .ss-main {
+        width: 100% !important;
+      }
+      .matchup-cell {
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 0.5rem;
       }
-      table { display:block; overflow-x:auto; }
+      /* center the entire matchup line within its card cell */
+      tbody tr td[data-label="Matchup"] {
+        justify-content: center;
+      }
+      tbody tr td[data-label="Round"] {
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #555;
+      }
+      /* VOD button mobile-only styling */
+      .vod-button {
+        display: block;
+        margin: 0.5rem auto 0 auto;
+        background: #e63946;
+        color: #fff;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.85rem;
+      }
     }
-    */
-    @media (max-width: 600px) {
-      .filters {
-        /* turn off flex-gap stacking quirks on mobile */
-        display: block;
-        gap: 0;                /* disable the old gap */
-      }
-      /* stack as normal block-level divs with controlled spacing */
-      .filter-group {
-        display: block;
-        margin-bottom: 0.5rem; /* adjust this to taste */
-      }
-      /* kill the extra bottom‑margin on the last one */
-      .filter-group:last-child {
-        margin-bottom: 0;
-      }
 
-      /* keep table horizontal scroll */
-      table { display: block; overflow-x: auto; }
+    @media (min-width: 801px) {
+      .date-in-event { display: none; }
+      /* center VS on desktop with grid layout */
+      .matchup-cell {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+      }
+      /* Desktop VS alignment override */
+      #vodTable .matchup-cell {
+        display: grid !important;
+        grid-template-columns: auto auto auto !important;
+        align-items: center !important;
+      }
+      #vodTable .matchup-cell > .player-info:first-child {
+        justify-self: start !important;
+      }
+      #vodTable .matchup-cell > .versus {
+        justify-self: center !important;
+      }
+      #vodTable .matchup-cell > .player-info:last-child {
+        justify-self: end !important;
+      }
+      /* enforce VS centering via absolute positioning */
+      #vodTable .matchup-cell {
+        position: relative !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      #vodTable .matchup-cell .versus {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+      }
     }
 
     .searchable-select {
@@ -107,75 +208,152 @@
       background: #f0f0f0;
     }
 
+    .matchup-cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1em;
+    }
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .player-info .chars {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .player-info img {
+      height: 24px;
+    }
+    .versus { font-weight: bold; margin: 0 0.5rem; }
+
+    /* Slim Select custom styles to match native look */
+    .ss-main, .ss-content {
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #bbb;
+      padding: 0;
+      min-height: 40px;
+    }
+    .ss-content {
+      border-radius: 0 !important; /* Square corners for dropdown */
+      font-size: 16px !important;
+      color: #000 !important;
+      animation: none !important;
+      transition: none !important;
+      max-height: 600px !important; /* Increase dropdown height */
+    }
+    .ss-content .ss-option {
+      padding: 6px !important;
+      color: #000 !important;
+      font-size: 16px !important;
+    }
+    .ss-main .ss-single-selected img,
+    .ss-content .ss-option img {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .ss-main .ss-placeholder {
+      color: #888;
+    }
+    .ss-main {
+      padding: 0.6rem 0.8rem;
+      color: #000;
+    }
+
+    .ss-main.placeholder-selected {
+      color: #888;
+    }
   </style>
 </head>
 <body>
   <h1>Smash 64 Vod Search</h1>
-  <div class="filters">
-    <div class="filter-group">
-      <label for="eventFilterInput">Event:</label>
-      <div class="searchable-select clearable" id="eventSelect">
-        <input
-          type="text"
-          id="eventFilterInput"
-          placeholder="All events"
-          autocomplete="off"
-        />
-        <button class="clear-btn" data-target="eventFilterInput" id="clearEvent">×</button>
-        <ul class="options"></ul>
+  <div class="main-layout">
+    <div class="filters">
+      <div class="filter-group">
+        <label for="player1Filter">Player 1</label>
+        <div class="clearable">
+          <input type="text" id="player1Filter" placeholder="Any player" />
+          <button class="clear-btn" data-target="player1Filter">×</button>
+        </div>
+        <label for="char1Filter" style="margin-top: 0.5rem;">using</label>
+        <select id="char1Filter"><option value="">Any character</option></select>
       </div>
-    </div>
-    <div class="filter-group">
-      <label for="char1Filter">Character 1:</label>
-      <select id="char1Filter"><option value="">All</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="char2Filter">Character 2:</label>
-      <select id="char2Filter"><option value="">All</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="player1Filter">Player 1:</label>
-      <div class="clearable">
-        <input type="text" id="player1Filter" placeholder="Search player 1"/>
-        <button class="clear-btn" data-target="player1Filter">×</button>
-      </div>
-    </div>
-    <div class="filter-group">
-      <label for="player2Filter">Player 2:</label>
-      <div class="clearable">
-        <input type="text" id="player2Filter" placeholder="Search player 2"/>
-        <button class="clear-btn" data-target="player2Filter">×</button>
-      </div>
-    </div>
-    <div class="filter-group">
-      <label for="dateFromFilter">Date From:</label>
-      <input type="date" id="dateFromFilter"/>
-    </div>
-    <div class="filter-group">
-      <label for="dateToFilter">Date To:</label>
-      <input type="date" id="dateToFilter"/>
-    </div>
-  </div>
 
-  <table id="vodTable">
-    <thead>
-      <tr>
-        <th>Event</th><th>Round</th><th>Player 1</th><th>Character 1</th>
-        <th>Player 2</th><th>Character 2</th><th>Date</th><th>VOD</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+      <div style="text-align: center; margin: 1rem 0; font-weight: bold; font-size: 1.0rem;">VS</div>
 
-  <div class="pagination">
-    <button id="prevPage">« Prev</button>
-    <span id="pageInfo"></span>
-    <button id="nextPage">Next »</button>
+      <div class="filter-group">
+        <label for="player2Filter">Player 2</label>
+        <div class="clearable">
+          <input type="text" id="player2Filter" placeholder="Any player" />
+          <button class="clear-btn" data-target="player2Filter">×</button>
+        </div>
+        <label for="char2Filter" style="margin-top: 0.5rem;">using</label>
+        <select id="char2Filter"><option value="">Any character</option></select>
+      </div>
+      <div class="filter-group">
+        <label for="eventFilterInput">Event:</label>
+        <div class="searchable-select clearable" id="eventSelect">
+          <input
+            type="text"
+            id="eventFilterInput"
+            placeholder="All events"
+            autocomplete="off"
+          />
+          <button class="clear-btn" data-target="eventFilterInput" id="clearEvent">×</button>
+          <ul class="options"></ul>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label for="dateFromFilter">From:</label>
+        <input type="date" id="dateFromFilter"/>
+      </div>
+      <div class="filter-group">
+        <label for="dateToFilter">To:</label>
+        <input type="date" id="dateToFilter"/>
+      </div>
+    </div>
+
+    <div class="content-panel">
+      <table id="vodTable">
+        <thead>
+          <tr>
+            <th>Event</th><th>Round</th><th>Matchup</th>
+            <th>Date</th><th>VOD</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="pagination">
+        <button id="prevPage">« Prev</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage">Next »</button>
+      </div>
+    </div>
   </div>
 
   <script>
     const ROWS_PER_PAGE = 50;
     let rawData = [], filtered = [], currentPage = 1;
+
+    const CHAR_IMAGES = {
+      "Captain Falcon": "img/chars/captain-falcon.png",
+      "Donkey Kong":    "img/chars/dk.png",
+      "Fox":            "img/chars/fox.png",
+      "Jigglypuff":     "img/chars/jigglypuff.png",
+      "Kirby":          "img/chars/kirby.png",
+      "Link":           "img/chars/link.png",
+      "Luigi":          "img/chars/luigi.png",
+      "Mario":          "img/chars/mario.png",
+      "Ness":           "img/chars/ness.png",
+      "Pikachu":        "img/chars/pikachu.png",
+      "Samus":          "img/chars/samus.png",
+      "Yoshi":          "img/chars/yoshi.png",
+    };
 
     // cache filter elements
     const eventInput    = document.getElementById('eventFilterInput'),
@@ -195,7 +373,7 @@
 
     document.querySelectorAll('.clear-btn').forEach(btn => {
       const input = document.getElementById(btn.dataset.target);
-      // show when there’s text
+      // show when there's text
       input.addEventListener('input', () => {
         btn.style.display = input.value ? 'block' : 'none';
       });
@@ -219,6 +397,57 @@
         from:    dateFromFilter.value,
         to:      dateToFilter.value
       };
+    }
+
+    function getRoundScore(round) {
+      const r = round.toLowerCase();
+
+      const priorities = [
+        { pattern: "grand final", score: 100 },
+        { pattern: "losers final", score: 98 },
+        { pattern: "losers semi", score: 96 },
+        { pattern: "winners final", score: 94 },
+        { pattern: "losers quarter", score: 93 },
+        { pattern: "losers top 8", score: 92 },
+        { pattern: "losers round 5", score: 91 },
+        { pattern: "losers round 4", score: 90 },
+        { pattern: "losers round 3", score: 89 },
+        { pattern: "winners semi", score: 88 },
+        { pattern: "winners top 8", score: 87 },
+        { pattern: "losers round 2", score: 86 },
+        { pattern: "winners quarter", score: 84 },
+        { pattern: "winners top 16", score: 83 },
+        { pattern: "losers round 1", score: 82 },
+        { pattern: "losers top 16", score: 81 },
+        { pattern: "winners round 1", score: 80 },
+        { pattern: "top 16", score: 79 },
+      ];
+
+      for (const p of priorities) {
+        if (r.includes(p.pattern)) return p.score;
+      }
+
+      if (r.startsWith("top ")) {
+        const topNum = parseInt(r.substring(4), 10);
+        if (!isNaN(topNum)) {
+          // give Top 8 a higher score than Top 16, etc.
+          return 80 - topNum / 8;
+        }
+      }
+
+      if (r.startsWith("winners")) return 60;
+      if (r.startsWith("losers")) return 50;
+
+      if (r.includes("pool")) {
+        const division = r.match(/d(\d+)/);
+        if (division) {
+          // D1 pools > D2 pools
+          return 20 - parseInt(division[1], 10);
+        }
+        return 10;
+      }
+
+      return 0; // Default score
     }
 
     function updateURL() {
@@ -274,56 +503,58 @@
         optionsUL.appendChild(li);
       });
 
-      char1Filter.innerHTML = '<option value="">All</option>';
-      char2Filter.innerHTML = '<option value="">All</option>';
-      [...chars].sort().forEach(c => {
-        [char1Filter, char2Filter].forEach(sel => {
+      // Populate character selects with images for Slim Select
+      function populateCharSelect(select, charImages) {
+        select.innerHTML = '<option value="">Any character</option>';
+        Object.entries(charImages).forEach(([name, img]) => {
           const opt = document.createElement('option');
-          opt.value = opt.textContent = c;
-          sel.appendChild(opt);
+          opt.value = name;
+          opt.textContent = name;
+          opt.setAttribute('data-html', `<img src=\"${img}\" style=\"height:20px;vertical-align:middle;margin-right:5px;\">${name}`);
+          select.appendChild(opt);
         });
-      });
+      }
+      populateCharSelect(char1Filter, CHAR_IMAGES);
+      populateCharSelect(char2Filter, CHAR_IMAGES);
     }
 
     function applyFilters(skipURLUpdate = false){
       const ev = eventInput.value,
             c1 = char1Filter.value, c2 = char2Filter.value,
-            p1v=player1Filter.value.toLowerCase(),
-            p2v=player2Filter.value.toLowerCase(),
+            p1v=player1Filter.value.trim().toLowerCase(),
+            p2v=player2Filter.value.trim().toLowerCase(),
             dfrom = dateFromFilter.value && new Date(dateFromFilter.value),
             dto   = dateToFilter.value   && new Date(dateToFilter.value);
+
+      function playerCharMatch(player, chars, pFilter, cFilter) {
+        // Both player and character specified
+        if (pFilter && cFilter) {
+          return player.toLowerCase().includes(pFilter) && chars.includes(cFilter);
+        } else if (pFilter) {
+          return player.toLowerCase().includes(pFilter);
+        } else if (cFilter) {
+          return chars.includes(cFilter);
+        } else {
+          return true;
+        }
+      }
 
       filtered = rawData.filter(d => {
         // event match
         if (ev && d.event !== ev) return false;
 
-        let cm;
-        if (c1 && c2) {
-          // both filters set → require one-per-player, either order
-          const match12 = d.c1.includes(c1) && d.c2.includes(c2);
-          const match21 = d.c1.includes(c2) && d.c2.includes(c1);
-          cm = match12 || match21;
-        } else if (c1) {
-          // only first filter set → either player played it
-          cm = d.c1.includes(c1) || d.c2.includes(c1);
-        } else if (c2) {
-          // only second filter set → either player played it
-          cm = d.c1.includes(c2) || d.c2.includes(c2);
-        } else {
-          cm = true;  // no character filters
-        }
-        if (!cm) return false;
-
-        // player text match
-        const players = (d.p1 + ' ' + d.p2).toLowerCase();
-        if (p1v && !players.includes(p1v)) return false;
-        if (p2v && !players.includes(p2v)) return false;
-
-        // date match
+        // Date match
         if (dfrom && d.dateObj < dfrom) return false;
         if (dto   && d.dateObj > dto)   return false;
 
-        return true;
+        // If no player/char filters, skip to true
+        if (!p1v && !c1 && !p2v && !c2) return true;
+
+        // Try both possible assignments (order doesn't matter)
+        // (p1, c1) vs (p2, c2) or (p2, c1) vs (p1, c2)
+        const match1 = playerCharMatch(d.p1, d.c1, p1v, c1) && playerCharMatch(d.p2, d.c2, p2v, c2);
+        const match2 = playerCharMatch(d.p2, d.c2, p1v, c1) && playerCharMatch(d.p1, d.c1, p2v, c2);
+        return match1 || match2;
       });
 
       currentPage = 1;
@@ -332,18 +563,37 @@
     }
 
     function renderPage(){
-      filtered.sort((a,b)=>b.dateObj - a.dateObj);
+      filtered.sort((a,b)=>{
+        const dateDiff = b.dateObj - a.dateObj;
+        if (dateDiff !== 0) return dateDiff;
+        return getRoundScore(b.round) - getRoundScore(a.round);
+      });
       const start = (currentPage-1)*ROWS_PER_PAGE,
             pageData = filtered.slice(start, start+ROWS_PER_PAGE);
 
-      tbody.innerHTML = pageData.map(d=>`
+      tbody.innerHTML = pageData.map(d=>{
+        const p1chars = d.c1.map(c=>CHAR_IMAGES[c] ? `<img src="${CHAR_IMAGES[c]}" alt="${c}" title="${c}">` : c).join('');
+        const p2chars = d.c2.map(c=>CHAR_IMAGES[c] ? `<img src="${CHAR_IMAGES[c]}" alt="${c}" title="${c}">` : c).join('');
+
+        return `
         <tr>
-          <td>${d.event}</td><td>${d.round}</td><td>${d.p1}</td>
-          <td>${d.c1.join(', ')}</td><td>${d.p2}</td><td>${d.c2.join(', ')}</td>
-          <td>${d.date}</td>
-          <td><a href="https://www.youtube.com/watch?v=${d.url}" target="_blank">Watch</a></td>
-        </tr>
-      `).join('');
+          <td data-label="Event" class="event-cell">${d.event}<div class="date-in-event">${d.date}</div></td>
+          <td data-label="Round">${d.round}</td>
+          <td data-label="Matchup">
+            <div class="matchup-cell">
+              <div class="player-info">
+                <span>${d.p1}</span><div class="chars">${p1chars}</div>
+              </div>
+              <span class="versus">vs</span>
+              <div class="player-info">
+                <div class="chars">${p2chars}</div><span>${d.p2}</span>
+              </div>
+            </div>
+          </td>
+          <td data-label="Date">${d.date}</td>
+          <td data-label="VOD"><a class="vod-button" href="https://www.youtube.com/watch?v=${d.url}" target="_blank">Watch</a></td>
+        </tr>`
+      }).join('');
 
       const totalPages = Math.max(1, Math.ceil(filtered.length/ROWS_PER_PAGE));
       pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
@@ -411,8 +661,32 @@
         const max = Math.ceil(filtered.length/ROWS_PER_PAGE);
         if (currentPage<max) { currentPage++; renderPage(); }
       });
+
+      // Initialize Slim Select for character dropdowns
+      new SlimSelect({
+        select: '#char1Filter',
+        settings: { showSearch: false, placeholderText: 'Any character' }
+      });
+      new SlimSelect({
+        select: '#char2Filter',
+        settings: { showSearch: false, placeholderText: 'Any character' }
+      });
+      function setPlaceholderClass(selectId) {
+        const select = document.getElementById(selectId);
+        const main = select.nextElementSibling;
+        function update() {
+          if (select.value === "") {
+            main.classList.add('placeholder-selected');
+          } else {
+            main.classList.remove('placeholder-selected');
+          }
+        }
+        update();
+        select.addEventListener('change', update);
+      }
+      setPlaceholderClass('char1Filter');
+      setPlaceholderClass('char2Filter');
     });
   </script>
 </body>
 </html>
-

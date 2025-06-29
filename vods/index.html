@@ -55,6 +55,13 @@
       table {
         display: block;
         width: 100%;
+        margin: 0 auto;
+      }
+      tbody {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 100%;
       }
       tbody tr td[data-label="Date"] { display: none; }
       .date-in-event { display: block; margin-top: 0; margin-left: auto; color: #555; font-size: 0.9rem; }
@@ -67,6 +74,10 @@
         border: 1px solid #ddd;
         border-radius: 0.5rem;
         padding: 0;
+
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto 1rem;
       }
       tbody tr td {
         /* remove default cell borders, only horizontal dividers */
@@ -101,16 +112,22 @@
         font-size: 0.9rem;
         color: #555;
       }
-      /* VOD button mobile-only styling */
-      .vod-button {
+
+      tbody tr td[data-label="VOD"] {
+        padding: 0;
+      }
+      tbody tr td[data-label="VOD"] a.vod-button {
         display: block;
-        margin: 0 auto 0 auto;
-        background: #e63946;
-        color: #fff;
-        border-radius: 0.5rem;
+        width: 100%;
+        height: 100%;
+        padding: 0.75rem 0;
+        background-color: #fde0e0;
+        color: #e63946;
+        text-align: center;
+        font-weight: bold;
         text-decoration: none;
-        padding: 0.25rem 0.75rem;
         font-size: 0.85rem;
+        border-radius: 0 0 0.5rem 0.5rem;
       }
     }
 
@@ -127,6 +144,7 @@
         display: grid !important;
         grid-template-columns: auto auto auto !important;
         align-items: center !important;
+        min-height: 24px;
       }
       #vodTable .matchup-cell > .player-info:first-child {
         justify-self: start !important;
@@ -274,7 +292,6 @@
   <div class="main-layout">
     <div class="filters">
       <div class="filter-group">
-        <label for="player1Filter">Player 1</label>
         <div class="clearable">
           <input type="text" id="player1Filter" placeholder="Any player" />
           <button class="clear-btn" data-target="player1Filter">×</button>
@@ -286,7 +303,6 @@
       <div style="text-align: center; margin: 1rem 0; font-weight: bold; font-size: 1.0rem;">VS</div>
 
       <div class="filter-group">
-        <label for="player2Filter">Player 2</label>
         <div class="clearable">
           <input type="text" id="player2Filter" placeholder="Any player" />
           <button class="clear-btn" data-target="player2Filter">×</button>
@@ -414,6 +430,7 @@
         { pattern: "losers round 3", score: 89 },
         { pattern: "winners semi", score: 88 },
         { pattern: "winners top 8", score: 87 },
+        { pattern: "top 8", score: 86.5 },
         { pattern: "losers round 2", score: 86 },
         { pattern: "winners quarter", score: 84 },
         { pattern: "winners top 16", score: 83 },
@@ -438,13 +455,16 @@
       if (r.startsWith("winners")) return 60;
       if (r.startsWith("losers")) return 50;
 
-      if (r.includes("pool")) {
+      if (r.includes("pool") || r.startsWith("d")) {
         const division = r.match(/d(\d+)/);
         if (division) {
           // D1 pools > D2 pools
           return 20 - parseInt(division[1], 10);
         }
         return 10;
+      }
+      if (r.length > 0) {
+        return 5;
       }
 
       return 0; // Default score
@@ -565,6 +585,7 @@
     function renderPage(){
       filtered.sort((a,b)=>{
         const dateDiff = b.dateObj - a.dateObj;
+        // console.log(a,b,dateDiff,getRoundScore(a.round),getRoundScore(b.round));
         if (dateDiff !== 0) return dateDiff;
         return getRoundScore(b.round) - getRoundScore(a.round);
       });
@@ -655,11 +676,25 @@
 
       // pagination
       prevPage.addEventListener('click', ()=>{
-        if (currentPage>1) { currentPage--; renderPage(); }
+        if (currentPage>1) {
+          currentPage--;
+          renderPage();
+          // Scroll to top on mobile
+          if (window.innerWidth <= 800) {
+            document.querySelector('#dateToFilter').scrollIntoView({ behavior: 'smooth' })
+          }
+        }
       });
       nextPage.addEventListener('click', ()=>{
         const max = Math.ceil(filtered.length/ROWS_PER_PAGE);
-        if (currentPage<max) { currentPage++; renderPage(); }
+        if (currentPage<max) {
+          currentPage++;
+          renderPage();
+          // Scroll to top on mobile
+          if (window.innerWidth <= 800) {
+            document.querySelector('#dateToFilter').scrollIntoView({ behavior: 'smooth' })
+          }
+        }
       });
 
       // Initialize Slim Select for character dropdowns

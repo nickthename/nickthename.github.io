@@ -54,7 +54,7 @@ Although Hori has seen high-level play for years, the majority of top players us
 
 Stick jump cannot be disabled in Smash 64, and even if it could, you wouldn't want to.
 
-Unlike jumps in other *Smash* games, grounded jumps (not double jumps) in 64 are analog, meaning there are dozens of possible jump heights, with the C buttons only inputting 1 of them. Crucially the highest possible stick jump goes higher than a C button full hop, which is important for movement, combos, and edgeguarding high recoveries.
+Unlike in other Smash games, grounded stick jumps (not double jumps) in 64 are analog, meaning there are dozens of possible jump heights. Crucially the highest possible stick full hop goes higher than a C button full hop, which is important for movement, combos, and edgeguarding.
 
 ### What are the rules for keyboard and box controllers? {#what-are-controller-rules}
 

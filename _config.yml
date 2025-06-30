@@ -37,6 +37,9 @@ header_pages:
     - FAQ.md
     - contact.md
 
+sass:
+  sourcemap: development
+
 # Build settings
 #theme: minima
 #plugins:

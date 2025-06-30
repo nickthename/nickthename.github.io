@@ -132,6 +132,13 @@
     }
 
     @media (min-width: 801px) {
+      .filters {
+        position: sticky;
+        top: 1rem;
+        align-self: start;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+      }
       .date-in-event { display: none; }
       /* center VS on desktop with grid layout */
       .matchup-cell {

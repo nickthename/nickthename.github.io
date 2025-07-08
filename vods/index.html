@@ -35,6 +35,10 @@ layout: vods
       flex: 1;
     }
 
+    .dropdown-content {
+      z-index: 2 !important;
+    }
+
     .filter-group label { font-size:1rem; margin-bottom:0.3rem; display: block; }
     .filter-group select,
     .filter-group input { padding:.6rem .8rem; font-size:1rem; border:1px solid #bbb; border-radius:.5rem; width: 100%; box-sizing: border-box; }
@@ -43,7 +47,10 @@ layout: vods
     .clearable { position: relative; }
     .clearable input { width: 100%; box-sizing: border-box; }
     table { border-collapse:collapse; width:100%; font-size:.95rem; }
-    thead th { background:#dcd9d9; position:sticky; top:0; z-index:1; }
+    thead { background:#dcd9d9; position:sticky; top:-1px; z-index:1; }
+    thead th { background:#dcd9d9;}
+
+
     /*
     td, th { border:1px solid #ddd; padding:.6rem !important; text-align:left; white-space:nowrap; }
     */

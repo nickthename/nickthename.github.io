@@ -24,6 +24,7 @@ layout: vods
 
     .filters {
       flex: 0 0 250px;
+      padding: 2px; /* Required for halo effect on select */
     }
 
     .filter-group {
@@ -156,7 +157,7 @@ layout: vods
         top: 1rem;
         align-self: start;
         max-height: calc(100vh - 2rem);
-        overflow-y: auto;
+        /* overflow-y: auto; */
       }
       .date-in-event { display: none; }
       /* center VS on desktop with grid layout */
@@ -231,7 +232,7 @@ layout: vods
       top: 100%;
       left: 0;
       right: 0;
-      max-height: 500px;       /* ↑ taller list */
+      max-height: 400px;       /* ↑ taller list */
       margin: 0;
       padding: 0;
       list-style: none;

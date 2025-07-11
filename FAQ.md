@@ -19,7 +19,7 @@ This page is my attempt to answer the many questions new players often ask about
 * **[Characters](#characters)**
 * **[Tournaments](#tournaments)**
 * **[Japan](#japan)**
-* **[Other](#other)**
+* **[Other](#others)**
 
 ## Controllers
 

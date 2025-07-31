@@ -72,33 +72,63 @@ A less widely used grease with a fast and smooth feel. My personal favorite. Can
 
 ## Metal Replacement Parts
 
+Since the debut of the original Steel Stick 64 project in 2016, metal sticks have become widely popular, spawning multiple projects. Unfortunately production is slow, and these projects tend to release in small batches with limited availability. Descriptions of each project, and where to follow for alerts, are below.
+
+A complete steel stick module has two parts: the stick, usually with a rubber or plastic cap and teflon tip, and the bowl. **Steel bowls tend to be more widely available than sticks, and a bowl alone, when lubed, still provides a significant durability boost.**
 
 ### Steel Stick 64
 [![Steel Stick](/guides/img/controllers/steelstick.png){:width="50%"}](http://steelsticks64.com)
-
-The SteelStick64 is a project currently in progress to create a steel/titanium replacement N64 joystick for greatly increased durability. The project is currently slowly selling sticks to those on a full wait list of 500 people, with full retail release likely years away. Up-to-date information about the project can be found at <http://steelsticks64.com/> and <https://twitter.com/steelsticks64>.
-
-#### Steel Bowl
 [![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}](https://steelsticks64.com/?post_type=product)
 
-The creator of the SteelStick occasionally sells stand-alone steel bowls. Because the bowl of the OG wears quickly and has few good replacements, these bowls have been very well  received. They improve stick lifespan and feel, and cost far less than the complete SteelStick.
+The SteelStick64 is the original metal replacement N64 joystick. The creator Linus Hofmann initially produced roughly 500 complete modules for those on a waitlist, but seems to be in hiatus. He has still continued very occasional releases of steel bowls in "A" and "B" grade.
 
-Steel bowls go on sale in batches at <http://steelsticks64.com/?post_type=product>. Follow SteelSticks on Twitter [@SteelSticks64](https://twitter.com/steelsticks64) or sign up for email alerts on the store page for news when a new batch goes up for sale.
+His site also stocks replacement caps in various materials and colors, which are compatible with some other steel stick projects, along with replacement start buttons and other accessories.
 
-### Oudini Sticks
-[![Oudini Stick](/guides/img/controllers/oudinistick.jpg){:width="40%"}](https://oudini-shop.com/index.php?route=common/home)
-
-Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive. More details at [https://oudini-shop.co/](https://oudini-shop.com/)
-
-### TaoStyx64
-[![TaoStyx](/guides/img/controllers/taostyx64.jpg){:width="40%"}](https://taostyx64.com/)
-
-Taostyx has created multiple replacement parts, including their own steel bowls and a variety of joystick caps. They've also released metal buttons and bronze gear teeth available on their [shapeways](https://www.shapeways.com/shops/alinktotao). Reviews in the Smash community so far are scarce. More information at [https://taostyx64.com/](https://taostyx64.com).
+**Where to Follow**:<br/>
+Website: [Steelsticks64.com](http://steelsticks64.com/)<br/>
+Twitter: [@steelsticks64](https://twitter.com/steelsticks64)<br/>
+Email alerts: Steel Bowls in [A grade](https://steelsticks64.com/product/n64-steelbowl-a-grade/) and [B Grade](https://steelsticks64.com/product/n64-steelbowl-b-grade-2/)
 
 ### Koomba Components {#koomba}
 [![Komba sticks](/guides/img/controllers/koomba_wide.jpg)](https://koomba64.com/)
 
-[Koomba](https://koomba64.com/) is a relatively new project creating replacement sticks and bowls out of multiple materials. In addition to steel/titanium/brass, they offer parts made of the cheaper and lighter delrin plastic. Their parts go in and out of stock, you can follow their progress on their [Twitter](https://x.com/KoombaC) and [Discord](https://discord.com/invite/ue4F5rDCkK).
+[Koomba](https://koomba64.com/) is a relatively new project creating replacement sticks and bowls out of multiple materials. In addition to steel/titanium/brass, they offer parts made of the cheaper and lighter delrin plastic. Their delrin parts tend to have better availability than metal, and have been well recieved.
+
+**Where to Follow**:<br/>
+Website: [Koomba64.com](https://koomba64.com/)<br/>
+Twitter: [@KoombaC](https://x.com/KoombaC)<br/>
+Discord: [discord.gg/ue4F5rDCkK](https://discord.com/invite/ue4F5rDCkK)
+
+### TaoStyx64
+[![TaoStyx](/guides/img/controllers/taostyx64.jpg){:width="40%"}](https://taostyx64.com/)
+
+Taostyx64 has created multiple replacement parts, including their own steel bowls and a variety of joystick caps. They've also released metal buttons and bronze gear teeth, and work with a variety of materials.
+
+**Where to Follow**<br/>
+Website: [Taostyx64.com](https://taostyx64.com)<br/>
+Discord: [Discord.gg/gNqCVGXUP3](https://discord.gg/gNqCVGXUP3)
+
+### Rocker Gaming {#rocker}
+[![Rocker Stick](/guides/img/controllers/rocker2.jpg){:width="40%"}](https://koomba64.com/)
+[![Rocker bowl](/guides/img/controllers/rocker1.jpg){:width="30%"}](https://koomba64.com/)
+
+Modder [Rocker Gaming](https://shop.rockergaming.com/) recently entered the fray with their Renaissance N64 project, which seeks to replace the joystick faceplate along with the bowl and stick.
+
+In addition they stock various parts and mods, such as tactile buttons, replacement pads, custom N64 badges, and a controller carrying case.
+
+**Where to Follow**:<br/>
+Website: [rockergaming.com](https://shop.rockergaming.com/)<br/>
+Twitter: [@RockerGameMod](https://x.com/RockerGameMod)<br/>
+Email Newsletter: [Signup link](https://shop.rockergaming.com/pages/newsletter-signup)
+
+### Oudini Sticks
+[![Oudini Stick](/guides/img/controllers/oudinistick.jpg){:width="40%"}](https://oudini-shop.com/index.php?route=common/home)
+
+Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive.
+
+**Where to Follow**:<br/>
+Website: [Oudini-shop.co](https://oudini-shop.co)<br/>
+Twitter: [@ArthurOudini](https://x.com/ArthurOudini)<br/>
 
 ## Other replacement parts
 
@@ -153,7 +183,7 @@ Estimated Price: **$20**
 
 8BitDo, a Chinese manufacturer of popular replacement controllers for modern consoles, released this OG replacement stick in 2023 using hall effect technology. Hall effect sensors are thought to provide better durability than the potentiometers used in normal joysticks, and have become popular in replacement sticks, including the Phob Gamecube controller for Smash Melee.
 
-Like the Derek stick, the 8bitdo stick is an easy-to-install drop-in replacement for the OG's joystick. The cap is larger and made of a nice soft rubber, similar to a Gamecube controller stick. The stick moves smoothly, feels good, and returns to exact center with no wobble. 
+Like the Derek stick, the 8bitdo stick is an easy-to-install drop-in replacement for the OG's joystick. The cap is larger and made of a nice soft rubber, similar to a Gamecube controller stick. The stick moves smoothly, feels good, and returns to exact center with no wobble.
 
 Although the 8BitDo's range isn't very high (max of 80), the short cap results in low travel distance and makes the joystick feel fairly sensitive. Those switching from worn OGs may find subtle movements like tilt attacks difficult to perform at first. Higher-level players may find the low range a little limiting for DI.
 

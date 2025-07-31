@@ -298,6 +298,7 @@ Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility 
 - [Pikachu Basics \| Shizuku](https://www.youtube.com/watch?v=2i_Lv52Y0k8) ![](/guides/img/japan-flag-icon-16.png)
 - [Matchup Guide: Pikachu vs Fox](/guides/pikafox.html)
 - [Pikachu vs Fox video notes](https://www.youtube.com/watch?v=SPX9cvfIagY)
+- [Do this, not that! Pikachu dittos for beginners](https://www.youtube.com/watch?v=r9Kteczvx5I)
 - [Rat dittos for Intermediate Players \| Isai](https://www.youtube.com/watch?v=FYt8bjMFX0o)
 - [Pika vs Kirby Tips \| Superboomfan](https://www.youtube.com/watch?v=5nONCd2puzc)
 - [Falcon edgeguards compilation \| Wario](https://www.youtube.com/watch?v=GgoUOY6lYec)

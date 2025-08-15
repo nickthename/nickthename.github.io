@@ -461,6 +461,8 @@ layout: vods
         { pattern: "winners top 8", score: 87 },
         { pattern: "top 8", score: 86.5 },
         { pattern: "losers round 2", score: 86 },
+        { pattern: "losers eighths", score: 85 },
+        { pattern: "top 12", score: 84.5 },
         { pattern: "winners quarter", score: 84 },
         { pattern: "winners top 16", score: 83 },
         { pattern: "losers round 1", score: 82 },
@@ -484,14 +486,16 @@ layout: vods
       if (r.startsWith("winners")) return 60;
       if (r.startsWith("losers")) return 50;
 
-      if (r.includes("pool") || r.startsWith("d")) {
-        const division = r.match(/d(\d+)/);
-        if (division) {
-          // D1 pools > D2 pools
-          return 20 - parseInt(division[1], 10);
-        }
-        return 10;
-      }
+			if (/\b(pool|division)\b/i.test(r) || /^d/i.test(r)) {
+				const division = r.match(/\b(?:d|division)\s*(\d+)\b/i); // "D1", "Division 1", etc.
+				if (division) {
+					let score = 20 - parseInt(division[1], 10); // lower division number = earlier
+					if (/\bwildcard\b\s*$/i.test(r)) score += 0.5; // "... Wildcard" gets +1
+					return score;
+				}
+				return 10;
+			} 
+
       if (r.length > 0) {
         return 5;
       }

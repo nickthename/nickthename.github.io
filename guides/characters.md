@@ -197,23 +197,24 @@ Vods:
 
 #### Players and Vods
 
-Players: [Kurabba](https://vods.co/smash64?player=14452&selection=10), [Wizzrobe](https://vods.co/smash64?player=11587&selection=10), [Prince](https://vods.co/smash64?player=14453&selection=10), [Tacos](https://vods.co/smash64?player=14422&selection=10), [Hiyo](https://vods.co/smash64?player=18989&selection=10)
+Players: [Kurabba](https://smash64.net/vods/?p1=Kurabba), [Wizzrobe](https://smash64.net/vods/?p1=Wizzrobe), [Janco](https://smash64.net/vods/?char1=Yoshi&p1=Janco), [Prince](https://smash64.net/vods/?p1=Prince), [Tacos](https://smash64.net/vods/?char1=Yoshi&p1=Tacos), [Hiyo](https://smash64.net/vods/?char1=Yoshi&p1=Hiyo)
 
 Vods:
 
-- [Kurabba vs KeroKeroppi (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://youtu.be/OiUZVXtMd3I)
-- [Hotline vs epad10 (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=GWhebsKk7R4)
+- [Kurabba vs Wizzrobe (![](https://vods.co/icons/smash64/20px-Yoshi.png) Ness)](https://www.youtube.com/watch?v=KuZmNKvBjAY)
+- [Kurabba vs Wario (![](https://vods.co/icons/smash64/20px-Pikachu.png) Pikachu)](https://www.youtube.com/watch?v=c2rTESKCKmo)
+- [Kurabba  vs Superboomfan (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)
 - [Kurabba vs Nax (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/OjF06v54TvQ)
+- [Kurabba vs Stranded (![](https://vods.co/icons/smash64/20px-Fox.png) Jigglypuff)](https://www.youtube.com/watch?v=zsuYqCTCM5E)
+- [Kurabba vs Wangera (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://youtu.be/woDphFynICM)
+- [Kurabba vs Fray (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://www.youtube.com/watch?v=X95HFpBKKKk)
+
 - [Take vs KD3 (![](https://vods.co/icons/smash64/20px-Jigglypuff.png)/![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=5HUVOrmt7vM)
 - [Hotline vs Spongy (![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://youtu.be/uu-z6SAst0E?t=22554)
-- [Take vs KD3 (![](https://vods.co/icons/smash64/20px-Jigglypuff.png)/![](https://vods.co/icons/smash64/20px-Kirby.png) Kirby)](https://www.youtube.com/watch?v=5HUVOrmt7vM)
 - [Wizzrobe vs Alvin (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://www.youtube.com/watch?v=zZwiZmqUdTY&t=619s)
-- [Kurabba  vs Superboomfan (![](https://vods.co/icons/smash64/20px-Captain Falcon.png) Falcon)](https://youtu.be/XMOqrPo5zSM)
-- [Kurabba vs Wangera (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://youtu.be/woDphFynICM)
 - [Wizzrobe vs KD3 (![](https://vods.co/icons/smash64/20px-Jigglypuff.png) Jigglypuff)](https://www.youtube.com/watch?v=lCsmAVm-t8w)
 - [Wizzrobe vs Alvin (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://www.youtube.com/watch?v=zZwiZmqUdTY)
 - [Hotline vs Czar (![](https://vods.co/icons/smash64/20px-Mario.png) Mario)](https://youtu.be/Mt_RWyCSvjw)
-- [Kurabba vs Fray (![](https://vods.co/icons/smash64/20px-Ness.png) Ness)](https://www.youtube.com/watch?v=X95HFpBKKKk)
 
 <hr>
 ## ![](/guides/img/chars/full/kirby.png) Kirby {#kirby}

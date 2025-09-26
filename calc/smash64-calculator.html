@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smash 64 Knockback Calculator</title>
+  <style>
+    :root { color-scheme: light dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page-bg, #f7f8fa); color: var(--text-color, #10131a); }
+
+    .warning-banner { background: #ffdd57; color: #3b2f00; padding: 0.65rem 1rem; font-weight: 600; text-align: center; font-size: 0.95rem; }
+    @media (prefers-color-scheme: dark) {
+      .warning-banner { background: rgba(255, 204, 64, 0.25); color: #ffea9a; }
+    }
+
+    main { display: grid; gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); max-width: 1200px; margin: 0 auto; align-items: start; }
+    header { grid-column: 1 / -1; }
+    h1 { margin: 0 0 0.35rem; font-size: clamp(1.8rem, 2.7vw, 2.6rem); letter-spacing: -0.03em; }
+    .note { margin: 0; font-size: 0.9rem; opacity: 0.75; }
+
+    .form-panel, .outputs-panel { display: grid; gap: 0.9rem; align-content: start; border-radius: 18px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.08); padding: 0.85rem; backdrop-filter: blur(10px); }
+
+    @media (min-width: 960px) {
+      main { grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); }
+      header { grid-column: 1 / -1; }
+    }
+
+    fieldset { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 0.85rem; display: grid; gap: 0.65rem; align-content: start; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); }
+    legend { padding: 0 0.5rem; font-weight: 600; letter-spacing: 0.01em; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+    input[type="number"], select { width: 100%; font: inherit; padding: 0.45rem 0.55rem; border: 1px solid rgba(0,0,0,0.18); border-radius: 6px; background: rgba(0,0,0,0.03); }
+    input[readonly] { background: rgba(0,0,0,0.06); color: inherit; }
+    input[type="number"]:focus, select:focus { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
+
+    .form-layout { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .move-grid, .properties-grid { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .position-row { display: grid; gap: 0.4rem; }
+    .position-inputs { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+    .position-inputs select { width: auto; min-width: 130px; }
+    .position-inputs span { font-size: 0.85rem; opacity: 0.75; }
+    .position-map { margin-top: 0.6rem; border: 1px solid rgba(0,0,0,0.18); border-radius: 8px; background: rgba(0,0,0,0.03); }
+    .position-map svg { display: block; width: 200px; height: 140px; }
+    .platform-line { stroke: currentColor; stroke-width: 2; stroke-linecap: round; opacity: 0.6; }
+    .position-dot { fill: #e53935; stroke: #ffffff; stroke-width: 1.5; }
+
+    details.disclosure { border: 1px dashed rgba(0,0,0,0.25); border-radius: 10px; background: rgba(0,0,0,0.025); }
+    details.disclosure summary { list-style: none; margin: 0; padding: 0.55rem 0.75rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; }
+    details.disclosure summary::after { content: '▸'; font-size: 0.85rem; transition: transform 0.2s ease; opacity: 0.7; }
+    details.disclosure[open] summary::after { transform: rotate(90deg); }
+    details.disclosure[open] { padding-bottom: 0.7rem; }
+    details.disclosure[open] summary { border-bottom: 1px dashed rgba(0,0,0,0.2); margin-bottom: 0.5rem; }
+    details.disclosure .details-content { padding: 0 0.75rem; display: grid; gap: 0.65rem; }
+
+    .inline-input { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; }
+    .inline-input input { width: 1.05rem; height: 1.05rem; }
+    .help-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 1px solid currentColor; font-size: 0.65rem; margin-left: 0.4rem; cursor: help; opacity: 0.7; }
+
+    .outputs-panel { gap: 1rem; }
+    .outputs-header { display: flex; justify-content: flex-end; align-items: center; font-size: 0.8rem; opacity: 0.7; }
+    .outputs-header label { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500; margin: 0; }
+    #debug-toggle { width: 1rem; height: 1rem; }
+
+    .card-grid { display: grid; gap: 1rem; }
+    .primary-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+    .card { border: 1px solid rgba(0,0,0,0.12); border-radius: 16px; background: rgba(255,255,255,0.88); padding: 0.95rem 1.1rem; display: grid; gap: 0.7rem; backdrop-filter: blur(8px); align-content: start; }
+    .card.compact { max-width: 260px; }
+    .card h2, .card h3 { margin: 0; font-size: 1.1rem; letter-spacing: 0.01em; }
+    .metric { margin: 0; font-size: clamp(1.6rem, 2.4vw, 2.3rem); font-weight: 700; letter-spacing: -0.03em; }
+    .muted { font-size: 0.85rem; opacity: 0.7; margin: 0; }
+
+    .vector-card { grid-template-columns: 140px 1fr; gap: 1.1rem; }
+    .vector-wrapper { display: flex; align-items: center; justify-content: center; }
+    .vector-visual { width: 120px; height: 120px; }
+    .vector-circle { fill: none; stroke: rgba(0,0,0,0.12); stroke-width: 1.5; }
+    .vector-metrics { display: grid; gap: 0.8rem; font-size: 0.95rem; }
+    .metric-block { display: grid; gap: 0.25rem; }
+    .metric-block h4 { margin: 0; font-size: 1.1rem; font-weight: 600; opacity: 0.78; letter-spacing: 0.01em; }
+    .metric-block p { margin: 0; font-variant-numeric: tabular-nums; }
+    .meta-line { grid-column: 1 / -1; font-size: 0.8rem; opacity: 0.65; }
+
+    dl { margin: 0; display: grid; gap: 0.35rem; }
+    dl div { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dotted rgba(0,0,0,0.18); padding-bottom: 0.2rem; font-variant-numeric: tabular-nums; }
+    dt { font-weight: 600; font-size: 0.9rem; }
+    dd { margin: 0; }
+
+    .knockdown-status { margin: 0; font-weight: 600; text-align: center; padding: 0.3rem 0 0.2rem; }
+    .knockdown-status + .knockdown-status { padding-top: 0.1rem; }
+    .status-block { display: grid; gap: 0.2rem; }
+    .status-subtext { margin: 0; text-align: center; font-size: 0.85rem; opacity: 0.7; }
+    .status-divider { height: 1px; background: rgba(0,0,0,0.12); width: 70%; margin: 0.4rem auto; }
+    .position-summary { display: grid; gap: 0.25rem; }
+    .meta-line { margin: 0; }
+
+    @media (max-width: 640px) {
+      .vector-card { grid-template-columns: 1fr; }
+      .card.compact { max-width: none; }
+      .primary-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { --page-bg: #070a11; --text-color: #e9edf6; }
+      .form-panel, .outputs-panel { background: rgba(16,20,32,0.65); border-color: rgba(255,255,255,0.12); }
+      fieldset, .card { border-color: rgba(255,255,255,0.18); background: rgba(18,22,34,0.72); }
+      details.disclosure { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+      input[type="number"], select { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); color: inherit; }
+      input[readonly] { background: rgba(255,255,255,0.08); }
+      .vector-circle { stroke: rgba(255,255,255,0.25); }
+      dl div { border-color: rgba(255,255,255,0.2); }
+      .position-map { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); }
+      .status-divider { background: rgba(255,255,255,0.18); }
+    }
+  </style>
+</head>
+<body>
+    <div class="warning-banner">⚠️ This is in BETA, calculations may be wrong!!!</div>
+  <main>
+    <header>
+      <h1>Smash 64 Knockback Calculator</h1>
+    </header>
+
+    <section class="form-panel">
+      <form id="calculator-form" novalidate>
+        <div class="form-layout">
+          <fieldset>
+          <legend>Defender</legend>
+          <div>
+            <label for="defender-select">Character</label>
+            <select id="defender-select" name="defender"></select>
+          </div>
+          <div>
+            <label for="hp-input">Starting damage %</label>
+            <input id="hp-input" name="hp" type="number" step="1" min="0" value="0">
+          </div>
+          <details class="disclosure" id="defender-details">
+            <summary>Defender properties</summary>
+            <div class="details-content properties-grid">
+              <div>
+                <label for="weight-input">Weight</label>
+                  <input id="weight-input" name="weight" type="number" step="0.01" min="0">
+                </div>
+                <div>
+                  <label for="fall-accel-input">Fall acceleration</label>
+                  <input id="fall-accel-input" name="fallAccel" type="number" step="0.01" min="0">
+                </div>
+                <div>
+                <label for="max-fall-input">Max fall speed</label>
+                <input id="max-fall-input" name="maxFall" type="number" step="0.01" min="0">
+              </div>
+            </div>
+          </details>
+        </fieldset>
+
+          <fieldset>
+            <legend>Attacker &amp; move</legend>
+            <div>
+              <label for="attacker-select">Attacker</label>
+              <select id="attacker-select" name="attacker"></select>
+            </div>
+            <div>
+              <label for="move-select">Move</label>
+              <select id="move-select" name="move"></select>
+              <p id="move-details" class="muted"></p>
+            </div>
+            <details class="disclosure">
+              <summary>Move properties</summary>
+              <div class="details-content move-grid">
+                <div>
+                  <label for="damage-input">Move damage</label>
+                  <input id="damage-input" name="damage" type="number" step="0.1" min="0">
+                </div>
+                <div>
+                  <label for="angle-input">Angle (°)</label>
+                  <input id="angle-input" name="angle" type="number" step="1" min="-180" max="361">
+                </div>
+                <div>
+                  <label for="kbs-input">Scaling KB (KBS)</label>
+                  <input id="kbs-input" name="kbs" type="number" step="1" min="0">
+                </div>
+                <div>
+                  <label for="bkb-input">Base KB (BKB)</label>
+                  <input id="bkb-input" name="bkb" type="number" step="1" min="0">
+                </div>
+                <div>
+                  <label for="fkb-input">Fixed knockback (FKB)</label>
+                  <input id="fkb-input" name="fkb" type="number" step="1" min="0" value="0">
+                </div>
+              </div>
+            </details>
+          </fieldset>
+
+          <fieldset>
+            <legend>Move context</legend>
+            <div>
+              <label for="staleness-select">Staleness</label>
+              <select id="staleness-select" name="staleness">
+                <option value="fresh">Fresh (1.00)</option>
+                <option value="lv1">Lv1 (0.82)</option>
+                <option value="lv2">Lv2 (0.89)</option>
+                <option value="lv3">Lv3 (0.96)</option>
+                <option value="stale">Stale (0.75)</option>
+              </select>
+            </div>
+            <div class="inline-input">
+              <input type="checkbox" id="electric-toggle" name="electric">
+              <label for="electric-toggle">Electric hitbox</label>
+            </div>
+            <div>
+              <label for="target-state-select">Defender state</label>
+              <select id="target-state-select" name="targetState">
+                <option value="standing">Standing</option>
+                <option value="crouching">Crouching</option>
+                <option value="airborne">Airborne</option>
+                <option value="laying">Laying</option>
+              </select>
+            </div>
+            <div>
+              <label for="spike-mode-select">Spiking behaviour</label>
+              <select id="spike-mode-select" name="spikeMode">
+                <option value="off">Off</option>
+                <option value="ground">Ground spike</option>
+                <option value="air">Air spike</option>
+              </select>
+            </div>
+            <div>
+              <label for="simulation-select">End of loop <span class="help-icon" title="Hitstun replicates the original tool's frame loop; Velocity runs until knockback speed reaches zero.">?</span></label>
+              <select id="simulation-select" name="simulation">
+                <option value="hitstun">Hitstun frames</option>
+                <option value="velocity">Velocity zero</option>
+              </select>
+            </div>
+            <div>
+              <label for="combo-delay-input">Combo delay (frames)</label>
+              <input id="combo-delay-input" name="comboDelay" type="number" step="1" min="0" value="0">
+            </div>
+          </fieldset>
+        <fieldset>
+          <legend>Position</legend>
+          <div class="position-row">
+            <label for="position-horizontal">Position</label>
+            <div class="position-inputs">
+              <select id="position-horizontal" name="positionHorizontal">
+                <option value="left">Left side</option>
+                <option value="center" selected>Center</option>
+                <option value="right">Right side</option>
+              </select>
+              <span>of</span>
+              <select id="position-vertical" name="positionVertical">
+                <option value="stage" selected>Stage</option>
+                <option value="left-platform">Left platform</option>
+                <option value="right-platform">Right platform</option>
+                <option value="top-platform">Top platform</option>
+              </select>
+            </div>
+          </div>
+          <p class="muted">Computed position: <span id="position-output">(0, 0)</span></p>
+          <div class="position-map">
+            <svg viewBox="0 0 200 140" role="img" aria-hidden="true">
+              <line id="map-stage" class="platform-line" x1="0" y1="0" x2="0" y2="0"></line>
+              <line id="map-left-platform" class="platform-line" x1="0" y1="0" x2="0" y2="0"></line>
+              <line id="map-right-platform" class="platform-line" x1="0" y1="0" x2="0" y2="0"></line>
+              <line id="map-top-platform" class="platform-line" x1="0" y1="0" x2="0" y2="0"></line>
+              <circle id="position-dot" class="position-dot" cx="100" cy="120" r="4"></circle>
+            </svg>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Handicap (rare)</legend>
+          <details class="disclosure" id="handicap-details">
+            <summary>Handicap values</summary>
+            <div class="details-content properties-grid">
+              <div>
+                <label for="attack-handicap-input">Attack handicap</label>
+                <input id="attack-handicap-input" name="attackHandicap" type="number" step="1" min="0" max="40" value="9">
+              </div>
+              <div>
+                <label for="defense-handicap-input">Defense handicap</label>
+                <input id="defense-handicap-input" name="defenseHandicap" type="number" step="1" min="0" max="40" value="9">
+              </div>
+              <div>
+                <label for="attack-multiplier-value">Attack multiplier</label>
+                <input id="attack-multiplier-value" type="text" readonly value="1.00">
+              </div>
+              <div>
+                <label for="defense-multiplier-value">Defense multiplier</label>
+                <input id="defense-multiplier-value" type="text" readonly value="1.00">
+              </div>
+            </div>
+          </details>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="outputs-panel">
+      <div class="outputs-header">
+        <label><input type="checkbox" id="debug-toggle"> Debug numbers</label>
+      </div>
+      <div class="card-grid primary-cards">
+        <article class="card compact" id="damage-card">
+          <h2>Total Damage</h2>
+          <p class="metric" id="final-percent-output">—</p>
+          <p class="muted" id="percent-breakdown">—</p>
+        </article>
+        <article class="card displacement-card">
+          <h2>Total displacement</h2>
+          <div class="metric-block">
+            <p>Horizontal: <span id="total-x-value">—</span></p>
+            <p>Vertical: <span id="total-y-value">—</span></p>
+          </div>
+          <div class="position-summary">
+            <p class="muted">Final position: <span id="final-position-output">(0, 0)</span></p>
+            <p class="meta-line" id="displacement-meta">—</p>
+          </div>
+        </article>
+      </div>
+      <div class="card-grid">
+        <article class="card vector-card">
+          <div class="vector-wrapper">
+            <svg id="vector-visual" class="vector-visual" viewBox="0 0 120 120">
+              <defs>
+                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L6,3 Z" fill="currentColor"></path>
+                </marker>
+              </defs>
+              <circle class="vector-circle" cx="60" cy="60" r="52"></circle>
+              <line id="vector-line" x1="60" y1="60" x2="60" y2="60" stroke="currentColor" stroke-width="2.6" marker-end="url(#arrowhead)"></line>
+            </svg>
+          </div>
+          <div class="vector-metrics">
+            <div class="metric-block velocity-block">
+              <h3>Initial velocity</h3>
+              <p>Horizontal: <span id="init-vx-value">—</span></p>
+              <p>Vertical: <span id="init-vy-value">—</span></p>
+              <p class="muted">Magnitude: <span id="velocity-mag-value">—</span></p>
+              <p class="muted" id="knockback-breakdown">—</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Hit effects</h3>
+          <dl>
+            <div><dt>Hitlag</dt><dd id="hitlag-value">—</dd></div>
+            <div><dt>Total hitstun</dt><dd id="hitstun-value">—</dd></div>
+          </dl>
+          <div class="status-block">
+            <p class="knockdown-status" id="knockdown-status">—</p>
+            <p class="status-subtext" id="knockdown-threshold-output"></p>
+          </div>
+          <div class="status-divider" aria-hidden="true"></div>
+          <div class="status-block">
+            <p class="knockdown-status" id="kill-output">Doesn't kill</p>
+            <p class="status-subtext" id="kill-threshold-output"></p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="calculator.js"></script>
+  <script>
+    (async function () {
+      const form = document.getElementById('calculator-form');
+      const defenderSelect = document.getElementById('defender-select');
+      const attackerSelect = document.getElementById('attacker-select');
+      const moveSelect = document.getElementById('move-select');
+      const moveDetails = document.getElementById('move-details');
+
+      const weightInput = document.getElementById('weight-input');
+      const fallAccelInput = document.getElementById('fall-accel-input');
+      const maxFallInput = document.getElementById('max-fall-input');
+      const hpInput = document.getElementById('hp-input');
+      const damageInput = document.getElementById('damage-input');
+      const angleInput = document.getElementById('angle-input');
+      const kbsInput = document.getElementById('kbs-input');
+      const bkbInput = document.getElementById('bkb-input');
+      const fkbInput = document.getElementById('fkb-input');
+      const stalenessSelect = document.getElementById('staleness-select');
+      const electricToggle = document.getElementById('electric-toggle');
+      const targetStateSelect = document.getElementById('target-state-select');
+      const spikeModeSelect = document.getElementById('spike-mode-select');
+      const simulationSelect = document.getElementById('simulation-select');
+      const comboDelayInput = document.getElementById('combo-delay-input');
+      const attackHandicapInput = document.getElementById('attack-handicap-input');
+      const defenseHandicapInput = document.getElementById('defense-handicap-input');
+      const positionHorizontalSelect = document.getElementById('position-horizontal');
+      const positionVerticalSelect = document.getElementById('position-vertical');
+      const debugToggle = document.getElementById('debug-toggle');
+
+      const outputNodes = {
+        finalPercent: document.getElementById('final-percent-output'),
+        percentBreakdown: document.getElementById('percent-breakdown'),
+        knockbackBreakdown: document.getElementById('knockback-breakdown'),
+        hitlag: document.getElementById('hitlag-value'),
+        hitstun: document.getElementById('hitstun-value'),
+        knockdown: document.getElementById('knockdown-status'),
+        initVx: document.getElementById('init-vx-value'),
+        initVy: document.getElementById('init-vy-value'),
+        velocityMag: document.getElementById('velocity-mag-value'),
+        totalX: document.getElementById('total-x-value'),
+        totalY: document.getElementById('total-y-value'),
+        displacementMeta: document.getElementById('displacement-meta'),
+        attackMult: document.getElementById('attack-multiplier-value'),
+        defenseMult: document.getElementById('defense-multiplier-value'),
+        vectorLine: document.getElementById('vector-line'),
+        positionOutput: document.getElementById('position-output'),
+        finalPosition: document.getElementById('final-position-output'),
+        killOutput: document.getElementById('kill-output'),
+        killThresholdOutput: document.getElementById('kill-threshold-output'),
+        knockdownThresholdOutput: document.getElementById('knockdown-threshold-output'),
+      };
+
+      const POSITION_DATA = {
+        stage: { y: 0, center: 0, halfWidth: 2318 },
+        'left-platform': { y: 904, center: -1396, halfWidth: 445 },
+        'right-platform': { y: 907, center: 1421.5, halfWidth: 470.5 },
+        'top-platform': { y: 1542, center: 0, halfWidth: 570 },
+      };
+
+      const positionMapElements = {
+        stage: document.getElementById('map-stage'),
+        left: document.getElementById('map-left-platform'),
+        right: document.getElementById('map-right-platform'),
+        top: document.getElementById('map-top-platform'),
+        dot: document.getElementById('position-dot'),
+      };
+
+      const MAP_DIMENSIONS = { width: 200, height: 140, sideMargin: 20, topMargin: 20, bottomMargin: 20 };
+      const STAGE_HALF_WIDTH = POSITION_DATA.stage.halfWidth;
+      const TOP_PLATFORM_Y = POSITION_DATA['top-platform'].y;
+      const effectiveMapWidth = MAP_DIMENSIONS.width - MAP_DIMENSIONS.sideMargin * 2;
+      const effectiveMapHeight = MAP_DIMENSIONS.height - (MAP_DIMENSIONS.topMargin + MAP_DIMENSIONS.bottomMargin);
+
+      function mapX(x) {
+        return MAP_DIMENSIONS.sideMargin + ((x + STAGE_HALF_WIDTH) / (STAGE_HALF_WIDTH * 2)) * effectiveMapWidth;
+      }
+
+      function mapY(y) {
+        return MAP_DIMENSIONS.height - MAP_DIMENSIONS.bottomMargin - (y / TOP_PLATFORM_Y) * effectiveMapHeight;
+      }
+
+      function computePosition(horizontalKey, verticalKey) {
+        const platform = POSITION_DATA[verticalKey] || POSITION_DATA.stage;
+        let x = platform.center;
+        if (horizontalKey === 'left') {
+          x = platform.center - platform.halfWidth;
+        } else if (horizontalKey === 'right') {
+          x = platform.center + platform.halfWidth;
+        }
+        return { x, y: platform.y };
+      }
+
+      function layoutPositionMap() {
+        if (!positionMapElements.stage) return;
+        const stage = POSITION_DATA.stage;
+        positionMapElements.stage.setAttribute('x1', mapX(-stage.halfWidth));
+        positionMapElements.stage.setAttribute('y1', mapY(stage.y));
+        positionMapElements.stage.setAttribute('x2', mapX(stage.halfWidth));
+        positionMapElements.stage.setAttribute('y2', mapY(stage.y));
+
+        const left = POSITION_DATA['left-platform'];
+        positionMapElements.left.setAttribute('x1', mapX(left.center - left.halfWidth));
+        positionMapElements.left.setAttribute('y1', mapY(left.y));
+        positionMapElements.left.setAttribute('x2', mapX(left.center + left.halfWidth));
+        positionMapElements.left.setAttribute('y2', mapY(left.y));
+
+        const right = POSITION_DATA['right-platform'];
+        positionMapElements.right.setAttribute('x1', mapX(right.center - right.halfWidth));
+        positionMapElements.right.setAttribute('y1', mapY(right.y));
+        positionMapElements.right.setAttribute('x2', mapX(right.center + right.halfWidth));
+        positionMapElements.right.setAttribute('y2', mapY(right.y));
+
+        const top = POSITION_DATA['top-platform'];
+        positionMapElements.top.setAttribute('x1', mapX(top.center - top.halfWidth));
+        positionMapElements.top.setAttribute('y1', mapY(top.y));
+        positionMapElements.top.setAttribute('x2', mapX(top.center + top.halfWidth));
+        positionMapElements.top.setAttribute('y2', mapY(top.y));
+      }
+
+      function updatePositionDot(position) {
+        if (!positionMapElements.dot) return;
+        positionMapElements.dot.setAttribute('cx', mapX(position.x));
+        positionMapElements.dot.setAttribute('cy', mapY(position.y));
+      }
+
+      layoutPositionMap();
+      updatePositionDot(computePosition(positionHorizontalSelect.value, positionVerticalSelect.value));
+
+      const numericValue = (input, fallback = 0) => {
+        const value = Number(input.value);
+        return Number.isFinite(value) ? value : fallback;
+      };
+
+      let debugMode = false;
+      const baseDecimals = 1;
+      const debugDecimals = 6;
+      const roundingEpsilon = 1e-6;
+
+      const roundToDecimal = (value, decimals = baseDecimals) => {
+        const factor = Math.pow(10, decimals);
+        return Math.round(value * factor + Number.EPSILON) / factor;
+      };
+
+      const formatStandard = (value, decimals = baseDecimals) => {
+        if (!Number.isFinite(value)) return '—';
+        if (debugMode) return value.toFixed(debugDecimals);
+        return roundToDecimal(value, decimals).toFixed(decimals);
+      };
+
+      const formatIntegral = (value) => {
+        if (!Number.isFinite(value)) return '—';
+        if (debugMode && Math.abs(value - Math.round(value)) > roundingEpsilon) {
+          return value.toFixed(debugDecimals);
+        }
+        if (Math.abs(value - Math.round(value)) < roundingEpsilon) {
+          return String(Math.round(value));
+        }
+        return roundToDecimal(value, 1).toFixed(1);
+      };
+
+      const formatPercent = (value) => `${formatIntegral(value)}%`;
+      function isKill(x, y) {
+        return y >= 8300 || y <= -3500 || x <= -9000 || x >= 9000;
+      }
+
+      let movesets = {};
+      let currentMoves = [];
+      let selectedMoveIndex = null;
+      let selectedMoveData = null;
+      let customOption = null;
+      let suppressCustomFlag = false;
+
+      try {
+        const response = await fetch('movesets.json');
+        if (response.ok) {
+          const payload = await response.json();
+          movesets = payload.movesets || {};
+        } else {
+          console.error('Failed to load movesets.json', response.status);
+        }
+      } catch (error) {
+        console.error('Unable to load movesets.json', error);
+      }
+
+      Smash64Calculator.characters.forEach((character) => {
+        const option = document.createElement('option');
+        option.value = character.key;
+        option.textContent = character.name;
+        defenderSelect.append(option.cloneNode(true));
+        attackerSelect.append(option);
+      });
+
+      function formatMoveDetails(option) {
+        if (!option || option.value === '' || !option.dataset) {
+          moveDetails.textContent = '';
+          return;
+        }
+        const details = [];
+        const gt = option.dataset.gt === '' ? null : Number(option.dataset.gt);
+        const at = option.dataset.at === '' ? null : Number(option.dataset.at);
+        if (gt !== null && at !== null) {
+          if (gt === 1 && at === 0) details.push('Ground targets only');
+          if (gt === 0 && at === 1) details.push('Air targets only');
+          if (gt === 0 && at === 0) details.push('Does not hit fighters');
+        }
+        const sd = option.dataset.sd === '' ? null : Number(option.dataset.sd);
+        if (sd !== null && sd !== 0) {
+          details.push(`${sd > 0 ? '+' : ''}${sd} shield damage`);
+        }
+        moveDetails.textContent = details.join(' • ');
+      }
+
+      function setDefender(key) {
+        const info = Smash64Calculator.characters.find((entry) => entry.key === key);
+        if (!info) return;
+        weightInput.value = info.weight;
+        fallAccelInput.value = info.fallAccel;
+        maxFallInput.value = info.maxFall;
+      }
+
+      function setCustomState(active) {
+        if (!customOption) return;
+        suppressCustomFlag = true;
+        if (active) {
+          customOption.textContent = 'Custom move';
+          moveSelect.value = '';
+          moveSelect.selectedIndex = 0;
+          selectedMoveIndex = null;
+          selectedMoveData = null;
+        } else {
+          customOption.textContent = 'Custom move';
+        }
+        suppressCustomFlag = false;
+      }
+
+      function populateMoves(key) {
+        moveSelect.innerHTML = '';
+        customOption = document.createElement('option');
+        customOption.value = '';
+        customOption.textContent = 'Custom move';
+        moveSelect.append(customOption);
+
+        currentMoves = movesets[key] || [];
+        currentMoves.forEach((move, index) => {
+          const option = document.createElement('option');
+          option.value = String(index);
+          option.textContent = move.name;
+          Object.assign(option.dataset, {
+            effect: move.effect || '',
+            damage: move.damage ?? '',
+            angle: move.angle ?? '',
+            kbs: move.kbs ?? '',
+            bkb: move.bkb ?? '',
+            fkb: move.fkb ?? '',
+            gt: move.gt ?? '',
+            at: move.at ?? '',
+            sd: move.sd ?? '',
+          });
+          moveSelect.append(option);
+        });
+
+        if (currentMoves.length > 0) {
+          moveSelect.selectedIndex = 1;
+          applyMove(moveSelect.options[1]);
+        } else {
+          moveSelect.selectedIndex = 0;
+          applyMove(customOption);
+        }
+      }
+
+      function applyMove(option) {
+        if (!option) return;
+        suppressCustomFlag = true;
+        if (option.value !== '') {
+          selectedMoveIndex = Number(option.value);
+          const move = currentMoves[selectedMoveIndex];
+          selectedMoveData = {
+            damage: move.damage ?? 0,
+            angle: move.angle ?? 0,
+            kbs: move.kbs ?? 0,
+            bkb: move.bkb ?? 0,
+            fkb: move.fkb ?? 0,
+            electric: (move.effect || '').toLowerCase() === 'electric',
+          };
+          damageInput.value = move.damage ?? '';
+          angleInput.value = move.angle ?? '';
+          kbsInput.value = move.kbs ?? '';
+          bkbInput.value = move.bkb ?? '';
+          fkbInput.value = move.fkb ?? 0;
+          electricToggle.checked = selectedMoveData.electric;
+          formatMoveDetails(option);
+        } else {
+          selectedMoveIndex = null;
+          selectedMoveData = null;
+          formatMoveDetails(option);
+        }
+        suppressCustomFlag = false;
+        calculate();
+      }
+
+      function hasMoveOverride() {
+        if (selectedMoveData === null) return false;
+        const tolerance = 1e-4;
+        if (Math.abs(numericValue(damageInput, 0) - selectedMoveData.damage) > tolerance) return true;
+        if (Math.abs(numericValue(angleInput, 0) - selectedMoveData.angle) > tolerance) return true;
+        if (Math.abs(numericValue(kbsInput, 0) - selectedMoveData.kbs) > tolerance) return true;
+        if (Math.abs(numericValue(bkbInput, 0) - selectedMoveData.bkb) > tolerance) return true;
+        if (Math.abs(numericValue(fkbInput, 0) - selectedMoveData.fkb) > tolerance) return true;
+        if (electricToggle.checked !== selectedMoveData.electric) return true;
+        return false;
+      }
+
+      function maybeMarkCustom() {
+        if (suppressCustomFlag) return;
+        if (selectedMoveIndex === null) return;
+        if (hasMoveOverride()) {
+          setCustomState(true);
+          formatMoveDetails(customOption);
+          calculate();
+        }
+      }
+
+      function updateHandicapMultipliers(attackIdx, defenseIdx) {
+        const atkMultiplier = Smash64Calculator.attackMultipliers[attackIdx] ?? 1;
+        const defMultiplier = Smash64Calculator.defenseMultipliers[defenseIdx] ?? 1;
+        outputNodes.attackMult.value = formatStandard(atkMultiplier, 3);
+        outputNodes.defenseMult.value = formatStandard(defMultiplier, 3);
+      }
+
+      function updateVector(vx, vy) {
+        if (!outputNodes.vectorLine) return;
+        const magnitude = Math.hypot(vx, vy);
+        const maxLength = 46;
+        const scale = magnitude > 0 ? Math.min(1, maxLength / magnitude) : 0;
+        const x2 = 60 + vx * scale;
+        const y2 = 60 - vy * scale;
+        outputNodes.vectorLine.setAttribute('x2', Number.isFinite(x2) ? x2 : 60);
+        outputNodes.vectorLine.setAttribute('y2', Number.isFinite(y2) ? y2 : 60);
+        outputNodes.vectorLine.style.opacity = magnitude > 0 ? 1 : 0.25;
+        outputNodes.velocityMag.textContent = formatStandard(magnitude);
+      }
+
+      function calculate() {
+        const attackIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(attackHandicapInput, 9))));
+        const defenseIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(defenseHandicapInput, 9))));
+
+        const params = {
+          weight: numericValue(weightInput, 1),
+          fallAccel: numericValue(fallAccelInput, 0),
+          maxFall: numericValue(maxFallInput, 0),
+          hp: numericValue(hpInput, 0),
+          baseDamage: numericValue(damageInput, 0),
+          baseKnockback: numericValue(bkbInput, 0),
+          knockbackScaling: numericValue(kbsInput, 0),
+          fixedKnockback: numericValue(fkbInput, 0),
+          angle: numericValue(angleInput, 0),
+          attackHandicapIndex: attackIndex,
+          defenseHandicapIndex: defenseIndex,
+          damageModifier: stalenessSelect.value,
+          targetState: targetStateSelect.value,
+          electric: electricToggle.checked,
+          spikeMode: spikeModeSelect.value,
+          simulationMode: simulationSelect.value,
+          comboDelay: numericValue(comboDelayInput, 0),
+        };
+
+        const result = Smash64Calculator.compute(params);
+        const computeAtPercent = (hpValue) => Smash64Calculator.compute({ ...params, hp: hpValue });
+        const thresholdStepSize = 1;
+        const thresholdMaxPercent = 300;
+        const startPercent = params.hp;
+        const staledDamage = Smash64Calculator.applyStaleness(params.baseDamage, params.damageModifier);
+        const appliedDamage = params.targetState === 'laying' ? Math.ceil(staledDamage / 2) : staledDamage;
+        const finalPercent = startPercent + appliedDamage;
+
+        outputNodes.finalPercent.textContent = formatPercent(finalPercent);
+        outputNodes.percentBreakdown.textContent = `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)} (after staleness)`;
+
+        if (params.fixedKnockback > 0) {
+          outputNodes.knockbackBreakdown.textContent = 'Fixed knockback only';
+        } else {
+          outputNodes.knockbackBreakdown.textContent = `Base ${formatStandard(params.baseKnockback)} • Scaling ${formatStandard(params.knockbackScaling)}`;
+        }
+
+        outputNodes.hitlag.textContent = formatIntegral(result.hitlag);
+        outputNodes.hitstun.textContent = `${formatIntegral(result.hitstun)} frames`;
+        outputNodes.knockdown.textContent = result.hitstun >= 32 ? 'Knocks down' : 'No knockdown';
+        outputNodes.knockdownThresholdOutput.textContent = '';
+        let knockdownThreshold = null;
+        if (result.hitstun < 32) {
+          let testPercent = startPercent + thresholdStepSize;
+          while (testPercent <= thresholdMaxPercent) {
+            const knockdownSim = computeAtPercent(testPercent);
+            if (knockdownSim.hitstun >= 32) {
+              knockdownThreshold = Math.round(testPercent);
+              break;
+            }
+            testPercent += thresholdStepSize;
+          }
+          if (knockdownThreshold !== null && knockdownThreshold <= thresholdMaxPercent) {
+            outputNodes.knockdownThresholdOutput.textContent = `Knocks down at ${formatIntegral(knockdownThreshold)}%`;
+          }
+        }
+
+        outputNodes.initVx.textContent = formatStandard(result.initialVelocityX);
+        outputNodes.initVy.textContent = formatStandard(result.initialVelocityY);
+        outputNodes.totalX.textContent = formatStandard(result.totalDistanceX);
+        outputNodes.totalY.textContent = formatStandard(result.totalDistanceY);
+
+        const position = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
+        outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
+        updatePositionDot(position);
+
+        const horizontalSign = Math.abs(result.initialVelocityX) < 1e-6 ? 0 : Math.sign(result.initialVelocityX);
+        const verticalSign = Math.abs(result.initialVelocityY) < 1e-6 ? 0 : Math.sign(result.initialVelocityY);
+        const signedXDistance = result.totalDistanceX * horizontalSign;
+        const signedYDistance = result.totalDistanceY * verticalSign;
+        const finalX = position.x + signedXDistance;
+        const finalY = position.y + signedYDistance;
+        outputNodes.finalPosition.textContent = `(${formatIntegral(finalX)}, ${formatIntegral(finalY)})`;
+
+        outputNodes.killThresholdOutput.textContent = '';
+
+        let killResult = "Doesn't kill";
+        if (isKill(finalX, finalY)) {
+          if (finalY >= 8300) {
+            killResult = 'Kills off top';
+          } else if (finalY <= -3500) {
+            killResult = 'Kills off bottom';
+          } else if (finalX <= -9000) {
+            killResult = 'Kills off left side';
+          } else {
+            killResult = 'Kills off right side';
+          }
+        }
+        outputNodes.killOutput.textContent = killResult;
+
+        let killThreshold = null;
+        if (killResult === "Doesn't kill") {
+          let testPercent = startPercent + thresholdStepSize;
+          while (testPercent <= thresholdMaxPercent) {
+            const sim = computeAtPercent(testPercent);
+            const simHorizontalSign = Math.abs(sim.initialVelocityX) < 1e-6 ? 0 : Math.sign(sim.initialVelocityX);
+            const simVerticalSign = Math.abs(sim.initialVelocityY) < 1e-6 ? 0 : Math.sign(sim.initialVelocityY);
+            const simSignedX = sim.totalDistanceX * simHorizontalSign;
+            const simSignedY = sim.totalDistanceY * simVerticalSign;
+            const testPos = {
+              x: position.x + simSignedX,
+              y: position.y + simSignedY,
+            };
+            if (isKill(testPos.x, testPos.y)) {
+              killThreshold = Math.round(testPercent);
+              break;
+            }
+            testPercent += thresholdStepSize;
+          }
+        }
+
+        outputNodes.killThresholdOutput.textContent = killThreshold !== null && killThreshold <= thresholdMaxPercent
+          ? `Kills at ${formatIntegral(killThreshold)}%`
+          : '';
+
+        const framesSimulated = params.simulationMode === 'hitstun'
+          ? Math.max(result.hitstun, params.comboDelay)
+          : null;
+        if (framesSimulated !== null) {
+          outputNodes.displacementMeta.textContent = `After ${formatIntegral(framesSimulated)} hitstun frames`;
+        } else {
+          outputNodes.displacementMeta.textContent = 'When velocity reaches zero';
+        }
+
+        updateVector(result.initialVelocityX, result.initialVelocityY);
+        updateHandicapMultipliers(attackIndex, defenseIndex);
+      }
+
+      defenderSelect.addEventListener('change', () => {
+        setDefender(defenderSelect.value);
+        calculate();
+      });
+
+      attackerSelect.addEventListener('change', () => {
+        populateMoves(attackerSelect.value);
+      });
+
+      moveSelect.addEventListener('change', () => {
+        applyMove(moveSelect.options[moveSelect.selectedIndex]);
+      });
+
+      [damageInput, angleInput, kbsInput, bkbInput, fkbInput].forEach((input) => {
+        input.addEventListener('input', maybeMarkCustom);
+      });
+      electricToggle.addEventListener('change', maybeMarkCustom);
+
+      [stalenessSelect, electricToggle, targetStateSelect, spikeModeSelect, simulationSelect,
+        comboDelayInput, attackHandicapInput, defenseHandicapInput,
+        weightInput, fallAccelInput, maxFallInput, hpInput,
+        damageInput, angleInput, kbsInput, bkbInput, fkbInput,
+        positionHorizontalSelect, positionVerticalSelect].forEach((node) => {
+        node.addEventListener('input', calculate);
+        node.addEventListener('change', calculate);
+      });
+
+      debugToggle.addEventListener('change', () => {
+        debugMode = debugToggle.checked;
+        calculate();
+      });
+
+      setDefender(Smash64Calculator.characters[0].key);
+      defenderSelect.selectedIndex = 0;
+      attackerSelect.selectedIndex = 0;
+      populateMoves(attackerSelect.value);
+      calculate();
+    })();
+  </script>
+</body>
+</html>

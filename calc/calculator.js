@@ -147,24 +147,29 @@
     const spikeMode = params.spikeMode;
     const simulationMode = params.simulationMode;
     const comboDelay = Math.max(0, Math.trunc(Number(params.comboDelay) || 0));
+    const throwMove = Boolean(params.throwMove);
 
+    const baseDamageInt = Math.max(0, Math.trunc(Number(baseDamage) || 0));
     let damage = applyStaleness(baseDamage, damageModifier);
-    let hp = Math.max(0, Math.trunc(Number(params.hp) || 0));
+    let damageForKnockback = throwMove ? baseDamageInt : damage;
+    let hpForKnockback = Math.max(0, Math.trunc(Number(params.hp) || 0));
 
     let hitlag = 0;
 
     if (targetState === 'laying') {
-      const extra = Math.ceil(damage / 2);
-      hp += extra;
-      const base = Math.floor(extra / 3) + 5;
+      const extraApplied = Math.ceil(damage / 2);
+      const extraForKnockback = Math.ceil(damageForKnockback / 2);
+      hpForKnockback += extraForKnockback;
+      const base = Math.floor(extraApplied / 3) + 5;
       hitlag = electric ? Math.floor(base * 1.5) : base;
     } else {
-      hp += damage;
+      hpForKnockback += damageForKnockback;
     }
 
     if (fixedKnockback > 0) {
-      hp = 10;
+      hpForKnockback = 10;
       damage = Math.trunc(fixedKnockback);
+      damageForKnockback = damage;
     }
 
     const attackMultiplier = f32(ATK_MULTIPLIERS[attackHandicapIndex] ?? 1);
@@ -174,7 +179,7 @@
       f32(
         f32(
           f32(
-            f32((hp * 0.1) + (damage * hp * 0.05)) * weight
+            f32((hpForKnockback * 0.1) + (damageForKnockback * hpForKnockback * 0.05)) * weight
           ) * 1.4
         ) + 18
       ) * (knockbackScaling * 0.01)
@@ -249,7 +254,7 @@
     let xDistance = f32(0);
     let yDistance = f32(0);
 
-    const runHitstunSimulation = simulationMode === 'hitstun';
+    const runHitstunSimulation = simulationMode === 'hitstun' || simulationMode === 'custom';
     const frames = comboDelay > 0 ? comboDelay : hitstun;
 
     if (runHitstunSimulation) {

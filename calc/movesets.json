@@ -12,7 +12,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -25,7 +26,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "neutral 1",
@@ -625,7 +627,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 100
+        "bkb": 100,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -638,7 +641,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 100
+        "bkb": 100,
+        "throw": true
       },
       {
         "name": "during",
@@ -1145,7 +1149,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 30
+        "bkb": 30,
+        "throw": true
       },
       {
         "name": "Floor attack F",
@@ -1212,7 +1217,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -1225,7 +1231,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "during",
@@ -1721,7 +1728,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 90
+        "bkb": 90,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -1734,7 +1742,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "neutral 1",
@@ -2152,7 +2161,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 100
+        "bkb": 100,
+        "throw": true
       },
       {
         "name": "during",
@@ -2178,7 +2188,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "neutral 1",
@@ -2765,7 +2776,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "during",
@@ -2791,7 +2803,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "during (2)",
@@ -3339,7 +3352,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -3352,7 +3366,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "during",
@@ -3887,7 +3902,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -3900,7 +3916,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "during",
@@ -4435,7 +4452,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 90
+        "bkb": 90,
+        "throw": true
       },
       {
         "name": "during",
@@ -4461,7 +4479,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 90
+        "bkb": 90,
+        "throw": true
       },
       {
         "name": "during (2)",
@@ -4853,7 +4872,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -4866,7 +4886,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 60
+        "bkb": 60,
+        "throw": true
       },
       {
         "name": "neutral",
@@ -5245,7 +5266,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 90
+        "bkb": 90,
+        "throw": true
       },
       {
         "name": "bthrow damage",
@@ -5258,7 +5280,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 90
+        "bkb": 90,
+        "throw": true
       },
       {
         "name": "neutral 1",
@@ -5988,7 +6011,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 80
+        "bkb": 80,
+        "throw": true
       },
       {
         "name": "bthrow",
@@ -6001,7 +6025,8 @@
         "gt": null,
         "at": null,
         "sd": null,
-        "bkb": 70
+        "bkb": 70,
+        "throw": true
       },
       {
         "name": "neutral 1",

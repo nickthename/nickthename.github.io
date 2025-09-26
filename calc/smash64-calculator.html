@@ -7,6 +7,7 @@
   <style>
     :root { color-scheme: light dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
     * { box-sizing: border-box; }
+    .hidden { display: none !important; }
     body { margin: 0; background: var(--page-bg, #f7f8fa); color: var(--text-color, #10131a); }
 
     .warning-banner { background: #ffdd57; color: #3b2f00; padding: 0.65rem 1rem; font-weight: 600; text-align: center; font-size: 0.95rem; }
@@ -29,12 +30,14 @@
     fieldset { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 0.85rem; display: grid; gap: 0.65rem; align-content: start; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); }
     legend { padding: 0 0.5rem; font-weight: 600; letter-spacing: 0.01em; }
     label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .inline-input label { margin-bottom: 0; }
     input[type="number"], select { width: 100%; font: inherit; padding: 0.45rem 0.55rem; border: 1px solid rgba(0,0,0,0.18); border-radius: 6px; background: rgba(0,0,0,0.03); }
     input[readonly] { background: rgba(0,0,0,0.06); color: inherit; }
     input[type="number"]:focus, select:focus { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
 
     .form-layout { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
     .move-grid, .properties-grid { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .move-flags { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; grid-column: 1 / -1; }
     .position-row { display: grid; gap: 0.4rem; }
     .position-inputs { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
     .position-inputs select { width: auto; min-width: 130px; }
@@ -113,7 +116,7 @@
   </style>
 </head>
 <body>
-    <div class="warning-banner">⚠️ This is in BETA, calculations may be wrong!!!</div>
+    <div class="warning-banner">⚠️ This is in BETA, calculations may be wrong!!!⚠️ </div>
   <main>
     <header>
       <h1>Smash 64 Knockback Calculator</h1>
@@ -185,6 +188,16 @@
                   <label for="fkb-input">Fixed knockback (FKB)</label>
                   <input id="fkb-input" name="fkb" type="number" step="1" min="0" value="0">
                 </div>
+                <div class="move-flags">
+                  <div class="inline-input">
+                    <input type="checkbox" id="electric-toggle" name="electric">
+                    <label for="electric-toggle">Electric hitbox</label>
+                  </div>
+                  <div class="inline-input">
+                    <input type="checkbox" id="throw-toggle" name="throw">
+                    <label for="throw-toggle">Throw (damage-only stale)</label>
+                  </div>
+                </div>
               </div>
             </details>
           </fieldset>
@@ -200,10 +213,6 @@
                 <option value="lv3">Lv3 (0.96)</option>
                 <option value="stale">Stale (0.75)</option>
               </select>
-            </div>
-            <div class="inline-input">
-              <input type="checkbox" id="electric-toggle" name="electric">
-              <label for="electric-toggle">Electric hitbox</label>
             </div>
             <div>
               <label for="target-state-select">Defender state</label>
@@ -223,15 +232,16 @@
               </select>
             </div>
             <div>
-              <label for="simulation-select">End of loop <span class="help-icon" title="Hitstun replicates the original tool's frame loop; Velocity runs until knockback speed reaches zero.">?</span></label>
+              <label for="simulation-select">End position <span class="help-icon" title="Choose how far to simulate the defender: end of hitstun, full velocity decay, or a specific frame.">?</span></label>
               <select id="simulation-select" name="simulation">
-                <option value="hitstun">Hitstun frames</option>
-                <option value="velocity">Velocity zero</option>
+                <option value="hitstun">End of hitstun</option>
+                <option value="velocity">Velocity is zero</option>
+                <option value="custom">Custom end frame</option>
               </select>
             </div>
-            <div>
-              <label for="combo-delay-input">Combo delay (frames)</label>
-              <input id="combo-delay-input" name="comboDelay" type="number" step="1" min="0" value="0">
+            <div id="combo-delay-row" class="hidden">
+              <label for="combo-delay-input">Calculate position at frame</label>
+              <input id="combo-delay-input" name="comboDelay" type="number" step="1" min="0">
             </div>
           </fieldset>
         <fieldset>
@@ -376,10 +386,12 @@
       const fkbInput = document.getElementById('fkb-input');
       const stalenessSelect = document.getElementById('staleness-select');
       const electricToggle = document.getElementById('electric-toggle');
+      const throwToggle = document.getElementById('throw-toggle');
       const targetStateSelect = document.getElementById('target-state-select');
       const spikeModeSelect = document.getElementById('spike-mode-select');
       const simulationSelect = document.getElementById('simulation-select');
       const comboDelayInput = document.getElementById('combo-delay-input');
+      const comboDelayRow = document.getElementById('combo-delay-row');
       const attackHandicapInput = document.getElementById('attack-handicap-input');
       const defenseHandicapInput = document.getElementById('defense-handicap-input');
       const positionHorizontalSelect = document.getElementById('position-horizontal');
@@ -489,6 +501,10 @@
         const value = Number(input.value);
         return Number.isFinite(value) ? value : fallback;
       };
+      const updateComboDelayVisibility = () => {
+        if (!comboDelayRow) return;
+        comboDelayRow.classList.toggle('hidden', simulationSelect.value !== 'custom');
+      };
 
       let debugMode = false;
       const baseDecimals = 1;
@@ -528,6 +544,9 @@
       let selectedMoveData = null;
       let customOption = null;
       let suppressCustomFlag = false;
+      let defenderCustomOption = null;
+      let selectedDefenderData = null;
+      let suppressDefenderCustom = false;
 
       try {
         const response = await fetch('movesets.json');
@@ -542,12 +561,21 @@
       }
 
       Smash64Calculator.characters.forEach((character) => {
-        const option = document.createElement('option');
-        option.value = character.key;
-        option.textContent = character.name;
-        defenderSelect.append(option.cloneNode(true));
-        attackerSelect.append(option);
+        const defenderOption = document.createElement('option');
+        defenderOption.value = character.key;
+        defenderOption.textContent = character.name;
+        defenderSelect.append(defenderOption);
+
+        const attackerOption = document.createElement('option');
+        attackerOption.value = character.key;
+        attackerOption.textContent = character.name;
+        attackerSelect.append(attackerOption);
       });
+
+      defenderCustomOption = document.createElement('option');
+      defenderCustomOption.value = '__custom__';
+      defenderCustomOption.textContent = 'Custom character';
+      defenderSelect.append(defenderCustomOption);
 
       function formatMoveDetails(option) {
         if (!option || option.value === '' || !option.dataset) {
@@ -570,11 +598,52 @@
       }
 
       function setDefender(key) {
+        if (defenderCustomOption && key === defenderCustomOption.value) {
+          selectedDefenderData = null;
+          return;
+        }
         const info = Smash64Calculator.characters.find((entry) => entry.key === key);
-        if (!info) return;
+        if (!info) {
+          return;
+        }
+        suppressDefenderCustom = true;
+        selectedDefenderData = {
+          weight: Number(info.weight),
+          fallAccel: Number(info.fallAccel),
+          maxFall: Number(info.maxFall),
+        };
         weightInput.value = info.weight;
         fallAccelInput.value = info.fallAccel;
         maxFallInput.value = info.maxFall;
+        suppressDefenderCustom = false;
+      }
+
+      function hasDefenderOverride() {
+        if (!selectedDefenderData) return false;
+        const tolerance = 1e-4;
+        if (Math.abs(numericValue(weightInput, selectedDefenderData.weight) - selectedDefenderData.weight) > tolerance) return true;
+        if (Math.abs(numericValue(fallAccelInput, selectedDefenderData.fallAccel) - selectedDefenderData.fallAccel) > tolerance) return true;
+        if (Math.abs(numericValue(maxFallInput, selectedDefenderData.maxFall) - selectedDefenderData.maxFall) > tolerance) return true;
+        return false;
+      }
+
+      function markDefenderCustom() {
+        if (!defenderCustomOption) return;
+        selectedDefenderData = null;
+        suppressDefenderCustom = true;
+        defenderSelect.value = defenderCustomOption.value;
+        suppressDefenderCustom = false;
+      }
+
+      function maybeMarkDefenderCustom() {
+        if (suppressDefenderCustom) return;
+        if (defenderCustomOption && defenderSelect.value === defenderCustomOption.value) {
+          selectedDefenderData = null;
+          return;
+        }
+        if (hasDefenderOverride()) {
+          markDefenderCustom();
+        }
       }
 
       function setCustomState(active) {
@@ -614,6 +683,7 @@
             gt: move.gt ?? '',
             at: move.at ?? '',
             sd: move.sd ?? '',
+            throw: move.throw ? 'true' : '',
           });
           moveSelect.append(option);
         });
@@ -633,13 +703,16 @@
         if (option.value !== '') {
           selectedMoveIndex = Number(option.value);
           const move = currentMoves[selectedMoveIndex];
+          const isElectric = (move.effect || '').toLowerCase() === 'electric';
+          const isThrow = Boolean(move.throw);
           selectedMoveData = {
             damage: move.damage ?? 0,
             angle: move.angle ?? 0,
             kbs: move.kbs ?? 0,
             bkb: move.bkb ?? 0,
             fkb: move.fkb ?? 0,
-            electric: (move.effect || '').toLowerCase() === 'electric',
+            electric: isElectric,
+            throwMove: isThrow,
           };
           damageInput.value = move.damage ?? '';
           angleInput.value = move.angle ?? '';
@@ -647,6 +720,7 @@
           bkbInput.value = move.bkb ?? '';
           fkbInput.value = move.fkb ?? 0;
           electricToggle.checked = selectedMoveData.electric;
+          throwToggle.checked = selectedMoveData.throwMove;
           formatMoveDetails(option);
         } else {
           selectedMoveIndex = null;
@@ -666,6 +740,7 @@
         if (Math.abs(numericValue(bkbInput, 0) - selectedMoveData.bkb) > tolerance) return true;
         if (Math.abs(numericValue(fkbInput, 0) - selectedMoveData.fkb) > tolerance) return true;
         if (electricToggle.checked !== selectedMoveData.electric) return true;
+        if (throwToggle.checked !== selectedMoveData.throwMove) return true;
         return false;
       }
 
@@ -703,6 +778,10 @@
         const attackIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(attackHandicapInput, 9))));
         const defenseIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(defenseHandicapInput, 9))));
 
+        const simulationMode = simulationSelect.value;
+        const rawComboDelay = numericValue(comboDelayInput, 0);
+        const comboDelayFrames = simulationMode === 'custom' ? rawComboDelay : 0;
+
         const params = {
           weight: numericValue(weightInput, 1),
           fallAccel: numericValue(fallAccelInput, 0),
@@ -718,9 +797,10 @@
           damageModifier: stalenessSelect.value,
           targetState: targetStateSelect.value,
           electric: electricToggle.checked,
+          throwMove: throwToggle.checked,
           spikeMode: spikeModeSelect.value,
-          simulationMode: simulationSelect.value,
-          comboDelay: numericValue(comboDelayInput, 0),
+          simulationMode,
+          comboDelay: comboDelayFrames,
         };
 
         const result = Smash64Calculator.compute(params);
@@ -733,7 +813,10 @@
         const finalPercent = startPercent + appliedDamage;
 
         outputNodes.finalPercent.textContent = formatPercent(finalPercent);
-        outputNodes.percentBreakdown.textContent = `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)} (after staleness)`;
+        const percentSummary = `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)}`;
+        outputNodes.percentBreakdown.textContent = stalenessSelect.value !== 'fresh'
+          ? `${percentSummary} (after staleness)`
+          : percentSummary;
 
         if (params.fixedKnockback > 0) {
           outputNodes.knockbackBreakdown.textContent = 'Fixed knockback only';
@@ -819,11 +902,15 @@
           ? `Kills at ${formatIntegral(killThreshold)}%`
           : '';
 
-        const framesSimulated = params.simulationMode === 'hitstun'
-          ? Math.max(result.hitstun, params.comboDelay)
-          : null;
+        let framesSimulated = null;
+        if (simulationMode === 'hitstun') {
+          framesSimulated = result.hitstun;
+        } else if (simulationMode === 'custom') {
+          framesSimulated = rawComboDelay > 0 ? rawComboDelay : result.hitstun;
+        }
         if (framesSimulated !== null) {
-          outputNodes.displacementMeta.textContent = `After ${formatIntegral(framesSimulated)} hitstun frames`;
+          const label = simulationMode === 'custom' ? 'frames' : 'hitstun frames';
+          outputNodes.displacementMeta.textContent = `After ${formatIntegral(framesSimulated)} ${label}`;
         } else {
           outputNodes.displacementMeta.textContent = 'When velocity reaches zero';
         }
@@ -833,7 +920,11 @@
       }
 
       defenderSelect.addEventListener('change', () => {
-        setDefender(defenderSelect.value);
+        if (defenderCustomOption && defenderSelect.value === defenderCustomOption.value) {
+          selectedDefenderData = null;
+        } else {
+          setDefender(defenderSelect.value);
+        }
         calculate();
       });
 
@@ -849,14 +940,25 @@
         input.addEventListener('input', maybeMarkCustom);
       });
       electricToggle.addEventListener('change', maybeMarkCustom);
+      throwToggle.addEventListener('change', maybeMarkCustom);
 
-      [stalenessSelect, electricToggle, targetStateSelect, spikeModeSelect, simulationSelect,
+      [weightInput, fallAccelInput, maxFallInput].forEach((input) => {
+        input.addEventListener('input', maybeMarkDefenderCustom);
+        input.addEventListener('change', maybeMarkDefenderCustom);
+      });
+
+      [stalenessSelect, electricToggle, throwToggle, targetStateSelect, spikeModeSelect,
         comboDelayInput, attackHandicapInput, defenseHandicapInput,
         weightInput, fallAccelInput, maxFallInput, hpInput,
         damageInput, angleInput, kbsInput, bkbInput, fkbInput,
         positionHorizontalSelect, positionVerticalSelect].forEach((node) => {
         node.addEventListener('input', calculate);
         node.addEventListener('change', calculate);
+      });
+
+      simulationSelect.addEventListener('change', () => {
+        updateComboDelayVisibility();
+        calculate();
       });
 
       debugToggle.addEventListener('change', () => {
@@ -868,6 +970,7 @@
       defenderSelect.selectedIndex = 0;
       attackerSelect.selectedIndex = 0;
       populateMoves(attackerSelect.value);
+      updateComboDelayVisibility();
       calculate();
     })();
   </script>

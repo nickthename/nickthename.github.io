@@ -131,6 +131,74 @@
     return base;
   }
 
+  function simulateHitstunTrajectory(config) {
+    const totalFrames = Math.max(Math.trunc(config.hitstun) || 0, 0);
+    const steps = [{ frame: 0, x: 0, y: 0 }];
+    if (totalFrames <= 0) {
+      return steps;
+    }
+
+    let xVelocity = f32(config.initialVX);
+    let yVelocity = f32(config.initialVY);
+    let xDistance = f32(0);
+    let yDistance = f32(0);
+    let fall = f32(0);
+    let yVelocityCurrent = yVelocity;
+
+    const xDec = f32(config.xDec);
+    const yDec = f32(config.yDec);
+    const fallAccel = f32(config.fallAccel);
+    const maxFall = f32(config.maxFall);
+    const spikeMode = config.spikeMode;
+
+    const xIterations = Math.max(totalFrames - 1, 0);
+    let xIterationCount = 0;
+
+    let remainingYIterations = Math.max(totalFrames - 1, 0);
+    let stopYAxis = false;
+
+    if (remainingYIterations > 0 && spikeMode !== 'air') {
+      yVelocityCurrent = f32(yVelocityCurrent - yDec);
+    }
+
+    for (let frame = 1; frame <= totalFrames; frame += 1) {
+      if (xIterationCount < xIterations && xVelocity > xDec) {
+        xVelocity = f32(xVelocity - xDec);
+        xDistance = f32(xDistance + xVelocity);
+        xIterationCount += 1;
+      }
+
+      if (!stopYAxis && remainingYIterations > 0) {
+        if (spikeMode === 'air') {
+          fall = f32(fall + fallAccel);
+          if (fall > maxFall) {
+            fall = maxFall;
+          }
+          yVelocityCurrent = f32(yVelocityCurrent - yDec);
+          yDistance = f32(yDistance + yVelocityCurrent + fall);
+          remainingYIterations -= 1;
+        } else {
+          if (yVelocityCurrent <= fall) {
+            stopYAxis = true;
+            remainingYIterations = 0;
+          } else {
+            fall = f32(fall + fallAccel);
+            if (fall > maxFall) {
+              fall = maxFall;
+            }
+            yDistance = f32(yDistance + (yVelocityCurrent - fall));
+            yVelocityCurrent = f32(yVelocityCurrent - yDec);
+            remainingYIterations -= 1;
+          }
+        }
+      }
+
+      steps.push({ frame, x: Number(xDistance), y: Number(yDistance) });
+    }
+
+    return steps;
+  }
+
   function computeKnockback(params) {
     const weight = Number(params.weight) || 1;
     const fallAccel = f32(Number(params.fallAccel) || 0);
@@ -211,8 +279,17 @@
     }
 
     const angleRad = angleDeg * (Math.PI / 180);
-    let yMultiplier = f32(Math.abs(Math.sin(angleRad)));
-    let xMultiplier = f32(Math.abs(Math.cos(angleRad)));
+    const cosAngle = Math.cos(angleRad);
+    const sinAngle = Math.sin(angleRad);
+    const horizontalDirection = approxEqual(cosAngle, 0)
+      ? 0
+      : (cosAngle > 0 ? 1 : -1);
+    const verticalDirection = approxEqual(sinAngle, 0)
+      ? 0
+      : (sinAngle > 0 ? 1 : -1);
+
+    let yMultiplier = f32(Math.abs(sinAngle));
+    let xMultiplier = f32(Math.abs(cosAngle));
 
     if (approxEqual(Math.abs(angleDeg), 90)) {
       xMultiplier = 0;
@@ -234,6 +311,10 @@
           initialVelocityY: 0,
           totalDistanceX: 0,
           totalDistanceY: 0,
+          trajectory: [{ frame: 0, x: 0, y: 0 }],
+          horizontalDirection,
+          verticalDirection,
+          resolvedAngle: angleDeg,
         };
       }
       yMultiplier = f32(yMultiplier * 0.8);
@@ -247,6 +328,17 @@
     const xDec = xDecOverride ?? f32(VELOCITY_DECAY_FACTOR * xMultiplier);
     const initialVelocityY = f32(yMultiplier * knockback);
     const initialVelocityX = f32(xMultiplier * knockback);
+
+    const trajectory = simulateHitstunTrajectory({
+      hitstun,
+      initialVX: initialVelocityX,
+      initialVY: initialVelocityY,
+      xDec,
+      yDec,
+      fallAccel,
+      maxFall,
+      spikeMode,
+    });
 
     let fall = f32(0);
     let xVelocity = initialVelocityX;
@@ -330,6 +422,10 @@
       initialVelocityY: Number(initialVelocityY),
       totalDistanceX: Number(xDistance),
       totalDistanceY: Number(yDistance),
+      trajectory,
+      horizontalDirection,
+      verticalDirection,
+      resolvedAngle: angleDeg,
     };
   }
 

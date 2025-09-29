@@ -525,6 +525,8 @@
       const STAGE_HALF_WIDTH = POSITION_DATA.stage.halfWidth;
       let stalenessValue = 'fresh';
       let customPosition = null;
+      let autoAirborneActive = false;
+      let lastGroundState = targetStateSelect.value || 'standing';
 
       function computePosition(horizontalKey, verticalKey) {
         const platform = POSITION_DATA[verticalKey] || POSITION_DATA.stage;
@@ -550,6 +552,28 @@
       const STAGE_VIEW_BOTTOM_MARGIN = 420;
       const BLASTZONE_MARGIN = 200;
       const WORLD_EXTENT = 40000;
+      const LIVE_AREA_MARGIN = 1;
+
+      function clampToLiveArea(x, y) {
+        const minX = BLASTZONE_LIMITS.left + LIVE_AREA_MARGIN;
+        const maxX = BLASTZONE_LIMITS.right - LIVE_AREA_MARGIN;
+        const minY = BLASTZONE_LIMITS.bottom + LIVE_AREA_MARGIN;
+        const maxY = BLASTZONE_LIMITS.top - LIVE_AREA_MARGIN;
+        return {
+          x: Math.min(Math.max(x, minX), maxX),
+          y: Math.min(Math.max(y, minY), maxY),
+        };
+      }
+
+      function isPositionOnPlatform(position) {
+        const verticalTolerance = 1;
+        return Object.values(POSITION_DATA).some((platform) => {
+          if (!platform) return false;
+          const withinX = position.x >= (platform.center - platform.halfWidth - 0.5)
+            && position.x <= (platform.center + platform.halfWidth + 0.5);
+          return withinX && Math.abs(position.y - platform.y) <= verticalTolerance;
+        });
+      }
 
       const STAGE_EXTENTS = (() => {
         const xs = [-STAGE_HALF_WIDTH, STAGE_HALF_WIDTH];
@@ -857,6 +881,10 @@
       let suppressPositionChange = false;
 
       function setPositionFromStageCoords(stageX, stageY, forceUpdate = false) {
+        const clamped = clampToLiveArea(stageX, stageY);
+        stageX = clamped.x;
+        stageY = clamped.y;
+
         const selection = resolvePositionSelection(stageX, stageY);
         const currentHorizontal = positionHorizontalSelect.value;
         const currentVertical = positionVerticalSelect.value;
@@ -872,6 +900,7 @@
         const dy = stageY - snappedPosition.y;
         const distanceSq = (dx * dx) + (dy * dy);
         const shouldSnap = trajectoryState.snapEnabled && distanceSq <= trajectoryState.snapDistanceSq;
+        let grounded = isPositionOnPlatform({ x: stageX, y: stageY });
 
         let positionChanged = selectionChanged;
 
@@ -880,12 +909,40 @@
             customPosition = null;
             positionChanged = true;
           }
+          stageX = snappedPosition.x;
+          stageY = snappedPosition.y;
+          grounded = true;
         } else {
           const prev = customPosition;
           customPosition = { x: stageX, y: stageY };
           if (!prev || Math.abs(prev.x - stageX) > 0.25 || Math.abs(prev.y - stageY) > 0.25) {
             positionChanged = true;
           }
+        }
+
+        if (grounded) {
+          if (targetStateSelect.value !== 'airborne') {
+            lastGroundState = targetStateSelect.value || lastGroundState;
+            autoAirborneActive = false;
+          } else if (autoAirborneActive) {
+            const groundState = lastGroundState || 'standing';
+            if (targetStateSelect.value !== groundState) {
+              targetStateSelect.value = groundState;
+              positionChanged = true;
+            }
+            lastGroundState = groundState;
+            autoAirborneActive = false;
+          }
+        } else {
+          const currentState = targetStateSelect.value;
+          if (currentState !== 'airborne') {
+            if (currentState) {
+              lastGroundState = currentState;
+            }
+            targetStateSelect.value = 'airborne';
+            positionChanged = true;
+          }
+          autoAirborneActive = true;
         }
 
         if (forceUpdate || positionChanged) {
@@ -1467,6 +1524,13 @@
         damageInput, angleInput, kbsInput, bkbInput, fkbInput].forEach((node) => {
         node.addEventListener('input', calculate);
         node.addEventListener('change', calculate);
+      });
+
+      targetStateSelect.addEventListener('change', () => {
+        if (targetStateSelect.value !== 'airborne') {
+          lastGroundState = targetStateSelect.value || lastGroundState;
+          autoAirborneActive = false;
+        }
       });
 
       positionHorizontalSelect.addEventListener('change', () => {

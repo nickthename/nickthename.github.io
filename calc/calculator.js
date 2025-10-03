@@ -10,6 +10,7 @@
   const VELOCITY_DECAY_FACTOR = 1.7;
   const HITSTUN_DIVIDER = 0.5333333333333333; // 1 / 1.875
   const HITSTUN_FLOOR = 0.4999995000000001;
+  const DOUBLE_JUMP_ARMOR_VALUE = 140;
 
   const GROUND_SPIKE_Y_DEC = {
     '-80': 1.6601531505584717,
@@ -66,6 +67,22 @@
 
   function approxEqual(a, b, epsilon = 1e-6) {
     return Math.abs(a - b) <= epsilon;
+  }
+
+  function deriveSpikeMode(angleDeg, targetState) {
+    if (!(Number.isFinite(angleDeg)) || angleDeg >= 0) {
+      return 'off';
+    }
+
+    if (targetState === 'airborne') {
+      return 'air';
+    }
+
+    if (targetState === 'standing' || targetState === 'crouching' || targetState === 'laying') {
+      return 'ground';
+    }
+
+    return 'off';
   }
 
   function roundToNearestEven(value) {
@@ -212,10 +229,10 @@
     const damageModifier = params.damageModifier;
     const targetState = params.targetState;
     const electric = Boolean(params.electric);
-    const spikeMode = params.spikeMode;
     const simulationMode = params.simulationMode;
     const comboDelay = Math.max(0, Math.trunc(Number(params.comboDelay) || 0));
     const throwMove = Boolean(params.throwMove);
+    const doubleJumpArmor = Boolean(params.doubleJumpArmor);
 
     const baseDamageInt = Math.max(0, Math.trunc(Number(baseDamage) || 0));
     let damage = applyStaleness(baseDamage, damageModifier);
@@ -265,6 +282,13 @@
       hitlag = computeHitlag(damage, targetState, electric);
     }
 
+    const knockbackBeforeArmor = knockback;
+
+    if (doubleJumpArmor) {
+      const adjusted = knockbackBeforeArmor - DOUBLE_JUMP_ARMOR_VALUE;
+      knockback = f32(Math.max(0, adjusted));
+    }
+
     const rawHitstun = knockback * HITSTUN_DIVIDER - HITSTUN_FLOOR;
     const hitstun = Math.max(0, roundToNearestEven(rawHitstun));
 
@@ -277,6 +301,8 @@
         angleDeg = knockback < 32 ? 0 : 42.5;
       }
     }
+
+    const spikeMode = deriveSpikeMode(angleDeg, targetState);
 
     const angleRad = angleDeg * (Math.PI / 180);
     const cosAngle = Math.cos(angleRad);
@@ -298,7 +324,9 @@
     let yDec = f32(VELOCITY_DECAY_FACTOR * yMultiplier);
     let xDecOverride = null;
 
-    if (spikeMode === 'ground' && angleDeg < 0) {
+    const isGroundSpike = spikeMode === 'ground' && angleDeg < 0;
+
+    if (isGroundSpike) {
       if (hitstun < 32) {
         return {
           damage,
@@ -313,8 +341,9 @@
           totalDistanceY: 0,
           trajectory: [{ frame: 0, x: 0, y: 0 }],
           horizontalDirection,
-          verticalDirection,
+          verticalDirection: 1,
           resolvedAngle: angleDeg,
+          knockbackBeforeArmor,
         };
       }
       yMultiplier = f32(yMultiplier * 0.8);
@@ -424,8 +453,9 @@
       totalDistanceY: Number(yDistance),
       trajectory,
       horizontalDirection,
-      verticalDirection,
+      verticalDirection: isGroundSpike ? 1 : verticalDirection,
       resolvedAngle: angleDeg,
+      knockbackBeforeArmor,
     };
   }
 
@@ -435,5 +465,6 @@
     defenseMultipliers: DEF_MULTIPLIERS,
     compute: computeKnockback,
     applyStaleness,
+    doubleJumpArmorValue: DOUBLE_JUMP_ARMOR_VALUE,
   };
 })();

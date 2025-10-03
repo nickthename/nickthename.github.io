@@ -114,6 +114,10 @@
     .knockdown-status { margin: 0; font-weight: 600; text-align: center; padding: 0.3rem 0 0.2rem; }
     .knockdown-status + .knockdown-status { padding-top: 0.1rem; }
     .status-block { display: grid; gap: 0.2rem; }
+    .status-row { display: grid; gap: 0.6rem; }
+    .status-row.has-armor { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+    .armor-block { display: none; }
+    .status-row.has-armor .armor-block { display: grid; }
     .status-subtext { margin: 0; text-align: center; font-size: 0.85rem; opacity: 0.7; }
     .status-divider { height: 1px; background: rgba(0,0,0,0.12); width: 70%; margin: 0.4rem auto; }
     .position-summary { display: grid; gap: 0.25rem; }
@@ -171,6 +175,10 @@
           <div>
             <label for="hp-input">Starting damage %</label>
             <input id="hp-input" name="hp" type="number" step="1" min="0" value="0">
+          </div>
+          <div id="double-jump-armor-row" class="inline-input hidden">
+            <input type="checkbox" id="double-jump-armor-toggle" name="doubleJumpArmor">
+            <label for="double-jump-armor-toggle">Double jump armor</label>
           </div>
           <details class="disclosure" id="defender-details">
             <summary>Defender properties</summary>
@@ -258,14 +266,6 @@
                 <option value="crouching">Crouching</option>
                 <option value="airborne">Airborne</option>
                 <option value="laying">Laying</option>
-              </select>
-            </div>
-            <div>
-              <label for="spike-mode-select">Spiking behaviour</label>
-              <select id="spike-mode-select" name="spikeMode">
-                <option value="off">Off</option>
-                <option value="ground">Ground spike</option>
-                <option value="air">Air spike</option>
               </select>
             </div>
             <div>
@@ -371,9 +371,15 @@
           <div><dt>Hitlag</dt><dd id="hitlag-value">—</dd></div>
           <div><dt>Total hitstun</dt><dd id="hitstun-value">—</dd></div>
         </dl>
-        <div class="status-block">
-          <p class="knockdown-status" id="knockdown-status">—</p>
-          <p class="status-subtext" id="knockdown-threshold-output"></p>
+        <div class="status-row" id="knockdown-row">
+          <div class="status-block">
+            <p class="knockdown-status" id="knockdown-status">—</p>
+            <p class="status-subtext" id="knockdown-threshold-output"></p>
+          </div>
+          <div class="status-block armor-block" id="armor-status-block">
+            <p class="knockdown-status" id="armor-status">—</p>
+            <p class="status-subtext" id="armor-threshold-output"></p>
+          </div>
         </div>
         <div class="status-divider" aria-hidden="true"></div>
         <div class="status-block">
@@ -453,7 +459,6 @@
       const electricToggle = document.getElementById('electric-toggle');
       const throwToggle = document.getElementById('throw-toggle');
       const targetStateSelect = document.getElementById('target-state-select');
-      const spikeModeSelect = document.getElementById('spike-mode-select');
       const simulationSelect = document.getElementById('simulation-select');
       const comboDelayInput = document.getElementById('combo-delay-input');
       const comboDelayRow = document.getElementById('combo-delay-row');
@@ -463,6 +468,8 @@
       const positionVerticalSelect = document.getElementById('position-vertical');
       const debugToggle = document.getElementById('debug-toggle');
       const snapToggle = document.getElementById('snap-toggle');
+      const doubleJumpArmorRow = document.getElementById('double-jump-armor-row');
+      const doubleJumpArmorToggle = document.getElementById('double-jump-armor-toggle');
 
       const outputNodes = {
         finalPercent: document.getElementById('final-percent-output'),
@@ -485,6 +492,10 @@
         killOutput: document.getElementById('kill-output'),
         killThresholdOutput: document.getElementById('kill-threshold-output'),
         knockdownThresholdOutput: document.getElementById('knockdown-threshold-output'),
+        armorStatus: document.getElementById('armor-status'),
+        armorThresholdOutput: document.getElementById('armor-threshold-output'),
+        armorBlock: document.getElementById('armor-status-block'),
+        knockdownRow: document.getElementById('knockdown-row'),
       };
 
       const BLASTZONE_LIMITS = { left: -9000, right: 9000, bottom: -3500, top: 8300 };
@@ -527,6 +538,8 @@
       let customPosition = null;
       let autoAirborneActive = false;
       let lastGroundState = targetStateSelect.value || 'standing';
+      let doubleJumpArmorLiftActive = false;
+      let doubleJumpArmorAnchor = null;
 
       function computePosition(horizontalKey, verticalKey) {
         const platform = POSITION_DATA[verticalKey] || POSITION_DATA.stage;
@@ -553,6 +566,8 @@
       const BLASTZONE_MARGIN = 200;
       const WORLD_EXTENT = 40000;
       const LIVE_AREA_MARGIN = 1;
+      const DOUBLE_JUMP_ARMOR_THRESHOLD = (Smash64Calculator.doubleJumpArmorValue || 140);
+      const DOUBLE_JUMP_ARMOR_LIFT = 160;
 
       function clampToLiveArea(x, y) {
         const minX = BLASTZONE_LIMITS.left + LIVE_AREA_MARGIN;
@@ -623,6 +638,10 @@
           default:
             return dynamicBounds;
         }
+      }
+
+      function isYoshiDefender() {
+        return defenderSelect.value === 'Yoshi';
       }
 
       function computeTrajectoryBounds(points) {
@@ -918,6 +937,10 @@
           if (!prev || Math.abs(prev.x - stageX) > 0.25 || Math.abs(prev.y - stageY) > 0.25) {
             positionChanged = true;
           }
+          if (trajectoryState.dragging && doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
+            doubleJumpArmorLiftActive = false;
+            doubleJumpArmorAnchor = null;
+          }
         }
 
         if (grounded) {
@@ -948,6 +971,94 @@
         if (forceUpdate || positionChanged) {
           calculate();
         }
+      }
+
+      function setCustomPositionDirect(stageX, stageY) {
+        const clamped = clampToLiveArea(stageX, stageY);
+        customPosition = { x: clamped.x, y: clamped.y };
+      }
+
+      function enforceDoubleJumpArmorState({ skipCalculate = false, forceCalculate = false } = {}) {
+        const yoshiSelected = isYoshiDefender();
+        const armorEnabled = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
+        let changed = false;
+
+        if (!yoshiSelected) {
+          if (doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
+            doubleJumpArmorToggle.checked = false;
+            changed = true;
+          }
+          if (doubleJumpArmorLiftActive) {
+            doubleJumpArmorLiftActive = false;
+            customPosition = null;
+            changed = true;
+          }
+          autoAirborneActive = false;
+          if (!skipCalculate && (changed || forceCalculate)) {
+            calculate();
+          }
+          return;
+        }
+
+        if (armorEnabled) {
+          if (targetStateSelect.value !== 'airborne') {
+            if (targetStateSelect.value && targetStateSelect.value !== 'airborne') {
+              lastGroundState = targetStateSelect.value;
+            }
+            targetStateSelect.value = 'airborne';
+            changed = true;
+          }
+
+          const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
+          const activePosition = customPosition ?? dropdownPosition;
+          const onPlatform = isPositionOnPlatform(activePosition);
+          if (onPlatform) {
+            const liftedY = activePosition.y + DOUBLE_JUMP_ARMOR_LIFT;
+            const currentCustom = customPosition;
+            const needsLift = !currentCustom || !doubleJumpArmorLiftActive
+              || Math.abs(currentCustom.x - activePosition.x) > 0.5
+              || Math.abs(currentCustom.y - liftedY) > 0.5;
+            if (needsLift) {
+              setCustomPositionDirect(activePosition.x, liftedY);
+              doubleJumpArmorLiftActive = true;
+              doubleJumpArmorAnchor = { x: activePosition.x, y: activePosition.y };
+              changed = true;
+            }
+          } else {
+            doubleJumpArmorLiftActive = false;
+            doubleJumpArmorAnchor = null;
+          }
+          autoAirborneActive = true;
+        } else {
+          autoAirborneActive = false;
+          if (doubleJumpArmorLiftActive) {
+            doubleJumpArmorLiftActive = false;
+            if (doubleJumpArmorAnchor) {
+              setCustomPositionDirect(doubleJumpArmorAnchor.x, doubleJumpArmorAnchor.y);
+            } else {
+              customPosition = null;
+            }
+            doubleJumpArmorAnchor = null;
+            changed = true;
+          }
+          const fallback = (lastGroundState && lastGroundState !== 'airborne') ? lastGroundState : 'standing';
+          if (targetStateSelect.value !== fallback) {
+            targetStateSelect.value = fallback;
+            changed = true;
+          }
+        }
+
+        if (!skipCalculate && (changed || forceCalculate)) {
+          calculate();
+        }
+      }
+
+      function updateDoubleJumpArmorVisibility({ skipCalculate = false } = {}) {
+        const yoshiSelected = isYoshiDefender();
+        if (doubleJumpArmorRow) {
+          doubleJumpArmorRow.classList.toggle('hidden', !yoshiSelected);
+        }
+        enforceDoubleJumpArmorState({ skipCalculate, forceCalculate: false });
       }
 
       function handleTrajectoryPointerDown(evt) {
@@ -1303,6 +1414,9 @@
         const rawComboDelay = numericValue(comboDelayInput, 0);
         const comboDelayFrames = simulationMode === 'custom' ? rawComboDelay : 0;
 
+        const yoshiSelected = isYoshiDefender();
+        const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
+
         const params = {
           weight: numericValue(weightInput, 1),
           fallAccel: numericValue(fallAccelInput, 0),
@@ -1319,7 +1433,7 @@
           targetState: targetStateSelect.value,
           electric: electricToggle.checked,
           throwMove: throwToggle.checked,
-          spikeMode: spikeModeSelect.value,
+          doubleJumpArmor: doubleJumpArmorActive,
           simulationMode,
           comboDelay: comboDelayFrames,
         };
@@ -1365,10 +1479,53 @@
           }
         }
 
-        outputNodes.initVx.textContent = formatStandard(result.initialVelocityX);
-        outputNodes.initVy.textContent = formatStandard(result.initialVelocityY);
-        outputNodes.totalX.textContent = formatStandard(result.totalDistanceX);
-        outputNodes.totalY.textContent = formatStandard(result.totalDistanceY);
+        if (outputNodes.knockdownRow && outputNodes.armorBlock && outputNodes.armorStatus && outputNodes.armorThresholdOutput) {
+          if (yoshiSelected) {
+            outputNodes.knockdownRow.classList.add('has-armor');
+            outputNodes.armorBlock.classList.remove('hidden');
+
+            const armorParams = {
+              ...params,
+              targetState: 'airborne',
+              doubleJumpArmor: false,
+            };
+            const armorResult = Smash64Calculator.compute(armorParams);
+            const rawArmorKnockback = typeof armorResult.knockbackBeforeArmor === 'number'
+              ? armorResult.knockbackBeforeArmor
+              : armorResult.knockback;
+
+            const breaksArmor = rawArmorKnockback >= DOUBLE_JUMP_ARMOR_THRESHOLD;
+            outputNodes.armorStatus.textContent = breaksArmor ? 'Breaks armor' : "Doesn't break armor";
+            outputNodes.armorThresholdOutput.textContent = '';
+
+            if (!breaksArmor) {
+              let armorThreshold = null;
+              let armorTestPercent = startPercent + thresholdStepSize;
+              while (armorTestPercent <= thresholdMaxPercent) {
+                const armorTestResult = Smash64Calculator.compute({
+                  ...armorParams,
+                  hp: armorTestPercent,
+                });
+                const armorTestKnockback = typeof armorTestResult.knockbackBeforeArmor === 'number'
+                  ? armorTestResult.knockbackBeforeArmor
+                  : armorTestResult.knockback;
+                if (armorTestKnockback >= DOUBLE_JUMP_ARMOR_THRESHOLD) {
+                  armorThreshold = Math.round(armorTestPercent);
+                  break;
+                }
+                armorTestPercent += thresholdStepSize;
+              }
+              if (armorThreshold !== null && armorThreshold <= thresholdMaxPercent) {
+                outputNodes.armorThresholdOutput.textContent = `Breaks armor at ${formatIntegral(armorThreshold)}%`;
+              }
+            }
+          } else {
+            outputNodes.knockdownRow.classList.remove('has-armor');
+            outputNodes.armorBlock.classList.add('hidden');
+            outputNodes.armorStatus.textContent = '—';
+            outputNodes.armorThresholdOutput.textContent = '';
+          }
+        }
 
         const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
         const position = customPosition ? { x: customPosition.x, y: customPosition.y } : dropdownPosition;
@@ -1396,8 +1553,15 @@
           ? result.verticalDirection
           : fallbackVertical;
 
+        const signedInitialVX = result.initialVelocityX * (horizontalDirection === 0 ? 0 : horizontalDirection);
+        const signedInitialVY = result.initialVelocityY * (verticalDirection === 0 ? 0 : verticalDirection);
+        outputNodes.initVx.textContent = formatStandard(signedInitialVX);
+        outputNodes.initVy.textContent = formatStandard(signedInitialVY);
+
         const signedXDistance = result.totalDistanceX * (horizontalDirection === 0 ? 0 : horizontalDirection);
         const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        outputNodes.totalX.textContent = formatStandard(signedXDistance);
+        outputNodes.totalY.textContent = formatStandard(signedYDistance);
         const finalX = position.x + signedXDistance;
         const finalY = position.y + signedYDistance;
         outputNodes.finalPosition.textContent = `(${formatIntegral(finalX)}, ${formatIntegral(finalY)})`;
@@ -1486,7 +1650,7 @@
           outputNodes.displacementMeta.textContent = 'When velocity reaches zero';
         }
 
-        updateVector(result.initialVelocityX, result.initialVelocityY);
+        updateVector(signedInitialVX, signedInitialVY);
         updateHandicapMultipliers(attackIndex, defenseIndex);
       }
 
@@ -1496,6 +1660,7 @@
         } else {
           setDefender(defenderSelect.value);
         }
+        updateDoubleJumpArmorVisibility();
         calculate();
       });
 
@@ -1518,7 +1683,7 @@
         input.addEventListener('change', maybeMarkDefenderCustom);
       });
 
-      [electricToggle, throwToggle, targetStateSelect, spikeModeSelect,
+      [electricToggle, throwToggle, targetStateSelect,
         comboDelayInput, attackHandicapInput, defenseHandicapInput,
         weightInput, fallAccelInput, maxFallInput, hpInput,
         damageInput, angleInput, kbsInput, bkbInput, fkbInput].forEach((node) => {
@@ -1526,7 +1691,21 @@
         node.addEventListener('change', calculate);
       });
 
+      if (doubleJumpArmorToggle) {
+        doubleJumpArmorToggle.addEventListener('change', () => {
+          enforceDoubleJumpArmorState({ forceCalculate: true });
+        });
+      }
+
       targetStateSelect.addEventListener('change', () => {
+        if (isYoshiDefender() && doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
+          if (targetStateSelect.value !== 'airborne') {
+            targetStateSelect.value = 'airborne';
+            return;
+          }
+          autoAirborneActive = true;
+          return;
+        }
         if (targetStateSelect.value !== 'airborne') {
           lastGroundState = targetStateSelect.value || lastGroundState;
           autoAirborneActive = false;
@@ -1595,6 +1774,7 @@
 
       setDefender(Smash64Calculator.characters[0].key);
       defenderSelect.selectedIndex = 0;
+      updateDoubleJumpArmorVisibility({ skipCalculate: true });
       attackerSelect.selectedIndex = 0;
       populateMoves(attackerSelect.value);
       updateComboDelayVisibility();

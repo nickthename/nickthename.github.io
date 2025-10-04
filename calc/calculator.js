@@ -241,7 +241,9 @@
 
     let hitlag = 0;
 
-    if (targetState === 'laying') {
+    const treatAsLaying = (targetState === 'laying') && !throwMove;
+
+    if (treatAsLaying) {
       const extraApplied = Math.ceil(damage / 2);
       const extraForKnockback = Math.ceil(damageForKnockback / 2);
       hpForKnockback += extraForKnockback;
@@ -274,17 +276,17 @@
     knockback = f32(knockback * defenseMultiplier);
     knockback = Math.min(knockback, KNOCKBACK_CAP);
 
-    if (targetState === 'crouching') {
+    if (targetState === 'crouching' && !throwMove) {
       knockback = f32(knockback * CROUCH_MULTIPLIER);
     }
 
-    if (targetState !== 'laying') {
+    if (targetState !== 'laying' || throwMove) {
       hitlag = computeHitlag(damage, targetState, electric);
     }
 
     const knockbackBeforeArmor = knockback;
 
-    if (doubleJumpArmor) {
+    if (doubleJumpArmor && !throwMove) {
       const adjusted = knockbackBeforeArmor - DOUBLE_JUMP_ARMOR_VALUE;
       knockback = f32(Math.max(0, adjusted));
     }

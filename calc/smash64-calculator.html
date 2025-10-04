@@ -124,6 +124,9 @@
     .meta-line { margin: 0; }
     .trajectory-path, #trajectory-points, .trajectory-end { pointer-events: none; }
 
+    .static-field { display: grid; gap: 0.2rem; }
+    .static-value { font-weight: 600; font-variant-numeric: tabular-nums; }
+
     @media (max-width: 640px) {
       .vector-card { grid-template-columns: 1fr; }
       .card.compact { max-width: none; }
@@ -315,13 +318,13 @@
                 <label for="defense-handicap-input">Defense handicap</label>
                 <input id="defense-handicap-input" name="defenseHandicap" type="number" step="1" min="0" max="40" value="9">
               </div>
-              <div>
-                <label for="attack-multiplier-value">Attack multiplier</label>
-                <input id="attack-multiplier-value" type="text" readonly value="1.00">
+              <div class="static-field">
+                <span class="field-label">Attack multiplier</span>
+                <span id="attack-multiplier-value" class="static-value">1.00</span>
               </div>
-              <div>
-                <label for="defense-multiplier-value">Defense multiplier</label>
-                <input id="defense-multiplier-value" type="text" readonly value="1.00">
+              <div class="static-field">
+                <span class="field-label">Defense multiplier</span>
+                <span id="defense-multiplier-value" class="static-value">1.00</span>
               </div>
             </div>
           </details>
@@ -1389,8 +1392,8 @@
       function updateHandicapMultipliers(attackIdx, defenseIdx) {
         const atkMultiplier = Smash64Calculator.attackMultipliers[attackIdx] ?? 1;
         const defMultiplier = Smash64Calculator.defenseMultipliers[defenseIdx] ?? 1;
-        outputNodes.attackMult.value = formatStandard(atkMultiplier, 3);
-        outputNodes.defenseMult.value = formatStandard(defMultiplier, 3);
+        outputNodes.attackMult.textContent = formatStandard(atkMultiplier, 3);
+        outputNodes.defenseMult.textContent = formatStandard(defMultiplier, 3);
       }
 
       function updateVector(vx, vy) {

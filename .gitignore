@@ -3,3 +3,5 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+*:Zone.Identifier
+DI_logo_full.png

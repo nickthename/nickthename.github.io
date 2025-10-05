@@ -30,8 +30,8 @@
         "throw": true
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -43,8 +43,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -56,8 +56,8 @@
         "bkb": 0
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 100,
@@ -342,8 +342,8 @@
         "bkb": 15
       },
       {
-        "name": "NS (Charge State 00)",
-        "baseName": "NS (Charge State 00)",
+        "name": "Neutral B (Charge State 00)",
+        "baseName": "Neutral B (Charge State 00)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -355,8 +355,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 01)",
-        "baseName": "NS (Charge State 01)",
+        "name": "Neutral B (Charge State 01)",
+        "baseName": "Neutral B (Charge State 01)",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -368,8 +368,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 02)",
-        "baseName": "NS (Charge State 02)",
+        "name": "Neutral B (Charge State 02)",
+        "baseName": "Neutral B (Charge State 02)",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -381,8 +381,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 03)",
-        "baseName": "NS (Charge State 03)",
+        "name": "Neutral B (Charge State 03)",
+        "baseName": "Neutral B (Charge State 03)",
         "damage": 20,
         "effect": "Normal",
         "angle": 361,
@@ -394,8 +394,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 04)",
-        "baseName": "NS (Charge State 04)",
+        "name": "Neutral B (Charge State 04)",
+        "baseName": "Neutral B (Charge State 04)",
         "damage": 22,
         "effect": "Normal",
         "angle": 361,
@@ -407,8 +407,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 05)",
-        "baseName": "NS (Charge State 05)",
+        "name": "Neutral B (Charge State 05)",
+        "baseName": "Neutral B (Charge State 05)",
         "damage": 24,
         "effect": "Normal",
         "angle": 361,
@@ -420,8 +420,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 06)",
-        "baseName": "NS (Charge State 06)",
+        "name": "Neutral B (Charge State 06)",
+        "baseName": "Neutral B (Charge State 06)",
         "damage": 26,
         "effect": "Normal",
         "angle": 361,
@@ -433,8 +433,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 07)",
-        "baseName": "NS (Charge State 07)",
+        "name": "Neutral B (Charge State 07)",
+        "baseName": "Neutral B (Charge State 07)",
         "damage": 28,
         "effect": "Normal",
         "angle": 361,
@@ -446,8 +446,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 08)",
-        "baseName": "NS (Charge State 08)",
+        "name": "Neutral B (Charge State 08)",
+        "baseName": "Neutral B (Charge State 08)",
         "damage": 30,
         "effect": "Normal",
         "angle": 361,
@@ -459,8 +459,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 09)",
-        "baseName": "NS (Charge State 09)",
+        "name": "Neutral B (Charge State 09)",
+        "baseName": "Neutral B (Charge State 09)",
         "damage": 32,
         "effect": "Normal",
         "angle": 361,
@@ -472,8 +472,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 10)",
-        "baseName": "NS (Charge State 10)",
+        "name": "Neutral B (Charge State 10)",
+        "baseName": "Neutral B (Charge State 10)",
         "damage": 36,
         "effect": "Normal",
         "angle": 361,
@@ -485,8 +485,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground)",
+        "baseName": "Up B (ground)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -498,8 +498,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (2)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (2)",
+        "baseName": "Up B (ground)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -511,8 +511,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (3)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (3)",
+        "baseName": "Up B (ground)",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -524,8 +524,8 @@
         "bkb": 0
       },
       {
-        "name": "US (air)",
-        "baseName": "US (air)",
+        "name": "Up B (air)",
+        "baseName": "Up B (air)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -537,8 +537,8 @@
         "bkb": 0
       },
       {
-        "name": "US (air) (2)",
-        "baseName": "US (air)",
+        "name": "Up B (air) (2)",
+        "baseName": "Up B (air)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -550,8 +550,8 @@
         "bkb": 0
       },
       {
-        "name": "DS (loop)",
-        "baseName": "DS (loop)",
+        "name": "Down B (loop)",
+        "baseName": "Down B (loop)",
         "damage": 10,
         "effect": "Normal",
         "angle": 90,
@@ -589,8 +589,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -602,8 +602,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -658,8 +658,8 @@
         "bkb": 30
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -671,8 +671,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -684,8 +684,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral 3",
-        "baseName": "neutral 3",
+        "name": "jab 3",
+        "baseName": "jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 80,
@@ -697,8 +697,8 @@
         "bkb": 40
       },
       {
-        "name": "neutral inf",
-        "baseName": "neutral inf",
+        "name": "jab inf",
+        "baseName": "jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 361,
@@ -710,8 +710,8 @@
         "bkb": 0
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -723,8 +723,8 @@
         "bkb": 0
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1035,8 +1035,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (ground)",
-        "baseName": "NS (ground)",
+        "name": "Neutral B (ground)",
+        "baseName": "Neutral B (ground)",
         "damage": 24,
         "effect": "Normal",
         "angle": 361,
@@ -1048,8 +1048,8 @@
         "bkb": 30
       },
       {
-        "name": "NS (ground) (2)",
-        "baseName": "NS (ground)",
+        "name": "Neutral B (ground) (2)",
+        "baseName": "Neutral B (ground)",
         "damage": 25,
         "effect": "Normal",
         "angle": 361,
@@ -1061,8 +1061,8 @@
         "bkb": 30
       },
       {
-        "name": "NS (ground) (3)",
-        "baseName": "NS (ground)",
+        "name": "Neutral B (ground) (3)",
+        "baseName": "Neutral B (ground)",
         "damage": 26,
         "effect": "Normal",
         "angle": 361,
@@ -1074,8 +1074,8 @@
         "bkb": 30
       },
       {
-        "name": "NS (air)",
-        "baseName": "NS (air)",
+        "name": "Neutral B (air)",
+        "baseName": "Neutral B (air)",
         "damage": 24,
         "effect": "Normal",
         "angle": 361,
@@ -1087,8 +1087,8 @@
         "bkb": 40
       },
       {
-        "name": "NS (air) (2)",
-        "baseName": "NS (air)",
+        "name": "Neutral B (air) (2)",
+        "baseName": "Neutral B (air)",
         "damage": 25,
         "effect": "Normal",
         "angle": 361,
@@ -1100,8 +1100,8 @@
         "bkb": 40
       },
       {
-        "name": "NS (air) (3)",
-        "baseName": "NS (air)",
+        "name": "Neutral B (air) (3)",
+        "baseName": "Neutral B (air)",
         "damage": 26,
         "effect": "Normal",
         "angle": 361,
@@ -1113,8 +1113,8 @@
         "bkb": 40
       },
       {
-        "name": "DS (ground?)",
-        "baseName": "DS (ground?)",
+        "name": "Down B (ground?)",
+        "baseName": "Down B (ground?)",
         "damage": 15,
         "effect": "Flame",
         "angle": 361,
@@ -1126,8 +1126,8 @@
         "bkb": 40
       },
       {
-        "name": "DS (?)",
-        "baseName": "DS (?)",
+        "name": "Down B (?)",
+        "baseName": "Down B (?)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -1139,8 +1139,8 @@
         "bkb": 60
       },
       {
-        "name": "US",
-        "baseName": "US",
+        "name": "Up B",
+        "baseName": "Up B",
         "damage": 20,
         "effect": "Flame",
         "angle": 361,
@@ -1179,8 +1179,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -1192,8 +1192,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -1248,8 +1248,8 @@
         "bkb": 10
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1261,8 +1261,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1274,8 +1274,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral inf",
-        "baseName": "neutral inf",
+        "name": "jab inf",
+        "baseName": "jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 80,
@@ -1287,8 +1287,8 @@
         "bkb": 10
       },
       {
-        "name": "neutral inf (2)",
-        "baseName": "neutral inf",
+        "name": "jab inf (2)",
+        "baseName": "jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 60,
@@ -1300,8 +1300,8 @@
         "bkb": 10
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1313,8 +1313,8 @@
         "bkb": 10
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -1625,8 +1625,8 @@
         "bkb": 0
       },
       {
-        "name": "NS",
-        "baseName": "NS",
+        "name": "Neutral B",
+        "baseName": "Neutral B",
         "damage": 6,
         "effect": "Normal",
         "angle": 10,
@@ -1638,8 +1638,8 @@
         "bkb": 0
       },
       {
-        "name": "US",
-        "baseName": "US",
+        "name": "Up B",
+        "baseName": "Up B",
         "damage": 16,
         "effect": "Flame",
         "angle": 80,
@@ -1651,8 +1651,8 @@
         "bkb": 60
       },
       {
-        "name": "DS",
-        "baseName": "DS",
+        "name": "Down B",
+        "baseName": "Down B",
         "damage": 0,
         "effect": "lectric",
         "angle": 0,
@@ -1690,8 +1690,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -1703,8 +1703,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -1746,8 +1746,8 @@
         "throw": true
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -1759,8 +1759,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1772,8 +1772,8 @@
         "bkb": 8
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1785,8 +1785,8 @@
         "bkb": 10
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2058,8 +2058,8 @@
         "bkb": 30
       },
       {
-        "name": "NS",
-        "baseName": "NS",
+        "name": "Neutral B",
+        "baseName": "Neutral B",
         "damage": 13,
         "effect": "Normal",
         "angle": 120,
@@ -2071,8 +2071,8 @@
         "bkb": 20
       },
       {
-        "name": "US",
-        "baseName": "US",
+        "name": "Up B",
+        "baseName": "Up B",
         "damage": 0,
         "effect": "Sleep",
         "angle": 361,
@@ -2084,8 +2084,8 @@
         "bkb": 0
       },
       {
-        "name": "DS",
-        "baseName": "DS",
+        "name": "Down B",
+        "baseName": "Down B",
         "damage": 20,
         "effect": "Normal",
         "angle": 361,
@@ -2123,8 +2123,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -2136,8 +2136,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -2192,8 +2192,8 @@
         "throw": true
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -2205,8 +2205,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -2218,8 +2218,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral inf subroutine",
-        "baseName": "neutral inf subroutine",
+        "name": "jab inf subroutine",
+        "baseName": "jab inf subroutine",
         "damage": 1,
         "effect": "Normal",
         "angle": 65,
@@ -2231,8 +2231,8 @@
         "bkb": 8
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2244,8 +2244,8 @@
         "bkb": 10
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2608,8 +2608,8 @@
         "bkb": 0
       },
       {
-        "name": "US (up)",
-        "baseName": "US (up)",
+        "name": "Up B (up)",
+        "baseName": "Up B (up)",
         "damage": 8,
         "effect": "Slash",
         "angle": 88,
@@ -2621,8 +2621,8 @@
         "bkb": 0
       },
       {
-        "name": "US (up) (2)",
-        "baseName": "US (up)",
+        "name": "Up B (up) (2)",
+        "baseName": "Up B (up)",
         "damage": 8,
         "effect": "Slash",
         "angle": 96,
@@ -2634,8 +2634,8 @@
         "bkb": 0
       },
       {
-        "name": "US (up) (3)",
-        "baseName": "US (up)",
+        "name": "Up B (up) (3)",
+        "baseName": "Up B (up)",
         "damage": 8,
         "effect": "Slash",
         "angle": 88,
@@ -2647,8 +2647,8 @@
         "bkb": 0
       },
       {
-        "name": "US (up) (4)",
-        "baseName": "US (up)",
+        "name": "Up B (up) (4)",
+        "baseName": "Up B (up)",
         "damage": 8,
         "effect": "Slash",
         "angle": 96,
@@ -2660,8 +2660,8 @@
         "bkb": 0
       },
       {
-        "name": "US (up) (5)",
-        "baseName": "US (up)",
+        "name": "Up B (up) (5)",
+        "baseName": "Up B (up)",
         "damage": 2,
         "effect": "Slash",
         "angle": -85,
@@ -2673,8 +2673,8 @@
         "bkb": 0
       },
       {
-        "name": "US Projectile",
-        "baseName": "US Projectile",
+        "name": "Up B Projectile",
+        "baseName": "Up B Projectile",
         "damage": 6,
         "effect": "Slash",
         "angle": 361,
@@ -2686,8 +2686,8 @@
         "bkb": 70
       },
       {
-        "name": "DS (fall?)",
-        "baseName": "DS (fall?)",
+        "name": "Down B (fall?)",
+        "baseName": "Down B (fall?)",
         "damage": 20,
         "effect": "Normal",
         "angle": 50,
@@ -2699,8 +2699,8 @@
         "bkb": 70
       },
       {
-        "name": "DS (landing?)",
-        "baseName": "DS (landing?)",
+        "name": "Down B (landing?)",
+        "baseName": "Down B (landing?)",
         "damage": 20,
         "effect": "Normal",
         "angle": 50,
@@ -2738,8 +2738,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -2751,8 +2751,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -2820,8 +2820,8 @@
         "bkb": 20
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 5,
         "effect": "Slash",
         "angle": 361,
@@ -2833,8 +2833,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 3,
         "effect": "Slash",
         "angle": 361,
@@ -2846,8 +2846,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 3",
-        "baseName": "neutral 3",
+        "name": "jab 3",
+        "baseName": "jab 3",
         "damage": 4,
         "effect": "Slash",
         "angle": 361,
@@ -2859,8 +2859,8 @@
         "bkb": 6
       },
       {
-        "name": "neutral inf",
-        "baseName": "neutral inf",
+        "name": "jab inf",
+        "baseName": "jab inf",
         "damage": 1,
         "effect": "Slash",
         "angle": 361,
@@ -2872,8 +2872,8 @@
         "bkb": 8
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 14,
         "effect": "Slash",
         "angle": 361,
@@ -2885,8 +2885,8 @@
         "bkb": 0
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 16,
         "effect": "Slash",
         "angle": 361,
@@ -2898,8 +2898,8 @@
         "bkb": 10
       },
       {
-        "name": "dash (3)",
-        "baseName": "dash",
+        "name": "dash attack (3)",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Slash",
         "angle": 361,
@@ -2911,8 +2911,8 @@
         "bkb": 0
       },
       {
-        "name": "dash (4)",
-        "baseName": "dash",
+        "name": "dash attack (4)",
+        "baseName": "dash attack",
         "damage": 11,
         "effect": "Slash",
         "angle": 361,
@@ -3197,8 +3197,8 @@
         "bkb": 25
       },
       {
-        "name": "DS (explosion only)",
-        "baseName": "DS (explosion only)",
+        "name": "Down B (explosion only)",
+        "baseName": "Down B (explosion only)",
         "damage": 5,
         "effect": "Fire",
         "angle": 361,
@@ -3210,8 +3210,8 @@
         "bkb": 60
       },
       {
-        "name": "DS (collision)",
-        "baseName": "DS (collision)",
+        "name": "Down B (collision)",
+        "baseName": "Down B (collision)",
         "damage": 2,
         "effect": "Normal",
         "angle": 80,
@@ -3223,8 +3223,8 @@
         "bkb": 60
       },
       {
-        "name": "NS",
-        "baseName": "NS",
+        "name": "Neutral B",
+        "baseName": "Neutral B",
         "damage": 9,
         "effect": "Normal",
         "angle": 70,
@@ -3236,8 +3236,8 @@
         "bkb": 55
       },
       {
-        "name": "US",
-        "baseName": "US",
+        "name": "Up B",
+        "baseName": "Up B",
         "damage": 16,
         "effect": "Slash",
         "angle": 361,
@@ -3249,8 +3249,8 @@
         "bkb": 30
       },
       {
-        "name": "US (2)",
-        "baseName": "US",
+        "name": "Up B (2)",
+        "baseName": "Up B",
         "damage": 8,
         "effect": "Slash",
         "angle": 361,
@@ -3314,8 +3314,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Slash",
         "angle": 361,
@@ -3327,8 +3327,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 4,
         "effect": "Slash",
         "angle": 361,
@@ -3383,8 +3383,8 @@
         "bkb": 20
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -3396,8 +3396,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -3409,8 +3409,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 3",
-        "baseName": "neutral 3",
+        "name": "jab 3",
+        "baseName": "jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -3422,8 +3422,8 @@
         "bkb": 10
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 16,
         "effect": "Normal",
         "angle": 30,
@@ -3435,8 +3435,8 @@
         "bkb": 0
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 30,
@@ -3708,8 +3708,8 @@
         "bkb": 0
       },
       {
-        "name": "NS",
-        "baseName": "NS",
+        "name": "Neutral B",
+        "baseName": "Neutral B",
         "damage": 5,
         "effect": "Fire",
         "angle": 361,
@@ -3721,8 +3721,8 @@
         "bkb": 10
       },
       {
-        "name": "US (ground)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground)",
+        "baseName": "Up B (ground)",
         "damage": 25,
         "effect": "Flame",
         "angle": 90,
@@ -3734,8 +3734,8 @@
         "bkb": 90
       },
       {
-        "name": "US (ground) (2)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (2)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Coin",
         "angle": 361,
@@ -3747,8 +3747,8 @@
         "bkb": 0
       },
       {
-        "name": "US (air)",
-        "baseName": "US (air)",
+        "name": "Up B (air)",
+        "baseName": "Up B (air)",
         "damage": 25,
         "effect": "Flame",
         "angle": 80,
@@ -3760,8 +3760,8 @@
         "bkb": 80
       },
       {
-        "name": "DS (ground)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground)",
+        "baseName": "Down B (ground)",
         "damage": 16,
         "effect": "Normal",
         "angle": 65,
@@ -3773,8 +3773,8 @@
         "bkb": 65
       },
       {
-        "name": "DS (ground) (2)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground) (2)",
+        "baseName": "Down B (ground)",
         "damage": 16,
         "effect": "Normal",
         "angle": 90,
@@ -3786,8 +3786,8 @@
         "bkb": 65
       },
       {
-        "name": "DS (ground) (3)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground) (3)",
+        "baseName": "Down B (ground)",
         "damage": 18,
         "effect": "Normal",
         "angle": 70,
@@ -3799,8 +3799,8 @@
         "bkb": 80
       },
       {
-        "name": "DS (air)",
-        "baseName": "DS (air)",
+        "name": "Down B (air)",
+        "baseName": "Down B (air)",
         "damage": 15,
         "effect": "Normal",
         "angle": 65,
@@ -3812,8 +3812,8 @@
         "bkb": 65
       },
       {
-        "name": "DS (air) (2)",
-        "baseName": "DS (air)",
+        "name": "Down B (air) (2)",
+        "baseName": "Down B (air)",
         "damage": 15,
         "effect": "Normal",
         "angle": 90,
@@ -3825,8 +3825,8 @@
         "bkb": 65
       },
       {
-        "name": "DS (air) (3)",
-        "baseName": "DS (air)",
+        "name": "Down B (air) (3)",
+        "baseName": "Down B (air)",
         "damage": 18,
         "effect": "Normal",
         "angle": 70,
@@ -3864,8 +3864,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -3877,8 +3877,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -3920,8 +3920,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "bthrow 3rd party",
+        "baseName": "bthrow 3rd party",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3933,8 +3933,8 @@
         "bkb": 30
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -3946,8 +3946,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -3959,8 +3959,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 3",
-        "baseName": "neutral 3",
+        "name": "jab 3",
+        "baseName": "jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -3972,8 +3972,8 @@
         "bkb": 10
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -3985,8 +3985,8 @@
         "bkb": 16
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4271,8 +4271,8 @@
         "bkb": 0
       },
       {
-        "name": "NS",
-        "baseName": "NS",
+        "name": "Neutral B",
+        "baseName": "Neutral B",
         "damage": 7,
         "effect": "Fire",
         "angle": 361,
@@ -4284,8 +4284,8 @@
         "bkb": 10
       },
       {
-        "name": "US (ground)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground)",
+        "baseName": "Up B (ground)",
         "damage": 5,
         "effect": "Coin",
         "angle": 70,
@@ -4297,8 +4297,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (2)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (2)",
+        "baseName": "Up B (ground)",
         "damage": 5,
         "effect": "Coin",
         "angle": 90,
@@ -4310,8 +4310,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (3)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (3)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Coin",
         "angle": 75,
@@ -4323,8 +4323,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (4)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (4)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Coin",
         "angle": 80,
@@ -4336,8 +4336,8 @@
         "bkb": 0
       },
       {
-        "name": "US (ground) (5)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (5)",
+        "baseName": "Up B (ground)",
         "damage": 3,
         "effect": "Coin",
         "angle": 50,
@@ -4349,8 +4349,8 @@
         "bkb": 0
       },
       {
-        "name": "DS (ground)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground)",
+        "baseName": "Down B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 90,
@@ -4362,8 +4362,8 @@
         "bkb": 10
       },
       {
-        "name": "DS (ground) (2)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground) (2)",
+        "baseName": "Down B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 180,
@@ -4375,8 +4375,8 @@
         "bkb": 70
       },
       {
-        "name": "DS (ground) (3)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground) (3)",
+        "baseName": "Down B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 90,
@@ -4414,8 +4414,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4427,8 +4427,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4496,8 +4496,8 @@
         "bkb": 10
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -4509,8 +4509,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -4522,8 +4522,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 3",
-        "baseName": "neutral 3",
+        "name": "jab 3",
+        "baseName": "jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -4535,8 +4535,8 @@
         "bkb": 10
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4548,8 +4548,8 @@
         "bkb": 16
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -4808,8 +4808,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (1st hit)",
-        "baseName": "NS (1st hit)",
+        "name": "Neutral B (1st hit)",
+        "baseName": "Neutral B (1st hit)",
         "damage": 4,
         "effect": "Flame",
         "angle": 80,
@@ -4821,8 +4821,8 @@
         "bkb": 40
       },
       {
-        "name": "US (PK Thunder Head)",
-        "baseName": "US (PK Thunder Head)",
+        "name": "Up B (PK Thunder Head)",
+        "baseName": "Up B (PK Thunder Head)",
         "damage": 0,
         "effect": "lectric",
         "angle": 100,
@@ -4834,8 +4834,8 @@
         "bkb": 50
       },
       {
-        "name": "US (PK Thunder Tail)",
-        "baseName": "US (PK Thunder Tail)",
+        "name": "Up B (PK Thunder Tail)",
+        "baseName": "Up B (PK Thunder Tail)",
         "damage": 0,
         "effect": "lectric",
         "angle": 100,
@@ -4847,8 +4847,8 @@
         "bkb": 50
       },
       {
-        "name": "US (ram)",
-        "baseName": "US (ram)",
+        "name": "Up B (ram)",
+        "baseName": "Up B (ram)",
         "damage": 0,
         "effect": "lectric",
         "angle": 361,
@@ -4858,6 +4858,58 @@
         "at": 1,
         "sd": 0,
         "bkb": 40
+      },
+      {
+        "name": "Floor attack F",
+        "baseName": "Floor attack F",
+        "damage": 6,
+        "effect": "Normal",
+        "angle": 361,
+        "kbs": 100,
+        "fkb": 90,
+        "gt": 1,
+        "at": 1,
+        "sd": 1,
+        "bkb": 0
+      },
+      {
+        "name": "Floor attack S",
+        "baseName": "Floor attack S",
+        "damage": 6,
+        "effect": "Normal",
+        "angle": 361,
+        "kbs": 100,
+        "fkb": 90,
+        "gt": 1,
+        "at": 1,
+        "sd": 1,
+        "bkb": 0
+      },
+      {
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
+        "damage": 6,
+        "effect": "Normal",
+        "angle": 361,
+        "kbs": 100,
+        "fkb": 100,
+        "gt": 1,
+        "at": 1,
+        "sd": 0,
+        "bkb": 0
+      },
+      {
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
+        "damage": 6,
+        "effect": "Normal",
+        "angle": 361,
+        "kbs": 100,
+        "fkb": 100,
+        "gt": 1,
+        "at": 1,
+        "sd": 0,
+        "bkb": 0
       }
     ],
     "Pikachu": [
@@ -4890,8 +4942,8 @@
         "throw": true
       },
       {
-        "name": "neutral",
-        "baseName": "neutral",
+        "name": "jab",
+        "baseName": "jab",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -4903,8 +4955,8 @@
         "bkb": 4
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -5150,8 +5202,8 @@
         "bkb": 20
       },
       {
-        "name": "NS (air)",
-        "baseName": "NS (air)",
+        "name": "Neutral B (air)",
+        "baseName": "Neutral B (air)",
         "damage": 10,
         "effect": "Electric",
         "angle": 361,
@@ -5163,8 +5215,8 @@
         "bkb": 50
       },
       {
-        "name": "NS (ground)",
-        "baseName": "NS (ground)",
+        "name": "Neutral B (ground)",
+        "baseName": "Neutral B (ground)",
         "damage": 7,
         "effect": "Electric",
         "angle": 361,
@@ -5176,8 +5228,8 @@
         "bkb": 10
       },
       {
-        "name": "DS (Projectile)",
-        "baseName": "DS (Projectile)",
+        "name": "Down B (Projectile)",
+        "baseName": "Down B (Projectile)",
         "damage": 12,
         "effect": "Electric",
         "angle": 70,
@@ -5189,8 +5241,8 @@
         "bkb": 80
       },
       {
-        "name": "DS (ground connect)",
-        "baseName": "DS (ground connect)",
+        "name": "Down B (ground connect)",
+        "baseName": "Down B (ground connect)",
         "damage": 16,
         "effect": "Electric",
         "angle": 361,
@@ -5228,8 +5280,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5241,8 +5293,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5284,8 +5336,8 @@
         "throw": true
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -5297,8 +5349,8 @@
         "bkb": 0
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -5310,8 +5362,8 @@
         "bkb": 10
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -5323,8 +5375,8 @@
         "bkb": 0
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5713,8 +5765,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 0)",
-        "baseName": "NS (Charge State 0)",
+        "name": "Neutral B (Charge State 0)",
+        "baseName": "Neutral B (Charge State 0)",
         "damage": 3,
         "effect": "Electric",
         "angle": 361,
@@ -5726,8 +5778,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 1)",
-        "baseName": "NS (Charge State 1)",
+        "name": "Neutral B (Charge State 1)",
+        "baseName": "Neutral B (Charge State 1)",
         "damage": 6,
         "effect": "Electric",
         "angle": 361,
@@ -5739,8 +5791,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 2)",
-        "baseName": "NS (Charge State 2)",
+        "name": "Neutral B (Charge State 2)",
+        "baseName": "Neutral B (Charge State 2)",
         "damage": 9,
         "effect": "Electric",
         "angle": 361,
@@ -5752,8 +5804,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 3)",
-        "baseName": "NS (Charge State 3)",
+        "name": "Neutral B (Charge State 3)",
+        "baseName": "Neutral B (Charge State 3)",
         "damage": 12,
         "effect": "Electric",
         "angle": 361,
@@ -5765,8 +5817,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 4)",
-        "baseName": "NS (Charge State 4)",
+        "name": "Neutral B (Charge State 4)",
+        "baseName": "Neutral B (Charge State 4)",
         "damage": 15,
         "effect": "Electric",
         "angle": 361,
@@ -5778,8 +5830,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 5)",
-        "baseName": "NS (Charge State 5)",
+        "name": "Neutral B (Charge State 5)",
+        "baseName": "Neutral B (Charge State 5)",
         "damage": 18,
         "effect": "Electric",
         "angle": 361,
@@ -5791,8 +5843,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 6)",
-        "baseName": "NS (Charge State 6)",
+        "name": "Neutral B (Charge State 6)",
+        "baseName": "Neutral B (Charge State 6)",
         "damage": 21,
         "effect": "Electric",
         "angle": 361,
@@ -5804,8 +5856,8 @@
         "bkb": 0
       },
       {
-        "name": "NS (Charge State 7)",
-        "baseName": "NS (Charge State 7)",
+        "name": "Neutral B (Charge State 7)",
+        "baseName": "Neutral B (Charge State 7)",
         "damage": 26,
         "effect": "Electric",
         "angle": 361,
@@ -5817,8 +5869,8 @@
         "bkb": 0
       },
       {
-        "name": "DS",
-        "baseName": "DS",
+        "name": "Down B",
+        "baseName": "Down B",
         "damage": 9,
         "effect": "Fire",
         "angle": 361,
@@ -5830,8 +5882,8 @@
         "bkb": 10
       },
       {
-        "name": "US (ground)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground)",
+        "baseName": "Up B (ground)",
         "damage": 2,
         "effect": "Normal",
         "angle": 100,
@@ -5843,8 +5895,8 @@
         "bkb": 120
       },
       {
-        "name": "US (ground) (2)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (2)",
+        "baseName": "Up B (ground)",
         "damage": 2,
         "effect": "Normal",
         "angle": 100,
@@ -5856,8 +5908,8 @@
         "bkb": 110
       },
       {
-        "name": "US (ground) (3)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (3)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 105,
@@ -5869,8 +5921,8 @@
         "bkb": 110
       },
       {
-        "name": "US (ground) (4)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (4)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 100,
@@ -5882,8 +5934,8 @@
         "bkb": 70
       },
       {
-        "name": "US (ground) (5)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (5)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 200,
@@ -5895,8 +5947,8 @@
         "bkb": 20
       },
       {
-        "name": "US (ground) (6)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (6)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Normal",
         "angle": 110,
@@ -5908,8 +5960,8 @@
         "bkb": 50
       },
       {
-        "name": "US (ground) (7)",
-        "baseName": "US (ground)",
+        "name": "Up B (ground) (7)",
+        "baseName": "Up B (ground)",
         "damage": 1,
         "effect": "Electric",
         "angle": 361,
@@ -5921,8 +5973,8 @@
         "bkb": 0
       },
       {
-        "name": "US (air)",
-        "baseName": "US (air)",
+        "name": "Up B (air)",
+        "baseName": "Up B (air)",
         "damage": 1,
         "effect": "Normal",
         "angle": 200,
@@ -5934,8 +5986,8 @@
         "bkb": 20
       },
       {
-        "name": "US (air) (2)",
-        "baseName": "US (air)",
+        "name": "Up B (air) (2)",
+        "baseName": "Up B (air)",
         "damage": 1,
         "effect": "Normal",
         "angle": 110,
@@ -5973,8 +6025,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5986,8 +6038,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6029,8 +6081,8 @@
         "throw": true
       },
       {
-        "name": "neutral 1",
-        "baseName": "neutral 1",
+        "name": "jab 1",
+        "baseName": "jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -6042,8 +6094,8 @@
         "bkb": 8
       },
       {
-        "name": "neutral 2",
-        "baseName": "neutral 2",
+        "name": "jab 2",
+        "baseName": "jab 2",
         "damage": 5,
         "effect": "Normal",
         "angle": 361,
@@ -6055,8 +6107,8 @@
         "bkb": 8
       },
       {
-        "name": "dash",
-        "baseName": "dash",
+        "name": "dash attack",
+        "baseName": "dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -6068,8 +6120,8 @@
         "bkb": 10
       },
       {
-        "name": "dash (2)",
-        "baseName": "dash",
+        "name": "dash attack (2)",
+        "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -6302,8 +6354,8 @@
         "bkb": 5
       },
       {
-        "name": "DS (ground)",
-        "baseName": "DS (ground)",
+        "name": "Down B (ground)",
+        "baseName": "Down B (ground)",
         "damage": 18,
         "effect": "Normal",
         "angle": 60,
@@ -6315,8 +6367,8 @@
         "bkb": 50
       },
       {
-        "name": "DS (air)",
-        "baseName": "DS (air)",
+        "name": "Down B (air)",
+        "baseName": "Down B (air)",
         "damage": 18,
         "effect": "Normal",
         "angle": 60,
@@ -6328,8 +6380,8 @@
         "bkb": 50
       },
       {
-        "name": "DS (Projectile)",
-        "baseName": "DS (Projectile)",
+        "name": "Down B (Projectile)",
+        "baseName": "Down B (Projectile)",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -6341,8 +6393,8 @@
         "bkb": 0
       },
       {
-        "name": "US?",
-        "baseName": "US?",
+        "name": "Up B?",
+        "baseName": "Up B?",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -6380,8 +6432,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack F",
-        "baseName": "Edge attack F",
+        "name": "Ledge attack (fast)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6393,8 +6445,8 @@
         "bkb": 0
       },
       {
-        "name": "Edge attack S",
-        "baseName": "Edge attack S",
+        "name": "Ledge attack (slow)",
+        "baseName": "Ledge attack",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6500,8 +6552,8 @@
     },
     {
       "character": "Ness",
-      "name": "NS (hit 2-8)",
-      "line": "NS (hit 2-8)           3      Flame   70   ??   ?  1  ?   ?    ??"
+      "name": "Neutral B (hit 2-8)",
+      "line": "Neutral B (hit 2-8)           3      Flame   70   ??   ?  1  ?   ?    ??"
     },
     {
       "character": "Ness",
@@ -6520,8 +6572,8 @@
     },
     {
       "character": "Ness",
-      "name": "Edge attack S",
-      "line": "Edge attack S            6      Normal  361 100 100  1  1   0     0"
+      "name": "Ledge attack (slow)",
+      "line": "Ledge attack (slow)            6      Normal  361 100 100  1  1   0     0"
     },
     {
       "character": "Pikachu",
@@ -6540,8 +6592,8 @@
     },
     {
       "character": "Yoshi",
-      "name": "NS",
-      "line": "NS                       4"
+      "name": "Neutral B",
+      "line": "Neutral B                       4"
     }
   ]
 }

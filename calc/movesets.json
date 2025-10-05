@@ -238,7 +238,7 @@
         "bkb": 0
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 12,
         "effect": "Normal",
@@ -290,7 +290,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",
@@ -329,7 +329,7 @@
         "bkb": 15
       },
       {
-        "name": "dair (2)",
+        "name": "dair (weak)",
         "baseName": "dair",
         "damage": 10,
         "effect": "Normal",
@@ -723,7 +723,7 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 9,
         "effect": "Normal",
@@ -905,7 +905,7 @@
         "bkb": 25
       },
       {
-        "name": "dsmash (2)",
+        "name": "dsmash (weak)",
         "baseName": "dsmash",
         "damage": 14,
         "effect": "Normal",
@@ -931,7 +931,7 @@
         "bkb": 20
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 13,
         "effect": "Normal",
@@ -1313,7 +1313,7 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 7,
         "effect": "Normal",
@@ -1456,7 +1456,7 @@
         "bkb": 0
       },
       {
-        "name": "fsmash (2)",
+        "name": "fsmash (weak)",
         "baseName": "fsmash",
         "damage": 13,
         "effect": "Normal",
@@ -1482,7 +1482,7 @@
         "bkb": 25
       },
       {
-        "name": "usmash (2)",
+        "name": "usmash (weak)",
         "baseName": "usmash",
         "damage": 8,
         "effect": "Normal",
@@ -1521,7 +1521,7 @@
         "bkb": 0
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 9,
         "effect": "Normal",
@@ -1547,7 +1547,7 @@
         "bkb": 0
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 8,
         "effect": "Normal",
@@ -1573,7 +1573,7 @@
         "bkb": 0
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 8,
         "effect": "Normal",
@@ -1785,7 +1785,7 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
@@ -1876,7 +1876,7 @@
         "bkb": 10
       },
       {
-        "name": "fsmash (2)",
+        "name": "fsmash (weak)",
         "baseName": "fsmash",
         "damage": 10,
         "effect": "Normal",
@@ -1902,7 +1902,7 @@
         "bkb": 22
       },
       {
-        "name": "usmash (2)",
+        "name": "usmash (weak)",
         "baseName": "usmash",
         "damage": 10,
         "effect": "Normal",
@@ -1928,7 +1928,7 @@
         "bkb": 20
       },
       {
-        "name": "dsmash (2)",
+        "name": "dsmash (weak)",
         "baseName": "dsmash",
         "damage": 10,
         "effect": "Normal",
@@ -1954,7 +1954,7 @@
         "bkb": 30
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 9,
         "effect": "Normal",
@@ -1980,7 +1980,7 @@
         "bkb": 10
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 9,
         "effect": "Normal",
@@ -2006,7 +2006,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 9,
         "effect": "Normal",
@@ -2244,7 +2244,7 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
@@ -2309,7 +2309,7 @@
         "bkb": 30
       },
       {
-        "name": "utilt (2)",
+        "name": "utilt (weak)",
         "baseName": "utilt",
         "damage": 10,
         "effect": "Normal",
@@ -2348,7 +2348,7 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (2)",
+        "name": "fsmash (weak)",
         "baseName": "fsmash",
         "damage": 12,
         "effect": "Normal",
@@ -2374,7 +2374,7 @@
         "bkb": 20
       },
       {
-        "name": "usmash (2)",
+        "name": "usmash (weak)",
         "baseName": "usmash",
         "damage": 12,
         "effect": "Normal",
@@ -2452,7 +2452,7 @@
         "bkb": 30
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 10,
         "effect": "Normal",
@@ -2517,7 +2517,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 12,
         "effect": "Normal",
@@ -2937,7 +2937,7 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (2)",
+        "name": "ftilt (weak)",
         "baseName": "ftilt",
         "damage": 17,
         "effect": "Slash",
@@ -2989,7 +2989,7 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (2)",
+        "name": "fsmash (weak)",
         "baseName": "fsmash",
         "damage": 12,
         "effect": "Slash",
@@ -3106,7 +3106,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 8,
         "effect": "Normal",
@@ -3132,7 +3132,7 @@
         "bkb": 5
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 12,
         "effect": "Slash",
@@ -3249,7 +3249,7 @@
         "bkb": 30
       },
       {
-        "name": "Up B (2)",
+        "name": "Up B (weak)",
         "baseName": "Up B",
         "damage": 8,
         "effect": "Slash",
@@ -3275,7 +3275,7 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack F (2)",
+        "name": "Floor attack F (weak)",
         "baseName": "Floor attack F",
         "damage": 6,
         "effect": "Slash",
@@ -3301,7 +3301,7 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S (2)",
+        "name": "Floor attack S (weak)",
         "baseName": "Floor attack S",
         "damage": 6,
         "effect": "Slash",
@@ -3435,7 +3435,7 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
@@ -3604,7 +3604,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 11,
         "effect": "Normal",
@@ -3630,7 +3630,7 @@
         "bkb": 10
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 10,
         "effect": "Normal",
@@ -3656,7 +3656,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",
@@ -3682,7 +3682,7 @@
         "bkb": 0
       },
       {
-        "name": "uair (2)",
+        "name": "uair (weak)",
         "baseName": "uair",
         "damage": 9,
         "effect": "Normal",
@@ -3985,7 +3985,7 @@
         "bkb": 16
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
@@ -4167,7 +4167,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 11,
         "effect": "Normal",
@@ -4193,7 +4193,7 @@
         "bkb": 10
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 10,
         "effect": "Normal",
@@ -4219,7 +4219,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",
@@ -4245,7 +4245,7 @@
         "bkb": 0
       },
       {
-        "name": "uair (2)",
+        "name": "uair (weak)",
         "baseName": "uair",
         "damage": 9,
         "effect": "Normal",
@@ -4548,7 +4548,7 @@
         "bkb": 16
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 9,
         "effect": "Normal",
@@ -4704,7 +4704,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 11,
         "effect": "Normal",
@@ -4730,7 +4730,7 @@
         "bkb": 16
       },
       {
-        "name": "fair (2)",
+        "name": "fair (weak)",
         "baseName": "fair",
         "damage": 10,
         "effect": "Normal",
@@ -4756,7 +4756,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",
@@ -5059,7 +5059,7 @@
         "bkb": 40
       },
       {
-        "name": "usmash (2)",
+        "name": "usmash (weak)",
         "baseName": "usmash",
         "damage": 9,
         "effect": "Normal",
@@ -5085,7 +5085,7 @@
         "bkb": 30
       },
       {
-        "name": "dsmash (2)",
+        "name": "dsmash (weak)",
         "baseName": "dsmash",
         "damage": 13,
         "effect": "Normal",
@@ -5111,7 +5111,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 11,
         "effect": "Normal",
@@ -5163,7 +5163,7 @@
         "bkb": 15
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 14,
         "effect": "Normal",
@@ -5375,7 +5375,7 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 10,
         "effect": "Normal",
@@ -5648,7 +5648,7 @@
         "bkb": 35
       },
       {
-        "name": "dsmash (2)",
+        "name": "dsmash (weak)",
         "baseName": "dsmash",
         "damage": 14,
         "effect": "Normal",
@@ -5674,7 +5674,7 @@
         "bkb": 10
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 13,
         "effect": "Normal",
@@ -5713,7 +5713,7 @@
         "bkb": 0
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",
@@ -6120,7 +6120,7 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (2)",
+        "name": "dash attack (weak)",
         "baseName": "dash attack",
         "damage": 8,
         "effect": "Normal",
@@ -6263,7 +6263,7 @@
         "bkb": 15
       },
       {
-        "name": "nair (2)",
+        "name": "nair (weak)",
         "baseName": "nair",
         "damage": 11,
         "effect": "Normal",
@@ -6315,7 +6315,7 @@
         "bkb": 10
       },
       {
-        "name": "bair (2)",
+        "name": "bair (weak)",
         "baseName": "bair",
         "damage": 10,
         "effect": "Normal",

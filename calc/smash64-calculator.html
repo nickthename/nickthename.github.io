@@ -1465,22 +1465,20 @@
         outputNodes.hitlag.textContent = formatIntegral(result.hitlag);
         outputNodes.hitstun.textContent = `${formatIntegral(result.hitstun)} frames`;
         outputNodes.knockdown.textContent = result.hitstun >= 32 ? 'Knocks down' : 'No knockdown';
-        outputNodes.knockdownThresholdOutput.textContent = '';
+
         let knockdownThreshold = null;
-        if (result.hitstun < 32) {
-          let testPercent = startPercent + thresholdStepSize;
-          while (testPercent <= thresholdMaxPercent) {
-            const knockdownSim = computeAtPercent(testPercent);
-            if (knockdownSim.hitstun >= 32) {
-              knockdownThreshold = Math.round(testPercent);
-              break;
-            }
-            testPercent += thresholdStepSize;
+        let knockdownTest = 0;
+        while (knockdownTest <= thresholdMaxPercent) {
+          const knockdownSim = computeAtPercent(knockdownTest);
+          if (knockdownSim.hitstun >= 32) {
+            knockdownThreshold = Math.round(knockdownTest);
+            break;
           }
-          if (knockdownThreshold !== null && knockdownThreshold <= thresholdMaxPercent) {
-            outputNodes.knockdownThresholdOutput.textContent = `Knocks down at ${formatIntegral(knockdownThreshold)}%`;
-          }
+          knockdownTest += thresholdStepSize;
         }
+        outputNodes.knockdownThresholdOutput.textContent = knockdownThreshold !== null
+          ? `Knocks down at ${formatIntegral(knockdownThreshold)}%`
+          : '';
 
         if (outputNodes.knockdownRow && outputNodes.armorBlock && outputNodes.armorStatus && outputNodes.armorThresholdOutput) {
           if (yoshiSelected) {
@@ -1497,31 +1495,28 @@
               ? armorResult.knockbackBeforeArmor
               : armorResult.knockback;
 
+            let armorThreshold = null;
+            let armorTestPercent = 0;
+            while (armorTestPercent <= thresholdMaxPercent) {
+              const armorTestResult = Smash64Calculator.compute({
+                ...armorParams,
+                hp: armorTestPercent,
+              });
+              const armorTestKnockback = typeof armorTestResult.knockbackBeforeArmor === 'number'
+                ? armorTestResult.knockbackBeforeArmor
+                : armorTestResult.knockback;
+              if (armorTestKnockback >= DOUBLE_JUMP_ARMOR_THRESHOLD) {
+                armorThreshold = Math.round(armorTestPercent);
+                break;
+              }
+              armorTestPercent += thresholdStepSize;
+            }
+
             const breaksArmor = rawArmorKnockback >= DOUBLE_JUMP_ARMOR_THRESHOLD;
             outputNodes.armorStatus.textContent = breaksArmor ? 'Breaks armor' : "Doesn't break armor";
-            outputNodes.armorThresholdOutput.textContent = '';
-
-            if (!breaksArmor) {
-              let armorThreshold = null;
-              let armorTestPercent = startPercent + thresholdStepSize;
-              while (armorTestPercent <= thresholdMaxPercent) {
-                const armorTestResult = Smash64Calculator.compute({
-                  ...armorParams,
-                  hp: armorTestPercent,
-                });
-                const armorTestKnockback = typeof armorTestResult.knockbackBeforeArmor === 'number'
-                  ? armorTestResult.knockbackBeforeArmor
-                  : armorTestResult.knockback;
-                if (armorTestKnockback >= DOUBLE_JUMP_ARMOR_THRESHOLD) {
-                  armorThreshold = Math.round(armorTestPercent);
-                  break;
-                }
-                armorTestPercent += thresholdStepSize;
-              }
-              if (armorThreshold !== null && armorThreshold <= thresholdMaxPercent) {
-                outputNodes.armorThresholdOutput.textContent = `Breaks armor at ${formatIntegral(armorThreshold)}%`;
-              }
-            }
+            outputNodes.armorThresholdOutput.textContent = armorThreshold !== null
+              ? `Breaks armor at ${formatIntegral(armorThreshold)}%`
+              : '';
           } else {
             outputNodes.knockdownRow.classList.remove('has-armor');
             outputNodes.armorBlock.classList.add('hidden');
@@ -1598,42 +1593,40 @@
         outputNodes.killOutput.textContent = killResult;
 
         let killThreshold = null;
-        if (killResult === "Doesn't kill") {
-          let testPercent = startPercent + thresholdStepSize;
-          while (testPercent <= thresholdMaxPercent) {
-            const sim = computeAtPercent(testPercent);
-            const simResolvedAngle = typeof sim.resolvedAngle === 'number' ? sim.resolvedAngle : resolvedAngleDeg;
-            const simAngleRad = simResolvedAngle * (Math.PI / 180);
-            const fallbackSimHorizontal = (() => {
-              if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityX) < 1e-6 ? 0 : 1;
-              const cosValue = Math.cos(simAngleRad);
-              if (Math.abs(cosValue) < 1e-6) return 0;
-              return cosValue > 0 ? 1 : -1;
-            })();
-            const fallbackSimVertical = (() => {
-              if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityY) < 1e-6 ? 0 : 1;
-              const sinValue = Math.sin(simAngleRad);
-              if (Math.abs(sinValue) < 1e-6) return 0;
-              return sinValue > 0 ? 1 : -1;
-            })();
-            const simHorizontalDirection = (typeof sim.horizontalDirection === 'number')
-              ? sim.horizontalDirection
-              : fallbackSimHorizontal;
-            const simVerticalDirection = (typeof sim.verticalDirection === 'number')
-              ? sim.verticalDirection
-              : fallbackSimVertical;
-            const simSignedX = sim.totalDistanceX * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection);
-            const simSignedY = sim.totalDistanceY * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
-            const testPos = {
-              x: position.x + simSignedX,
-              y: position.y + simSignedY,
-            };
-            if (isKill(testPos.x, testPos.y)) {
-              killThreshold = Math.round(testPercent);
-              break;
-            }
-            testPercent += thresholdStepSize;
+        let testPercent = 0;
+        while (testPercent <= thresholdMaxPercent) {
+          const sim = computeAtPercent(testPercent);
+          const simResolvedAngle = typeof sim.resolvedAngle === 'number' ? sim.resolvedAngle : resolvedAngleDeg;
+          const simAngleRad = simResolvedAngle * (Math.PI / 180);
+          const fallbackSimHorizontal = (() => {
+            if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityX) < 1e-6 ? 0 : 1;
+            const cosValue = Math.cos(simAngleRad);
+            if (Math.abs(cosValue) < 1e-6) return 0;
+            return cosValue > 0 ? 1 : -1;
+          })();
+          const fallbackSimVertical = (() => {
+            if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityY) < 1e-6 ? 0 : 1;
+            const sinValue = Math.sin(simAngleRad);
+            if (Math.abs(sinValue) < 1e-6) return 0;
+            return sinValue > 0 ? 1 : -1;
+          })();
+          const simHorizontalDirection = (typeof sim.horizontalDirection === 'number')
+            ? sim.horizontalDirection
+            : fallbackSimHorizontal;
+          const simVerticalDirection = (typeof sim.verticalDirection === 'number')
+            ? sim.verticalDirection
+            : fallbackSimVertical;
+          const simSignedX = sim.totalDistanceX * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection);
+          const simSignedY = sim.totalDistanceY * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
+          const testPos = {
+            x: position.x + simSignedX,
+            y: position.y + simSignedY,
+          };
+          if (isKill(testPos.x, testPos.y)) {
+            killThreshold = Math.round(testPercent);
+            break;
           }
+          testPercent += thresholdStepSize;
         }
 
         outputNodes.killThresholdOutput.textContent = killThreshold !== null && killThreshold <= thresholdMaxPercent

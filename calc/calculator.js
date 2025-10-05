@@ -172,7 +172,6 @@
     let xIterationCount = 0;
 
     let remainingYIterations = Math.max(totalFrames - 1, 0);
-    let stopYAxis = false;
 
     if (remainingYIterations > 0 && spikeMode !== 'air') {
       yVelocityCurrent = f32(yVelocityCurrent - yDec);
@@ -185,7 +184,7 @@
         xIterationCount += 1;
       }
 
-      if (!stopYAxis && remainingYIterations > 0) {
+      if (remainingYIterations > 0) {
         if (spikeMode === 'air') {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
@@ -195,18 +194,14 @@
           yDistance = f32(yDistance + yVelocityCurrent + fall);
           remainingYIterations -= 1;
         } else {
-          if (yVelocityCurrent <= fall) {
-            stopYAxis = true;
-            remainingYIterations = 0;
-          } else {
-            fall = f32(fall + fallAccel);
-            if (fall > maxFall) {
-              fall = maxFall;
-            }
-            yDistance = f32(yDistance + (yVelocityCurrent - fall));
-            yVelocityCurrent = f32(yVelocityCurrent - yDec);
-            remainingYIterations -= 1;
+          fall = f32(fall + fallAccel);
+          if (fall > maxFall) {
+            fall = maxFall;
           }
+          yDistance = f32(yDistance + (yVelocityCurrent - fall));
+          const nextVelocity = f32(yVelocityCurrent - yDec);
+          yVelocityCurrent = nextVelocity > 0 ? nextVelocity : 0;
+          remainingYIterations -= 1;
         }
       }
 
@@ -402,15 +397,13 @@
       } else {
         yVelocity = f32(yVelocity - yDec);
         while (yFrames > 0) {
-          if (yVelocity <= fall) {
-            break;
-          }
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
             fall = maxFall;
           }
           yDistance = f32(yDistance + (yVelocity - fall));
-          yVelocity = f32(yVelocity - yDec);
+          const nextVelocity = f32(yVelocity - yDec);
+          yVelocity = nextVelocity > 0 ? nextVelocity : f32(0);
           yFrames -= 1;
         }
       }
@@ -431,13 +424,18 @@
         }
       } else {
         yVelocity = f32(yVelocity - yDec);
-        while (yVelocity > fall) {
+        while (yVelocity > 0 || fall < maxFall) {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
             fall = maxFall;
           }
           yDistance = f32(yDistance + (yVelocity - fall));
-          yVelocity = f32(yVelocity - yDec);
+          const nextVelocity = f32(yVelocity - yDec);
+          yVelocity = nextVelocity > 0 ? nextVelocity : f32(0);
+
+          if (yVelocity === 0 && fall === maxFall) {
+            break;
+          }
         }
       }
     }

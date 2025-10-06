@@ -43,18 +43,12 @@
     .position-inputs select { width: auto; min-width: 130px; }
     .position-inputs span { font-size: 0.85rem; opacity: 0.75; }
 
-    .position-tabs { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.45rem; margin-bottom: 0.65rem; }
-    .position-tab { border: 1px solid rgba(0,0,0,0.15); background: rgba(0,0,0,0.04); border-radius: 999px; padding: 0.35rem 0.85rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-    .position-tab.is-active { background: rgba(49,101,212,0.14); border-color: rgba(49,101,212,0.4); color: #1f3f93; }
-    .position-tab:focus-visible { outline: 2px solid rgba(49,101,212,0.4); outline-offset: 2px; }
-
-    .position-tab-panel { display: grid; gap: 0.6rem; }
-    .custom-position-inputs { display: grid; gap: 0.45rem; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-    .custom-position-saved { display: grid; gap: 0.5rem; }
-    .custom-position-name-row { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
-    .custom-position-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
-    #custom-position-name { flex: 1 1 180px; min-width: 160px; }
-    #custom-position-saved { width: 100%; min-height: 40px; }
+    .position-coordinates { display: flex; gap: 0.6rem; margin-top: 0.6rem; flex-wrap: nowrap; }
+    @media (max-width: 600px) {
+      .position-coordinates { flex-wrap: wrap; }
+    }
+    .position-coordinates > div { flex: 0 0 auto; }
+    .position-coordinates input { width: 110px; }
 
     .trajectory-card { grid-column: 1 / -1; }
     .trajectory-card .card-body { display: grid; gap: 0.6rem; }
@@ -169,8 +163,6 @@
       .segmented-control { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.08); }
       .segmented-button.is-active { background: rgba(130,168,255,0.25); }
       .blastzone-bounds { fill: rgba(244,67,54,0.12); stroke: rgba(244,67,54,0.35); }
-      .position-tab { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); }
-      .position-tab.is-active { background: rgba(130,168,255,0.2); border-color: rgba(130,168,255,0.45); color: #d8e2ff; }
     }
   </style>
 </head>
@@ -301,54 +293,33 @@
           </fieldset>
         <fieldset>
           <legend>Position</legend>
-          <div class="position-tabs" role="tablist" aria-label="Position options">
-            <button type="button" class="position-tab is-active" data-position-tab="presets" aria-selected="true">Presets</button>
-            <button type="button" class="position-tab" data-position-tab="custom" aria-selected="false">Custom</button>
-          </div>
-          <div class="position-tab-panel" data-position-panel="presets" role="tabpanel">
-            <div class="position-row">
-              <label for="position-horizontal">Position</label>
-              <div class="position-inputs">
-                <select id="position-horizontal" name="positionHorizontal">
-                  <option value="left">Left side</option>
-                  <option value="center" selected>Center</option>
-                  <option value="right">Right side</option>
-                </select>
-                <span>of</span>
-                <select id="position-vertical" name="positionVertical">
-                  <option value="stage" selected>Stage</option>
-                  <option value="left-platform">Left platform</option>
-                  <option value="right-platform">Right platform</option>
-                  <option value="top-platform">Top platform</option>
-                </select>
-              </div>
+          <div class="position-row">
+            <label for="position-horizontal">Preset</label>
+            <div class="position-inputs">
+              <select id="position-horizontal" name="positionHorizontal">
+                <option value="" hidden></option>
+                <option value="left">Left side</option>
+                <option value="center" selected>Center</option>
+                <option value="right">Right side</option>
+              </select>
+              <span>of</span>
+              <select id="position-vertical" name="positionVertical">
+                <option value="" hidden></option>
+                <option value="stage" selected>Stage</option>
+                <option value="left-platform">Left platform</option>
+                <option value="right-platform">Right platform</option>
+                <option value="top-platform">Top platform</option>
+              </select>
             </div>
-            <p class="muted">Computed position: <span id="position-output">(0, 0)</span></p>
           </div>
-          <div class="position-tab-panel hidden" data-position-panel="custom" role="tabpanel" aria-hidden="true">
-            <div class="custom-position-inputs">
-              <div>
-                <label for="custom-position-x">X coordinate</label>
-                <input id="custom-position-x" name="customPositionX" type="number" step="any" inputmode="decimal">
-              </div>
-              <div>
-                <label for="custom-position-y">Y coordinate</label>
-                <input id="custom-position-y" name="customPositionY" type="number" step="any" inputmode="decimal">
-              </div>
+          <div class="position-coordinates">
+            <div>
+              <label for="position-x-input">X coordinate</label>
+              <input id="position-x-input" name="positionX" type="number" step="any" inputmode="decimal">
             </div>
-            <div class="custom-position-saved">
-              <div class="custom-position-name-row">
-                <input id="custom-position-name" name="customPositionName" type="text" placeholder="Label" maxlength="40" aria-label="Location label">
-                <button type="button" id="custom-position-save">Save</button>
-              </div>
-              <div>
-                <label for="custom-position-saved">Saved locations</label>
-                <select id="custom-position-saved" name="customPositionSaved"></select>
-              </div>
-              <div class="custom-position-actions">
-                <button type="button" id="custom-position-load">Load</button>
-                <button type="button" id="custom-position-delete">Delete</button>
-              </div>
+            <div>
+              <label for="position-y-input">Y coordinate</label>
+              <input id="position-y-input" name="positionY" type="number" step="any" inputmode="decimal">
             </div>
           </div>
         </fieldset>
@@ -516,15 +487,8 @@
       const defenseHandicapInput = document.getElementById('defense-handicap-input');
       const positionHorizontalSelect = document.getElementById('position-horizontal');
       const positionVerticalSelect = document.getElementById('position-vertical');
-      const positionTabButtons = Array.from(document.querySelectorAll('[data-position-tab]'));
-      const positionTabPanels = Array.from(document.querySelectorAll('[data-position-panel]'));
-      const customPositionXInput = document.getElementById('custom-position-x');
-      const customPositionYInput = document.getElementById('custom-position-y');
-      const customPositionNameInput = document.getElementById('custom-position-name');
-      const customPositionSaveButton = document.getElementById('custom-position-save');
-      const customPositionSavedSelect = document.getElementById('custom-position-saved');
-      const customPositionLoadButton = document.getElementById('custom-position-load');
-      const customPositionDeleteButton = document.getElementById('custom-position-delete');
+      const positionXInput = document.getElementById('position-x-input');
+      const positionYInput = document.getElementById('position-y-input');
       const debugToggle = document.getElementById('debug-toggle');
       const snapToggle = document.getElementById('snap-toggle');
       const doubleJumpArmorRow = document.getElementById('double-jump-armor-row');
@@ -593,22 +557,6 @@
       };
 
       const STAGE_HALF_WIDTH = POSITION_DATA.stage.halfWidth;
-      const positionStorage = (() => {
-        try {
-          if (typeof window !== 'undefined' && window.localStorage) {
-            const testKey = '__calc_position_check__';
-            window.localStorage.setItem(testKey, '1');
-            window.localStorage.removeItem(testKey);
-            return window.localStorage;
-          }
-        } catch (error) {
-          console.warn('Local storage unavailable for positions', error);
-        }
-        return null;
-      })();
-      const SAVED_POSITION_STORAGE_KEY = 'smash64.positionPresets.v1';
-      let savedPositions = [];
-      let activePositionTab = 'presets';
       let suppressCustomPositionInput = false;
       let stalenessValue = 'fresh';
       let customPosition = null;
@@ -639,148 +587,24 @@
         if (!Number.isFinite(value)) {
           return '';
         }
-        const abs = Math.abs(value);
-        let decimals = 2;
-        if (abs < 1) {
-          decimals = 3;
-        } else if (abs >= 1000) {
-          decimals = 1;
+        const rounded = Number(value.toFixed(1));
+        if (!Number.isFinite(rounded)) {
+          return String(value);
         }
-        const rounded = Number(value.toFixed(decimals));
-        return Number.isFinite(rounded) ? String(rounded) : String(value);
+        if (Math.abs(rounded - Math.round(rounded)) < 1e-6) {
+          return String(Math.round(rounded));
+        }
+        return rounded.toFixed(1);
       }
 
-      function syncCustomInputsFromState() {
-        if (!customPositionXInput || !customPositionYInput) return;
+      function syncPositionInputs() {
+        if (!positionXInput || !positionYInput) return;
         const active = getActiveStagePosition();
         suppressCustomPositionInput = true;
-        customPositionXInput.value = formatPositionInputValue(active.x);
-        customPositionYInput.value = formatPositionInputValue(active.y);
+        positionXInput.value = formatPositionInputValue(active.x);
+        positionYInput.value = formatPositionInputValue(active.y);
         suppressCustomPositionInput = false;
       }
-
-      function updateSavedPositionButtons() {
-        if (!customPositionLoadButton || !customPositionDeleteButton) return;
-        const selectedName = customPositionSavedSelect ? customPositionSavedSelect.value : '';
-        const hasSelection = Boolean(selectedName) && savedPositions.some((entry) => entry.name === selectedName);
-        customPositionLoadButton.disabled = !hasSelection;
-        customPositionDeleteButton.disabled = !hasSelection;
-      }
-
-      function renderSavedPositions(selectedName = null) {
-        if (!customPositionSavedSelect) return;
-        customPositionSavedSelect.innerHTML = '';
-        if (savedPositions.length === 0) {
-          const option = document.createElement('option');
-          option.value = '';
-          option.textContent = 'No saved locations';
-          option.disabled = true;
-          option.selected = true;
-          customPositionSavedSelect.appendChild(option);
-          updateSavedPositionButtons();
-          return;
-        }
-
-        if (selectedName && !savedPositions.some((entry) => entry.name === selectedName)) {
-          selectedName = null;
-        }
-
-        savedPositions.forEach((entry, index) => {
-          const option = document.createElement('option');
-          option.value = entry.name;
-          option.textContent = entry.name;
-          if (selectedName) {
-            option.selected = entry.name === selectedName;
-          } else if (index === 0) {
-            option.selected = true;
-          }
-          customPositionSavedSelect.appendChild(option);
-        });
-
-        if (selectedName) {
-          customPositionSavedSelect.value = selectedName;
-        }
-
-        updateSavedPositionButtons();
-      }
-
-      function loadSavedPositionsFromStorage() {
-        if (!positionStorage) return;
-        try {
-          const raw = positionStorage.getItem(SAVED_POSITION_STORAGE_KEY);
-          if (!raw) return;
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            savedPositions = parsed.filter((entry) => entry
-              && typeof entry.name === 'string'
-              && Number.isFinite(entry.x)
-              && Number.isFinite(entry.y));
-          }
-        } catch (error) {
-          console.warn('Failed to load saved positions', error);
-          savedPositions = [];
-        }
-      }
-
-      function persistSavedPositions() {
-        if (!positionStorage) return;
-        try {
-          positionStorage.setItem(SAVED_POSITION_STORAGE_KEY, JSON.stringify(savedPositions));
-        } catch (error) {
-          console.warn('Unable to save positions', error);
-        }
-      }
-
-      function getSavedPositionByName(name) {
-        if (!name) return null;
-        return savedPositions.find((entry) => entry.name === name) || null;
-      }
-
-      function setActivePositionTab(tabKey, { triggerCalculate = true, preservePosition = false } = {}) {
-        if (!tabKey || tabKey === activePositionTab) {
-          syncCustomInputsFromState();
-          return false;
-        }
-
-        activePositionTab = tabKey;
-
-        positionTabButtons.forEach((button) => {
-          const isActive = button.dataset.positionTab === tabKey;
-          button.classList.toggle('is-active', isActive);
-          button.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-
-        positionTabPanels.forEach((panel) => {
-          const isActive = panel.dataset.positionPanel === tabKey;
-          panel.classList.toggle('hidden', !isActive);
-          panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-        });
-
-        if (tabKey === 'presets' && !preservePosition) {
-          customPosition = null;
-          doubleJumpArmorLiftActive = false;
-          doubleJumpArmorAnchor = null;
-        } else if (tabKey === 'custom' && !customPosition) {
-          const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
-          setCustomPositionDirect(dropdownPosition.x, dropdownPosition.y);
-        }
-
-        syncCustomInputsFromState();
-
-        if (triggerCalculate) {
-          calculate();
-        }
-
-        return true;
-      }
-
-      function applySavedPosition(entry) {
-        if (!entry) return;
-        setCustomPositionDirect(entry.x, entry.y);
-        setActivePositionTab('custom', { triggerCalculate: false, preservePosition: true });
-        calculate();
-      }
-
       function stageToDisplayY(value) {
         return -value;
       }
@@ -1121,12 +945,23 @@
           horizontalKey = 'left';
         } else if (relative >= 0.33) {
           horizontalKey = 'right';
-        }
+      }
 
-        return { verticalKey: bestKey, horizontalKey };
+      return { verticalKey: bestKey, horizontalKey };
       }
 
       let suppressPositionChange = false;
+
+      function clearPresetSelection() {
+        suppressPositionChange = true;
+        if (positionHorizontalSelect) {
+          positionHorizontalSelect.value = '';
+        }
+        if (positionVerticalSelect) {
+          positionVerticalSelect.value = '';
+        }
+        suppressPositionChange = false;
+      }
 
       function setPositionFromStageCoords(stageX, stageY, forceUpdate = false) {
         const clamped = clampToLiveArea(stageX, stageY);
@@ -1134,25 +969,16 @@
         stageY = clamped.y;
 
         const selection = resolvePositionSelection(stageX, stageY);
-        const currentHorizontal = positionHorizontalSelect.value;
-        const currentVertical = positionVerticalSelect.value;
-        const selectionChanged = selection.horizontalKey !== currentHorizontal || selection.verticalKey !== currentVertical;
-
-        suppressPositionChange = true;
-        positionHorizontalSelect.value = selection.horizontalKey;
-        positionVerticalSelect.value = selection.verticalKey;
-        suppressPositionChange = false;
-
         const snappedPosition = computePosition(selection.horizontalKey, selection.verticalKey);
         const dx = stageX - snappedPosition.x;
         const dy = stageY - snappedPosition.y;
         const distanceSq = (dx * dx) + (dy * dy);
-        const snapEnabledForTab = trajectoryState.snapEnabled && activePositionTab === 'presets';
-        const shouldSnap = snapEnabledForTab && distanceSq <= trajectoryState.snapDistanceSq;
-        let grounded = isPositionOnPlatform({ x: stageX, y: stageY });
+        const shouldSnap = trajectoryState.snapEnabled && distanceSq <= trajectoryState.snapDistanceSq;
 
-        let positionChanged = selectionChanged;
-        let tabChanged = false;
+        let newHorizontal = selection.horizontalKey;
+      let newVertical = selection.verticalKey;
+        let positionChanged = false;
+        let grounded = isPositionOnPlatform({ x: stageX, y: stageY });
 
         if (shouldSnap) {
           if (customPosition !== null) {
@@ -1162,7 +988,6 @@
           stageX = snappedPosition.x;
           stageY = snappedPosition.y;
           grounded = true;
-          tabChanged = setActivePositionTab('presets', { triggerCalculate: false, preservePosition: true }) || tabChanged;
         } else {
           const prev = customPosition ? { ...customPosition } : null;
           setCustomPositionDirect(stageX, stageY);
@@ -1174,12 +999,38 @@
           }
           stageX = current ? current.x : stageX;
           stageY = current ? current.y : stageY;
-          tabChanged = setActivePositionTab('custom', { triggerCalculate: false, preservePosition: true }) || tabChanged;
+          newHorizontal = '';
+          newVertical = '';
           if (trajectoryState.dragging && doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
             doubleJumpArmorLiftActive = false;
             doubleJumpArmorAnchor = null;
           }
         }
+
+        suppressPositionChange = true;
+        if (positionHorizontalSelect) {
+          if (newHorizontal) {
+            if (positionHorizontalSelect.value !== newHorizontal) {
+              positionHorizontalSelect.value = newHorizontal;
+              positionChanged = true;
+            }
+          } else if (positionHorizontalSelect.selectedIndex !== -1) {
+            positionHorizontalSelect.selectedIndex = -1;
+            positionChanged = true;
+          }
+        }
+        if (positionVerticalSelect) {
+          if (newVertical) {
+            if (positionVerticalSelect.value !== newVertical) {
+              positionVerticalSelect.value = newVertical;
+              positionChanged = true;
+            }
+          } else if (positionVerticalSelect.selectedIndex !== -1) {
+            positionVerticalSelect.selectedIndex = -1;
+            positionChanged = true;
+          }
+        }
+        suppressPositionChange = false;
 
         if (grounded) {
           if (targetStateSelect.value !== 'airborne') {
@@ -1206,7 +1057,9 @@
           autoAirborneActive = true;
         }
 
-        if (forceUpdate || positionChanged || tabChanged) {
+        syncPositionInputs();
+
+        if (forceUpdate || positionChanged) {
           calculate();
         }
       }
@@ -1214,7 +1067,8 @@
       function setCustomPositionDirect(stageX, stageY) {
         const clamped = clampToLiveArea(stageX, stageY);
         customPosition = { x: clamped.x, y: clamped.y };
-        syncCustomInputsFromState();
+        clearPresetSelection();
+        syncPositionInputs();
       }
 
       function enforceDoubleJumpArmorState({ skipCalculate = false, forceCalculate = false } = {}) {
@@ -1259,7 +1113,6 @@
               || Math.abs(currentCustom.y - liftedY) > 0.5;
             if (needsLift) {
               setCustomPositionDirect(activePosition.x, liftedY);
-              setActivePositionTab('custom', { triggerCalculate: false, preservePosition: true });
               doubleJumpArmorLiftActive = true;
               doubleJumpArmorAnchor = { x: activePosition.x, y: activePosition.y };
               changed = true;
@@ -1275,10 +1128,9 @@
             doubleJumpArmorLiftActive = false;
             if (doubleJumpArmorAnchor) {
               setCustomPositionDirect(doubleJumpArmorAnchor.x, doubleJumpArmorAnchor.y);
-              setActivePositionTab('custom', { triggerCalculate: false, preservePosition: true });
             } else {
               customPosition = null;
-              setActivePositionTab('presets', { triggerCalculate: false, preservePosition: true });
+              syncPositionInputs();
             }
             doubleJumpArmorAnchor = null;
             changed = true;
@@ -1766,7 +1618,9 @@
 
         const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
         const position = customPosition ? { x: customPosition.x, y: customPosition.y } : dropdownPosition;
-        outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
+        if (outputNodes.positionOutput) {
+          outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
+        }
 
         const resolvedAngleDeg = typeof result.resolvedAngle === 'number' ? result.resolvedAngle : params.angle;
         const angleRadians = resolvedAngleDeg * (Math.PI / 180);
@@ -1947,28 +1801,19 @@
         }
       });
 
-      positionTabButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const tabKey = button.dataset.positionTab;
-          if (!tabKey) return;
-          setActivePositionTab(tabKey);
-        });
-      });
-
-      if (customPositionXInput && customPositionYInput) {
-        const handleCustomPositionInput = () => {
+      if (positionXInput && positionYInput) {
+        const handlePositionInput = () => {
           if (suppressCustomPositionInput) return;
-          const x = Number.parseFloat(customPositionXInput.value);
-          const y = Number.parseFloat(customPositionYInput.value);
+          const x = Number.parseFloat(positionXInput.value);
+          const y = Number.parseFloat(positionYInput.value);
           if (!Number.isFinite(x) || !Number.isFinite(y)) {
             return;
           }
           setCustomPositionDirect(x, y);
-          setActivePositionTab('custom', { triggerCalculate: false, preservePosition: true });
           calculate();
         };
 
-        const handleCustomPositionKeydown = (event) => {
+        const handlePositionKeydown = (event) => {
           if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
             return;
           }
@@ -1979,88 +1824,26 @@
           const current = Number.parseFloat(target.value);
           const next = Number.isFinite(current) ? current + delta : delta;
           target.value = formatPositionInputValue(next);
-          handleCustomPositionInput();
+          handlePositionInput();
         };
 
-        customPositionXInput.addEventListener('input', handleCustomPositionInput);
-        customPositionYInput.addEventListener('input', handleCustomPositionInput);
-        customPositionXInput.addEventListener('keydown', handleCustomPositionKeydown);
-        customPositionYInput.addEventListener('keydown', handleCustomPositionKeydown);
-      }
-
-      if (customPositionNameInput) {
-        customPositionNameInput.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter') {
-            event.preventDefault();
-            if (customPositionSaveButton) {
-              customPositionSaveButton.click();
-            }
-          }
-        });
-      }
-
-      if (customPositionSaveButton) {
-        customPositionSaveButton.addEventListener('click', () => {
-          const label = (customPositionNameInput?.value || '').trim();
-          if (!label) {
-            if (customPositionNameInput) {
-              customPositionNameInput.focus();
-            }
-            return;
-          }
-          const active = getActiveStagePosition();
-          const existingIndex = savedPositions.findIndex((entry) => entry.name.toLowerCase() === label.toLowerCase());
-          if (existingIndex >= 0) {
-            savedPositions[existingIndex] = { name: savedPositions[existingIndex].name, x: active.x, y: active.y };
-          } else {
-            savedPositions.push({ name: label, x: active.x, y: active.y });
-          }
-          persistSavedPositions();
-          renderSavedPositions(label);
-          if (customPositionNameInput) {
-            customPositionNameInput.value = '';
-          }
-        });
-      }
-
-      if (customPositionSavedSelect) {
-        customPositionSavedSelect.addEventListener('change', () => {
-          updateSavedPositionButtons();
-        });
-      }
-
-      if (customPositionLoadButton) {
-        customPositionLoadButton.addEventListener('click', () => {
-          const entry = getSavedPositionByName(customPositionSavedSelect ? customPositionSavedSelect.value : '');
-          if (entry) {
-            applySavedPosition(entry);
-          }
-        });
-      }
-
-      if (customPositionDeleteButton) {
-        customPositionDeleteButton.addEventListener('click', () => {
-          const selectedName = customPositionSavedSelect ? customPositionSavedSelect.value : '';
-          if (!selectedName) return;
-          const index = savedPositions.findIndex((entry) => entry.name === selectedName);
-          if (index === -1) return;
-          savedPositions.splice(index, 1);
-          persistSavedPositions();
-          renderSavedPositions();
-        });
+        positionXInput.addEventListener('input', handlePositionInput);
+        positionYInput.addEventListener('input', handlePositionInput);
+        positionXInput.addEventListener('keydown', handlePositionKeydown);
+        positionYInput.addEventListener('keydown', handlePositionKeydown);
       }
 
       positionHorizontalSelect.addEventListener('change', () => {
         if (suppressPositionChange) return;
         customPosition = null;
-        setActivePositionTab('presets', { triggerCalculate: false, preservePosition: true });
+        syncPositionInputs();
         calculate();
       });
 
       positionVerticalSelect.addEventListener('change', () => {
         if (suppressPositionChange) return;
         customPosition = null;
-        setActivePositionTab('presets', { triggerCalculate: false, preservePosition: true });
+        syncPositionInputs();
         calculate();
       });
 
@@ -2100,9 +1883,7 @@
         });
       }
 
-      loadSavedPositionsFromStorage();
-      renderSavedPositions();
-      syncCustomInputsFromState();
+      syncPositionInputs();
 
       setStaleness(stalenessValue, { trigger: false });
       setCameraMode(trajectoryState.cameraMode, { trigger: false });

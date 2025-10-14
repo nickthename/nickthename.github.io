@@ -1,22 +1,28 @@
+---
+layout: vods
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon_solid.png">
   <title>Smash 64 Knockback Calculator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css">
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <style>
     :root { color-scheme: light dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
     * { box-sizing: border-box; }
+    header, header * { box-sizing: content-box; } /* default */
     .hidden { display: none !important; }
-    body { margin: 0; background: var(--page-bg, #f7f8fa); color: var(--text-color, #10131a); }
+    body { margin: 0; display: block; }
 
     .warning-banner { background: #ffdd57; color: #3b2f00; padding: 0.65rem 1rem; font-weight: 600; text-align: center; font-size: 0.95rem; }
     @media (prefers-color-scheme: dark) {
       .warning-banner { background: rgba(255, 204, 64, 0.25); color: #ffea9a; }
     }
 
-    main { display: grid; gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); max-width: 1200px; margin: 0 auto; align-items: start; }
+    main { display: grid; gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); padding-top: 0px; max-width: 1200px; margin: 0 auto; align-items: start; }
     header { grid-column: 1 / -1; }
     h1 { margin: 0 0 0.35rem; font-size: clamp(1.8rem, 2.7vw, 2.6rem); letter-spacing: -0.03em; }
     .note { margin: 0; font-size: 0.9rem; opacity: 0.75; }
@@ -31,6 +37,7 @@
     fieldset { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 0.85rem; display: grid; gap: 0.65rem; align-content: start; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); }
     legend { padding: 0 0.5rem; font-weight: 600; letter-spacing: 0.01em; }
     label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+    label[for="nav-trigger"] { margin-bottom: 0; }
     .inline-input label { margin-bottom: 0; }
     input[type="number"], select { width: 100%; font: inherit; padding: 0.45rem 0.55rem; border: 1px solid rgba(0,0,0,0.18); border-radius: 6px; background: rgba(0,0,0,0.03); }
     input[readonly] { background: rgba(0,0,0,0.06); color: inherit; }

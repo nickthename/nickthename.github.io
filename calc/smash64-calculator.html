@@ -11,16 +11,19 @@ layout: vods
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <style>
-    :root { color-scheme: light dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+    /*:root { color-scheme: light dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }*/
+    :root { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
     * { box-sizing: border-box; }
     header, header * { box-sizing: content-box; } /* default */
     .hidden { display: none !important; }
     body { margin: 0; display: block; }
 
     .warning-banner { background: #ffdd57; color: #3b2f00; padding: 0.65rem 1rem; font-weight: 600; text-align: center; font-size: 0.95rem; }
+    /*
     @media (prefers-color-scheme: dark) {
       .warning-banner { background: rgba(255, 204, 64, 0.25); color: #ffea9a; }
     }
+    */
 
     main { display: grid; gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); padding-top: 0px; max-width: 1200px; margin: 0 auto; align-items: start; }
     header { grid-column: 1 / -1; }
@@ -208,6 +211,7 @@ layout: vods
       .primary-cards { grid-template-columns: 1fr; }
     }
 
+    /*
     @media (prefers-color-scheme: dark) {
       body { --page-bg: #070a11; --text-color: #e9edf6; }
       .form-panel, .outputs-panel { background: rgba(16,20,32,0.65); border-color: rgba(255,255,255,0.12); }
@@ -246,6 +250,7 @@ layout: vods
       .segmented-button.is-active { background: rgba(130,168,255,0.25); }
       .blastzone-bounds { fill: rgba(244,67,54,0.12); stroke: rgba(244,67,54,0.35); }
     }
+    */
   </style>
 </head>
 <body>

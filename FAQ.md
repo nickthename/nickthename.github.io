@@ -306,16 +306,16 @@ There is no written rule against using Hori or other alternative controllers in 
 
 When a character or hurtbox is invincible (English meaning: *cannot be defeated*), they can be hit, but they take no damage or knockback from the attack. Examples of invincibility include the 2 seconds after a character leaves the respawn platform, Yoshi's parry, and the star item.
 
-When a character or hurtbox is intangible (English meaning: *cannot be touched*), it cannot be hit, and is treated as though it doesn't exist. Examples of intangibility include the 1 second after a character grabs the ledge, Pika's upb startup, and being *on* the respawn platform.
+When a character or hurtbox is intangible (English meaning: *cannot be touched*), it cannot be hit, and is treated as though it doesn't exist. Examples of intangibility include the 1 second after a character grabs the ledge, Pika's up-b startup, and being *on* the respawn platform.
 
 The difference is relevant in 2 main ways:
 
 - When attacking an invincible player, the attacker will go into normal hitlag (freeze frames), which makes them especially vulnerable to counterattack. Attacks against intangible players don't hit, so there is no hitlag.
-- Most attacks only hit once. If an attack hits an invincible player on frame 5, and on frame 6 that player loses invincibilty, the attack has already hit and won't hit them again. However if an attack overlaps an intangible player and they become tangible while the attack is on them, they will be hit.
+- Most attacks only hit once. If an attack hits an invincible player on frame 5, and on frame 6 that player loses invincibility, the attack has already hit and won't hit them again. However if an attack overlaps an intangible player and they become tangible while the attack is on them, they will be hit.
 
 ### How far along is the decomp? {#decomp-status}
 
-You can check the progress of the decompilation effort here: [https://github.com/VetriTheRetri/ssb-decomp-re/]()
+You can check the progress of the decompilation effort here: <https://github.com/VetriTheRetri/ssb-decomp-re/>
 
 ### What is a decomp, anyway? {#what-is-a-decomp}
 The goal of decompilation is to convert the machine language of the game back into human-readable code.

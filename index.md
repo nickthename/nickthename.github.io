@@ -14,7 +14,7 @@ title: Smash 64 Resources
     <!-- <img src="/guides/img/controllers/OG.png" width="80" margin="auto"><br /> -->
     <img src="/guides/img/controllers/OG.png"><br />
     <h2>Controller Guide</h2>
-    <p>A complete guide to the common controller types in used in competitive Smash.</p>
+    <p>A complete guide to the common controller types used in competitive Smash.</p>
   </div>
 </a> 
 

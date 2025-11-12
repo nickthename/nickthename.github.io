@@ -16,7 +16,7 @@ There are two main ways to DI, “tapping” (aka "smashing") and “sliding”.
 
 ## Advanced
 
-The section goes into detail on the exact mechanics that define DI. If you're just looking to improve your DI in-game, check out the [guide to learning DI](/guides/learningdi).
+This section goes into detail on the exact mechanics that define DI. If you're just looking to improve your DI in-game, check out the [guide to learning DI](/guides/learningdi).
 
 ### Definitions
 
@@ -54,13 +54,13 @@ These rules define how the game decides whether or not you’ll get DI or a part
 There is an additional filter on DI, based on distance from the center of the joystick:
 
 - If the above criteria are met, and your joystick is on or outside a circle with radius 53, the DI input will happen immediately.
-- If the above criteria are met, but your joystick in inside the circle, a countdown timer will start. If you move outside the green circle within 2 frames, you'll get the DI input. If you don't, the input will be lost.
+- If the above criteria are met, but your joystick is inside the circle, a countdown timer will start. If you move outside the green circle within 2 frames, you'll get the DI input. If you don't, the input will be lost.
 
 Here's an example that demonstrates each mechanic:
 
 ```
 Frame 1: (0,0)  We start at the center, in both boxes.
-Frame 2: (0,30) We've left the red box, so we should get DI, however we're still inside the green circle. The coundown timer starts.
+Frame 2: (0,30) We've left the red box, so we should get DI, however we're still inside the green circle. The countdown timer starts.
 Frame 3: (0,45) We're still inside the green circle, so no DI
 Frame 4: (0,60) We finally leave the green circle, and get the DI input we "earned" on Frame 2.
 ```
@@ -87,4 +87,4 @@ and
 `ftMainProcUpdateInterrupt` of which we care about the section setting tap_stick_x and y here: <https://github.com/VetriTheRetri/ssb-decomp-re/blob/main/src/ft/ftmain.c#L1320>
 
 ## Conclusions
-In general, DI behaves mostly according to the popular conception. One important area where this is not the case is in regards to range. It’s commonly believed that the Hori and other similar controllers have an advantage over the OG purely because of their range. While range does matter, gate shape is an overlooked factor that can heavily impact whether a controller can make good use of its range. A Gamecube controller using the Raphnet adapter, has a maximum range of 80, while an OG in great condition has a maximum range closer to 85. However, the GC has an advantage in DI ability because of its square gate, which makes movements perpendicular to the DI direction possible
+In general, DI behaves mostly according to the popular conception. One important area where this is not the case is in regards to range. It’s commonly believed that the Hori and other similar controllers have an advantage over the OG purely because of their range. While range does matter, gate shape is an overlooked factor that can heavily impact whether a controller can make good use of its range.

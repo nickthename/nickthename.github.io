@@ -24,7 +24,7 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
 ## ![](/guides/img/chars/full/luigi.png) Luigi {#luigi}
 #### Advanced Techniques
  - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
- - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
+ - [Extended Up-B \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
 
 #### Guides and Combo Videos
@@ -49,7 +49,7 @@ Matches:
 #### Advanced Techniques
  - [Jab Grab \| Nate L](https://youtu.be/8lOpfwS5NMs?t=532)
  - [Rising Tornado \| Nate L](https://youtu.be/8lOpfwS5NMs?t=776)
- - [Extended UpB \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
+ - [Extended Up-B \| Nate L](https://youtu.be/8lOpfwS5NMs?t=1048)
 
 #### Guides and Combo Videos
 - [100 Marios \| Red](https://sp.nicovideo.jp/watch/sm18317373) ![](/guides/img/japan-flag-icon-16.png)
@@ -292,7 +292,7 @@ Speaking of matchups, Pikachu's wide variety of tools gives him the flexibility 
 #### Advanced Techniques
 - [Extended Up-B \| Nate L](https://youtu.be/8lOpfwS5NMs?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn&t=898)
 - [Intermediate Pikachu Techniques](https://www.youtube.com/watch?v=A3Smg4MNWuA)
-- [Essential Pika UpBs \| Nate L](https://www.youtube.com/watch?v=4U9GExbbhuE)
+- [Essential Pika Up-Bs \| Nate L](https://www.youtube.com/watch?v=4U9GExbbhuE)
 - [Advanced Pikachu Movement \| Stranded](https://www.youtube.com/watch?v=r1XOBCY-vfE)
 
 #### Guides and Combo Videos

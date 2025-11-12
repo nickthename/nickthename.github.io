@@ -24,7 +24,7 @@ A staple movement option / finisher in Yoshi's kit. Accomplished by doing a full
 
 ### DJC Shield Break
 
-Another phenomenal option all Yoshi's should try and grind out as much as possible (me included, it took too many tries to get these clips xD). Completed by performing a series of short hop DJC nairs on an opponent's shield. In actual matches, I often find I get the best opportunities for these after hitting an opponent's shield after a tech chase, and following up with this. They're definitely challenging at first, but if you hit your opponent's shield and react in time, they are for the most part a true execution test, barring potential shield pokes on character's like Kirby.
+Another phenomenal option all Yoshis should try and grind out as much as possible (me included, it took too many tries to get these clips xD). Completed by performing a series of short hop DJC nairs on an opponent's shield. In actual matches, I often find I get the best opportunities for these after hitting an opponent's shield after a tech chase, and following up with this. They're definitely challenging at first, but if you hit your opponent's shield and react in time, they are for the most part a true execution test, barring potential shield pokes on characters like Kirby.
 
 These are incredibly easy to practice in Smash Remix on account of the new "Shield Break Mode" available in training mode. Along with setting custom spawns for you and the dummy, you can practice these immediately one after the other. I personally like practicing against Pika, with his out of shield action set to Up B. You should practice this against various characters though, as their height / position of their shields can cause slight variances that might affect muscle memory.
 
@@ -32,8 +32,8 @@ If you have trouble getting the timing right all the way to the end, you can sto
 
 <video width="60%" preload="auto" muted controls>
     <source src="https://cdn.discordapp.com/attachments/1041528468921401414/1041529650381332511/DSmash_Shield_Break.mp4" type="video/mp4"/>
-</video
->
+</video>
+
 ### Uptilt Pivot DownB vs. Pika
 
 This is a really cool one I see get used every now and again. It is a bit awkward to go for at first, and you can be punished hard if you miss it. However, there are many positions where you may find yourself up-tilting Pika on platforms at a medium %, where it seems like there isn't a good option to outright kill. Having this in your back pocket can be invaluable, proven by Wizzrobe famously using it last stock Game 10 of Inka Fest to win the tournament against Alvin.

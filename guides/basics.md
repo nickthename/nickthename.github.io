@@ -10,7 +10,7 @@ draft: false
 Welcome to Smash 64! The first step to learning the game is mastering 64's fundamental mechanics, like short hopping, Z-canceling, teching, and pivoting. Check out the video below for a quick overview, and Nate L's full [advanced techniques playlist](https://www.youtube.com/playlist?list=PLRRp1_oLOK_GiEwNX_d8UIPvlqi34_VHn) for in-depth explanations.
 <p><iframe class="videoembed" width="672" height="378" src="https://www.youtube.com/embed/bxQp7TyKuBs" title="" frameBorder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe></p>
 
-If you coming from Melee, also checkout [SSB64 Mechanics for Melee Players](https://www.youtube.com/watch?v=qvINv6xfhUw), which goes in-depth about differences between the games.
+If you're coming from Melee, also check out [SSB64 Mechanics for Melee Players](https://www.youtube.com/watch?v=qvINv6xfhUw), which goes in-depth about differences between the games.
 
 # Picking a Character
 

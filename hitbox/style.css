@@ -117,6 +117,13 @@ body {
 	line-height: 2;
 	font-size: 18px;
 }
+#play_controls .controls-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
 #play_controls input {
 	color: #FFF;
 	background-color: transparent;
@@ -126,6 +133,15 @@ body {
 }
 #play_controls input[type="button"] {
 	background-color: #434343;
+}
+.mode-option {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	white-space: nowrap;
+}
+.loop-option .loop-label {
+	cursor: pointer;
 }
 
 #links {

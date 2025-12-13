@@ -17,6 +17,7 @@ layout: null
 	<script src="framedisplay.js" type="text/javascript"></script>
 	<script src="characters-U.js" type="text/javascript"></script>
 	<script src="keyboard-shortcuts.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="/favicon_solid.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -124,11 +125,20 @@ layout: null
 							<option value="20">0.33x (20 FPS)</option>
 							<option value="15">0.25x (15 FPS)</option>
 						</select>
-						<label class="radio-label" for="hitboxRadio">Hitbox</label><input id="hitboxRadio" type="radio" name="displayModeRadio" value="hitbox"
+						<span class="mode-option">
+							<input id="hitboxRadio" type="radio" name="displayModeRadio" value="hitbox"
 							   onclick="changeHitbox(this)">
-						<label class="radio-label" for="overlayRadio">Overlay</label><input id="overlayRadio" type="radio" name="displayModeRadio" value="overlay"
+							<label class="radio-label" for="hitboxRadio">Hitbox</label>
+						</span>
+						<span class="mode-option">
+							<input id="overlayRadio" type="radio" name="displayModeRadio" value="overlay"
 							   onclick="changeHitbox(this)">
-						<label class="loop-label">&#x21bb; <input id="repeatCheckbox" type="checkbox" onclick="changeRepeat(this)"></label>
+							<label class="radio-label" for="overlayRadio">Overlay</label>
+						</span>
+						<span class="mode-option loop-option">
+							<input id="repeatCheckbox" type="checkbox" onclick="changeRepeat(this)">
+							<label class="loop-label" for="repeatCheckbox">&#x21bb;</label>
+						</span>
 						<span id="playStatus" class="status-dot paused"></span>
 					</div>
 				</div>

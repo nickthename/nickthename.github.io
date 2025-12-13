@@ -21,7 +21,7 @@ var moveTranslations = {
     categories: {
       aerial: "空中攻撃",
       tilt: "強攻撃",
-      smash: "スマッシュ",
+      smash: "スマッシュ攻撃",
       special: "必殺技",
       attackOther: "その他攻撃",
       ledge: "崖",

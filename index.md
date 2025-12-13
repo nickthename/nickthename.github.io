@@ -80,7 +80,7 @@ Vod reviews of [Breakthrough](https://www.youtube.com/watch?v=yu_XWZHSY8U) and [
 
 ## Tools and Resources
 
-[SSB Frame Data](https://nickthename.github.io/ssbframedata) - Hitbox display website. Sidebar has links to various other game data stuff. Collaboration between myself, Shears, heyitsjames, and others. J version is [here](https://nickthename.github.io/ssbframedata/J).
+[SSB Frame Data](/hitbox/) - Hitbox display website. Sidebar has links to various other game data stuff. Collaboration between myself, Shears, heyitsjames, and others. J version is [here](/hitbox/?ver=J&lang=ja).
 
 [Yoshi Armor Break Table](/ssbframedata/Armor/Armor.html) - Table showing at what percent every move in the game will break Yoshi's double-jump armor. See the [FAQ](/FAQ.html#how-do-yoshis-armor-and-parry-work-whats-the-difference) for more information on how armor works. Rehosted from Bloodpeach's website.
 
@@ -103,4 +103,3 @@ Vod reviews of [Breakthrough](https://www.youtube.com/watch?v=yu_XWZHSY8U) and [
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/twitter-logo.svg" width=30><a href="https://twitter.com/SSB64UPR">@SSB64UPR</a></div>
   </div>
 </aside>
-

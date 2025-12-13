@@ -231,7 +231,7 @@ There was a movement in 2017, led by Superboomfan, to ban Pikachu and Kirby, see
 
 Yoshi has two totally separate mechanics that let him block attacks: **parry**, which uses the startup of his shield on the ground, and **double jump armor**, which he can perform in mid-air by jumping.
 
-Parrying is possible because Yoshi's shield is invincible for its first 3 frames. You can see this on Frame Display [here](/ssbframedata/webfd/framedisplay.html#yoshi&shield-p), invincible hitboxes are in green. Yoshi can then simply stop holding Z to release shield, or jump out of shield to gain an additional 2 frames of intangibility (shared by all characters).
+Parrying is possible because Yoshi's shield is invincible for its first 3 frames. You can see this on Frame Display [here](/hitbox/#yoshi&shield-p), invincible hitboxes are in green. Yoshi can then simply stop holding Z to release shield, or jump out of shield to gain an additional 2 frames of intangibility (shared by all characters).
 
 Armor is a property of Yoshi's double jump, which reduces all knockback by a set amount. If a move doesn't do enough knockback, Yoshi will take damage but not take hitstun or knockback and can attack back immediately. If the move does more knockback than the armor can absorb, it'll "break" the armor, putting Yoshi into hitstun and giving him the remainder of the knockback. Because knockback scales based on percent, each move has a percent at which it'll break armor. You can see a table of these percents here: [Yoshi Armor Table](/ssbframedata/Armor/Armor.html).
 
@@ -347,4 +347,3 @@ Remix is an impressive technical achievement and a cool exploration of what some
 ### Have people really asked all of these questions? {#have-people-really-asked-all-of-these-questions}
 
 Yes.
-

@@ -16,7 +16,7 @@ The ![](/guides/img/japan-flag-icon-16.png) symbol indicates videos in Japanese 
 - [Learning DI](/guides/learningdi.html)
 
 #### Resources
-- [Hitbox Display](https://nickthename.github.io/ssbframedata/webfd/framedisplay.html)
+- [Hitbox Display](https://smash64.net/hitbox/)
 - [Move details spreadsheet](https://docs.google.com/spreadsheets/d/12AA0uoBkHMFmMWaaYGYe4x8dEp69d5UlxJ1dGwBKIR4/)
 - [Indepth mechanics encyclopedia \| Kamui](https://bit.ly/thesmashguide)
 
@@ -188,7 +188,7 @@ Vods:
 
 #### Guides and Combo Videos
 
-- [Armor Break Percents](https://nickthename.github.io/ssbframedata/Armor/Armor.html)
+- [Armor Break Percents](/ssbframedata/Armor/Armor.html)
 - [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
 - [Killer Yoshi Practice \| Hotline](/guides/yoshitech.html)
 - [Yoshi Combos Playlist](https://www.youtube.com/playlist?list=PL2bnzwVIy5jBuR-xfuzcrX6KzKu3vGYLz)

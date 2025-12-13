@@ -19,4 +19,4 @@ When it comes to picking your first main, don't overthink it. 64's cast is relat
 
 # Beyond the Basics
 
-Check out the [main index](/) and [Character Resource Guide](/guides/characters.html) for more advanced guides, check out the [SSB64 Frame Display](https://nickthename.github.io/ssbframedata/webfd/framedisplay.html) to see your character's moves frame by frame, and join the conversation in the #game-discussion channel in the [SSB64 Discord server](https://discord.gg/ssb64).
+Check out the [main index](/) and [Character Resource Guide](/guides/characters.html) for more advanced guides, check out the [SSB64 Frame Display](/hitbox/) to see your character's moves frame by frame, and join the conversation in the #game-discussion channel in the [SSB64 Discord server](https://discord.gg/ssb64).

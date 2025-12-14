@@ -233,7 +233,7 @@ Yoshi has two totally separate mechanics that let him block attacks: **parry**, 
 
 Parrying is possible because Yoshi's shield is invincible for its first 3 frames. You can see this on Frame Display [here](/hitbox/#yoshi&shield-p), invincible hitboxes are in green. Yoshi can then simply stop holding Z to release shield, or jump out of shield to gain an additional 2 frames of intangibility (shared by all characters).
 
-Armor is a property of Yoshi's double jump, which reduces all knockback by a set amount. If a move doesn't do enough knockback, Yoshi will take damage but not take hitstun or knockback and can attack back immediately. If the move does more knockback than the armor can absorb, it'll "break" the armor, putting Yoshi into hitstun and giving him the remainder of the knockback. Because knockback scales based on percent, each move has a percent at which it'll break armor. You can see a table of these percents here: [Yoshi Armor Table](/ssbframedata/Armor/Armor.html).
+Armor is a property of Yoshi's double jump, which reduces all knockback by a set amount. If a move doesn't do enough knockback, Yoshi will take damage but not take hitstun or knockback and can attack back immediately. If the move does more knockback than the armor can absorb, it'll "break" the armor, putting Yoshi into hitstun and giving him the remainder of the knockback. Because knockback scales based on percent, each move has a percent at which it'll break armor. You can see a table of these percents here: [Yoshi Armor Table](/armor/).
 
 ### Why do people call Pikachu rat? {#why-call-Pikachu-rat}
 

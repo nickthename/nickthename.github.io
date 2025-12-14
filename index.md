@@ -82,7 +82,7 @@ Vod reviews of [Breakthrough](https://www.youtube.com/watch?v=yu_XWZHSY8U) and [
 
 [SSB Frame Data](/hitbox/) - Hitbox display website. Sidebar has links to various other game data stuff. Collaboration between myself, Shears, heyitsjames, and others. J version is [here](/hitbox/?ver=J&lang=ja).
 
-[Yoshi Armor Break Table](/ssbframedata/Armor/Armor.html) - Table showing at what percent every move in the game will break Yoshi's double-jump armor. See the [FAQ](/FAQ.html#how-do-yoshis-armor-and-parry-work-whats-the-difference) for more information on how armor works. Rehosted from Bloodpeach's website.
+[Yoshi Armor Break Table](/armor/) - Table showing at what percent every move in the game will break Yoshi's double-jump armor. See the [FAQ](/FAQ.html#how-do-yoshis-armor-and-parry-work-whats-the-difference) for more information on how armor works. Rehosted from Bloodpeach's website.
 
 [Gameshark Code List](guides/gscodes.html) - Small list of useful gameshark codes for use on emulator or Everdrive. Mostly aimed at practice.
 

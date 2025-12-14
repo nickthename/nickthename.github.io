@@ -188,7 +188,7 @@ Vods:
 
 #### Guides and Combo Videos
 
-- [Armor Break Percents](/ssbframedata/Armor/Armor.html)
+- [Armor Break Percents](/armor/)
 - [How to Practice Yoshi's Techchase \| Crovy](https://www.youtube.com/watch?v=D-v-NY68cfU)
 - [Killer Yoshi Practice \| Hotline](/guides/yoshitech.html)
 - [Yoshi Combos Playlist](https://www.youtube.com/playlist?list=PL2bnzwVIy5jBuR-xfuzcrX6KzKu3vGYLz)

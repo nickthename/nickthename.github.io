@@ -1,5 +1,6 @@
 var globalVar = new Object();
 var loadedCharacters = {}; // cache per version
+var hashUpdatesEnabled = false;
 var ASSET_ROOT = (typeof window.HITBOX_ASSET_ROOT === "string") ? window.HITBOX_ASSET_ROOT : "/ssbframedata/";
 if (ASSET_ROOT.slice(-1) !== "/") { ASSET_ROOT += "/"; }
 var IMAGE_ROOT = (typeof window.HITBOX_IMAGE_ROOT === "string") ? window.HITBOX_IMAGE_ROOT : "/ssbframedata/images/";
@@ -114,6 +115,7 @@ function initSettings()
     // Uses function changeSpeed, otherwise only the element "selectSpeed" is changed
     changeSpeed(globalVar.selectSpeed);
     initKeydown();
+    hashUpdatesEnabled = true;
   });
 }
 
@@ -240,7 +242,9 @@ function changeAtt(attDropdownObject)
   // Changes the number of maximum frames for the attack
   globalVar.maxFrame = characterObject[globalVar.character.value].move[globalVar.attack.value].totalFrames
   document.getElementById("maxFrameSpan").innerHTML = '/' + globalVar.maxFrame;
-  window.location.hash = globalVar.character.value + "&" + globalVar.attack.value;
+  if (hashUpdatesEnabled) {
+    window.location.hash = globalVar.character.value + "&" + globalVar.attack.value;
+  }
   // Prevent arrow keys from cycling the dropdown after selection
   if (attDropdownObject && typeof attDropdownObject.blur === "function")
   {

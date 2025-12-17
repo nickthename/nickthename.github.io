@@ -65,6 +65,21 @@
     { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55 },
   ];
 
+  const CHARACTERS_J = [
+    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44 },
+    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60 },
+    { name: 'DK',key: 'DK',weight: 0.84, fallAccel: 3.0, maxFall: 56 },
+    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42 },
+    { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42 },
+    { name: 'Link',key: 'Link',weight: 0.96, fallAccel: 3.2, maxFall: 64 },
+    { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.7, maxFall: 55 },
+    { name: 'Falcon',key: 'Falcon',weight: 0.96, fallAccel: 3.4, maxFall: 60 },
+    { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48 },
+    { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52 },
+    { name: 'Jigglypuff',key: 'Jigglypuff',weight: 1.3,fallAccel: 2.0, maxFall: 38 },
+    { name: 'Ness',key: 'Ness',weight: 1.1,fallAccel: 2.7, maxFall: 55 },
+  ];
+
   function approxEqual(a, b, epsilon = 1e-6) {
     return Math.abs(a - b) <= epsilon;
   }

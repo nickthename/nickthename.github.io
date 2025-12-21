@@ -27,4 +27,12 @@
   {%- else -%}
   <title>{{ page.title | escape }} - {{ site.title | escape }}</title>
   {%- endif -%}
+  {%- if page.canonical -%}
+  <link rel="canonical" href="{{ page.canonical | absolute_url }}">
+  {%- endif -%}
+  {%- if page.hreflangs -%}
+    {%- for item in page.hreflangs -%}
+  <link rel="alternate" hreflang="{{ item.lang }}" href="{{ item.url | absolute_url }}">
+    {%- endfor -%}
+  {%- endif -%}
 </head>

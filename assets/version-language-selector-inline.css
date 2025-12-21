@@ -1,0 +1,66 @@
+.version-language-inline {
+  align-self: flex-end;
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  padding: 0.25rem 0.45rem;
+  color: inherit;
+}
+
+.version-language-inline .inline-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.version-language-inline .inline-separator {
+  font-size: 0.75rem;
+  opacity: 0.35;
+  margin: 0 0.1rem;
+}
+
+.version-language-inline .inline-chip {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.version-language-inline .inline-chip:hover,
+.version-language-inline .inline-chip:focus-visible {
+  opacity: 0.95;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.version-language-inline .inline-chip.is-active {
+  opacity: 1;
+  border-color: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.version-language-inline .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .version-language-inline {
+    width: 100%;
+  }
+}

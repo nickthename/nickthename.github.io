@@ -1,0 +1,21 @@
+{% assign lang_id = include.lang_id | default: "language-select" %}
+{% assign version_id = include.version_id | default: "version-select" %}
+<div class="version-language-inline" data-version-language-selector>
+  <div class="inline-group" role="group" aria-label="Language">
+    <button type="button" class="inline-chip" data-lang-option="en">EN</button>
+    <button type="button" class="inline-chip" data-lang-option="ja">日本語</button>
+  </div>
+  <span class="inline-separator" aria-hidden="true">•</span>
+  <div class="inline-group" role="group" aria-label="Game version">
+    <button type="button" class="inline-chip" data-version-option="U">U ver.</button>
+    <button type="button" class="inline-chip" data-version-option="J">J ver.</button>
+  </div>
+  <select id="{{ lang_id }}" data-lang-select class="sr-only" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+  </select>
+  <select id="{{ version_id }}" data-version-select class="sr-only" aria-label="Game version">
+    <option value="U">(U) Version</option>
+    <option value="J">(J) Version</option>
+  </select>
+</div>

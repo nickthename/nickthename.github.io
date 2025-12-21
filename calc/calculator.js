@@ -10,7 +10,9 @@
   const VELOCITY_DECAY_FACTOR = 1.7;
   const HITSTUN_DIVIDER = 0.5333333333333333; // 1 / 1.875
   const HITSTUN_FLOOR = 0.4999995000000001;
-  const DOUBLE_JUMP_ARMOR_VALUE = 140;
+  const DOUBLE_JUMP_ARMOR_VALUE_U = 140;
+  const DOUBLE_JUMP_ARMOR_VALUE_J = 110;
+  const DOUBLE_JUMP_ARMOR_VALUES = { U: DOUBLE_JUMP_ARMOR_VALUE_U, J: DOUBLE_JUMP_ARMOR_VALUE_J };
 
   const GROUND_SPIKE_Y_DEC = {
     '-80': 1.6601531505584717,
@@ -79,6 +81,26 @@
     { name: 'Jigglypuff',key: 'Jigglypuff',weight: 1.3,fallAccel: 2.0, maxFall: 38 },
     { name: 'Ness',key: 'Ness',weight: 1.1,fallAccel: 2.7, maxFall: 55 },
   ];
+
+  const normalizeVersion = (value) => (String(value || '').toUpperCase() === 'J' ? 'J' : 'U');
+
+  let currentVersion = 'U';
+  let currentCharacters = CHARACTERS;
+  let currentDoubleJumpArmorValue = DOUBLE_JUMP_ARMOR_VALUES[currentVersion];
+
+  function setVersion(version) {
+    currentVersion = normalizeVersion(version);
+    currentCharacters = currentVersion === 'J' ? CHARACTERS_J : CHARACTERS;
+    currentDoubleJumpArmorValue = DOUBLE_JUMP_ARMOR_VALUES[currentVersion];
+
+    if (window.Smash64Calculator) {
+      window.Smash64Calculator.currentVersion = currentVersion;
+      window.Smash64Calculator.characters = currentCharacters;
+      window.Smash64Calculator.doubleJumpArmorValue = currentDoubleJumpArmorValue;
+    }
+
+    return currentVersion;
+  }
 
   function approxEqual(a, b, epsilon = 1e-6) {
     return Math.abs(a - b) <= epsilon;
@@ -297,7 +319,7 @@
     const knockbackBeforeArmor = knockback;
 
     if (doubleJumpArmor && !throwMove) {
-      const adjusted = knockbackBeforeArmor - DOUBLE_JUMP_ARMOR_VALUE;
+      const adjusted = knockbackBeforeArmor - currentDoubleJumpArmorValue;
       knockback = f32(Math.max(0, adjusted));
     }
 
@@ -475,11 +497,16 @@
   }
 
   window.Smash64Calculator = {
-    characters: CHARACTERS,
+    characters: currentCharacters,
+    charactersByVersion: { U: CHARACTERS, J: CHARACTERS_J },
     attackMultipliers: ATK_MULTIPLIERS,
     defenseMultipliers: DEF_MULTIPLIERS,
     compute: computeKnockback,
     applyStaleness,
-    doubleJumpArmorValue: DOUBLE_JUMP_ARMOR_VALUE,
+    doubleJumpArmorValue: currentDoubleJumpArmorValue,
+    doubleJumpArmorValues: { ...DOUBLE_JUMP_ARMOR_VALUES },
+    currentVersion,
+    getVersion: () => currentVersion,
+    setVersion,
   };
 })();

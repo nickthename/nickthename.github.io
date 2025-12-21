@@ -2,8 +2,8 @@
   "movesets": {
     "DK": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 8,
         "effect": "Normal",
         "angle": 45,
@@ -16,8 +16,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 18,
         "effect": "Normal",
         "angle": 45,
@@ -30,8 +30,8 @@
         "throw": true
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -43,8 +43,8 @@
         "bkb": 0
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -56,8 +56,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 100,
@@ -69,8 +69,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -82,8 +82,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -95,8 +95,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -108,8 +108,8 @@
         "bkb": 0
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 13,
         "effect": "Normal",
         "angle": 100,
@@ -121,8 +121,8 @@
         "bkb": 10
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 8,
         "effect": "Normal",
         "angle": 40,
@@ -134,8 +134,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang up)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up)",
+        "baseName": "Forward smash (ang up)",
         "damage": 21,
         "effect": "Normal",
         "angle": 361,
@@ -147,8 +147,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang mid-up)",
-        "baseName": "fsmash (ang mid-up)",
+        "name": "Forward smash (ang mid-up)",
+        "baseName": "Forward smash (ang mid-up)",
         "damage": 21,
         "effect": "Normal",
         "angle": 361,
@@ -160,8 +160,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang side)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side)",
+        "baseName": "Forward smash (ang side)",
         "damage": 20,
         "effect": "Normal",
         "angle": 361,
@@ -173,8 +173,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang mid-down)",
-        "baseName": "fsmash (ang mid-down)",
+        "name": "Forward smash (ang mid-down)",
+        "baseName": "Forward smash (ang mid-down)",
         "damage": 19,
         "effect": "Normal",
         "angle": 361,
@@ -186,8 +186,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang down)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down)",
+        "baseName": "Forward smash (ang down)",
         "damage": 19,
         "effect": "Normal",
         "angle": 361,
@@ -199,8 +199,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 21,
         "effect": "Normal",
         "angle": 90,
@@ -212,8 +212,8 @@
         "bkb": 40
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 19,
         "effect": "Normal",
         "angle": 60,
@@ -225,8 +225,8 @@
         "bkb": 30
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -238,8 +238,8 @@
         "bkb": 0
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -251,8 +251,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 16,
         "effect": "Normal",
         "angle": -70,
@@ -264,8 +264,8 @@
         "bkb": 0
       },
       {
-        "name": "fair (2)",
-        "baseName": "fair",
+        "name": "Forward air (2)",
+        "baseName": "Forward air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -277,8 +277,8 @@
         "bkb": 20
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -290,8 +290,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -303,8 +303,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 12,
         "effect": "Normal",
         "angle": 110,
@@ -316,8 +316,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 13,
         "effect": "Normal",
         "angle": -90,
@@ -329,8 +329,8 @@
         "bkb": 15
       },
       {
-        "name": "dair (weak)",
-        "baseName": "dair",
+        "name": "Down air (weak)",
+        "baseName": "Down air",
         "damage": 10,
         "effect": "Normal",
         "angle": -90,
@@ -617,8 +617,8 @@
     ],
     "Falcon": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 70,
@@ -631,8 +631,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -658,8 +658,8 @@
         "bkb": 30
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -671,8 +671,8 @@
         "bkb": 0
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -684,8 +684,8 @@
         "bkb": 0
       },
       {
-        "name": "jab 3",
-        "baseName": "jab 3",
+        "name": "Jab 3",
+        "baseName": "Jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 80,
@@ -697,8 +697,8 @@
         "bkb": 40
       },
       {
-        "name": "jab inf",
-        "baseName": "jab inf",
+        "name": "Jab inf",
+        "baseName": "Jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 361,
@@ -710,8 +710,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -723,8 +723,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -736,8 +736,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -749,8 +749,8 @@
         "bkb": 6
       },
       {
-        "name": "ftilt (ang mid-up)",
-        "baseName": "ftilt (ang mid-up)",
+        "name": "Forward Tilt (ang mid-up)",
+        "baseName": "Forward Tilt (ang mid-up)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -762,8 +762,8 @@
         "bkb": 6
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -775,8 +775,8 @@
         "bkb": 6
       },
       {
-        "name": "ftilt (ang mid-down)",
-        "baseName": "ftilt (ang mid-down)",
+        "name": "Forward Tilt (ang mid-down)",
+        "baseName": "Forward Tilt (ang mid-down)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -788,8 +788,8 @@
         "bkb": 6
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -801,8 +801,8 @@
         "bkb": 6
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -814,8 +814,8 @@
         "bkb": 10
       },
       {
-        "name": "utilt (2)",
-        "baseName": "utilt",
+        "name": "Up tilt (2)",
+        "baseName": "Up tilt",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -827,8 +827,8 @@
         "bkb": 20
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 11,
         "effect": "Normal",
         "angle": 30,
@@ -840,8 +840,8 @@
         "bkb": 25
       },
       {
-        "name": "fsmash (ang up)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up)",
+        "baseName": "Forward smash (ang up)",
         "damage": 19,
         "effect": "Flame",
         "angle": 361,
@@ -853,8 +853,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang side)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side)",
+        "baseName": "Forward smash (ang side)",
         "damage": 18,
         "effect": "Flame",
         "angle": 361,
@@ -866,8 +866,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (ang down)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down)",
+        "baseName": "Forward smash (ang down)",
         "damage": 17,
         "effect": "Flame",
         "angle": 361,
@@ -879,8 +879,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 95,
@@ -892,8 +892,8 @@
         "bkb": 90
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 60,
@@ -905,8 +905,8 @@
         "bkb": 25
       },
       {
-        "name": "dsmash (weak)",
-        "baseName": "dsmash",
+        "name": "Down smash (weak)",
+        "baseName": "Down smash",
         "damage": 14,
         "effect": "Normal",
         "angle": 60,
@@ -918,8 +918,8 @@
         "bkb": 25
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -931,8 +931,8 @@
         "bkb": 20
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -944,8 +944,8 @@
         "bkb": 10
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -957,8 +957,8 @@
         "bkb": 5
       },
       {
-        "name": "fair (2)",
-        "baseName": "fair",
+        "name": "Forward air (2)",
+        "baseName": "Forward air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -970,8 +970,8 @@
         "bkb": 20
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -983,8 +983,8 @@
         "bkb": 10
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 16,
         "effect": "Normal",
         "angle": 80,
@@ -996,8 +996,8 @@
         "bkb": 10
       },
       {
-        "name": "uair (2)",
-        "baseName": "uair",
+        "name": "Up air (2)",
+        "baseName": "Up air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -1009,8 +1009,8 @@
         "bkb": 10
       },
       {
-        "name": "uair (3)",
-        "baseName": "uair",
+        "name": "Up air (3)",
+        "baseName": "Up air",
         "damage": 16,
         "effect": "Normal",
         "angle": 20,
@@ -1022,8 +1022,8 @@
         "bkb": 10
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 14,
         "effect": "Normal",
         "angle": -80,
@@ -1207,8 +1207,8 @@
     ],
     "Fox": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 45,
@@ -1221,8 +1221,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 15,
         "effect": "Normal",
         "angle": 45,
@@ -1248,8 +1248,8 @@
         "bkb": 10
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1261,8 +1261,8 @@
         "bkb": 0
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1274,8 +1274,8 @@
         "bkb": 0
       },
       {
-        "name": "jab inf",
-        "baseName": "jab inf",
+        "name": "Jab inf",
+        "baseName": "Jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 80,
@@ -1287,8 +1287,8 @@
         "bkb": 10
       },
       {
-        "name": "jab inf (2)",
-        "baseName": "jab inf",
+        "name": "Jab inf (2)",
+        "baseName": "Jab inf",
         "damage": 1,
         "effect": "Normal",
         "angle": 60,
@@ -1300,8 +1300,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1313,8 +1313,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -1326,8 +1326,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -1339,8 +1339,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang mid-up)",
-        "baseName": "ftilt (ang mid-up)",
+        "name": "Forward Tilt (ang mid-up)",
+        "baseName": "Forward Tilt (ang mid-up)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1352,8 +1352,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1365,8 +1365,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang mid-down)",
-        "baseName": "ftilt (ang mid-down)",
+        "name": "Forward Tilt (ang mid-down)",
+        "baseName": "Forward Tilt (ang mid-down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1378,8 +1378,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1391,8 +1391,8 @@
         "bkb": 0
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 9,
         "effect": "Normal",
         "angle": 80,
@@ -1404,8 +1404,8 @@
         "bkb": 0
       },
       {
-        "name": "utilt (2)",
-        "baseName": "utilt",
+        "name": "Up tilt (2)",
+        "baseName": "Up tilt",
         "damage": 9,
         "effect": "Normal",
         "angle": 80,
@@ -1417,8 +1417,8 @@
         "bkb": 0
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 12,
         "effect": "Normal",
         "angle": 70,
@@ -1430,8 +1430,8 @@
         "bkb": 25
       },
       {
-        "name": "dtilt (2)",
-        "baseName": "dtilt",
+        "name": "Down tilt (2)",
+        "baseName": "Down tilt",
         "damage": 12,
         "effect": "Normal",
         "angle": 90,
@@ -1443,8 +1443,8 @@
         "bkb": 25
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -1456,8 +1456,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash (weak)",
-        "baseName": "fsmash",
+        "name": "Forward smash (weak)",
+        "baseName": "Forward smash",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -1469,8 +1469,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 80,
@@ -1482,8 +1482,8 @@
         "bkb": 25
       },
       {
-        "name": "usmash (weak)",
-        "baseName": "usmash",
+        "name": "Up smash (weak)",
+        "baseName": "Up smash",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1495,8 +1495,8 @@
         "bkb": 10
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 14,
         "effect": "Normal",
         "angle": 25,
@@ -1508,8 +1508,8 @@
         "bkb": 35
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -1521,8 +1521,8 @@
         "bkb": 0
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1534,8 +1534,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -1547,8 +1547,8 @@
         "bkb": 0
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1560,8 +1560,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -1573,8 +1573,8 @@
         "bkb": 0
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1586,8 +1586,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 2,
         "effect": "Normal",
         "angle": 90,
@@ -1599,8 +1599,8 @@
         "bkb": 0
       },
       {
-        "name": "uair (2)",
-        "baseName": "uair",
+        "name": "Up air (2)",
+        "baseName": "Up air",
         "damage": 13,
         "effect": "Normal",
         "angle": 90,
@@ -1612,8 +1612,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 2,
         "effect": "Normal",
         "angle": -70,
@@ -1718,8 +1718,8 @@
     ],
     "Jigglypuff": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 14,
         "effect": "Normal",
         "angle": 90,
@@ -1732,8 +1732,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -1746,8 +1746,8 @@
         "throw": true
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -1759,8 +1759,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -1772,8 +1772,8 @@
         "bkb": 8
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1785,8 +1785,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1798,8 +1798,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1811,8 +1811,8 @@
         "bkb": 5
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1824,8 +1824,8 @@
         "bkb": 5
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1837,8 +1837,8 @@
         "bkb": 5
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 85,
@@ -1850,8 +1850,8 @@
         "bkb": 10
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 70,
@@ -1863,8 +1863,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -1876,8 +1876,8 @@
         "bkb": 10
       },
       {
-        "name": "fsmash (weak)",
-        "baseName": "fsmash",
+        "name": "Forward smash (weak)",
+        "baseName": "Forward smash",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1889,8 +1889,8 @@
         "bkb": 10
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 80,
@@ -1902,8 +1902,8 @@
         "bkb": 22
       },
       {
-        "name": "usmash (weak)",
-        "baseName": "usmash",
+        "name": "Up smash (weak)",
+        "baseName": "Up smash",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1915,8 +1915,8 @@
         "bkb": 10
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 40,
@@ -1928,8 +1928,8 @@
         "bkb": 20
       },
       {
-        "name": "dsmash (weak)",
-        "baseName": "dsmash",
+        "name": "Down smash (weak)",
+        "baseName": "Down smash",
         "damage": 10,
         "effect": "Normal",
         "angle": 40,
@@ -1941,8 +1941,8 @@
         "bkb": 20
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -1954,8 +1954,8 @@
         "bkb": 30
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1967,8 +1967,8 @@
         "bkb": 10
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -1980,8 +1980,8 @@
         "bkb": 10
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1993,8 +1993,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -2006,8 +2006,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -2019,8 +2019,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 16,
         "effect": "Normal",
         "angle": 70,
@@ -2032,8 +2032,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 3,
         "effect": "Normal",
         "angle": -90,
@@ -2045,8 +2045,8 @@
         "bkb": 0
       },
       {
-        "name": "dair landing",
-        "baseName": "dair landing",
+        "name": "Down air landing",
+        "baseName": "Down air landing",
         "damage": 3,
         "effect": "Normal",
         "angle": 80,
@@ -2151,8 +2151,8 @@
     ],
     "Kirby": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -2178,8 +2178,8 @@
         "bkb": 10
       },
       {
-        "name": "bthrow damage",
-        "baseName": "bthrow damage",
+        "name": "Back throw damage",
+        "baseName": "Back throw damage",
         "damage": 16,
         "effect": "Normal",
         "angle": 115,
@@ -2192,8 +2192,8 @@
         "throw": true
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -2205,8 +2205,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 4,
         "effect": "Normal",
         "angle": 70,
@@ -2218,8 +2218,8 @@
         "bkb": 8
       },
       {
-        "name": "jab inf subroutine",
-        "baseName": "jab inf subroutine",
+        "name": "Jab inf subroutine",
+        "baseName": "Jab inf subroutine",
         "damage": 1,
         "effect": "Normal",
         "angle": 65,
@@ -2231,8 +2231,8 @@
         "bkb": 8
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2244,8 +2244,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2257,8 +2257,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -2270,8 +2270,8 @@
         "bkb": 8
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2283,8 +2283,8 @@
         "bkb": 8
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -2296,8 +2296,8 @@
         "bkb": 8
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 14,
         "effect": "Normal",
         "angle": 96,
@@ -2309,8 +2309,8 @@
         "bkb": 30
       },
       {
-        "name": "utilt (weak)",
-        "baseName": "utilt",
+        "name": "Up tilt (weak)",
+        "baseName": "Up tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 88,
@@ -2322,8 +2322,8 @@
         "bkb": 20
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 9,
         "effect": "Normal",
         "angle": 20,
@@ -2335,8 +2335,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -2348,8 +2348,8 @@
         "bkb": 20
       },
       {
-        "name": "fsmash (weak)",
-        "baseName": "fsmash",
+        "name": "Forward smash (weak)",
+        "baseName": "Forward smash",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -2361,8 +2361,8 @@
         "bkb": 12
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 90,
@@ -2374,8 +2374,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash (weak)",
-        "baseName": "usmash",
+        "name": "Up smash (weak)",
+        "baseName": "Up smash",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -2387,8 +2387,8 @@
         "bkb": 10
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 34,
@@ -2400,8 +2400,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash (2)",
-        "baseName": "dsmash",
+        "name": "Down smash (2)",
+        "baseName": "Down smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 35,
@@ -2413,8 +2413,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash (3)",
-        "baseName": "dsmash",
+        "name": "Down smash (3)",
+        "baseName": "Down smash",
         "damage": 10,
         "effect": "Normal",
         "angle": 34,
@@ -2426,8 +2426,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash (4)",
-        "baseName": "dsmash",
+        "name": "Down smash (4)",
+        "baseName": "Down smash",
         "damage": 10,
         "effect": "Normal",
         "angle": 35,
@@ -2439,8 +2439,8 @@
         "bkb": 30
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -2452,8 +2452,8 @@
         "bkb": 30
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2465,8 +2465,8 @@
         "bkb": 10
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 2,
         "effect": "Normal",
         "angle": -90,
@@ -2478,8 +2478,8 @@
         "bkb": 0
       },
       {
-        "name": "fair (2)",
-        "baseName": "fair",
+        "name": "Forward air (2)",
+        "baseName": "Forward air",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2491,8 +2491,8 @@
         "bkb": 10
       },
       {
-        "name": "fair landing",
-        "baseName": "fair landing",
+        "name": "Forward air landing",
+        "baseName": "Forward air landing",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -2504,8 +2504,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -2517,8 +2517,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -2530,8 +2530,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -2543,8 +2543,8 @@
         "bkb": 10
       },
       {
-        "name": "uair (2)",
-        "baseName": "uair",
+        "name": "Up air (2)",
+        "baseName": "Up air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2556,8 +2556,8 @@
         "bkb": 10
       },
       {
-        "name": "uair (3)",
-        "baseName": "uair",
+        "name": "Up air (3)",
+        "baseName": "Up air",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2569,8 +2569,8 @@
         "bkb": 10
       },
       {
-        "name": "uair (4)",
-        "baseName": "uair",
+        "name": "Up air (4)",
+        "baseName": "Up air",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2582,8 +2582,8 @@
         "bkb": 10
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 3,
         "effect": "Normal",
         "angle": -90,
@@ -2595,8 +2595,8 @@
         "bkb": 30
       },
       {
-        "name": "dair landing",
-        "baseName": "dair landing",
+        "name": "Down air landing",
+        "baseName": "Down air landing",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -2766,8 +2766,8 @@
     ],
     "Link": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 14,
         "effect": "Normal",
         "angle": 45,
@@ -2793,8 +2793,8 @@
         "bkb": 20
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -2820,8 +2820,8 @@
         "bkb": 20
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 5,
         "effect": "Slash",
         "angle": 361,
@@ -2833,8 +2833,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 3,
         "effect": "Slash",
         "angle": 361,
@@ -2846,8 +2846,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 3",
-        "baseName": "jab 3",
+        "name": "Jab 3",
+        "baseName": "Jab 3",
         "damage": 4,
         "effect": "Slash",
         "angle": 361,
@@ -2859,8 +2859,8 @@
         "bkb": 6
       },
       {
-        "name": "jab inf",
-        "baseName": "jab inf",
+        "name": "Jab inf",
+        "baseName": "Jab inf",
         "damage": 1,
         "effect": "Slash",
         "angle": 361,
@@ -2872,8 +2872,8 @@
         "bkb": 8
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 14,
         "effect": "Slash",
         "angle": 361,
@@ -2885,8 +2885,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (2)",
-        "baseName": "dash attack",
+        "name": "Dash attack (2)",
+        "baseName": "Dash attack",
         "damage": 16,
         "effect": "Slash",
         "angle": 361,
@@ -2898,8 +2898,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (3)",
-        "baseName": "dash attack",
+        "name": "Dash attack (3)",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Slash",
         "angle": 361,
@@ -2911,8 +2911,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (4)",
-        "baseName": "dash attack",
+        "name": "Dash attack (4)",
+        "baseName": "Dash attack",
         "damage": 11,
         "effect": "Slash",
         "angle": 361,
@@ -2924,8 +2924,8 @@
         "bkb": 5
       },
       {
-        "name": "ftilt",
-        "baseName": "ftilt",
+        "name": "Forward Tilt",
+        "baseName": "Forward Tilt",
         "damage": 18,
         "effect": "Slash",
         "angle": 361,
@@ -2937,8 +2937,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (weak)",
-        "baseName": "ftilt",
+        "name": "Forward Tilt (weak)",
+        "baseName": "Forward Tilt",
         "damage": 17,
         "effect": "Slash",
         "angle": 361,
@@ -2950,8 +2950,8 @@
         "bkb": 0
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 10,
         "effect": "Slash",
         "angle": 79,
@@ -2963,8 +2963,8 @@
         "bkb": 20
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 12,
         "effect": "Slash",
         "angle": 80,
@@ -2976,8 +2976,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 20,
         "effect": "Slash",
         "angle": 50,
@@ -2989,8 +2989,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (weak)",
-        "baseName": "fsmash",
+        "name": "Forward smash (weak)",
+        "baseName": "Forward smash",
         "damage": 12,
         "effect": "Slash",
         "angle": 361,
@@ -3002,8 +3002,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 7,
         "effect": "Slash",
         "angle": 120,
@@ -3015,8 +3015,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash (2)",
-        "baseName": "usmash",
+        "name": "Up smash (2)",
+        "baseName": "Up smash",
         "damage": 7,
         "effect": "Slash",
         "angle": 100,
@@ -3028,8 +3028,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash (3)",
-        "baseName": "usmash",
+        "name": "Up smash (3)",
+        "baseName": "Up smash",
         "damage": 7,
         "effect": "Slash",
         "angle": 80,
@@ -3041,8 +3041,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash (4)",
-        "baseName": "usmash",
+        "name": "Up smash (4)",
+        "baseName": "Up smash",
         "damage": 3,
         "effect": "Slash",
         "angle": 80,
@@ -3054,8 +3054,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash (5)",
-        "baseName": "usmash",
+        "name": "Up smash (5)",
+        "baseName": "Up smash",
         "damage": 12,
         "effect": "Slash",
         "angle": 90,
@@ -3067,8 +3067,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Slash",
         "angle": 40,
@@ -3080,8 +3080,8 @@
         "bkb": 35
       },
       {
-        "name": "dsmash (2)",
-        "baseName": "dsmash",
+        "name": "Down smash (2)",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Slash",
         "angle": 75,
@@ -3093,8 +3093,8 @@
         "bkb": 35
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3106,8 +3106,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -3119,8 +3119,8 @@
         "bkb": 10
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 20,
         "effect": "Slash",
         "angle": 361,
@@ -3132,8 +3132,8 @@
         "bkb": 5
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 12,
         "effect": "Slash",
         "angle": 361,
@@ -3145,8 +3145,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3158,8 +3158,8 @@
         "bkb": 0
       },
       {
-        "name": "bair (2)",
-        "baseName": "bair",
+        "name": "Back air (2)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3171,8 +3171,8 @@
         "bkb": 15
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 16,
         "effect": "Slash",
         "angle": 70,
@@ -3184,8 +3184,8 @@
         "bkb": 5
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 16,
         "effect": "Slash",
         "angle": 361,
@@ -3342,8 +3342,8 @@
     ],
     "Luigi": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -3356,8 +3356,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 45,
@@ -3383,8 +3383,8 @@
         "bkb": 20
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -3396,8 +3396,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -3409,8 +3409,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 3",
-        "baseName": "jab 3",
+        "name": "Jab 3",
+        "baseName": "Jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -3422,8 +3422,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 16,
         "effect": "Normal",
         "angle": 30,
@@ -3435,8 +3435,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 30,
@@ -3448,8 +3448,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3461,8 +3461,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3474,8 +3474,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3487,8 +3487,8 @@
         "bkb": 10
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 80,
@@ -3500,8 +3500,8 @@
         "bkb": 0
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -3513,8 +3513,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash (ang up)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up)",
+        "baseName": "Forward smash (ang up)",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -3526,8 +3526,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang mid-up)",
-        "baseName": "fsmash (ang mid-up)",
+        "name": "Forward smash (ang mid-up)",
+        "baseName": "Forward smash (ang mid-up)",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -3539,8 +3539,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang side)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side)",
+        "baseName": "Forward smash (ang side)",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -3552,8 +3552,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang mid-down)",
-        "baseName": "fsmash (ang mid-down)",
+        "name": "Forward smash (ang mid-down)",
+        "baseName": "Forward smash (ang mid-down)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -3565,8 +3565,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang down)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down)",
+        "baseName": "Forward smash (ang down)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -3578,8 +3578,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -3591,8 +3591,8 @@
         "bkb": 20
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -3604,8 +3604,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -3617,8 +3617,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -3630,8 +3630,8 @@
         "bkb": 10
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3643,8 +3643,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -3656,8 +3656,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3669,8 +3669,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 12,
         "effect": "Normal",
         "angle": 80,
@@ -3682,8 +3682,8 @@
         "bkb": 0
       },
       {
-        "name": "uair (weak)",
-        "baseName": "uair",
+        "name": "Up air (weak)",
+        "baseName": "Up air",
         "damage": 9,
         "effect": "Normal",
         "angle": 70,
@@ -3695,8 +3695,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 3,
         "effect": "Normal",
         "angle": -70,
@@ -3892,8 +3892,8 @@
     ],
     "Mario": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 45,
@@ -3906,8 +3906,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -3920,8 +3920,8 @@
         "throw": true
       },
       {
-        "name": "bthrow 3rd party",
-        "baseName": "bthrow 3rd party",
+        "name": "Back throw 3rd party",
+        "baseName": "Back throw 3rd party",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3933,8 +3933,8 @@
         "bkb": 30
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -3946,8 +3946,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -3959,8 +3959,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 3",
-        "baseName": "jab 3",
+        "name": "Jab 3",
+        "baseName": "Jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -3972,8 +3972,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -3985,8 +3985,8 @@
         "bkb": 16
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3998,8 +3998,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -4011,8 +4011,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -4024,8 +4024,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4037,8 +4037,8 @@
         "bkb": 10
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 86,
@@ -4050,8 +4050,8 @@
         "bkb": 0
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4063,8 +4063,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash (ang up)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up)",
+        "baseName": "Forward smash (ang up)",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -4076,8 +4076,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang mid-up)",
-        "baseName": "fsmash (ang mid-up)",
+        "name": "Forward smash (ang mid-up)",
+        "baseName": "Forward smash (ang mid-up)",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -4089,8 +4089,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang side)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side)",
+        "baseName": "Forward smash (ang side)",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -4102,8 +4102,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang mid-down)",
-        "baseName": "fsmash (ang mid-down)",
+        "name": "Forward smash (ang mid-down)",
+        "baseName": "Forward smash (ang mid-down)",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -4115,8 +4115,8 @@
         "bkb": 30
       },
       {
-        "name": "fsmash (ang down)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down)",
+        "baseName": "Forward smash (ang down)",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -4128,8 +4128,8 @@
         "bkb": 30
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 19,
         "effect": "Normal",
         "angle": 85,
@@ -4141,8 +4141,8 @@
         "bkb": 26
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -4154,8 +4154,8 @@
         "bkb": 20
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -4167,8 +4167,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4180,8 +4180,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -4193,8 +4193,8 @@
         "bkb": 10
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4206,8 +4206,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -4219,8 +4219,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4232,8 +4232,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 12,
         "effect": "Normal",
         "angle": 80,
@@ -4245,8 +4245,8 @@
         "bkb": 0
       },
       {
-        "name": "uair (weak)",
-        "baseName": "uair",
+        "name": "Up air (weak)",
+        "baseName": "Up air",
         "damage": 9,
         "effect": "Normal",
         "angle": 70,
@@ -4258,8 +4258,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 3,
         "effect": "Normal",
         "angle": -70,
@@ -4442,8 +4442,8 @@
     ],
     "Ness": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -4469,8 +4469,8 @@
         "bkb": 10
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -4496,8 +4496,8 @@
         "bkb": 10
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -4509,8 +4509,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 2,
         "effect": "Normal",
         "angle": 70,
@@ -4522,8 +4522,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 3",
-        "baseName": "jab 3",
+        "name": "Jab 3",
+        "baseName": "Jab 3",
         "damage": 4,
         "effect": "Normal",
         "angle": 361,
@@ -4535,8 +4535,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4548,8 +4548,8 @@
         "bkb": 16
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -4561,8 +4561,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4574,8 +4574,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4587,8 +4587,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -4600,8 +4600,8 @@
         "bkb": 10
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 7,
         "effect": "Normal",
         "angle": 100,
@@ -4613,8 +4613,8 @@
         "bkb": 80
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -4626,8 +4626,8 @@
         "bkb": 2
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -4639,8 +4639,8 @@
         "bkb": 70
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 17,
         "effect": "Normal",
         "angle": 110,
@@ -4652,8 +4652,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash (2)",
-        "baseName": "usmash",
+        "name": "Up smash (2)",
+        "baseName": "Up smash",
         "damage": 15,
         "effect": "Normal",
         "angle": 78,
@@ -4665,8 +4665,8 @@
         "bkb": 0
       },
       {
-        "name": "usmash (3)",
-        "baseName": "usmash",
+        "name": "Up smash (3)",
+        "baseName": "Up smash",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -4678,8 +4678,8 @@
         "bkb": 0
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 19,
         "effect": "Normal",
         "angle": 361,
@@ -4691,8 +4691,8 @@
         "bkb": 0
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -4704,8 +4704,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4717,8 +4717,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4730,8 +4730,8 @@
         "bkb": 16
       },
       {
-        "name": "fair (weak)",
-        "baseName": "fair",
+        "name": "Forward air (weak)",
+        "baseName": "Forward air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4743,8 +4743,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -4756,8 +4756,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4769,8 +4769,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 15,
         "effect": "Normal",
         "angle": 85,
@@ -4782,8 +4782,8 @@
         "bkb": 10
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 15,
         "effect": "Normal",
         "angle": -90,
@@ -4795,8 +4795,8 @@
         "bkb": 10
       },
       {
-        "name": "dair (2)",
-        "baseName": "dair",
+        "name": "Down air (2)",
+        "baseName": "Down air",
         "damage": 15,
         "effect": "Normal",
         "angle": -90,
@@ -4914,8 +4914,8 @@
     ],
     "Pikachu": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 45,
@@ -4928,8 +4928,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 18,
         "effect": "Electric",
         "angle": 45,
@@ -4942,8 +4942,8 @@
         "throw": true
       },
       {
-        "name": "jab",
-        "baseName": "jab",
+        "name": "Jab",
+        "baseName": "Jab",
         "damage": 2,
         "effect": "Normal",
         "angle": 361,
@@ -4955,8 +4955,8 @@
         "bkb": 4
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4968,8 +4968,8 @@
         "bkb": 40
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4981,8 +4981,8 @@
         "bkb": 8
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4994,8 +4994,8 @@
         "bkb": 6
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -5007,8 +5007,8 @@
         "bkb": 6
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 11,
         "effect": "Normal",
         "angle": 87,
@@ -5020,8 +5020,8 @@
         "bkb": 10
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 12,
         "effect": "Normal",
         "angle": 35,
@@ -5033,8 +5033,8 @@
         "bkb": 12
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 18,
         "effect": "Electric",
         "angle": 361,
@@ -5046,8 +5046,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 95,
@@ -5059,8 +5059,8 @@
         "bkb": 40
       },
       {
-        "name": "usmash (weak)",
-        "baseName": "usmash",
+        "name": "Up smash (weak)",
+        "baseName": "Up smash",
         "damage": 9,
         "effect": "Normal",
         "angle": 90,
@@ -5072,8 +5072,8 @@
         "bkb": 10
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -5085,8 +5085,8 @@
         "bkb": 30
       },
       {
-        "name": "dsmash (weak)",
-        "baseName": "dsmash",
+        "name": "Down smash (weak)",
+        "baseName": "Down smash",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -5098,8 +5098,8 @@
         "bkb": 30
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -5111,8 +5111,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -5124,8 +5124,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 3,
         "effect": "Electric",
         "angle": 361,
@@ -5137,8 +5137,8 @@
         "bkb": 0
       },
       {
-        "name": "fair landing",
-        "baseName": "fair landing",
+        "name": "Forward air landing",
+        "baseName": "Forward air landing",
         "damage": 6,
         "effect": "Electric",
         "angle": 361,
@@ -5150,8 +5150,8 @@
         "bkb": 30
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -5163,8 +5163,8 @@
         "bkb": 15
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -5176,8 +5176,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5189,8 +5189,8 @@
         "bkb": 10
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 13,
         "effect": "Electric",
         "angle": 361,
@@ -5308,8 +5308,8 @@
     ],
     "Samus": [
       {
-        "name": "fthrow damage",
-        "baseName": "fthrow damage",
+        "name": "Forward throw damage",
+        "baseName": "Forward throw damage",
         "damage": 16,
         "effect": "Electric",
         "angle": 40,
@@ -5322,8 +5322,8 @@
         "throw": true
       },
       {
-        "name": "bthrow damage",
-        "baseName": "bthrow damage",
+        "name": "Back throw damage",
+        "baseName": "Back throw damage",
         "damage": 18,
         "effect": "Electric",
         "angle": 40,
@@ -5336,8 +5336,8 @@
         "throw": true
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -5349,8 +5349,8 @@
         "bkb": 0
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -5362,8 +5362,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -5375,8 +5375,8 @@
         "bkb": 0
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5388,8 +5388,8 @@
         "bkb": 0
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -5401,8 +5401,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang mid-up)",
-        "baseName": "ftilt (ang mid-up)",
+        "name": "Forward Tilt (ang mid-up)",
+        "baseName": "Forward Tilt (ang mid-up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -5414,8 +5414,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5427,8 +5427,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang mid-down)",
-        "baseName": "ftilt (ang mid-down)",
+        "name": "Forward Tilt (ang mid-down)",
+        "baseName": "Forward Tilt (ang mid-down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -5440,8 +5440,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -5453,8 +5453,8 @@
         "bkb": 10
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -5466,8 +5466,8 @@
         "bkb": 0
       },
       {
-        "name": "utilt (2)",
-        "baseName": "utilt",
+        "name": "Up tilt (2)",
+        "baseName": "Up tilt",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -5479,8 +5479,8 @@
         "bkb": 5
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 13,
         "effect": "Normal",
         "angle": 40,
@@ -5492,8 +5492,8 @@
         "bkb": 10
       },
       {
-        "name": "fsmash (ang up)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up)",
+        "baseName": "Forward smash (ang up)",
         "damage": 20,
         "effect": "Normal",
         "angle": 361,
@@ -5505,8 +5505,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang up) (2)",
-        "baseName": "fsmash (ang up)",
+        "name": "Forward smash (ang up) (2)",
+        "baseName": "Forward smash (ang up)",
         "damage": 20,
         "effect": "Normal",
         "angle": 40,
@@ -5518,8 +5518,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang mid-up)",
-        "baseName": "fsmash (ang mid-up)",
+        "name": "Forward smash (ang mid-up)",
+        "baseName": "Forward smash (ang mid-up)",
         "damage": 19,
         "effect": "Normal",
         "angle": 361,
@@ -5531,8 +5531,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang mid-up) (2)",
-        "baseName": "fsmash (ang mid-up)",
+        "name": "Forward smash (ang mid-up) (2)",
+        "baseName": "Forward smash (ang mid-up)",
         "damage": 19,
         "effect": "Normal",
         "angle": 40,
@@ -5544,8 +5544,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang side)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side)",
+        "baseName": "Forward smash (ang side)",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -5557,8 +5557,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang side) (2)",
-        "baseName": "fsmash (ang side)",
+        "name": "Forward smash (ang side) (2)",
+        "baseName": "Forward smash (ang side)",
         "damage": 18,
         "effect": "Normal",
         "angle": 40,
@@ -5570,8 +5570,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang mid-down)",
-        "baseName": "fsmash (ang mid-down)",
+        "name": "Forward smash (ang mid-down)",
+        "baseName": "Forward smash (ang mid-down)",
         "damage": 17,
         "effect": "Normal",
         "angle": 361,
@@ -5583,8 +5583,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang mid-down) (2)",
-        "baseName": "fsmash (ang mid-down)",
+        "name": "Forward smash (ang mid-down) (2)",
+        "baseName": "Forward smash (ang mid-down)",
         "damage": 17,
         "effect": "Normal",
         "angle": 40,
@@ -5596,8 +5596,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang down)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down)",
+        "baseName": "Forward smash (ang down)",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -5609,8 +5609,8 @@
         "bkb": 15
       },
       {
-        "name": "fsmash (ang down) (2)",
-        "baseName": "fsmash (ang down)",
+        "name": "Forward smash (ang down) (2)",
+        "baseName": "Forward smash (ang down)",
         "damage": 16,
         "effect": "Normal",
         "angle": 40,
@@ -5622,8 +5622,8 @@
         "bkb": 15
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 10,
         "effect": "Flame",
         "angle": 80,
@@ -5635,8 +5635,8 @@
         "bkb": 22
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 16,
         "effect": "Normal",
         "angle": 60,
@@ -5648,8 +5648,8 @@
         "bkb": 35
       },
       {
-        "name": "dsmash (weak)",
-        "baseName": "dsmash",
+        "name": "Down smash (weak)",
+        "baseName": "Down smash",
         "damage": 14,
         "effect": "Normal",
         "angle": 60,
@@ -5661,8 +5661,8 @@
         "bkb": 35
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -5674,8 +5674,8 @@
         "bkb": 10
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -5687,8 +5687,8 @@
         "bkb": 10
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 5,
         "effect": "Flame",
         "angle": 361,
@@ -5700,8 +5700,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -5713,8 +5713,8 @@
         "bkb": 0
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5726,8 +5726,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 2,
         "effect": "Normal",
         "angle": 80,
@@ -5739,8 +5739,8 @@
         "bkb": 0
       },
       {
-        "name": "uair (2)",
-        "baseName": "uair",
+        "name": "Up air (2)",
+        "baseName": "Up air",
         "damage": 4,
         "effect": "Normal",
         "angle": 80,
@@ -5752,8 +5752,8 @@
         "bkb": 0
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 14,
         "effect": "Normal",
         "angle": -90,
@@ -6053,8 +6053,8 @@
     ],
     "Yoshi": [
       {
-        "name": "fthrow",
-        "baseName": "fthrow",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 12,
         "effect": "Normal",
         "angle": 45,
@@ -6067,8 +6067,8 @@
         "throw": true
       },
       {
-        "name": "bthrow",
-        "baseName": "bthrow",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 45,
@@ -6081,8 +6081,8 @@
         "throw": true
       },
       {
-        "name": "jab 1",
-        "baseName": "jab 1",
+        "name": "Jab 1",
+        "baseName": "Jab 1",
         "damage": 3,
         "effect": "Normal",
         "angle": 361,
@@ -6094,8 +6094,8 @@
         "bkb": 8
       },
       {
-        "name": "jab 2",
-        "baseName": "jab 2",
+        "name": "Jab 2",
+        "baseName": "Jab 2",
         "damage": 5,
         "effect": "Normal",
         "angle": 361,
@@ -6107,8 +6107,8 @@
         "bkb": 8
       },
       {
-        "name": "dash attack",
-        "baseName": "dash attack",
+        "name": "Dash attack",
+        "baseName": "Dash attack",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -6120,8 +6120,8 @@
         "bkb": 10
       },
       {
-        "name": "dash attack (weak)",
-        "baseName": "dash attack",
+        "name": "Dash attack (weak)",
+        "baseName": "Dash attack",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -6133,8 +6133,8 @@
         "bkb": 10
       },
       {
-        "name": "ftilt (ang up)",
-        "baseName": "ftilt (ang up)",
+        "name": "Forward Tilt (ang up)",
+        "baseName": "Forward Tilt (ang up)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -6146,8 +6146,8 @@
         "bkb": 8
       },
       {
-        "name": "ftilt (ang side)",
-        "baseName": "ftilt (ang side)",
+        "name": "Forward Tilt (ang side)",
+        "baseName": "Forward Tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -6159,8 +6159,8 @@
         "bkb": 8
       },
       {
-        "name": "ftilt (ang down)",
-        "baseName": "ftilt (ang down)",
+        "name": "Forward Tilt (ang down)",
+        "baseName": "Forward Tilt (ang down)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -6172,8 +6172,8 @@
         "bkb": 8
       },
       {
-        "name": "utilt",
-        "baseName": "utilt",
+        "name": "Up tilt",
+        "baseName": "Up tilt",
         "damage": 12,
         "effect": "Normal",
         "angle": 100,
@@ -6185,8 +6185,8 @@
         "bkb": 0
       },
       {
-        "name": "dtilt",
-        "baseName": "dtilt",
+        "name": "Down tilt",
+        "baseName": "Down tilt",
         "damage": 10,
         "effect": "Normal",
         "angle": 30,
@@ -6198,8 +6198,8 @@
         "bkb": 0
       },
       {
-        "name": "fsmash",
-        "baseName": "fsmash",
+        "name": "Forward smash",
+        "baseName": "Forward smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -6211,8 +6211,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash",
-        "baseName": "usmash",
+        "name": "Up smash",
+        "baseName": "Up smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 361,
@@ -6224,8 +6224,8 @@
         "bkb": 20
       },
       {
-        "name": "usmash (2)",
-        "baseName": "usmash",
+        "name": "Up smash (2)",
+        "baseName": "Up smash",
         "damage": 18,
         "effect": "Normal",
         "angle": 80,
@@ -6237,8 +6237,8 @@
         "bkb": 20
       },
       {
-        "name": "dsmash",
-        "baseName": "dsmash",
+        "name": "Down smash",
+        "baseName": "Down smash",
         "damage": 14,
         "effect": "Normal",
         "angle": 30,
@@ -6250,8 +6250,8 @@
         "bkb": 20
       },
       {
-        "name": "nair",
-        "baseName": "nair",
+        "name": "Neutral air",
+        "baseName": "Neutral air",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -6263,8 +6263,8 @@
         "bkb": 15
       },
       {
-        "name": "nair (weak)",
-        "baseName": "nair",
+        "name": "Neutral air (weak)",
+        "baseName": "Neutral air",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -6276,8 +6276,8 @@
         "bkb": 0
       },
       {
-        "name": "fair",
-        "baseName": "fair",
+        "name": "Forward air",
+        "baseName": "Forward air",
         "damage": 18,
         "effect": "Normal",
         "angle": -85,
@@ -6289,8 +6289,8 @@
         "bkb": 0
       },
       {
-        "name": "fair (2)",
-        "baseName": "fair",
+        "name": "Forward air (2)",
+        "baseName": "Forward air",
         "damage": 18,
         "effect": "Normal",
         "angle": -100,
@@ -6302,8 +6302,8 @@
         "bkb": 0
       },
       {
-        "name": "bair",
-        "baseName": "bair",
+        "name": "Back air",
+        "baseName": "Back air",
         "damage": 16,
         "effect": "Normal",
         "angle": 361,
@@ -6315,8 +6315,8 @@
         "bkb": 10
       },
       {
-        "name": "bair (weak)",
-        "baseName": "bair",
+        "name": "Back air (weak)",
+        "baseName": "Back air",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -6328,8 +6328,8 @@
         "bkb": 0
       },
       {
-        "name": "uair",
-        "baseName": "uair",
+        "name": "Up air",
+        "baseName": "Up air",
         "damage": 15,
         "effect": "Normal",
         "angle": 90,
@@ -6341,8 +6341,8 @@
         "bkb": 20
       },
       {
-        "name": "dair",
-        "baseName": "dair",
+        "name": "Down air",
+        "baseName": "Down air",
         "damage": 4,
         "effect": "Normal",
         "angle": -90,

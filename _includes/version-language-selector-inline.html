@@ -7,8 +7,8 @@
   </div>
   <span class="inline-separator" aria-hidden="true">•</span>
   <div class="inline-group" role="group" aria-label="Game version">
-    <button type="button" class="inline-chip" data-version-option="U">U ver.</button>
-    <button type="button" class="inline-chip" data-version-option="J">J ver.</button>
+    <button type="button" class="inline-chip" data-version-option="U">{{ include.version_label_u | default: "U ver." }}</button>
+    <button type="button" class="inline-chip" data-version-option="J">{{ include.version_label_j | default: "J ver." }}</button>
   </div>
   <select id="{{ lang_id }}" data-lang-select class="sr-only" aria-label="Language">
     <option value="en">English</option>

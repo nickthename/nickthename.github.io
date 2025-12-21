@@ -172,7 +172,7 @@ hreflangs:
     .field-group { display: grid; gap: 0.35rem; }
     .field-label { font-size: 0.85rem; font-weight: 600; }
     .segmented-control { display: inline-flex; border: 1px solid rgba(0,0,0,0.2); border-radius: 999px; padding: 2px; background: rgba(0,0,0,0.05); gap: 2px; }
-    .segmented-button { border: none; background: transparent; font: inherit; font-size: 0.85rem; padding: 0.35rem 0.65rem; border-radius: 999px; cursor: pointer; color: inherit; opacity: 0.75; transition: background 0.15s ease, opacity 0.15s ease; }
+    .segmented-button { border: none; background: transparent; font: inherit; font-size: 0.85rem; padding: 0.35rem 0.65rem; border-radius: 999px; cursor: pointer; color: inherit; opacity: 0.75; transition: background 0.15s ease, opacity 0.15s ease; white-space: nowrap; }
     .segmented-button:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
     .segmented-button.is-active { background: rgba(49,101,212,0.1); opacity: 1; font-weight: 600; }
     .segmented-button:hover { opacity: 0.9; }
@@ -363,6 +363,39 @@ hreflangs:
           </fieldset>
 
           <fieldset>
+            <legend>Position</legend>
+            <div class="position-row">
+              <label for="position-horizontal">Preset</label>
+              <div class="position-inputs">
+                <select id="position-horizontal" name="positionHorizontal">
+                  <option value="" hidden></option>
+                  <option value="left">Left side</option>
+                  <option value="center" selected>Center</option>
+                  <option value="right">Right side</option>
+                </select>
+                <span>of</span>
+                <select id="position-vertical" name="positionVertical">
+                  <option value="" hidden></option>
+                  <option value="stage" selected>Stage</option>
+                  <option value="left-platform">Left platform</option>
+                  <option value="right-platform">Right platform</option>
+                  <option value="top-platform">Top platform</option>
+                </select>
+              </div>
+            </div>
+            <div class="position-coordinates">
+              <div>
+                <label for="position-x-input">X coordinate</label>
+                <input id="position-x-input" name="positionX" type="number" step="any" inputmode="decimal">
+              </div>
+              <div>
+                <label for="position-y-input">Y coordinate</label>
+                <input id="position-y-input" name="positionY" type="number" step="any" inputmode="decimal">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
             <legend>Move context</legend>
             <div class="field-group">
               <span class="field-label">Staleness</span>
@@ -396,38 +429,6 @@ hreflangs:
               <input id="combo-delay-input" name="comboDelay" type="number" step="1" min="0">
             </div>
           </fieldset>
-        <fieldset>
-          <legend>Position</legend>
-          <div class="position-row">
-            <label for="position-horizontal">Preset</label>
-            <div class="position-inputs">
-              <select id="position-horizontal" name="positionHorizontal">
-                <option value="" hidden></option>
-                <option value="left">Left side</option>
-                <option value="center" selected>Center</option>
-                <option value="right">Right side</option>
-              </select>
-              <span>of</span>
-              <select id="position-vertical" name="positionVertical">
-                <option value="" hidden></option>
-                <option value="stage" selected>Stage</option>
-                <option value="left-platform">Left platform</option>
-                <option value="right-platform">Right platform</option>
-                <option value="top-platform">Top platform</option>
-              </select>
-            </div>
-          </div>
-          <div class="position-coordinates">
-            <div>
-              <label for="position-x-input">X coordinate</label>
-              <input id="position-x-input" name="positionX" type="number" step="any" inputmode="decimal">
-            </div>
-            <div>
-              <label for="position-y-input">Y coordinate</label>
-              <input id="position-y-input" name="positionY" type="number" step="any" inputmode="decimal">
-            </div>
-          </div>
-        </fieldset>
         <fieldset>
           <legend>Handicap (rare)</legend>
           <details class="disclosure" id="handicap-details">

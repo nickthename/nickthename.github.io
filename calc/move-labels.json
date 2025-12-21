@@ -1,0 +1,344 @@
+{
+  "moves": {
+    "back air": {
+      "ja": "空後",
+      "group": "aerial"
+    },
+    "forward air": {
+      "ja": "空前",
+      "group": "aerial"
+    },
+    "neutral air": {
+      "ja": "空N",
+      "group": "aerial"
+    },
+    "up air": {
+      "ja": "空上",
+      "group": "aerial"
+    },
+    "down air": {
+      "ja": "空下",
+      "group": "aerial"
+    },
+    "forward air landing": {
+      "ja": "空前(着地)",
+      "group": "aerial"
+    },
+    "down air landing": {
+      "ja": "空下(着地)",
+      "group": "aerial"
+    },
+    "forward tilt": {
+      "ja": "横強",
+      "group": "tilt"
+    },
+    "forward tilt (ang down)": {
+      "ja": "横強下シフト",
+      "group": "tilt"
+    },
+    "forward tilt (ang mid-down)": {
+      "ja": "横強下シフト(1段階)",
+      "group": "tilt"
+    },
+    "forward tilt (ang mid-up)": {
+      "ja": "横強上シフト(1段階)",
+      "group": "tilt"
+    },
+    "forward tilt (ang side)": {
+      "ja": "横強",
+      "group": "tilt"
+    },
+    "forward tilt (ang up)": {
+      "ja": "横強上シフト",
+      "group": "tilt"
+    },
+    "up tilt": {
+      "ja": "上強",
+      "group": "tilt"
+    },
+    "down tilt": {
+      "ja": "下強",
+      "group": "tilt"
+    },
+    "forward smash": {
+      "ja": "横スマ",
+      "group": "smash"
+    },
+    "forward smash (ang down)": {
+      "ja": "横スマ下シフト",
+      "group": "smash"
+    },
+    "forward smash (ang mid-down)": {
+      "ja": "横スマ下シフト(1段階)",
+      "group": "smash"
+    },
+    "forward smash (ang mid-up)": {
+      "ja": "横スマ上シフト(1段階)",
+      "group": "smash"
+    },
+    "forward smash (ang side)": {
+      "ja": "横スマ",
+      "group": "smash"
+    },
+    "forward smash (ang up)": {
+      "ja": "横スマ上シフト",
+      "group": "smash"
+    },
+    "up smash": {
+      "ja": "上スマ",
+      "group": "smash"
+    },
+    "down smash": {
+      "ja": "下スマ",
+      "group": "smash"
+    },
+    "neutral b": {
+      "ja": "NB",
+      "group": "special"
+    },
+    "neutral b (1st hit)": {
+      "ja": "NB(1段目)",
+      "group": "special"
+    },
+    "neutral b (air)": {
+      "ja": "NB(空中)",
+      "group": "special"
+    },
+    "neutral b (ground)": {
+      "ja": "NB(地上)",
+      "group": "special"
+    },
+    "neutral b (charge state 0)": {
+      "ja": "NB溜め(0)",
+      "group": "special"
+    },
+    "neutral b (charge state 00)": {
+      "ja": "NB溜め(00)",
+      "group": "special"
+    },
+    "neutral b (charge state 01)": {
+      "ja": "NB溜め(01)",
+      "group": "special"
+    },
+    "neutral b (charge state 02)": {
+      "ja": "NB溜め(02)",
+      "group": "special"
+    },
+    "neutral b (charge state 03)": {
+      "ja": "NB溜め(03)",
+      "group": "special"
+    },
+    "neutral b (charge state 04)": {
+      "ja": "NB溜め(04)",
+      "group": "special"
+    },
+    "neutral b (charge state 05)": {
+      "ja": "NB溜め(05)",
+      "group": "special"
+    },
+    "neutral b (charge state 06)": {
+      "ja": "NB溜め(06)",
+      "group": "special"
+    },
+    "neutral b (charge state 07)": {
+      "ja": "NB溜め(07)",
+      "group": "special"
+    },
+    "neutral b (charge state 08)": {
+      "ja": "NB溜め(08)",
+      "group": "special"
+    },
+    "neutral b (charge state 09)": {
+      "ja": "NB溜め(09)",
+      "group": "special"
+    },
+    "neutral b (charge state 1)": {
+      "ja": "NB溜め(1)",
+      "group": "special"
+    },
+    "neutral b (charge state 10)": {
+      "ja": "NB溜め(10)",
+      "group": "special"
+    },
+    "neutral b (charge state 2)": {
+      "ja": "NB溜め(2)",
+      "group": "special"
+    },
+    "neutral b (charge state 3)": {
+      "ja": "NB溜め(3)",
+      "group": "special"
+    },
+    "neutral b (charge state 4)": {
+      "ja": "NB溜め(4)",
+      "group": "special"
+    },
+    "neutral b (charge state 5)": {
+      "ja": "NB溜め(5)",
+      "group": "special"
+    },
+    "neutral b (charge state 6)": {
+      "ja": "NB溜め(6)",
+      "group": "special"
+    },
+    "neutral b (charge state 7)": {
+      "ja": "NB溜め(7)",
+      "group": "special"
+    },
+    "up b": {
+      "ja": "上B",
+      "group": "special"
+    },
+    "up b (air)": {
+      "ja": "上B(空中)",
+      "group": "special"
+    },
+    "up b (ground)": {
+      "ja": "上B(地上)",
+      "group": "special"
+    },
+    "up b air": {
+      "ja": "上B(空中)",
+      "group": "special"
+    },
+    "up b ground": {
+      "ja": "上B(地上)",
+      "group": "special"
+    },
+    "up b (up)": {
+      "ja": "上B(上)",
+      "group": "special"
+    },
+    "up b (ram)": {
+      "ja": "上B(体当たり)",
+      "group": "special"
+    },
+    "up b projectile": {
+      "ja": "上B(飛び道具)",
+      "group": "special"
+    },
+    "up b?": {
+      "ja": "上B?",
+      "group": "special"
+    },
+    "up b (pk thunder head)": {
+      "ja": "上B(PKサンダーヘッド)",
+      "group": "special"
+    },
+    "up b (pk thunder tail)": {
+      "ja": "上B(PKサンダーテイル)",
+      "group": "special"
+    },
+    "down b": {
+      "ja": "下B",
+      "group": "special"
+    },
+    "down b (air)": {
+      "ja": "下B(空中)",
+      "group": "special"
+    },
+    "down b (ground)": {
+      "ja": "下B(地上)",
+      "group": "special"
+    },
+    "down b (ground?)": {
+      "ja": "下B(地上?)",
+      "group": "special"
+    },
+    "down b (ground connect)": {
+      "ja": "下B(地上ヒット)",
+      "group": "special"
+    },
+    "down b (collision)": {
+      "ja": "下B(衝突)",
+      "group": "special"
+    },
+    "down b (explosion only)": {
+      "ja": "下B(爆風のみ)",
+      "group": "special"
+    },
+    "down b (loop)": {
+      "ja": "下B(ループ)",
+      "group": "special"
+    },
+    "down b (projectile)": {
+      "ja": "下B(飛び道具)",
+      "group": "special"
+    },
+    "down b (?)": {
+      "ja": "下B(?)",
+      "group": "special"
+    },
+    "down b (fall?)": {
+      "ja": "下B(落下?)",
+      "group": "special"
+    },
+    "down b (landing?)": {
+      "ja": "下B(着地?)",
+      "group": "special"
+    },
+    "forward throw": {
+      "ja": "前投げ",
+      "group": "throw"
+    },
+    "forward throw damage": {
+      "ja": "前投げ(ダメージ)",
+      "group": "throw"
+    },
+    "back throw": {
+      "ja": "後投げ",
+      "group": "throw"
+    },
+    "back throw damage": {
+      "ja": "後投げ(ダメージ)",
+      "group": "throw"
+    },
+    "back throw 3rd party": {
+      "ja": "後投げ(3人目)",
+      "group": "throw"
+    },
+    "jab": {
+      "ja": "弱",
+      "group": "other"
+    },
+    "jab 1": {
+      "ja": "弱1",
+      "group": "other"
+    },
+    "jab 2": {
+      "ja": "弱2",
+      "group": "other"
+    },
+    "jab 3": {
+      "ja": "弱3",
+      "group": "other"
+    },
+    "jab inf": {
+      "ja": "弱連打",
+      "group": "other"
+    },
+    "jab inf subroutine": {
+      "ja": "弱連打(サブルーチン)",
+      "group": "other"
+    },
+    "dash attack": {
+      "ja": "ダッシュ攻撃",
+      "group": "other"
+    },
+    "ledge attack": {
+      "ja": "崖攻撃",
+      "group": "other"
+    },
+    "floor attack f": {
+      "ja": "起き上がり攻撃(F)",
+      "group": "other"
+    },
+    "floor attack s": {
+      "ja": "起き上がり攻撃(S)",
+      "group": "other"
+    },
+    "during": {
+      "ja": "during",
+      "group": "other"
+    }
+  }
+}

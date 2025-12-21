@@ -6,6 +6,7 @@
       const LOCAL_STORAGE_LANGUAGE_KEY = config.localStorageLanguageKey || 'smash64:lang';
       const CHARACTER_ICONS = config.characterIcons || {};
       const MOVESET_FILES = config.movesetFiles || { U: '/calc/movesets.json', J: '/calc/j_movesets.json' };
+      const MOVE_LABELS_FILE = config.moveLabelFile || '/calc/move-labels.json';
 
       const form = document.getElementById('calculator-form');
       const defenderSelect = document.getElementById('defender-select');
@@ -857,8 +858,58 @@
       const movesetCache = {};
       let currentVersion = 'U';
       let currentLanguage = normalizeLanguage(PAGE_LANGUAGE);
+      let moveLabelMap = null;
+      const MOVE_GROUP_ORDER = ['aerial', 'tilt', 'smash', 'special', 'throw', 'other'];
 
       const normalizeVersion = (value) => (String(value || '').toUpperCase() === 'J' ? 'J' : 'U');
+      const normalizeMoveKey = (value) => String(value || '').trim().replace(/\s+/g, ' ').toLowerCase();
+
+      const loadMoveLabels = async () => {
+        if (moveLabelMap) return moveLabelMap;
+        try {
+          const response = await fetch(MOVE_LABELS_FILE);
+          if (response.ok) {
+            moveLabelMap = await response.json();
+          } else {
+            console.error(`Failed to load ${MOVE_LABELS_FILE}`, response.status);
+          }
+        } catch (error) {
+          console.error(`Unable to load ${MOVE_LABELS_FILE}`, error);
+        }
+        if (!moveLabelMap || typeof moveLabelMap !== 'object') {
+          moveLabelMap = { moves: {} };
+        }
+        if (!moveLabelMap.moves || typeof moveLabelMap.moves !== 'object') {
+          moveLabelMap.moves = {};
+        }
+        return moveLabelMap;
+      };
+
+      const getMoveLabelEntry = (move) => {
+        if (!moveLabelMap || !moveLabelMap.moves) return null;
+        const baseName = move.baseName || move.name || '';
+        const key = normalizeMoveKey(baseName);
+        return moveLabelMap.moves[key] || null;
+      };
+
+      const getMoveLabel = (move) => {
+        const baseName = move.baseName || move.name || '';
+        const entry = getMoveLabelEntry(move);
+        if (currentLanguage === 'ja' && entry && entry.ja) {
+          return entry.ja;
+        }
+        return move.name || baseName || '';
+      };
+
+      const getMoveGroup = (move) => {
+        const entry = getMoveLabelEntry(move);
+        return entry && entry.group ? entry.group : 'other';
+      };
+
+      const getMoveGroupLabel = (group) => {
+        const labels = UI_TEXT.moveGroups || {};
+        return labels[group] || group;
+      };
 
       const STALENESS_ORDER = ['fresh', 'lv3', 'lv2', 'lv1', 'stale'];
       const TARGET_STATE_ORDER = ['standing', 'crouching', 'airborne', 'laying'];
@@ -1143,11 +1194,14 @@
       let languageNavigationReady = false;
 
       const buildStateSnapshot = () => {
+        const selectedMoveSlot = (moveSelect && moveSelect.value !== '')
+          ? Math.max(0, Math.trunc(Number(moveSelect.value)))
+          : null;
         const snapshot = {
           version: currentVersion,
           defender: readSelectValue(defenderSelect),
           attacker: readSelectValue(attackerSelect),
-          moveSlot: (moveSelect ? moveSelect.selectedIndex : null),
+          moveSlot: Number.isFinite(selectedMoveSlot) ? selectedMoveSlot : null,
           staleness: stalenessValue,
           targetState: readSelectValue(targetStateSelect),
           simulation: readSelectValue(simulationSelect),
@@ -1373,6 +1427,7 @@
       const applyGameVersion = async (version, { initial = false } = {}) => {
         const normalized = normalizeVersion(version);
         if (!initial && normalized === currentVersion) return;
+        await loadMoveLabels();
         currentVersion = normalized;
         if (Smash64Calculator && typeof Smash64Calculator.setVersion === 'function') {
           Smash64Calculator.setVersion(normalized);
@@ -1570,16 +1625,22 @@
 
       function populateMoves(key, { preferredMove = null, preferredSlot = null } = {}) {
         moveSelect.innerHTML = '';
-        customOption = document.createElement('option');
-        customOption.value = '';
-        customOption.textContent = UI_TEXT.customMove;
-        moveSelect.append(customOption);
 
         currentMoves = movesets[key] || [];
+        const groupedMoves = new Map();
         currentMoves.forEach((move, index) => {
+          const group = getMoveGroup(move);
+          if (!groupedMoves.has(group)) {
+            groupedMoves.set(group, []);
+          }
+          groupedMoves.get(group).push({ move, index });
+        });
+
+        const appendOption = (entry, parent) => {
+          const { move, index } = entry;
           const option = document.createElement('option');
           option.value = String(index);
-          option.textContent = move.name;
+          option.textContent = getMoveLabel(move);
           Object.assign(option.dataset, {
             effect: move.effect || '',
             damage: move.damage ?? '',
@@ -1592,28 +1653,70 @@
             sd: move.sd ?? '',
             throw: move.throw ? 'true' : '',
           });
-          moveSelect.append(option);
+          parent.append(option);
+        };
+
+        const groupElements = new Map();
+        const appendGroup = (group) => {
+          const entries = groupedMoves.get(group);
+          if (!entries || entries.length === 0) return;
+          const label = getMoveGroupLabel(group);
+          const groupEl = document.createElement('optgroup');
+          groupEl.label = label;
+          entries.forEach((entry) => appendOption(entry, groupEl));
+          moveSelect.append(groupEl);
+          groupElements.set(group, groupEl);
+        };
+
+        MOVE_GROUP_ORDER.forEach((group) => appendGroup(group));
+        groupedMoves.forEach((_, group) => {
+          if (!MOVE_GROUP_ORDER.includes(group)) {
+            appendGroup(group);
+          }
         });
 
+        customOption = document.createElement('option');
+        customOption.value = '';
+        customOption.textContent = UI_TEXT.customMove;
+        let customGroup = groupElements.get('other');
+        if (!customGroup) {
+          customGroup = document.createElement('optgroup');
+          customGroup.label = getMoveGroupLabel('other');
+          moveSelect.append(customGroup);
+          groupElements.set('other', customGroup);
+        }
+        customGroup.append(customOption);
+
+        let selectedOption = null;
         if (currentMoves.length > 0) {
-          let optionIndex = 1;
           if (Number.isFinite(preferredSlot)) {
-            optionIndex = Math.min(Math.max(0, Math.trunc(preferredSlot)), currentMoves.length);
+            const slotIndex = Math.min(Math.max(0, Math.trunc(preferredSlot)), currentMoves.length - 1);
+            moveSelect.value = String(slotIndex);
           } else if (preferredMove) {
             const matchIndex = currentMoves.findIndex((move) => {
               const baseName = move.baseName ?? move.name ?? '';
               return baseName === preferredMove || move.name === preferredMove;
             });
             if (matchIndex >= 0) {
-              optionIndex = matchIndex + 1;
+              moveSelect.value = String(matchIndex);
             }
           }
-          moveSelect.selectedIndex = optionIndex;
-          applyMove(moveSelect.options[optionIndex]);
+          if (!moveSelect.value) {
+            moveSelect.value = '0';
+          }
+          selectedOption = moveSelect.selectedOptions && moveSelect.selectedOptions[0]
+            ? moveSelect.selectedOptions[0]
+            : moveSelect.options[moveSelect.selectedIndex];
         } else {
-          moveSelect.selectedIndex = 0;
-          applyMove(customOption);
+          moveSelect.value = '';
+          selectedOption = customOption;
         }
+
+        if (!selectedOption) {
+          moveSelect.value = '';
+          selectedOption = customOption;
+        }
+        applyMove(selectedOption);
       }
 
       async function applyStateSnapshot(state) {

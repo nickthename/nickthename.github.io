@@ -390,8 +390,10 @@
         }
       }
 
-      function updateTrajectoryDisplay(startPosition, trajectoryPoints, finalPosition, hitstunFrames) {
+      function updateTrajectoryDisplay(startPosition, trajectoryPoints, finalPosition, hitstunFrames, options = {}) {
         if (!trajectoryElements.svg) return;
+        const killFrameLimit = Number.isFinite(options.killFrameLimit) ? Math.max(0, Math.trunc(options.killFrameLimit)) : null;
+        const allowEndPointWhenKill = Boolean(options.allowEndPointWhenKill);
 
         const usablePoints = trajectoryPoints.length > 0
           ? trajectoryPoints
@@ -410,13 +412,19 @@
         let killEntryPoint = null;
         for (let i = 0; i < usablePoints.length; i += 1) {
           const point = usablePoints[i];
+          if (killFrameLimit !== null && point.frame > killFrameLimit) {
+            continue;
+          }
           if (isKill(point.x, point.y)) {
             killEntryPoint = point;
             break;
           }
         }
         if (!killEntryPoint && isKill(finalPosition.x, finalPosition.y)) {
-          killEntryPoint = { frame: hitstunFrames, x: finalPosition.x, y: finalPosition.y };
+          if (killFrameLimit === null || killFrameLimit >= 0) {
+            const finalFrame = killFrameLimit !== null ? killFrameLimit : hitstunFrames;
+            killEntryPoint = { frame: finalFrame, x: finalPosition.x, y: finalPosition.y };
+          }
         }
 
         const displayPoints = usablePoints.map((pt) => ({
@@ -466,7 +474,7 @@
           trajectoryElements.end.setAttribute('cy', finalDisplay);
           trajectoryElements.end.dataset.stageX = finalPosition.x.toFixed(2);
           trajectoryElements.end.dataset.stageY = finalPosition.y.toFixed(2);
-          trajectoryElements.end.style.display = killEntryPoint ? 'none' : '';
+          trajectoryElements.end.style.display = (killEntryPoint && !allowEndPointWhenKill) ? 'none' : '';
         }
 
         if (trajectoryElements.killMarker) {
@@ -1906,6 +1914,9 @@
         const simulationMode = simulationSelect.value;
         const rawComboDelay = numericValue(comboDelayInput, 0);
         const comboDelayFrames = simulationMode === 'custom' ? rawComboDelay : 0;
+        const customFrameLimit = (simulationMode === 'custom' && rawComboDelay > 0)
+          ? Math.max(0, Math.trunc(rawComboDelay))
+          : null;
 
         const yoshiSelected = isYoshiDefender();
         const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
@@ -1932,7 +1943,11 @@
         };
 
         const result = Smash64Calculator.compute(params);
+        const hitstunParams = (customFrameLimit !== null)
+          ? { ...params, simulationMode: 'hitstun', comboDelay: 0 }
+          : params;
         const computeAtPercent = (hpValue) => Smash64Calculator.compute({ ...params, hp: hpValue });
+        const computeAtPercentForThreshold = (hpValue) => Smash64Calculator.compute({ ...hitstunParams, hp: hpValue });
         const thresholdStepSize = 1;
         const thresholdMaxPercent = 300;
         const startPercent = params.hp;
@@ -2069,28 +2084,57 @@
         if (trajectoryPoints.length === 0) {
           trajectoryPoints.push({ frame: 0, x: position.x, y: position.y });
         }
-        updateTrajectoryDisplay(position, trajectoryPoints, { x: finalX, y: finalY }, result.hitstun);
+        updateTrajectoryDisplay(position, trajectoryPoints, { x: finalX, y: finalY }, result.hitstun, {
+          killFrameLimit: customFrameLimit,
+          allowEndPointWhenKill: customFrameLimit !== null,
+        });
 
         outputNodes.killThresholdOutput.textContent = '';
 
-        let killResult = UI_TEXT.noKill;
-        if (isKill(finalX, finalY)) {
-          if (finalY >= BLASTZONE_LIMITS.top) {
-            killResult = UI_TEXT.killsOffTop;
-          } else if (finalY <= BLASTZONE_LIMITS.bottom) {
-            killResult = UI_TEXT.killsOffBottom;
-          } else if (finalX <= BLASTZONE_LIMITS.left) {
-            killResult = UI_TEXT.killsOffLeft;
-          } else {
-            killResult = UI_TEXT.killsOffRight;
+        const getKillLabel = (point) => {
+          if (!point) return UI_TEXT.noKill;
+          if (point.y >= BLASTZONE_LIMITS.top) {
+            return UI_TEXT.killsOffTop;
           }
+          if (point.y <= BLASTZONE_LIMITS.bottom) {
+            return UI_TEXT.killsOffBottom;
+          }
+          if (point.x <= BLASTZONE_LIMITS.left) {
+            return UI_TEXT.killsOffLeft;
+          }
+          if (point.x >= BLASTZONE_LIMITS.right) {
+            return UI_TEXT.killsOffRight;
+          }
+          return UI_TEXT.noKill;
+        };
+
+        let killEntryPoint = null;
+        for (let i = 0; i < trajectoryPoints.length; i += 1) {
+          const point = trajectoryPoints[i];
+          if (isKill(point.x, point.y)) {
+            killEntryPoint = point;
+            break;
+          }
+        }
+
+        let killResult = UI_TEXT.noKill;
+        if (customFrameLimit !== null) {
+          if (killEntryPoint) {
+            if (customFrameLimit < killEntryPoint.frame) {
+              killResult = UI_TEXT.killsOnFrame({ frame: killEntryPoint.frame });
+            } else {
+              killResult = getKillLabel(killEntryPoint);
+            }
+          }
+        } else if (isKill(finalX, finalY)) {
+          killResult = getKillLabel({ x: finalX, y: finalY });
         }
         outputNodes.killOutput.textContent = killResult;
 
         let killThreshold = null;
         let testPercent = 0;
         while (testPercent <= thresholdMaxPercent) {
-          const sim = computeAtPercent(testPercent);
+          const sim = computeAtPercentForThreshold(testPercent);
           const simResolvedAngle = typeof sim.resolvedAngle === 'number' ? sim.resolvedAngle : resolvedAngleDeg;
           const simAngleRad = simResolvedAngle * (Math.PI / 180);
           const fallbackSimHorizontal = (() => {

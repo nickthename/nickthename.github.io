@@ -30,6 +30,7 @@ window.CALC_I18N = {
   killsOffBottom: 'Kills off bottom',
   killsOffLeft: 'Kills off left side',
   killsOffRight: 'Kills off right side',
+  killsOnFrame: ({ frame }) => `Kills on frame ${frame}`,
   afterStaleness: ({ summary }) => `${summary} (after staleness)`,
   displacement: {
     after: ({ frames, label }) => `After ${frames} ${label}`,

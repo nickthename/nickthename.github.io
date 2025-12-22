@@ -30,6 +30,7 @@ window.CALC_I18N = {
   killsOffBottom: '下バースト',
   killsOffLeft: '左バースト',
   killsOffRight: '右バースト',
+  killsOnFrame: ({ frame }) => `${frame}Fでバースト`,
   afterStaleness: ({ summary }) => `${summary}（OP後）`,
   displacement: {
     after: ({ frames, label }) => (label === 'hitstun' ? `ふっとび硬直${frames}F後` : `${frames}F後`),

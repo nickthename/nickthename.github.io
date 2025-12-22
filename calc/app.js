@@ -1913,10 +1913,9 @@
 
         const simulationMode = simulationSelect.value;
         const rawComboDelay = numericValue(comboDelayInput, 0);
-        const comboDelayFrames = simulationMode === 'custom' ? rawComboDelay : 0;
-        const customFrameLimit = (simulationMode === 'custom' && rawComboDelay > 0)
-          ? Math.max(0, Math.trunc(rawComboDelay))
-          : null;
+        const comboDelayValue = Math.max(0, Math.trunc(rawComboDelay));
+        const customFrameLimit = simulationMode === 'custom' ? comboDelayValue : null;
+        const comboDelayFrames = simulationMode === 'custom' ? comboDelayValue + 1 : 0;
 
         const yoshiSelected = isYoshiDefender();
         const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
@@ -1970,8 +1969,9 @@
           });
         }
 
+        const displayHitstun = Math.max(0, result.hitstun - 1);
         outputNodes.hitlag.textContent = formatIntegral(result.hitlag);
-        outputNodes.hitstun.textContent = UI_TEXT.hitstunFrames({ frames: formatIntegral(result.hitstun) });
+        outputNodes.hitstun.textContent = UI_TEXT.hitstunFrames({ frames: formatIntegral(displayHitstun) });
         outputNodes.knockdown.textContent = result.hitstun >= 32 ? UI_TEXT.knocksDown : UI_TEXT.noKnockdown;
 
         let knockdownThreshold = null;
@@ -2174,9 +2174,9 @@
 
         let framesSimulated = null;
         if (simulationMode === 'hitstun') {
-          framesSimulated = result.hitstun;
+          framesSimulated = displayHitstun;
         } else if (simulationMode === 'custom') {
-          framesSimulated = rawComboDelay > 0 ? rawComboDelay : result.hitstun;
+          framesSimulated = customFrameLimit;
         }
         if (framesSimulated !== null) {
           const label = simulationMode === 'custom'

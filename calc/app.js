@@ -131,6 +131,7 @@
         cameraMode: 'fit',
         snapEnabled: true,
         snapDistanceSq: 260 * 260,
+        pendingFitBounds: null,
       };
 
       const STAGE_HALF_WIDTH = POSITION_DATA.stage.halfWidth;
@@ -398,7 +399,12 @@
 
         const bounds = computeTrajectoryBounds([...usablePoints, startPosition, finalPosition]);
         const viewBounds = getCameraBounds(trajectoryState.cameraMode, bounds);
-        applyTrajectoryViewBox(viewBounds);
+        if (trajectoryState.cameraMode === 'fit' && trajectoryState.dragging) {
+          trajectoryState.pendingFitBounds = viewBounds;
+        } else {
+          trajectoryState.pendingFitBounds = null;
+          applyTrajectoryViewBox(viewBounds);
+        }
         renderStageGeometry();
 
         let killEntryPoint = null;
@@ -760,6 +766,9 @@
         trajectoryState.pointerId = null;
         if (trajectoryElements.svg && trajectoryElements.svg.releasePointerCapture) {
           trajectoryElements.svg.releasePointerCapture(evt.pointerId);
+        }
+        if (trajectoryState.cameraMode === 'fit') {
+          calculate();
         }
       }
 

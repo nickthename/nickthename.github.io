@@ -47,6 +47,8 @@
     languageSelect: document.getElementById('language-select'),
     versionSelect: document.getElementById('version-select'),
     versionSelectorRoot: document.querySelector('[data-version-language-selector]'),
+    copyLinkButton: document.getElementById('copy-link-button'),
+    resetButton: document.getElementById('reset-button'),
   };
 
   app.outputNodes = {

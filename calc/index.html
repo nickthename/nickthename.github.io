@@ -43,14 +43,22 @@ hreflangs:
     .calculator-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .calculator-title { display: grid; gap: 0.35rem; min-width: 220px; }
     .calculator-header .version-language-inline { align-self: flex-end; margin-top: 0.6rem; }
+    .title-short { display: none; }
     h1 { margin: 0 0 0.35rem; font-size: clamp(1.8rem, 2.7vw, 2.6rem); letter-spacing: -0.03em; }
     .note { margin: 0; font-size: 0.9rem; opacity: 0.75; }
 
-    .form-panel, .outputs-panel { display: grid; gap: 0.9rem; align-content: start; border-radius: 18px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.08); padding: 0.85rem; backdrop-filter: blur(10px); }
+    .form-panel, .outputs-panel, .action-panel { display: grid; gap: 0.9rem; align-content: start; border-radius: 18px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.08); padding: 0.85rem; backdrop-filter: blur(10px); }
+    .form-stack { display: grid; gap: 0.9rem; align-content: start; }
 
     @media (min-width: 960px) {
       main { grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); }
       header { grid-column: 1 / -1; }
+      .form-stack { grid-column: 1 / 2; }
+      .outputs-panel { grid-column: 2 / 3; }
+    }
+    @media (max-width: 640px) {
+      .title-full { display: none; }
+      .title-short { display: inline; }
     }
 
     fieldset { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 0.85rem; display: grid; gap: 0.65rem; align-content: start; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); }
@@ -180,6 +188,27 @@ hreflangs:
     .outputs-panel { gap: 1rem; }
     .outputs-footer { display: flex; justify-content: flex-end; align-items: center; font-size: 0.8rem; opacity: 0.7; margin-top: 0.4rem; }
     .outputs-footer label { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500; margin: 0; }
+
+    .action-panel { gap: 0.5rem; padding: 0.65rem 0.75rem; }
+    .action-panel h2 { margin: 0; font-size: 0.95rem; letter-spacing: -0.01em; }
+    .action-panel .muted { margin: 0; font-size: 0.82rem; }
+    .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; }
+    .action-button {
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.05);
+      color: inherit;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.7rem;
+      cursor: pointer;
+      transition: border-color 0.1s ease, transform 0.1s ease, background 0.1s ease;
+    }
+    .action-button:hover { border-color: rgba(0,0,0,0.35); }
+    .action-button:active { transform: translateY(1px); }
+    .action-button:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
+    .action-button.secondary { background: rgba(0,0,0,0.02); }
     #debug-toggle { width: 1rem; height: 1rem; }
 
     .card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -230,7 +259,7 @@ hreflangs:
     /*
     @media (prefers-color-scheme: dark) {
       body { --page-bg: #070a11; --text-color: #e9edf6; }
-      .form-panel, .outputs-panel { background: rgba(16,20,32,0.65); border-color: rgba(255,255,255,0.12); }
+      .form-panel, .outputs-panel, .action-panel { background: rgba(16,20,32,0.65); border-color: rgba(255,255,255,0.12); }
       fieldset, .card { border-color: rgba(255,255,255,0.18); background: rgba(18,22,34,0.72); }
       details.disclosure { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
       input[type="number"], select { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); color: inherit; }
@@ -265,6 +294,7 @@ hreflangs:
       .segmented-control { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.08); }
       .segmented-button.is-active { background: rgba(130,168,255,0.25); }
       .blastzone-bounds { fill: rgba(244,67,54,0.12); stroke: rgba(244,67,54,0.35); }
+      .action-button { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); }
     }
     */
   </style>
@@ -273,14 +303,15 @@ hreflangs:
   <main>
     <header class="calculator-header">
       <div class="calculator-title">
-        <h1>Smash 64 Knockback Calculator</h1>
+        <h1><span class="title-full">Smash 64 Knockback Calculator</span><span class="title-short">Knockback Calculator</span></h1>
       </div>
       {% include version-language-selector-inline.html lang_id="language-select" version_id="version-select" %}
     </header>
 
-    <section class="form-panel">
-      <form id="calculator-form" novalidate>
-        <div class="form-layout">
+    <div class="form-stack">
+      <section class="form-panel">
+        <form id="calculator-form" novalidate>
+          <div class="form-layout">
           <fieldset>
           <legend>Defender</legend>
           <div>
@@ -453,8 +484,20 @@ hreflangs:
             </div>
           </details>
         </fieldset>
-      </form>
-    </section>
+        </form>
+      </section>
+
+      <section class="action-panel" aria-label="Share and reset">
+        <div>
+          <h2>Share &amp; reset</h2>
+          <p class="muted">Copy a link to this setup or reset everything to defaults.</p>
+        </div>
+        <div class="action-buttons">
+          <button type="button" class="action-button" id="copy-link-button" data-copy-label="Copy link" data-copied-label="Copied!" data-copy-prompt="Copy this link:">Copy link</button>
+          <button type="button" class="action-button secondary" id="reset-button">Reset defaults</button>
+        </div>
+      </section>
+    </div>
 
     <section class="outputs-panel">
       <article class="card trajectory-card">

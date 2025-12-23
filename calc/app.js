@@ -53,6 +53,8 @@
         languageSelect,
         versionSelect,
         versionSelectorRoot,
+        copyLinkButton,
+        resetButton,
       } = elements;
 
       const {
@@ -815,6 +817,58 @@
         window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
       };
 
+      let copyFeedbackTimer = null;
+      const resetCopyButtonLabel = () => {
+        if (!copyLinkButton) return;
+        if (copyFeedbackTimer) {
+          window.clearTimeout(copyFeedbackTimer);
+          copyFeedbackTimer = null;
+        }
+        const baseLabel = copyLinkButton.dataset.copyLabel || copyLinkButton.dataset.label || copyLinkButton.textContent;
+        if (baseLabel) {
+          copyLinkButton.textContent = baseLabel;
+        }
+      };
+
+      const showCopyFeedback = () => {
+        if (!copyLinkButton) return;
+        const copiedLabel = copyLinkButton.dataset.copiedLabel;
+        if (!copiedLabel) return;
+        resetCopyButtonLabel();
+        copyLinkButton.textContent = copiedLabel;
+        copyFeedbackTimer = window.setTimeout(() => {
+          resetCopyButtonLabel();
+        }, 1600);
+      };
+
+      const copyCurrentLink = async () => {
+        updateUrlFromState();
+        const url = window.location.href;
+        let copied = false;
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(url);
+            copied = true;
+          } catch (error) {
+            copied = false;
+          }
+        }
+        if (!copied) {
+          const promptLabel = (copyLinkButton && copyLinkButton.dataset.copyPrompt)
+            ? copyLinkButton.dataset.copyPrompt
+            : 'Copy this link:';
+          window.prompt(promptLabel, url);
+        }
+        showCopyFeedback();
+      };
+
+      const resetToDefaults = async () => {
+        if (!baselineState) return;
+        await applyStateSnapshot(baselineState);
+        updateUrlFromState();
+        resetCopyButtonLabel();
+      };
+
       const scheduleUrlUpdate = () => {
         if (suppressUrlSync) return;
         if (pendingUrlUpdate) {
@@ -1210,85 +1264,85 @@
         applyMove(selectedOption);
       }
 
-      async function applyStateSnapshot(state) {
-        if (!state || typeof state !== 'object') return;
+      async function applyStateSnapshot(snapshot) {
+        if (!snapshot || typeof snapshot !== 'object') return;
         suppressUrlSync = true;
-        const targetVersion = state.version ? normalizeVersion(state.version) : currentVersion;
+        const targetVersion = snapshot.version ? normalizeVersion(snapshot.version) : currentVersion;
         await applyGameVersion(targetVersion, { initial: true });
         if (versionSelect) {
           versionSelect.value = targetVersion;
         }
 
-        if (state.defender) {
-          setSelectValue(defenderDropdown, defenderSelect, state.defender);
-          setDefender(state.defender);
+        if (snapshot.defender) {
+          setSelectValue(defenderDropdown, defenderSelect, snapshot.defender);
+          setDefender(snapshot.defender);
         }
 
-        if (state.attacker) {
-          setSelectValue(attackerDropdown, attackerSelect, state.attacker);
+        if (snapshot.attacker) {
+          setSelectValue(attackerDropdown, attackerSelect, snapshot.attacker);
         }
 
-        const preferredSlot = (typeof state.moveSlot === 'number' && Number.isFinite(state.moveSlot))
-          ? Math.max(0, Math.trunc(state.moveSlot))
+        const preferredSlot = (typeof snapshot.moveSlot === 'number' && Number.isFinite(snapshot.moveSlot))
+          ? Math.max(0, Math.trunc(snapshot.moveSlot))
           : null;
 
         populateMoves(attackerSelect.value, { preferredSlot });
 
-        if (typeof state.damage === 'number') damageInput.value = state.damage;
-        if (typeof state.angle === 'number') angleInput.value = state.angle;
-        if (typeof state.kbs === 'number') kbsInput.value = state.kbs;
-        if (typeof state.bkb === 'number') bkbInput.value = state.bkb;
-        if (typeof state.fkb === 'number') fkbInput.value = state.fkb;
-        if (typeof state.hp === 'number') hpInput.value = state.hp;
-        if (typeof state.weight === 'number') weightInput.value = state.weight;
-        if (typeof state.fallAccel === 'number') fallAccelInput.value = state.fallAccel;
-        if (typeof state.maxFall === 'number') maxFallInput.value = state.maxFall;
-        if (typeof state.attackHandicap === 'number') attackHandicapInput.value = state.attackHandicap;
-        if (typeof state.defenseHandicap === 'number') defenseHandicapInput.value = state.defenseHandicap;
-        if (typeof state.comboDelay === 'number') comboDelayInput.value = state.comboDelay;
+        if (typeof snapshot.damage === 'number') damageInput.value = snapshot.damage;
+        if (typeof snapshot.angle === 'number') angleInput.value = snapshot.angle;
+        if (typeof snapshot.kbs === 'number') kbsInput.value = snapshot.kbs;
+        if (typeof snapshot.bkb === 'number') bkbInput.value = snapshot.bkb;
+        if (typeof snapshot.fkb === 'number') fkbInput.value = snapshot.fkb;
+        if (typeof snapshot.hp === 'number') hpInput.value = snapshot.hp;
+        if (typeof snapshot.weight === 'number') weightInput.value = snapshot.weight;
+        if (typeof snapshot.fallAccel === 'number') fallAccelInput.value = snapshot.fallAccel;
+        if (typeof snapshot.maxFall === 'number') maxFallInput.value = snapshot.maxFall;
+        if (typeof snapshot.attackHandicap === 'number') attackHandicapInput.value = snapshot.attackHandicap;
+        if (typeof snapshot.defenseHandicap === 'number') defenseHandicapInput.value = snapshot.defenseHandicap;
+        if (typeof snapshot.comboDelay === 'number') comboDelayInput.value = snapshot.comboDelay;
 
-        if (typeof state.electric === 'boolean') electricToggle.checked = state.electric;
-        if (typeof state.throwMove === 'boolean') throwToggle.checked = state.throwMove;
+        if (typeof snapshot.electric === 'boolean') electricToggle.checked = snapshot.electric;
+        if (typeof snapshot.throwMove === 'boolean') throwToggle.checked = snapshot.throwMove;
 
-        if (typeof state.targetState === 'string') targetStateSelect.value = state.targetState;
-        if (typeof state.simulation === 'string') simulationSelect.value = state.simulation;
+        if (typeof snapshot.targetState === 'string') targetStateSelect.value = snapshot.targetState;
+        if (typeof snapshot.simulation === 'string') simulationSelect.value = snapshot.simulation;
         updateComboDelayVisibility();
 
-        if (state.position && state.position.custom && typeof state.position.x === 'number' && typeof state.position.y === 'number') {
-          setCustomPositionDirect(state.position.x, state.position.y);
-        } else if (state.position) {
+        if (snapshot.position && snapshot.position.custom && typeof snapshot.position.x === 'number' && typeof snapshot.position.y === 'number') {
+          setCustomPositionDirect(snapshot.position.x, snapshot.position.y);
+        } else if (snapshot.position) {
           state.suppressPositionChange = true;
-          if (typeof state.position.horizontal === 'string') {
-            positionHorizontalSelect.value = state.position.horizontal;
+          if (typeof snapshot.position.horizontal === 'string') {
+            positionHorizontalSelect.value = snapshot.position.horizontal;
           }
-          if (typeof state.position.vertical === 'string') {
-            positionVerticalSelect.value = state.position.vertical;
+          if (typeof snapshot.position.vertical === 'string') {
+            positionVerticalSelect.value = snapshot.position.vertical;
           }
           state.customPosition = null;
           state.suppressPositionChange = false;
           syncPositionInputs();
         }
 
-        if (typeof state.snap === 'boolean' && snapToggle) {
-          snapToggle.checked = state.snap;
-          trajectoryState.snapEnabled = state.snap;
+        if (typeof snapshot.snap === 'boolean' && snapToggle) {
+          snapToggle.checked = snapshot.snap;
+          trajectoryState.snapEnabled = snapshot.snap;
         }
 
-        if (typeof state.cameraMode === 'string') {
-          setCameraMode(state.cameraMode, { trigger: false });
+        if (typeof snapshot.cameraMode === 'string') {
+          setCameraMode(snapshot.cameraMode, { trigger: false });
         }
 
-        if (typeof state.staleness === 'string') {
-          setStaleness(state.staleness, { trigger: false });
+        if (typeof snapshot.staleness === 'string') {
+          setStaleness(snapshot.staleness, { trigger: false });
         }
 
-        if (typeof state.doubleJumpArmor === 'boolean' && doubleJumpArmorToggle) {
-          doubleJumpArmorToggle.checked = state.doubleJumpArmor;
+        if (typeof snapshot.doubleJumpArmor === 'boolean' && doubleJumpArmorToggle) {
+          doubleJumpArmorToggle.checked = snapshot.doubleJumpArmor;
         }
 
-        if (typeof state.debug === 'boolean' && debugToggle) {
-          debugToggle.checked = state.debug;
-          debugMode = state.debug;
+        if (typeof snapshot.debug === 'boolean' && debugToggle) {
+          debugToggle.checked = snapshot.debug;
+          debugMode = snapshot.debug;
         }
 
         maybeMarkDefenderCustom();
@@ -1863,6 +1917,18 @@
             setPositionFromStageCoords(state.customPosition.x, state.customPosition.y, true);
           }
           markStateDirty();
+        });
+      }
+
+      if (copyLinkButton) {
+        copyLinkButton.addEventListener('click', () => {
+          copyCurrentLink();
+        });
+      }
+
+      if (resetButton) {
+        resetButton.addEventListener('click', () => {
+          resetToDefaults();
         });
       }
 

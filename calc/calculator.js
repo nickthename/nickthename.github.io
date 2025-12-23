@@ -300,6 +300,13 @@
         xDistance = f32(xDistance + xVelocity);
         if (activeGroundPlane) {
           yDistance = f32(activeGroundPlane.y - startY);
+          const absX = startX + xDistance;
+          if (absX < activeGroundPlane.xMin || absX > activeGroundPlane.xMax) {
+            landed = false;
+            activeGroundPlane = null;
+            yVelocityCurrent = 0;
+            fall = f32(0);
+          }
         }
       }
 

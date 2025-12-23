@@ -1,49 +1,92 @@
 (async function () {
-      const config = window.CALC_CONFIG || {};
-      const UI_TEXT = window.CALC_I18N || {};
-      const PAGE_LANGUAGE = config.pageLanguage || 'en';
-      const LANGUAGE_PATHS = config.languagePaths || { en: '/calc/', ja: '/ja/calc/' };
-      const LOCAL_STORAGE_LANGUAGE_KEY = config.localStorageLanguageKey || 'smash64:lang';
-      const CHARACTER_ICONS = config.characterIcons || {};
-      const MOVESET_FILES = config.movesetFiles || { U: '/calc/movesets.json', J: '/calc/j_movesets.json' };
-      const MOVE_LABELS_FILE = config.moveLabelFile || '/calc/move-labels.json';
+      const app = window.CalcApp || {};
+      const config = app.config || {};
+      const UI_TEXT = app.UI_TEXT || {};
+      const PAGE_LANGUAGE = app.PAGE_LANGUAGE || config.pageLanguage || 'en';
+      const LANGUAGE_PATHS = app.LANGUAGE_PATHS || config.languagePaths || { en: '/calc/', ja: '/ja/calc/' };
+      const LOCAL_STORAGE_LANGUAGE_KEY = app.LOCAL_STORAGE_LANGUAGE_KEY || config.localStorageLanguageKey || 'smash64:lang';
+      const CHARACTER_ICONS = app.CHARACTER_ICONS || config.characterIcons || {};
+      const MOVESET_FILES = app.MOVESET_FILES || config.movesetFiles || { U: '/calc/movesets.json', J: '/calc/j_movesets.json' };
+      const MOVE_LABELS_FILE = app.MOVE_LABELS_FILE || config.moveLabelFile || '/calc/move-labels.json';
 
-      const form = document.getElementById('calculator-form');
-      const defenderSelect = document.getElementById('defender-select');
-      const attackerSelect = document.getElementById('attacker-select');
-      const moveSelect = document.getElementById('move-select');
-      const moveDetails = document.getElementById('move-details');
+      const {
+        elements = {},
+        outputNodes = {},
+        constants = {},
+        trajectoryElements = {},
+        trajectoryState = {},
+      } = app;
 
-      const weightInput = document.getElementById('weight-input');
-      const fallAccelInput = document.getElementById('fall-accel-input');
-      const maxFallInput = document.getElementById('max-fall-input');
-      const hpInput = document.getElementById('hp-input');
-      const damageInput = document.getElementById('damage-input');
-      const angleInput = document.getElementById('angle-input');
-      const kbsInput = document.getElementById('kbs-input');
-      const bkbInput = document.getElementById('bkb-input');
-      const fkbInput = document.getElementById('fkb-input');
-      const stalenessButtons = Array.from(document.querySelectorAll('[data-staleness]'));
-      const cameraButtons = Array.from(document.querySelectorAll('[data-camera-mode]'));
-      const electricToggle = document.getElementById('electric-toggle');
-      const throwToggle = document.getElementById('throw-toggle');
-      const targetStateSelect = document.getElementById('target-state-select');
-      const simulationSelect = document.getElementById('simulation-select');
-      const comboDelayInput = document.getElementById('combo-delay-input');
-      const comboDelayRow = document.getElementById('combo-delay-row');
-      const attackHandicapInput = document.getElementById('attack-handicap-input');
-      const defenseHandicapInput = document.getElementById('defense-handicap-input');
-      const positionHorizontalSelect = document.getElementById('position-horizontal');
-      const positionVerticalSelect = document.getElementById('position-vertical');
-      const positionXInput = document.getElementById('position-x-input');
-      const positionYInput = document.getElementById('position-y-input');
-      const debugToggle = document.getElementById('debug-toggle');
-      const snapToggle = document.getElementById('snap-toggle');
-      const doubleJumpArmorRow = document.getElementById('double-jump-armor-row');
-      const doubleJumpArmorToggle = document.getElementById('double-jump-armor-toggle');
-      const languageSelect = document.getElementById('language-select');
-      const versionSelect = document.getElementById('version-select');
-      const versionSelectorRoot = document.querySelector('[data-version-language-selector]');
+      const {
+        form,
+        defenderSelect,
+        attackerSelect,
+        moveSelect,
+        moveDetails,
+        weightInput,
+        fallAccelInput,
+        maxFallInput,
+        hpInput,
+        damageInput,
+        angleInput,
+        kbsInput,
+        bkbInput,
+        fkbInput,
+        stalenessButtons,
+        cameraButtons,
+        electricToggle,
+        throwToggle,
+        targetStateSelect,
+        simulationSelect,
+        comboDelayInput,
+        comboDelayRow,
+        attackHandicapInput,
+        defenseHandicapInput,
+        positionHorizontalSelect,
+        positionVerticalSelect,
+        positionXInput,
+        positionYInput,
+        debugToggle,
+        snapToggle,
+        doubleJumpArmorRow,
+        doubleJumpArmorToggle,
+        languageSelect,
+        versionSelect,
+        versionSelectorRoot,
+      } = elements;
+
+      const {
+        BLASTZONE_LIMITS = { left: -9000, right: 9000, bottom: -3500, top: 8300 },
+        POSITION_DATA = {
+          stage: { y: 0, center: 0, halfWidth: 2318 },
+          'left-platform': { y: 904, center: -1396, halfWidth: 445 },
+          'right-platform': { y: 907, center: 1421.5, halfWidth: 470.5 },
+          'top-platform': { y: 1542, center: 0, halfWidth: 570 },
+        },
+        DOUBLE_JUMP_ARMOR_LIFT = 160,
+      } = constants;
+
+      const state = app.state || (app.state = {});
+      state.suppressCustomPositionInput = state.suppressCustomPositionInput ?? false;
+      state.stalenessValue = state.stalenessValue ?? 'fresh';
+      state.customPosition = state.customPosition ?? null;
+      state.autoAirborneActive = state.autoAirborneActive ?? false;
+      state.lastGroundState = state.lastGroundState ?? (targetStateSelect && targetStateSelect.value ? targetStateSelect.value : 'standing');
+      state.doubleJumpArmorLiftActive = state.doubleJumpArmorLiftActive ?? false;
+      state.doubleJumpArmorAnchor = state.doubleJumpArmorAnchor ?? null;
+      state.suppressPositionChange = state.suppressPositionChange ?? false;
+
+      const {
+        isPositionOnPlatform,
+        setCustomPositionDirect,
+        setPositionFromStageCoords,
+        updateTrajectoryDisplay,
+        handleTrajectoryPointerDown,
+        handleTrajectoryPointerMove,
+        handleTrajectoryPointerUp,
+        applyTrajectoryViewBox,
+        renderStageGeometry,
+      } = app;
 
       const getCharacterOptionMarkup = (character) => {
         const iconPath = CHARACTER_ICONS[character.key];
@@ -71,78 +114,6 @@
       let defenderDropdown = null;
       let attackerDropdown = null;
 
-      const outputNodes = {
-        finalPercent: document.getElementById('final-percent-output'),
-        percentBreakdown: document.getElementById('percent-breakdown'),
-        knockbackBreakdown: document.getElementById('knockback-breakdown'),
-        hitlag: document.getElementById('hitlag-value'),
-        hitstun: document.getElementById('hitstun-value'),
-        knockdown: document.getElementById('knockdown-status'),
-        initVx: document.getElementById('init-vx-value'),
-        initVy: document.getElementById('init-vy-value'),
-        velocityMag: document.getElementById('velocity-mag-value'),
-        totalX: document.getElementById('total-x-value'),
-        totalY: document.getElementById('total-y-value'),
-        displacementMeta: document.getElementById('displacement-meta'),
-        attackMult: document.getElementById('attack-multiplier-value'),
-        defenseMult: document.getElementById('defense-multiplier-value'),
-        vectorLine: document.getElementById('vector-line'),
-        positionOutput: document.getElementById('position-output'),
-        finalPosition: document.getElementById('final-position-output'),
-        killOutput: document.getElementById('kill-output'),
-        killThresholdOutput: document.getElementById('kill-threshold-output'),
-        knockdownThresholdOutput: document.getElementById('knockdown-threshold-output'),
-        armorStatus: document.getElementById('armor-status'),
-        armorThresholdOutput: document.getElementById('armor-threshold-output'),
-        armorBlock: document.getElementById('armor-status-block'),
-        knockdownRow: document.getElementById('knockdown-row'),
-      };
-
-      const BLASTZONE_LIMITS = { left: -9000, right: 9000, bottom: -3500, top: 8300 };
-
-      const POSITION_DATA = {
-        stage: { y: 0, center: 0, halfWidth: 2318 },
-        'left-platform': { y: 904, center: -1396, halfWidth: 445 },
-        'right-platform': { y: 907, center: 1421.5, halfWidth: 470.5 },
-        'top-platform': { y: 1542, center: 0, halfWidth: 570 },
-      };
-
-      const trajectoryElements = {
-        svg: document.getElementById('trajectory-svg'),
-        path: document.getElementById('trajectory-path'),
-        pointsGroup: document.getElementById('trajectory-points'),
-        start: document.getElementById('trajectory-start'),
-        end: document.getElementById('trajectory-end'),
-        killMarker: document.getElementById('trajectory-kill-marker'),
-        blastzone: document.getElementById('trajectory-blastzone'),
-        blastzoneOutside: document.getElementById('trajectory-blastzone-outside'),
-        stage: {
-          ground: document.getElementById('trajectory-stage-ground'),
-          left: document.getElementById('trajectory-stage-left'),
-          right: document.getElementById('trajectory-stage-right'),
-          top: document.getElementById('trajectory-stage-top'),
-        },
-      };
-
-      const trajectoryState = {
-        viewBox: { minX: -2500, minY: -2000, width: 5000, height: 4000 },
-        dragging: false,
-        pointerId: null,
-        cameraMode: 'fit',
-        snapEnabled: true,
-        snapDistanceSq: 260 * 260,
-        pendingFitBounds: null,
-      };
-
-      const STAGE_HALF_WIDTH = POSITION_DATA.stage.halfWidth;
-      let suppressCustomPositionInput = false;
-      let stalenessValue = 'fresh';
-      let customPosition = null;
-      let autoAirborneActive = false;
-      let lastGroundState = targetStateSelect.value || 'standing';
-      let doubleJumpArmorLiftActive = false;
-      let doubleJumpArmorAnchor = null;
-
       function computePosition(horizontalKey, verticalKey) {
         const platform = POSITION_DATA[verticalKey] || POSITION_DATA.stage;
         let x = platform.center;
@@ -154,9 +125,15 @@
         return { x, y: platform.y };
       }
 
+      app.computePosition = computePosition;
+
+      function isYoshiDefender() {
+        return defenderSelect.value === 'Yoshi';
+      }
+
       function getActiveStagePosition() {
-        if (customPosition !== null) {
-          return { x: customPosition.x, y: customPosition.y };
+        if (state.customPosition !== null) {
+          return { x: state.customPosition.x, y: state.customPosition.y };
         }
         return computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
       }
@@ -178,490 +155,14 @@
       function syncPositionInputs() {
         if (!positionXInput || !positionYInput) return;
         const active = getActiveStagePosition();
-        suppressCustomPositionInput = true;
+        state.suppressCustomPositionInput = true;
         positionXInput.value = formatPositionInputValue(active.x);
         positionYInput.value = formatPositionInputValue(active.y);
-        suppressCustomPositionInput = false;
-      }
-      function stageToDisplayY(value) {
-        return -value;
+        state.suppressCustomPositionInput = false;
       }
 
-      function displayToStageY(value) {
-        return -value;
-      }
-
-      const STAGE_VIEW_MARGIN_X = 420;
-      const STAGE_VIEW_TOP_MARGIN = 1800;
-      const STAGE_VIEW_BOTTOM_MARGIN = 420;
-      const BLASTZONE_MARGIN = 200;
-      const WORLD_EXTENT = 40000;
-      const LIVE_AREA_MARGIN = 1;
+      app.syncPositionInputs = syncPositionInputs;
       let doubleJumpArmorThreshold = (Smash64Calculator.doubleJumpArmorValue || 140);
-      const DOUBLE_JUMP_ARMOR_LIFT = 160;
-
-      function clampToLiveArea(x, y) {
-        const minX = BLASTZONE_LIMITS.left + LIVE_AREA_MARGIN;
-        const maxX = BLASTZONE_LIMITS.right - LIVE_AREA_MARGIN;
-        const minY = BLASTZONE_LIMITS.bottom + LIVE_AREA_MARGIN;
-        const maxY = BLASTZONE_LIMITS.top - LIVE_AREA_MARGIN;
-        return {
-          x: Math.min(Math.max(x, minX), maxX),
-          y: Math.min(Math.max(y, minY), maxY),
-        };
-      }
-
-      function isPositionOnPlatform(position) {
-        const verticalTolerance = 1;
-        return Object.values(POSITION_DATA).some((platform) => {
-          if (!platform) return false;
-          const withinX = position.x >= (platform.center - platform.halfWidth - 0.5)
-            && position.x <= (platform.center + platform.halfWidth + 0.5);
-          return withinX && Math.abs(position.y - platform.y) <= verticalTolerance;
-        });
-      }
-
-      const STAGE_EXTENTS = (() => {
-        const xs = [-STAGE_HALF_WIDTH, STAGE_HALF_WIDTH];
-        const ys = [0];
-        Object.values(POSITION_DATA).forEach((platform) => {
-          if (!platform) return;
-          xs.push(platform.center - platform.halfWidth, platform.center + platform.halfWidth);
-          ys.push(platform.y);
-        });
-        return {
-          minX: Math.min(...xs),
-          maxX: Math.max(...xs),
-          minY: Math.min(...ys),
-          maxY: Math.max(...ys),
-        };
-      })();
-
-      const STAGE_VIEW_BOX = (() => {
-        const stageTop = STAGE_EXTENTS.maxY + STAGE_VIEW_TOP_MARGIN;
-        const candidateBottom = STAGE_EXTENTS.minY - STAGE_VIEW_BOTTOM_MARGIN;
-        const stageBottom = Math.min(candidateBottom, -STAGE_VIEW_BOTTOM_MARGIN);
-        const minX = STAGE_EXTENTS.minX - STAGE_VIEW_MARGIN_X;
-        const maxX = STAGE_EXTENTS.maxX + STAGE_VIEW_MARGIN_X;
-        const width = maxX - minX;
-        const minY = stageToDisplayY(stageTop);
-        const height = stageToDisplayY(stageBottom) - minY;
-        return { minX, minY, width, height };
-      })();
-
-      const BLASTZONE_VIEW_BOX = (() => {
-        const minX = BLASTZONE_LIMITS.left - BLASTZONE_MARGIN;
-        const maxX = BLASTZONE_LIMITS.right + BLASTZONE_MARGIN;
-        const top = BLASTZONE_LIMITS.top + BLASTZONE_MARGIN;
-        const bottom = BLASTZONE_LIMITS.bottom - BLASTZONE_MARGIN;
-        const width = maxX - minX;
-        const minY = stageToDisplayY(top);
-        const height = stageToDisplayY(bottom) - minY;
-        return { minX, minY, width, height };
-      })();
-
-      function getCameraBounds(mode, dynamicBounds) {
-        switch (mode) {
-          case 'stage':
-            return STAGE_VIEW_BOX;
-          case 'blastzone':
-            return BLASTZONE_VIEW_BOX;
-          default:
-            return dynamicBounds;
-        }
-      }
-
-      function isYoshiDefender() {
-        return defenderSelect.value === 'Yoshi';
-      }
-
-      function computeTrajectoryBounds(points) {
-        const xs = [];
-        const ys = [];
-
-        if (points.length === 0) {
-          xs.push(-STAGE_HALF_WIDTH, STAGE_HALF_WIDTH);
-          ys.push(stageToDisplayY(0));
-        } else {
-          points.forEach((pt) => {
-            xs.push(pt.x);
-            ys.push(stageToDisplayY(pt.y));
-          });
-        }
-
-        Object.values(POSITION_DATA).forEach((platform) => {
-          if (!platform) return;
-          xs.push(platform.center - platform.halfWidth, platform.center + platform.halfWidth);
-          ys.push(stageToDisplayY(platform.y));
-        });
-
-        let minX = Math.min(...xs);
-        let maxX = Math.max(...xs);
-        let minY = Math.min(...ys);
-        let maxY = Math.max(...ys);
-
-        if (!Number.isFinite(minX) || !Number.isFinite(maxX)) {
-          minX = -STAGE_HALF_WIDTH;
-          maxX = STAGE_HALF_WIDTH;
-        }
-        if (!Number.isFinite(minY) || !Number.isFinite(maxY)) {
-          const base = stageToDisplayY(0);
-          minY = base - 200;
-          maxY = base + 200;
-        }
-
-        const marginX = 200;
-        const marginY = 200;
-
-        const width = Math.max(800, maxX - minX);
-        const height = Math.max(800, maxY - minY);
-
-        return {
-          minX: minX - marginX,
-          minY: minY - marginY,
-          width: width + marginX * 2,
-          height: height + marginY * 2,
-        };
-      }
-
-      function applyTrajectoryViewBox(bounds) {
-        trajectoryState.viewBox = bounds;
-        if (trajectoryElements.svg) {
-          trajectoryElements.svg.setAttribute('viewBox', `${bounds.minX} ${bounds.minY} ${bounds.width} ${bounds.height}`);
-        }
-        updateBlastzoneOverlay();
-      }
-
-      function updateBlastzoneOverlay() {
-        if (!trajectoryElements.blastzoneOutside) return;
-
-        const outerMinX = -WORLD_EXTENT;
-        const outerMaxX = WORLD_EXTENT;
-        const outerMinY = -WORLD_EXTENT;
-        const outerMaxY = WORLD_EXTENT;
-
-        const safeMinX = BLASTZONE_LIMITS.left;
-        const safeMaxX = BLASTZONE_LIMITS.right;
-        let safeMinY = stageToDisplayY(BLASTZONE_LIMITS.top);
-        let safeMaxY = stageToDisplayY(BLASTZONE_LIMITS.bottom);
-        if (safeMinY > safeMaxY) {
-          const swap = safeMinY;
-          safeMinY = safeMaxY;
-          safeMaxY = swap;
-        }
-
-        const pathData = [
-          `M ${outerMinX} ${outerMinY} H ${outerMaxX} V ${outerMaxY} H ${outerMinX} Z`,
-          `M ${safeMinX} ${safeMinY} H ${safeMaxX} V ${safeMaxY} H ${safeMinX} Z`,
-        ].join(' ');
-
-        trajectoryElements.blastzoneOutside.setAttribute('d', pathData);
-      }
-
-      function renderStageGeometry() {
-        const stageGroup = trajectoryElements.stage;
-        if (!stageGroup || !stageGroup.ground) return;
-
-        const assignLine = (element, platform) => {
-          if (!element || !platform) return;
-          const x1 = platform.center - platform.halfWidth;
-          const x2 = platform.center + platform.halfWidth;
-          const y = stageToDisplayY(platform.y);
-          element.setAttribute('x1', x1);
-          element.setAttribute('x2', x2);
-          element.setAttribute('y1', y);
-          element.setAttribute('y2', y);
-        };
-
-        assignLine(stageGroup.ground, POSITION_DATA.stage);
-        assignLine(stageGroup.left, POSITION_DATA['left-platform']);
-        assignLine(stageGroup.right, POSITION_DATA['right-platform']);
-        assignLine(stageGroup.top, POSITION_DATA['top-platform']);
-
-        if (trajectoryElements.blastzone) {
-          const rect = trajectoryElements.blastzone;
-          const width = BLASTZONE_LIMITS.right - BLASTZONE_LIMITS.left;
-          const topDisplay = stageToDisplayY(BLASTZONE_LIMITS.top);
-          const bottomDisplay = stageToDisplayY(BLASTZONE_LIMITS.bottom);
-          rect.setAttribute('x', BLASTZONE_LIMITS.left);
-          rect.setAttribute('width', width);
-          rect.setAttribute('y', topDisplay);
-          rect.setAttribute('height', bottomDisplay - topDisplay);
-        }
-      }
-
-      function updateTrajectoryDisplay(startPosition, trajectoryPoints, finalPosition, hitstunFrames, options = {}) {
-        if (!trajectoryElements.svg) return;
-        const killFrameLimit = Number.isFinite(options.killFrameLimit) ? Math.max(0, Math.trunc(options.killFrameLimit)) : null;
-        const allowEndPointWhenKill = Boolean(options.allowEndPointWhenKill);
-
-        const usablePoints = trajectoryPoints.length > 0
-          ? trajectoryPoints
-          : [{ frame: 0, x: startPosition.x, y: startPosition.y }];
-
-        const bounds = computeTrajectoryBounds([...usablePoints, startPosition, finalPosition]);
-        const viewBounds = getCameraBounds(trajectoryState.cameraMode, bounds);
-        if (trajectoryState.cameraMode === 'fit' && trajectoryState.dragging) {
-          trajectoryState.pendingFitBounds = viewBounds;
-        } else {
-          trajectoryState.pendingFitBounds = null;
-          applyTrajectoryViewBox(viewBounds);
-        }
-        renderStageGeometry();
-
-        let killEntryPoint = null;
-        for (let i = 0; i < usablePoints.length; i += 1) {
-          const point = usablePoints[i];
-          if (killFrameLimit !== null && point.frame > killFrameLimit) {
-            continue;
-          }
-          if (isKill(point.x, point.y)) {
-            killEntryPoint = point;
-            break;
-          }
-        }
-        if (!killEntryPoint && isKill(finalPosition.x, finalPosition.y)) {
-          if (killFrameLimit === null || killFrameLimit >= 0) {
-            const finalFrame = killFrameLimit !== null ? killFrameLimit : hitstunFrames;
-            killEntryPoint = { frame: finalFrame, x: finalPosition.x, y: finalPosition.y };
-          }
-        }
-
-        const displayPoints = usablePoints.map((pt) => ({
-          frame: pt.frame,
-          x: pt.x,
-          y: stageToDisplayY(pt.y),
-        }));
-
-        if (trajectoryElements.path) {
-          if (displayPoints.length > 1) {
-            const pointsString = displayPoints.map((pt) => `${pt.x},${pt.y}`).join(' ');
-            trajectoryElements.path.setAttribute('points', pointsString);
-            trajectoryElements.path.style.opacity = 0.85;
-          } else {
-            trajectoryElements.path.removeAttribute('points');
-            trajectoryElements.path.style.opacity = 0;
-          }
-        }
-
-        const pointsGroup = trajectoryElements.pointsGroup;
-        if (pointsGroup) {
-          pointsGroup.innerHTML = '';
-          if (displayPoints.length > 1) {
-            for (let i = 1; i < displayPoints.length; i += 1) {
-              const pt = displayPoints[i];
-              const node = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-              node.setAttribute('class', 'trajectory-point');
-              node.setAttribute('cx', pt.x);
-              node.setAttribute('cy', pt.y);
-              node.setAttribute('r', 40);
-              pointsGroup.appendChild(node);
-            }
-          }
-        }
-
-        if (trajectoryElements.start) {
-          const startDisplay = stageToDisplayY(startPosition.y);
-          trajectoryElements.start.setAttribute('cx', startPosition.x);
-          trajectoryElements.start.setAttribute('cy', startDisplay);
-          trajectoryElements.start.dataset.stageX = startPosition.x.toFixed(2);
-          trajectoryElements.start.dataset.stageY = startPosition.y.toFixed(2);
-        }
-
-        if (trajectoryElements.end) {
-          const finalDisplay = stageToDisplayY(finalPosition.y);
-          trajectoryElements.end.setAttribute('cx', finalPosition.x);
-          trajectoryElements.end.setAttribute('cy', finalDisplay);
-          trajectoryElements.end.dataset.stageX = finalPosition.x.toFixed(2);
-          trajectoryElements.end.dataset.stageY = finalPosition.y.toFixed(2);
-          trajectoryElements.end.style.display = (killEntryPoint && !allowEndPointWhenKill) ? 'none' : '';
-        }
-
-        if (trajectoryElements.killMarker) {
-          if (killEntryPoint) {
-            const killDisplayY = stageToDisplayY(killEntryPoint.y);
-            const viewSpan = Math.max(trajectoryState.viewBox.width, trajectoryState.viewBox.height);
-            const size = Math.max(120, Math.min(320, viewSpan * 0.035));
-            const pathData = [
-              `M ${killEntryPoint.x - size} ${killDisplayY - size} L ${killEntryPoint.x + size} ${killDisplayY + size}`,
-              `M ${killEntryPoint.x + size} ${killDisplayY - size} L ${killEntryPoint.x - size} ${killDisplayY + size}`,
-            ].join(' ');
-            trajectoryElements.killMarker.setAttribute('d', pathData);
-            trajectoryElements.killMarker.classList.add('is-visible');
-          } else {
-            trajectoryElements.killMarker.removeAttribute('d');
-            trajectoryElements.killMarker.classList.remove('is-visible');
-          }
-        }
-
-        if (trajectoryElements.svg) {
-          trajectoryElements.svg.setAttribute('data-hitstun', String(hitstunFrames));
-        }
-      }
-
-      function getStageCoordinatesFromEvent(evt) {
-        if (!trajectoryElements.svg) return null;
-        const svgPoint = trajectoryElements.svg.createSVGPoint();
-        svgPoint.x = evt.clientX;
-        svgPoint.y = evt.clientY;
-        const ctm = trajectoryElements.svg.getScreenCTM();
-        if (!ctm) return null;
-        const transformed = svgPoint.matrixTransform(ctm.inverse());
-        return { x: transformed.x, y: displayToStageY(transformed.y) };
-      }
-
-      function resolvePositionSelection(stageX, stageY) {
-        let bestKey = 'stage';
-        let bestScore = Number.POSITIVE_INFINITY;
-        Object.entries(POSITION_DATA).forEach(([key, platform]) => {
-          if (!platform) return;
-          const deltaX = Math.max(0, Math.abs(stageX - platform.center) - platform.halfWidth);
-          const deltaY = Math.abs(stageY - platform.y);
-          const score = (deltaX * deltaX) + (deltaY * deltaY * 0.4);
-          if (score < bestScore) {
-            bestScore = score;
-            bestKey = key;
-          }
-        });
-
-        const platform = POSITION_DATA[bestKey];
-        if (!platform) {
-          return { verticalKey: 'stage', horizontalKey: 'center' };
-        }
-
-        const clampedX = Math.max(platform.center - platform.halfWidth, Math.min(stageX, platform.center + platform.halfWidth));
-        const relative = platform.halfWidth > 0 ? (clampedX - platform.center) / platform.halfWidth : 0;
-        let horizontalKey = 'center';
-        if (relative <= -0.33) {
-          horizontalKey = 'left';
-        } else if (relative >= 0.33) {
-          horizontalKey = 'right';
-      }
-
-      return { verticalKey: bestKey, horizontalKey };
-      }
-
-      let suppressPositionChange = false;
-
-      function clearPresetSelection() {
-        suppressPositionChange = true;
-        if (positionHorizontalSelect) {
-          positionHorizontalSelect.value = '';
-        }
-        if (positionVerticalSelect) {
-          positionVerticalSelect.value = '';
-        }
-        suppressPositionChange = false;
-      }
-
-      function setPositionFromStageCoords(stageX, stageY, forceUpdate = false) {
-        const clamped = clampToLiveArea(stageX, stageY);
-        stageX = clamped.x;
-        stageY = clamped.y;
-
-        const selection = resolvePositionSelection(stageX, stageY);
-        const snappedPosition = computePosition(selection.horizontalKey, selection.verticalKey);
-        const dx = stageX - snappedPosition.x;
-        const dy = stageY - snappedPosition.y;
-        const distanceSq = (dx * dx) + (dy * dy);
-        const shouldSnap = trajectoryState.snapEnabled && distanceSq <= trajectoryState.snapDistanceSq;
-
-        let newHorizontal = selection.horizontalKey;
-      let newVertical = selection.verticalKey;
-        let positionChanged = false;
-        let grounded = isPositionOnPlatform({ x: stageX, y: stageY });
-
-        if (shouldSnap) {
-          if (customPosition !== null) {
-            customPosition = null;
-            positionChanged = true;
-          }
-          stageX = snappedPosition.x;
-          stageY = snappedPosition.y;
-          grounded = true;
-        } else {
-          const prev = customPosition ? { ...customPosition } : null;
-          setCustomPositionDirect(stageX, stageY);
-          const current = customPosition;
-          if (!prev || !current
-            || Math.abs(prev.x - current.x) > 0.25
-            || Math.abs(prev.y - current.y) > 0.25) {
-            positionChanged = true;
-          }
-          stageX = current ? current.x : stageX;
-          stageY = current ? current.y : stageY;
-          newHorizontal = '';
-          newVertical = '';
-          if (trajectoryState.dragging && doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
-            doubleJumpArmorLiftActive = false;
-            doubleJumpArmorAnchor = null;
-          }
-        }
-
-        suppressPositionChange = true;
-        if (positionHorizontalSelect) {
-          if (newHorizontal) {
-            if (positionHorizontalSelect.value !== newHorizontal) {
-              positionHorizontalSelect.value = newHorizontal;
-              positionChanged = true;
-            }
-          } else if (positionHorizontalSelect.selectedIndex !== -1) {
-            positionHorizontalSelect.selectedIndex = -1;
-            positionChanged = true;
-          }
-        }
-        if (positionVerticalSelect) {
-          if (newVertical) {
-            if (positionVerticalSelect.value !== newVertical) {
-              positionVerticalSelect.value = newVertical;
-              positionChanged = true;
-            }
-          } else if (positionVerticalSelect.selectedIndex !== -1) {
-            positionVerticalSelect.selectedIndex = -1;
-            positionChanged = true;
-          }
-        }
-        suppressPositionChange = false;
-
-        if (grounded) {
-          if (targetStateSelect.value !== 'airborne') {
-            lastGroundState = targetStateSelect.value || lastGroundState;
-            autoAirborneActive = false;
-          } else if (autoAirborneActive) {
-            const groundState = lastGroundState || 'standing';
-            if (targetStateSelect.value !== groundState) {
-              targetStateSelect.value = groundState;
-              positionChanged = true;
-            }
-            lastGroundState = groundState;
-            autoAirborneActive = false;
-          }
-        } else {
-          const currentState = targetStateSelect.value;
-          if (currentState !== 'airborne') {
-            if (currentState) {
-              lastGroundState = currentState;
-            }
-            targetStateSelect.value = 'airborne';
-            positionChanged = true;
-          }
-          autoAirborneActive = true;
-        }
-
-        syncPositionInputs();
-
-        if (forceUpdate || positionChanged) {
-          calculate();
-          markStateDirty();
-        }
-      }
-
-      function setCustomPositionDirect(stageX, stageY) {
-        const clamped = clampToLiveArea(stageX, stageY);
-        customPosition = { x: clamped.x, y: clamped.y };
-        clearPresetSelection();
-        syncPositionInputs();
-      }
 
       function enforceDoubleJumpArmorState({ skipCalculate = false, forceCalculate = false } = {}) {
         const yoshiSelected = isYoshiDefender();
@@ -673,12 +174,12 @@
             doubleJumpArmorToggle.checked = false;
             changed = true;
           }
-          if (doubleJumpArmorLiftActive) {
-            doubleJumpArmorLiftActive = false;
-            customPosition = null;
+          if (state.doubleJumpArmorLiftActive) {
+            state.doubleJumpArmorLiftActive = false;
+            state.customPosition = null;
             changed = true;
           }
-          autoAirborneActive = false;
+          state.autoAirborneActive = false;
           if (!skipCalculate && (changed || forceCalculate)) {
             calculate();
           }
@@ -688,46 +189,46 @@
         if (armorEnabled) {
           if (targetStateSelect.value !== 'airborne') {
             if (targetStateSelect.value && targetStateSelect.value !== 'airborne') {
-              lastGroundState = targetStateSelect.value;
+              state.lastGroundState = targetStateSelect.value;
             }
             targetStateSelect.value = 'airborne';
             changed = true;
           }
 
           const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
-          const activePosition = customPosition ?? dropdownPosition;
+          const activePosition = state.customPosition ?? dropdownPosition;
           const onPlatform = isPositionOnPlatform(activePosition);
           if (onPlatform) {
             const liftedY = activePosition.y + DOUBLE_JUMP_ARMOR_LIFT;
-            const currentCustom = customPosition;
-            const needsLift = !currentCustom || !doubleJumpArmorLiftActive
+            const currentCustom = state.customPosition;
+            const needsLift = !currentCustom || !state.doubleJumpArmorLiftActive
               || Math.abs(currentCustom.x - activePosition.x) > 0.5
               || Math.abs(currentCustom.y - liftedY) > 0.5;
             if (needsLift) {
               setCustomPositionDirect(activePosition.x, liftedY);
-              doubleJumpArmorLiftActive = true;
-              doubleJumpArmorAnchor = { x: activePosition.x, y: activePosition.y };
+              state.doubleJumpArmorLiftActive = true;
+              state.doubleJumpArmorAnchor = { x: activePosition.x, y: activePosition.y };
               changed = true;
             }
           } else {
-            doubleJumpArmorLiftActive = false;
-            doubleJumpArmorAnchor = null;
+            state.doubleJumpArmorLiftActive = false;
+            state.doubleJumpArmorAnchor = null;
           }
-          autoAirborneActive = true;
+          state.autoAirborneActive = true;
         } else {
-          autoAirborneActive = false;
-          if (doubleJumpArmorLiftActive) {
-            doubleJumpArmorLiftActive = false;
-            if (doubleJumpArmorAnchor) {
-              setCustomPositionDirect(doubleJumpArmorAnchor.x, doubleJumpArmorAnchor.y);
+          state.autoAirborneActive = false;
+          if (state.doubleJumpArmorLiftActive) {
+            state.doubleJumpArmorLiftActive = false;
+            if (state.doubleJumpArmorAnchor) {
+              setCustomPositionDirect(state.doubleJumpArmorAnchor.x, state.doubleJumpArmorAnchor.y);
             } else {
-              customPosition = null;
+              state.customPosition = null;
               syncPositionInputs();
             }
-            doubleJumpArmorAnchor = null;
+            state.doubleJumpArmorAnchor = null;
             changed = true;
           }
-          const fallback = (lastGroundState && lastGroundState !== 'airborne') ? lastGroundState : 'standing';
+          const fallback = (state.lastGroundState && state.lastGroundState !== 'airborne') ? state.lastGroundState : 'standing';
           if (targetStateSelect.value !== fallback) {
             targetStateSelect.value = fallback;
             changed = true;
@@ -747,42 +248,9 @@
         enforceDoubleJumpArmorState({ skipCalculate, forceCalculate: false });
       }
 
-      function handleTrajectoryPointerDown(evt) {
-        if (typeof evt.button === 'number' && evt.button !== 0) return;
-        const coords = getStageCoordinatesFromEvent(evt);
-        if (!coords) return;
-        evt.preventDefault();
-        trajectoryState.dragging = true;
-        trajectoryState.pointerId = evt.pointerId;
-        if (trajectoryElements.svg && trajectoryElements.svg.setPointerCapture) {
-          trajectoryElements.svg.setPointerCapture(evt.pointerId);
-        }
-        setPositionFromStageCoords(coords.x, coords.y, true);
-      }
-
-      function handleTrajectoryPointerMove(evt) {
-        if (!trajectoryState.dragging || evt.pointerId !== trajectoryState.pointerId) return;
-        const coords = getStageCoordinatesFromEvent(evt);
-        if (!coords) return;
-        evt.preventDefault();
-        setPositionFromStageCoords(coords.x, coords.y, false);
-      }
-
-      function handleTrajectoryPointerUp(evt) {
-        if (!trajectoryState.dragging || evt.pointerId !== trajectoryState.pointerId) return;
-        trajectoryState.dragging = false;
-        trajectoryState.pointerId = null;
-        if (trajectoryElements.svg && trajectoryElements.svg.releasePointerCapture) {
-          trajectoryElements.svg.releasePointerCapture(evt.pointerId);
-        }
-        if (trajectoryState.cameraMode === 'fit') {
-          calculate();
-        }
-      }
-
       function updateStalenessButtons() {
         stalenessButtons.forEach((button) => {
-          const isActive = button.dataset.staleness === stalenessValue;
+          const isActive = button.dataset.staleness === state.stalenessValue;
           button.classList.toggle('is-active', isActive);
           button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
@@ -790,8 +258,8 @@
 
       function setStaleness(value, { trigger = true } = {}) {
         if (!value) return;
-        const changed = stalenessValue !== value;
-        stalenessValue = value;
+        const changed = state.stalenessValue !== value;
+        state.stalenessValue = value;
         updateStalenessButtons();
         if (trigger && changed) calculate();
       }
@@ -858,6 +326,8 @@
           || x <= BLASTZONE_LIMITS.left
           || x >= BLASTZONE_LIMITS.right;
       }
+
+      app.isKill = isKill;
 
       let movesets = {};
       let currentMoves = [];
@@ -1220,7 +690,7 @@
           defender: readSelectValue(defenderSelect),
           attacker: readSelectValue(attackerSelect),
           moveSlot: Number.isFinite(selectedMoveSlot) ? selectedMoveSlot : null,
-          staleness: stalenessValue,
+          staleness: state.stalenessValue,
           targetState: readSelectValue(targetStateSelect),
           simulation: readSelectValue(simulationSelect),
           attackHandicap: readNumber(attackHandicapInput),
@@ -1228,7 +698,7 @@
           hp: readNumber(hpInput),
           doubleJumpArmor: Boolean(doubleJumpArmorToggle && doubleJumpArmorToggle.checked),
           position: {
-            custom: customPosition !== null,
+            custom: state.customPosition !== null,
             horizontal: readSelectValue(positionHorizontalSelect),
             vertical: readSelectValue(positionVerticalSelect),
             x: readNumber(positionXInput),
@@ -1361,6 +831,7 @@
         stateDirty = true;
         scheduleUrlUpdate();
       };
+      app.markStateDirty = markStateDirty;
 
       const navigateToLanguage = (language, { replace = false } = {}) => {
         const normalized = normalizeLanguage(language);
@@ -1786,15 +1257,15 @@
         if (state.position && state.position.custom && typeof state.position.x === 'number' && typeof state.position.y === 'number') {
           setCustomPositionDirect(state.position.x, state.position.y);
         } else if (state.position) {
-          suppressPositionChange = true;
+          state.suppressPositionChange = true;
           if (typeof state.position.horizontal === 'string') {
             positionHorizontalSelect.value = state.position.horizontal;
           }
           if (typeof state.position.vertical === 'string') {
             positionVerticalSelect.value = state.position.vertical;
           }
-          customPosition = null;
-          suppressPositionChange = false;
+          state.customPosition = null;
+          state.suppressPositionChange = false;
           syncPositionInputs();
         }
 
@@ -1921,7 +1392,7 @@
         const comboDelayFrames = simulationMode === 'custom' ? comboDelayValue + 1 : 0;
 
         const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
-        const position = customPosition ? { x: customPosition.x, y: customPosition.y } : dropdownPosition;
+        const position = state.customPosition ? { x: state.customPosition.x, y: state.customPosition.y } : dropdownPosition;
         const defenderTraction = Number.isFinite(selectedDefenderTraction)
           ? selectedDefenderTraction
           : (selectedDefenderData && Number.isFinite(selectedDefenderData.traction)
@@ -1950,7 +1421,7 @@
           angle: numericValue(angleInput, 0),
           attackHandicapIndex: attackIndex,
           defenseHandicapIndex: defenseIndex,
-          damageModifier: stalenessValue,
+          damageModifier: state.stalenessValue,
           targetState: targetStateSelect.value,
           electric: electricToggle.checked,
           throwMove: throwToggle.checked,
@@ -1978,7 +1449,7 @@
 
         outputNodes.finalPercent.textContent = formatPercent(finalPercent);
         const percentSummary = `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)}`;
-        outputNodes.percentBreakdown.textContent = stalenessValue !== 'fresh'
+        outputNodes.percentBreakdown.textContent = state.stalenessValue !== 'fresh'
           ? UI_TEXT.afterStaleness({ summary: percentSummary })
           : percentSummary;
 
@@ -2136,18 +1607,22 @@
             break;
           }
         }
+        const finalKillPoint = isKill(finalX, finalY)
+          ? { frame: displayHitstun, x: finalX, y: finalY }
+          : null;
 
         let killResult = UI_TEXT.noKill;
         if (customFrameLimit !== null) {
-          if (killEntryPoint) {
-            if (customFrameLimit < killEntryPoint.frame) {
-              killResult = UI_TEXT.killsOnFrame({ frame: killEntryPoint.frame });
+          const killPoint = killEntryPoint || finalKillPoint;
+          if (killPoint) {
+            if (customFrameLimit < killPoint.frame) {
+              killResult = UI_TEXT.killsOnFrame({ frame: killPoint.frame });
             } else {
-              killResult = getKillLabel(killEntryPoint);
+              killResult = getKillLabel(killPoint);
             }
           }
-        } else if (isKill(finalX, finalY)) {
-          killResult = getKillLabel({ x: finalX, y: finalY });
+        } else if (killEntryPoint || finalKillPoint) {
+          killResult = getKillLabel(killEntryPoint || finalKillPoint);
         }
         outputNodes.killOutput.textContent = killResult;
 
@@ -2181,7 +1656,19 @@
             x: position.x + simSignedX,
             y: position.y + simSignedY,
           };
-          if (isKill(testPos.x, testPos.y)) {
+          let killsDuringTrajectory = false;
+          if (Array.isArray(sim.trajectory) && sim.trajectory.length > 0) {
+            for (let i = 0; i < sim.trajectory.length; i += 1) {
+              const step = sim.trajectory[i];
+              const stepX = position.x + step.x * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection);
+              const stepY = position.y + step.y * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
+              if (isKill(stepX, stepY)) {
+                killsDuringTrajectory = true;
+                break;
+              }
+            }
+          }
+          if (killsDuringTrajectory || isKill(testPos.x, testPos.y)) {
             killThreshold = Math.round(testPercent);
             break;
           }
@@ -2220,6 +1707,7 @@
         updateVector(signedInitialVX, signedInitialVY);
         updateHandicapMultipliers(attackIndex, defenseIndex);
       }
+      app.calculate = calculate;
 
       const handleInputChange = () => {
         calculate();
@@ -2279,18 +1767,18 @@
             targetStateSelect.value = 'airborne';
             return;
           }
-          autoAirborneActive = true;
+          state.autoAirborneActive = true;
           return;
         }
         if (targetStateSelect.value !== 'airborne') {
-          lastGroundState = targetStateSelect.value || lastGroundState;
-          autoAirborneActive = false;
+          state.lastGroundState = targetStateSelect.value || state.lastGroundState;
+          state.autoAirborneActive = false;
         }
       });
 
       if (positionXInput && positionYInput) {
         const handlePositionInput = () => {
-          if (suppressCustomPositionInput) return;
+          if (state.suppressCustomPositionInput) return;
           const x = Number.parseFloat(positionXInput.value);
           const y = Number.parseFloat(positionYInput.value);
           if (!Number.isFinite(x) || !Number.isFinite(y)) {
@@ -2322,16 +1810,16 @@
       }
 
       positionHorizontalSelect.addEventListener('change', () => {
-        if (suppressPositionChange) return;
-        customPosition = null;
+        if (state.suppressPositionChange) return;
+        state.customPosition = null;
         syncPositionInputs();
         calculate();
         markStateDirty();
       });
 
       positionVerticalSelect.addEventListener('change', () => {
-        if (suppressPositionChange) return;
-        customPosition = null;
+        if (state.suppressPositionChange) return;
+        state.customPosition = null;
         syncPositionInputs();
         calculate();
         markStateDirty();
@@ -2371,8 +1859,8 @@
         trajectoryState.snapEnabled = snapToggle.checked;
         snapToggle.addEventListener('change', () => {
           trajectoryState.snapEnabled = snapToggle.checked;
-          if (trajectoryState.snapEnabled && customPosition) {
-            setPositionFromStageCoords(customPosition.x, customPosition.y, true);
+          if (trajectoryState.snapEnabled && state.customPosition) {
+            setPositionFromStageCoords(state.customPosition.x, state.customPosition.y, true);
           }
           markStateDirty();
         });
@@ -2380,7 +1868,7 @@
 
       syncPositionInputs();
 
-      setStaleness(stalenessValue, { trigger: false });
+      setStaleness(state.stalenessValue, { trigger: false });
       setCameraMode(trajectoryState.cameraMode, { trigger: false });
 
       if (trajectoryElements.svg) {

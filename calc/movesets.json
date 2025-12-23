@@ -2178,8 +2178,8 @@
         "bkb": 10
       },
       {
-        "name": "Back throw damage",
-        "baseName": "Back throw damage",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 16,
         "effect": "Normal",
         "angle": 115,
@@ -5322,8 +5322,8 @@
         "throw": true
       },
       {
-        "name": "Back throw damage",
-        "baseName": "Back throw damage",
+        "name": "Back throw",
+        "baseName": "Back throw",
         "damage": 18,
         "effect": "Electric",
         "angle": 40,

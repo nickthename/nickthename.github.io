@@ -288,10 +288,6 @@
       "ja": "後投げ",
       "group": "throw"
     },
-    "back throw damage": {
-      "ja": "後投げ(ダメージ)",
-      "group": "throw"
-    },
     "back throw 3rd party": {
       "ja": "後投げ(3人目)",
       "group": "throw"

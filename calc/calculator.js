@@ -53,33 +53,33 @@
   ];
 
   const CHARACTERS = [
-    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44 },
-    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60 },
-    { name: 'DK', key: 'DK', weight: 0.83, fallAccel: 3.0, maxFall: 56 },
-    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42 },
-    { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42 },
-    { name: 'Link', key: 'Link', weight: 0.96, fallAccel: 3.4, maxFall: 64 },
-    { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.8, maxFall: 58 },
-    { name: 'Falcon', key: 'Falcon', weight: 0.96, fallAccel: 3.4, maxFall: 66 },
-    { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48 },
-    { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52 },
-    { name: 'Jigglypuff', key: 'Jigglypuff', weight: 1.3, fallAccel: 2.0, maxFall: 38 },
-    { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55 },
+    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
+    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
+    { name: 'DK', key: 'DK', weight: 0.83, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
+    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
+    { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42, traction: 0.7 },
+    { name: 'Link', key: 'Link', weight: 0.96, fallAccel: 3.4, maxFall: 64, traction: 2.0 },
+    { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.8, maxFall: 58, traction: 1.6 },
+    { name: 'Falcon', key: 'Falcon', weight: 0.96, fallAccel: 3.4, maxFall: 66, traction: 1.8 },
+    { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48, traction: 1.4 },
+    { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52, traction: 2.0 },
+    { name: 'Jigglypuff', key: 'Jigglypuff', weight: 1.3, fallAccel: 2.0, maxFall: 38, traction: 1.1 },
+    { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55, traction: 2.0 },
   ];
 
   const CHARACTERS_J = [
-    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44 },
-    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60 },
-    { name: 'DK',key: 'DK',weight: 0.84, fallAccel: 3.0, maxFall: 56 },
-    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42 },
-    { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42 },
-    { name: 'Link',key: 'Link',weight: 0.96, fallAccel: 3.2, maxFall: 64 },
-    { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.7, maxFall: 55 },
-    { name: 'Falcon',key: 'Falcon',weight: 0.96, fallAccel: 3.4, maxFall: 60 },
-    { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48 },
-    { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52 },
-    { name: 'Jigglypuff',key: 'Jigglypuff',weight: 1.3,fallAccel: 2.0, maxFall: 38 },
-    { name: 'Ness',key: 'Ness',weight: 1.1,fallAccel: 2.7, maxFall: 55 },
+    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
+    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
+    { name: 'DK',key: 'DK',weight: 0.84, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
+    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
+    { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42, traction: 0.7 },
+    { name: 'Link',key: 'Link',weight: 0.96, fallAccel: 3.2, maxFall: 64, traction: 2.0 },
+    { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.7, maxFall: 55, traction: 1.6 },
+    { name: 'Falcon',key: 'Falcon',weight: 0.96, fallAccel: 3.4, maxFall: 60, traction: 1.8 },
+    { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48, traction: 1.4 },
+    { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52, traction: 2.0 },
+    { name: 'Jigglypuff',key: 'Jigglypuff',weight: 1.3,fallAccel: 2.0, maxFall: 38, traction: 1.1 },
+    { name: 'Ness',key: 'Ness',weight: 1.1,fallAccel: 2.7, maxFall: 55, traction: 2.0 },
   ];
 
   const normalizeVersion = (value) => (String(value || '').toUpperCase() === 'J' ? 'J' : 'U');
@@ -185,11 +185,23 @@
     return base;
   }
 
-  function simulateHitstunTrajectory(config) {
-    const totalFrames = Math.max(Math.trunc(config.hitstun) || 0, 0);
+  function applyGroundFriction(velocity, friction) {
+    let next = f32(velocity);
+    if (next < 0.0) {
+      next = f32(next + friction);
+      if (next > 0.0) next = 0.0;
+    } else {
+      next = f32(next - friction);
+      if (next < 0.0) next = 0.0;
+    }
+    return next;
+  }
+
+  function simulateKnockbackSteps(config) {
+    const totalFrames = Math.max(Math.trunc(config.totalFrames) || 0, 0);
     const steps = [{ frame: 0, x: 0, y: 0 }];
     if (totalFrames <= 0) {
-      return steps;
+      return { steps, landingFrame: null, landed: false };
     }
 
     let xVelocity = f32(config.initialVX);
@@ -198,30 +210,45 @@
     let yDistance = f32(0);
     let fall = f32(0);
     let yVelocityCurrent = yVelocity;
+    let landed = false;
+    let landingFrame = null;
 
     const xDec = f32(config.xDec);
     const yDec = f32(config.yDec);
     const fallAccel = f32(config.fallAccel);
     const maxFall = f32(config.maxFall);
     const spikeMode = config.spikeMode;
+    const startX = Number.isFinite(config.startX) ? Number(config.startX) : 0;
+    const startY = Number.isFinite(config.startY) ? Number(config.startY) : 0;
+    const groundY = Number.isFinite(config.groundY) ? Number(config.groundY) : 0;
+    const traction = Math.max(0, Number(config.traction) || 0);
+    const stopOnLanding = Boolean(config.stopOnLanding);
+    const planes = Array.isArray(config.groundPlanes) ? config.groundPlanes : [];
+    const groundPlanes = planes
+      .map((plane) => ({
+        y: Number(plane.y),
+        xMin: Number(plane.xMin),
+        xMax: Number(plane.xMax),
+      }))
+      .filter((plane) => Number.isFinite(plane.y) && Number.isFinite(plane.xMin) && Number.isFinite(plane.xMax));
+    if (groundPlanes.length === 0 && Number.isFinite(groundY)) {
+      groundPlanes.push({ y: groundY, xMin: -Infinity, xMax: Infinity });
+    }
+    let activeGroundPlane = null;
 
-    const xIterations = Math.max(totalFrames - 1, 0);
-    let xIterationCount = 0;
-
-    let remainingYIterations = Math.max(totalFrames - 1, 0);
-
-    if (remainingYIterations > 0 && spikeMode !== 'air') {
+    if (spikeMode !== 'air') {
       yVelocityCurrent = f32(yVelocityCurrent - yDec);
     }
 
     for (let frame = 1; frame <= totalFrames; frame += 1) {
-      if (xIterationCount < xIterations && xVelocity > xDec) {
-        xVelocity = f32(xVelocity - xDec);
-        xDistance = f32(xDistance + xVelocity);
-        xIterationCount += 1;
-      }
+      const prevAbsY = startY + yDistance;
+      if (!landed) {
+        const prevAbsX = startX + xDistance;
+        if (xVelocity > xDec) {
+          xVelocity = f32(xVelocity - xDec);
+          xDistance = f32(xDistance + xVelocity);
+        }
 
-      if (remainingYIterations > 0) {
         if (spikeMode === 'air') {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
@@ -229,7 +256,6 @@
           }
           yVelocityCurrent = f32(yVelocityCurrent - yDec);
           yDistance = f32(yDistance + yVelocityCurrent + fall);
-          remainingYIterations -= 1;
         } else {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
@@ -238,14 +264,68 @@
           yDistance = f32(yDistance + (yVelocityCurrent - fall));
           const nextVelocity = f32(yVelocityCurrent - yDec);
           yVelocityCurrent = nextVelocity > 0 ? nextVelocity : 0;
-          remainingYIterations -= 1;
+        }
+
+        const newAbsX = startX + xDistance;
+        const newAbsY = startY + yDistance;
+        if (groundPlanes.length > 0) {
+          let candidate = null;
+          for (let i = 0; i < groundPlanes.length; i += 1) {
+            const plane = groundPlanes[i];
+            if (prevAbsY <= plane.y || newAbsY > plane.y) continue;
+            if (newAbsX < plane.xMin || newAbsX > plane.xMax) continue;
+            if (!candidate || plane.y > candidate.y) {
+              candidate = plane;
+            }
+          }
+          if (candidate) {
+            landed = true;
+            landingFrame = frame;
+            activeGroundPlane = candidate;
+            yDistance = f32(candidate.y - startY);
+            if (stopOnLanding) {
+              steps.push({ frame, x: Number(xDistance), y: Number(yDistance) });
+              break;
+            }
+            yVelocityCurrent = 0;
+            fall = f32(0);
+          }
+        }
+      } else {
+        if (traction > 0) {
+          xVelocity = applyGroundFriction(xVelocity, traction);
+        } else {
+          xVelocity = 0;
+        }
+        xDistance = f32(xDistance + xVelocity);
+        if (activeGroundPlane) {
+          yDistance = f32(activeGroundPlane.y - startY);
         }
       }
 
       steps.push({ frame, x: Number(xDistance), y: Number(yDistance) });
     }
 
-    return steps;
+    return { steps, landingFrame, landed };
+  }
+
+  function simulateHitstunTrajectory(config) {
+    return simulateKnockbackSteps({
+      totalFrames: config.hitstun,
+      initialVX: config.initialVX,
+      initialVY: config.initialVY,
+      xDec: config.xDec,
+      yDec: config.yDec,
+      fallAccel: config.fallAccel,
+      maxFall: config.maxFall,
+      spikeMode: config.spikeMode,
+      startX: config.startX,
+      startY: config.startY,
+      groundY: config.groundY,
+      traction: config.traction,
+      groundPlanes: config.groundPlanes,
+      stopOnLanding: config.stopOnLanding,
+    });
   }
 
   function computeKnockback(params) {
@@ -265,6 +345,11 @@
     const comboDelay = Math.max(0, Math.trunc(Number(params.comboDelay) || 0));
     const throwMove = Boolean(params.throwMove);
     const doubleJumpArmor = Boolean(params.doubleJumpArmor);
+    const startX = Number.isFinite(params.startX) ? Number(params.startX) : 0;
+    const startY = Number.isFinite(params.startY) ? Number(params.startY) : 0;
+    const groundY = Number.isFinite(params.groundY) ? Number(params.groundY) : 0;
+    const traction = Math.max(0, Number(params.traction) || 0);
+    const groundPlanes = Array.isArray(params.groundPlanes) ? params.groundPlanes : [];
 
     const baseDamageInt = Math.max(0, Math.trunc(Number(baseDamage) || 0));
     let damage = applyStaleness(baseDamage, damageModifier);
@@ -325,6 +410,7 @@
 
     const rawHitstun = knockback * HITSTUN_DIVIDER - HITSTUN_FLOOR;
     const hitstun = Math.max(0, roundToNearestEven(rawHitstun));
+    const isKnockdown = hitstun >= 32;
 
     const rawAngleDeg = Number(params.angle) || 0;
     let angleDeg = rawAngleDeg;
@@ -392,7 +478,8 @@
     const initialVelocityY = f32(yMultiplier * knockback);
     const initialVelocityX = f32(xMultiplier * knockback);
 
-    const trajectory = simulateHitstunTrajectory({
+    const stopOnLanding = isKnockdown;
+    const trajectoryResult = simulateHitstunTrajectory({
       hitstun,
       initialVX: initialVelocityX,
       initialVY: initialVelocityY,
@@ -401,7 +488,17 @@
       fallAccel,
       maxFall,
       spikeMode,
+      startX,
+      startY,
+      groundY,
+      traction,
+      groundPlanes,
+      stopOnLanding,
     });
+    const trajectory = trajectoryResult.steps;
+    const simulatedHitstun = stopOnLanding && trajectoryResult.landingFrame !== null
+      ? trajectoryResult.landingFrame
+      : hitstun;
 
     let fall = f32(0);
     let xVelocity = initialVelocityX;
@@ -410,40 +507,28 @@
     let yDistance = f32(0);
 
     const runHitstunSimulation = simulationMode === 'hitstun' || simulationMode === 'custom';
-    const frames = comboDelay > 0 ? comboDelay : hitstun;
+    const frameLimit = comboDelay > 0 ? Math.max(0, comboDelay - 1) : hitstun;
 
     if (runHitstunSimulation) {
-      let xFrames = Math.max(frames - 1, 0);
-      while (xFrames > 0 && xVelocity > xDec) {
-        xVelocity = f32(xVelocity - xDec);
-        xDistance = f32(xDistance + xVelocity);
-        xFrames -= 1;
-      }
-
-      let yFrames = Math.max(frames - 1, 0);
-      if (spikeMode === 'air') {
-        while (yFrames > 0) {
-          fall = f32(fall + fallAccel);
-          if (fall > maxFall) {
-            fall = maxFall;
-          }
-          yVelocity = f32(yVelocity - yDec);
-          yDistance = f32(yDistance + yVelocity + fall);
-          yFrames -= 1;
-        }
-      } else {
-        yVelocity = f32(yVelocity - yDec);
-        while (yFrames > 0) {
-          fall = f32(fall + fallAccel);
-          if (fall > maxFall) {
-            fall = maxFall;
-          }
-          yDistance = f32(yDistance + (yVelocity - fall));
-          const nextVelocity = f32(yVelocity - yDec);
-          yVelocity = nextVelocity > 0 ? nextVelocity : f32(0);
-          yFrames -= 1;
-        }
-      }
+      const simResult = simulateKnockbackSteps({
+        totalFrames: frameLimit,
+        initialVX: initialVelocityX,
+        initialVY: initialVelocityY,
+        xDec,
+        yDec,
+        fallAccel,
+        maxFall,
+        spikeMode,
+        startX,
+        startY,
+        groundY,
+        traction,
+        groundPlanes,
+        stopOnLanding,
+      });
+      const lastStep = simResult.steps[simResult.steps.length - 1];
+      xDistance = f32(lastStep ? lastStep.x : 0);
+      yDistance = f32(lastStep ? lastStep.y : 0);
     } else {
       while (xVelocity > xDec) {
         xVelocity = f32(xVelocity - xDec);
@@ -482,6 +567,7 @@
       knockback,
       hitlag,
       hitstun,
+      simulatedHitstun,
       attackMultiplier,
       defenseMultiplier,
       initialVelocityX: Number(initialVelocityX),

@@ -867,6 +867,7 @@
       let suppressCustomFlag = false;
       let defenderCustomOption = null;
       let selectedDefenderData = null;
+      let selectedDefenderTraction = null;
       let suppressDefenderCustom = false;
       let lastMoveBaseName = null;
 
@@ -1590,7 +1591,9 @@
           weight: Number(info.weight),
           fallAccel: Number(info.fallAccel),
           maxFall: Number(info.maxFall),
+          traction: Number(info.traction ?? 1),
         };
+        selectedDefenderTraction = Number(info.traction ?? selectedDefenderTraction ?? 1);
         weightInput.value = info.weight;
         fallAccelInput.value = info.fallAccel;
         maxFallInput.value = info.maxFall;
@@ -1917,6 +1920,21 @@
         const customFrameLimit = simulationMode === 'custom' ? comboDelayValue : null;
         const comboDelayFrames = simulationMode === 'custom' ? comboDelayValue + 1 : 0;
 
+        const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
+        const position = customPosition ? { x: customPosition.x, y: customPosition.y } : dropdownPosition;
+        const defenderTraction = Number.isFinite(selectedDefenderTraction)
+          ? selectedDefenderTraction
+          : (selectedDefenderData && Number.isFinite(selectedDefenderData.traction)
+            ? selectedDefenderData.traction
+            : 1);
+        const groundPlanes = Object.values(POSITION_DATA).reduce((planes, platform) => {
+          if (!platform) return planes;
+          const xMin = platform.center - platform.halfWidth;
+          const xMax = platform.center + platform.halfWidth;
+          planes.push({ xMin, xMax, y: platform.y });
+          return planes;
+        }, []);
+
         const yoshiSelected = isYoshiDefender();
         const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
 
@@ -1939,6 +1957,10 @@
           doubleJumpArmor: doubleJumpArmorActive,
           simulationMode,
           comboDelay: comboDelayFrames,
+          startX: position.x,
+          startY: position.y,
+          traction: defenderTraction,
+          groundPlanes,
         };
 
         const result = Smash64Calculator.compute(params);
@@ -1969,7 +1991,7 @@
           });
         }
 
-        const displayHitstun = Math.max(0, result.hitstun - 1);
+        const displayHitstun = Math.max(0, Number.isFinite(result.simulatedHitstun) ? result.simulatedHitstun : result.hitstun);
         outputNodes.hitlag.textContent = formatIntegral(result.hitlag);
         outputNodes.hitstun.textContent = UI_TEXT.hitstunFrames({ frames: formatIntegral(displayHitstun) });
         outputNodes.knockdown.textContent = result.hitstun >= 32 ? UI_TEXT.knocksDown : UI_TEXT.noKnockdown;
@@ -2033,8 +2055,6 @@
           }
         }
 
-        const dropdownPosition = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
-        const position = customPosition ? { x: customPosition.x, y: customPosition.y } : dropdownPosition;
         if (outputNodes.positionOutput) {
           outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
         }
@@ -2084,7 +2104,7 @@
         if (trajectoryPoints.length === 0) {
           trajectoryPoints.push({ frame: 0, x: position.x, y: position.y });
         }
-        updateTrajectoryDisplay(position, trajectoryPoints, { x: finalX, y: finalY }, result.hitstun, {
+        updateTrajectoryDisplay(position, trajectoryPoints, { x: finalX, y: finalY }, displayHitstun, {
           killFrameLimit: customFrameLimit,
           allowEndPointWhenKill: customFrameLimit !== null,
         });
@@ -2172,11 +2192,18 @@
           ? UI_TEXT.killsAt({ percent: formatIntegral(killThreshold) })
           : '';
 
+        const landedDuringHitstun = Number.isFinite(result.simulatedHitstun)
+          && Number.isFinite(result.hitstun)
+          && result.simulatedHitstun < result.hitstun;
+        const effectiveCustomFrame = (simulationMode === 'custom' && customFrameLimit !== null && landedDuringHitstun)
+          ? Math.min(customFrameLimit, result.simulatedHitstun)
+          : customFrameLimit;
+
         let framesSimulated = null;
         if (simulationMode === 'hitstun') {
           framesSimulated = displayHitstun;
         } else if (simulationMode === 'custom') {
-          framesSimulated = customFrameLimit;
+          framesSimulated = effectiveCustomFrame;
         }
         if (framesSimulated !== null) {
           const label = simulationMode === 'custom'

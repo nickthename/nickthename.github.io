@@ -151,6 +151,12 @@ hreflangs:
     .trajectory-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
     .trajectory-svg { width: 100%; aspect-ratio: 16 / 10; background: rgba(0,0,0,0.05); border-radius: 12px; border: 1px solid rgba(0,0,0,0.12); touch-action: none; cursor: grab; position: relative; }
     .trajectory-svg:active { cursor: grabbing; }
+    .trajectory-sky { fill: #9fd5f7; }
+    .trajectory-stage-image { opacity: 0.95; pointer-events: none; }
+    .trajectory-svg[data-bg="faded"] .trajectory-stage-image { opacity: 0.28; }
+    .trajectory-svg[data-bg="faded"] .trajectory-sky { fill: #e8f2fb; }
+    .trajectory-svg[data-bg="none"] .trajectory-stage-image { opacity: 0; }
+    .trajectory-svg[data-bg="none"] .trajectory-sky { opacity: 0; }
     .trajectory-stage line { stroke: rgba(0,0,0,0.55); stroke-width: 40; stroke-linecap: round; }
     .trajectory-stage .platform { opacity: 0.85; stroke-width: 32; }
     .trajectory-path { fill: none; stroke: #3165d4; stroke-width: 24; stroke-linejoin: round; stroke-linecap: round; opacity: 0.85; }
@@ -188,6 +194,65 @@ hreflangs:
     .outputs-panel { gap: 1rem; }
     .outputs-footer { display: flex; justify-content: flex-end; align-items: center; font-size: 0.8rem; opacity: 0.7; margin-top: 0.4rem; }
     .outputs-footer label { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500; margin: 0; }
+
+    .bg-selector { position: relative; display: inline-flex; align-items: center; }
+    .bg-toggle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.03);
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: border-color 0.1s ease, background 0.1s ease, transform 0.1s ease;
+    }
+    .bg-toggle:hover { border-color: rgba(0,0,0,0.35); }
+    .bg-toggle:active { transform: translateY(1px); }
+    .bg-toggle:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
+    .bg-menu {
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      right: 0;
+      display: grid;
+      gap: 0.35rem;
+      padding: 0.4rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 12px 28px rgba(15,23,42,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 0.12s ease, transform 0.12s ease;
+      z-index: 5;
+      min-width: 160px;
+    }
+    .bg-selector.is-open .bg-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .bg-option {
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.1s ease, background 0.1s ease;
+    }
+    .bg-option.is-active {
+      border-color: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.08);
+    }
 
     .action-panel { gap: 0.5rem; padding: 0.65rem 0.75rem; }
     .action-panel h2 { margin: 0; font-size: 0.95rem; letter-spacing: -0.01em; }
@@ -282,6 +347,12 @@ hreflangs:
       dl div { border-color: rgba(255,255,255,0.2); }
       .status-divider { background: rgba(255,255,255,0.18); }
       .trajectory-svg { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); }
+      .trajectory-sky { fill: #7fbfe8; }
+      .trajectory-svg[data-bg="faded"] .trajectory-sky { fill: #1f2a38; }
+      .bg-toggle { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+      .bg-menu { border-color: rgba(255,255,255,0.2); background: rgba(14,18,28,0.95); }
+      .bg-option { border-color: rgba(255,255,255,0.2); }
+      .bg-option.is-active { background: rgba(255,255,255,0.12); }
       .trajectory-stage line { stroke: rgba(255,255,255,0.7); }
       .trajectory-stage .platform { stroke: rgba(255,255,255,0.65); }
       .trajectory-path { stroke: #82a8ff; }
@@ -514,10 +585,23 @@ hreflangs:
                 <input type="checkbox" id="snap-toggle" checked>
                 <span>Snap to start points</span>
               </label>
+              <div class="bg-selector" data-bg-selector>
+                <button type="button" class="bg-toggle" data-bg-toggle aria-expanded="false" aria-controls="bg-menu" title="Background" aria-label="Background options">
+                  <span aria-hidden="true">🖌️</span>
+                </button>
+                <div class="bg-menu" id="bg-menu" role="menu">
+                  <button type="button" class="bg-option is-active" data-bg-option="full" aria-pressed="true">Stage background</button>
+                  <button type="button" class="bg-option" data-bg-option="faded" aria-pressed="false">Stage (faded)</button>
+                  <button type="button" class="bg-option" data-bg-option="none" aria-pressed="false">No background</button>
+                </div>
+              </div>
             </div>
           </div>
           <p class="muted trajectory-label">Drag the start marker or click the stage to set defender position.</p>
-          <svg id="trajectory-svg" class="trajectory-svg" viewBox="0 0 10 10" role="img" aria-label="Defender trajectory visualization">
+          <svg id="trajectory-svg" class="trajectory-svg" data-bg="full" viewBox="0 0 10 10" role="img" aria-label="Defender trajectory visualization">
+            <rect id="trajectory-sky" class="trajectory-sky" x="-40000" y="-40000" width="80000" height="80000"></rect>
+            <image id="trajectory-stage-image" class="trajectory-stage-image" href="{{ "/calc/DreamLandSSB.png" | relative_url }}" data-image-width="600" data-image-height="440" data-ground-px="355" data-scale="2" data-offset-y="-0.165" preserveAspectRatio="xMidYMid meet"></image>
+
             <g class="trajectory-stage" id="trajectory-stage">
               <path id="trajectory-blastzone-outside" class="blastzone-outside" d="" fill-rule="evenodd"></path>
               <rect id="trajectory-blastzone" class="blastzone-bounds" x="0" y="0" width="0" height="0"></rect>

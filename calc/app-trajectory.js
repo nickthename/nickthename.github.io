@@ -201,6 +201,27 @@
     assignLine(stageGroup.right, POSITION_DATA['right-platform']);
     assignLine(stageGroup.top, POSITION_DATA['top-platform']);
 
+    if (trajectoryElements.stageImage && POSITION_DATA.stage) {
+      const image = trajectoryElements.stageImage;
+      const imageWidth = Number(image.dataset.imageWidth) || 600;
+      const imageHeight = Number(image.dataset.imageHeight) || 440;
+      const groundPx = Number(image.dataset.groundPx) || 355;
+      const imageScale = Number(image.dataset.scale) || 1;
+      const offsetRatio = Number(image.dataset.offsetY) || 0;
+      if (imageWidth > 0 && imageHeight > 0) {
+        const stageWidth = POSITION_DATA.stage.halfWidth * 2;
+        const scale = (stageWidth / imageWidth) * imageScale;
+        const scaledHeight = imageHeight * scale;
+        const scaledWidth = stageWidth * imageScale;
+        const x = POSITION_DATA.stage.center - scaledWidth / 2;
+        const y = -groundPx * scale - (scaledHeight * offsetRatio);
+        image.setAttribute('x', x);
+        image.setAttribute('y', y);
+        image.setAttribute('width', scaledWidth);
+        image.setAttribute('height', scaledHeight);
+      }
+    }
+
     if (trajectoryElements.blastzone) {
       const rect = trajectoryElements.blastzone;
       const width = BLASTZONE_LIMITS.right - BLASTZONE_LIMITS.left;
@@ -210,6 +231,18 @@
       rect.setAttribute('width', width);
       rect.setAttribute('y', topDisplay);
       rect.setAttribute('height', bottomDisplay - topDisplay);
+    }
+
+    if (trajectoryElements.sky) {
+      const width = BLASTZONE_LIMITS.right - BLASTZONE_LIMITS.left;
+      const topDisplay = stageToDisplayY(BLASTZONE_LIMITS.top);
+      const bottomDisplay = stageToDisplayY(BLASTZONE_LIMITS.bottom);
+      const y = Math.min(topDisplay, bottomDisplay);
+      const height = Math.abs(bottomDisplay - topDisplay);
+      trajectoryElements.sky.setAttribute('x', BLASTZONE_LIMITS.left);
+      trajectoryElements.sky.setAttribute('width', width);
+      trajectoryElements.sky.setAttribute('y', y);
+      trajectoryElements.sky.setAttribute('height', height);
     }
   };
 

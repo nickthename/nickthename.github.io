@@ -49,6 +49,10 @@
     versionSelectorRoot: document.querySelector('[data-version-language-selector]'),
     copyLinkButton: document.getElementById('copy-link-button'),
     resetButton: document.getElementById('reset-button'),
+    backgroundSelector: document.querySelector('[data-bg-selector]'),
+    backgroundToggle: document.querySelector('[data-bg-toggle]'),
+    backgroundMenu: document.getElementById('bg-menu'),
+    backgroundOptions: Array.from(document.querySelectorAll('[data-bg-option]')),
   };
 
   app.outputNodes = {
@@ -104,6 +108,8 @@
     killMarker: document.getElementById('trajectory-kill-marker'),
     blastzone: document.getElementById('trajectory-blastzone'),
     blastzoneOutside: document.getElementById('trajectory-blastzone-outside'),
+    sky: document.getElementById('trajectory-sky'),
+    stageImage: document.getElementById('trajectory-stage-image'),
     stage: {
       ground: document.getElementById('trajectory-stage-ground'),
       left: document.getElementById('trajectory-stage-left'),

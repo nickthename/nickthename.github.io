@@ -55,6 +55,10 @@
         versionSelectorRoot,
         copyLinkButton,
         resetButton,
+        backgroundSelector,
+        backgroundToggle,
+        backgroundMenu,
+        backgroundOptions,
       } = elements;
 
       const {
@@ -815,6 +819,34 @@
           url.searchParams.delete('data');
         }
         window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+      };
+
+      const BACKGROUND_STORAGE_KEY = 'smash64:calc-bg';
+      const BACKGROUND_OPTIONS = ['full', 'faded', 'none'];
+
+      const setBackgroundMode = (mode, { save = true } = {}) => {
+        const normalized = BACKGROUND_OPTIONS.includes(mode) ? mode : 'full';
+        if (trajectoryElements && trajectoryElements.svg) {
+          trajectoryElements.svg.dataset.bg = normalized;
+        }
+        if (Array.isArray(backgroundOptions)) {
+          backgroundOptions.forEach((option) => {
+            const isActive = option.dataset.bgOption === normalized;
+            option.classList.toggle('is-active', isActive);
+            option.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+        }
+        if (save && window.localStorage) {
+          window.localStorage.setItem(BACKGROUND_STORAGE_KEY, normalized);
+        }
+      };
+
+      const toggleBackgroundMenu = (forceOpen = null) => {
+        if (!backgroundSelector || !backgroundToggle) return;
+        const isOpen = backgroundSelector.classList.contains('is-open');
+        const nextOpen = forceOpen === null ? !isOpen : forceOpen;
+        backgroundSelector.classList.toggle('is-open', nextOpen);
+        backgroundToggle.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
       };
 
       let copyFeedbackTimer = null;
@@ -1932,6 +1964,37 @@
         });
       }
 
+      if (backgroundToggle && backgroundSelector) {
+        backgroundToggle.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleBackgroundMenu();
+        });
+      }
+
+      if (backgroundMenu) {
+        backgroundMenu.addEventListener('click', (event) => {
+          const button = event.target.closest('[data-bg-option]');
+          if (!button) return;
+          event.preventDefault();
+          setBackgroundMode(button.dataset.bgOption);
+          toggleBackgroundMenu(false);
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        if (!backgroundSelector) return;
+        if (!backgroundSelector.contains(event.target)) {
+          toggleBackgroundMenu(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          toggleBackgroundMenu(false);
+        }
+      });
+
       syncPositionInputs();
 
       setStaleness(state.stalenessValue, { trigger: false });
@@ -1957,6 +2020,12 @@
       updateComboDelayVisibility();
 
       baselineState = buildStateSnapshot();
+
+      const storedBackground = window.localStorage ? window.localStorage.getItem(BACKGROUND_STORAGE_KEY) : null;
+      const defaultBackground = trajectoryElements && trajectoryElements.svg && trajectoryElements.svg.dataset.bg
+        ? trajectoryElements.svg.dataset.bg
+        : 'full';
+      setBackgroundMode(storedBackground || defaultBackground, { save: false });
 
       if (initialDataState) {
         const expandedState = expandStateFromDelta(baselineState, initialDataState);

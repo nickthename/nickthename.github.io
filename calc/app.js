@@ -1104,8 +1104,8 @@
         suppressCustomFlag = true;
         if (active) {
           customOption.textContent = UI_TEXT.customMove;
-          moveSelect.value = '';
-          moveSelect.selectedIndex = 0;
+          setSelectValue(null, moveSelect, customOption.value);
+          customOption.selected = true;
           selectedMoveIndex = null;
           selectedMoveData = null;
         } else {

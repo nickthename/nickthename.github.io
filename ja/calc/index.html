@@ -583,15 +583,15 @@ hreflangs:
                   <span aria-hidden="true">🖌️</span>
                 </button>
                 <div class="bg-menu" id="bg-menu" role="menu">
-                  <button type="button" class="bg-option is-active" data-bg-option="full" aria-pressed="true">ステージ背景</button>
-                  <button type="button" class="bg-option" data-bg-option="faded" aria-pressed="false">背景（薄め）</button>
+                  <button type="button" class="bg-option" data-bg-option="full" aria-pressed="false">ステージ背景</button>
+                  <button type="button" class="bg-option is-active" data-bg-option="faded" aria-pressed="true">背景（薄め）</button>
                   <button type="button" class="bg-option" data-bg-option="none" aria-pressed="false">背景なし</button>
                 </div>
               </div>
             </div>
           </div>
           <p class="muted trajectory-label">開始マーカーをドラッグするか、ステージをクリックして相手位置を設定します。</p>
-          <svg id="trajectory-svg" class="trajectory-svg" data-bg="full" viewBox="0 0 10 10" role="img" aria-label="吹っ飛び軌道の可視化">
+          <svg id="trajectory-svg" class="trajectory-svg" data-bg="faded" viewBox="0 0 10 10" role="img" aria-label="吹っ飛び軌道の可視化">
             <rect id="trajectory-sky" class="trajectory-sky" x="-40000" y="-40000" width="80000" height="80000"></rect>
             <image id="trajectory-stage-image" class="trajectory-stage-image" href="{{ "/calc/DreamLandSSB.png" | relative_url }}" data-image-width="600" data-image-height="440" data-ground-px="355" data-scale="2" data-offset-y="-0.165" preserveAspectRatio="xMidYMid meet"></image>
             <g class="trajectory-stage" id="trajectory-stage">

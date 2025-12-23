@@ -590,15 +590,15 @@ hreflangs:
                   <span aria-hidden="true">🖌️</span>
                 </button>
                 <div class="bg-menu" id="bg-menu" role="menu">
-                  <button type="button" class="bg-option is-active" data-bg-option="full" aria-pressed="true">Stage background</button>
-                  <button type="button" class="bg-option" data-bg-option="faded" aria-pressed="false">Stage (faded)</button>
+                  <button type="button" class="bg-option" data-bg-option="full" aria-pressed="false">Stage background</button>
+                  <button type="button" class="bg-option is-active" data-bg-option="faded" aria-pressed="true">Stage (faded)</button>
                   <button type="button" class="bg-option" data-bg-option="none" aria-pressed="false">No background</button>
                 </div>
               </div>
             </div>
           </div>
           <p class="muted trajectory-label">Drag the start marker or click the stage to set defender position.</p>
-          <svg id="trajectory-svg" class="trajectory-svg" data-bg="full" viewBox="0 0 10 10" role="img" aria-label="Defender trajectory visualization">
+          <svg id="trajectory-svg" class="trajectory-svg" data-bg="faded" viewBox="0 0 10 10" role="img" aria-label="Defender trajectory visualization">
             <rect id="trajectory-sky" class="trajectory-sky" x="-40000" y="-40000" width="80000" height="80000"></rect>
             <image id="trajectory-stage-image" class="trajectory-stage-image" href="{{ "/calc/DreamLandSSB.png" | relative_url }}" data-image-width="600" data-image-height="440" data-ground-px="355" data-scale="2" data-offset-y="-0.165" preserveAspectRatio="xMidYMid meet"></image>
 

@@ -18,7 +18,7 @@ hreflangs:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="/favicon_solid.png">
+  <link rel="shortcut icon" href="/favicon_solid2.png">
   <title>Smash 64 Knockback Calculator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
@@ -130,7 +130,11 @@ hreflangs:
     .ss-content .ss-option:hover,
     .ss-content .ss-option.ss-highlighted { background: rgba(49,101,212,0.1); }
 
-    .form-layout { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .form-layout { display: grid; gap: 0.9rem; grid-template-columns: 1fr; }
+    @media (min-width: 860px) {
+      .form-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .form-subcolumn { display: grid; gap: 0.9rem; align-content: start; }
     .move-grid, .properties-grid { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
     .move-flags { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; grid-column: 1 / -1; }
     .position-row { display: grid; gap: 0.4rem; }
@@ -186,6 +190,7 @@ hreflangs:
     .field-group { display: grid; gap: 0.35rem; }
     .field-label { font-size: 0.85rem; font-weight: 600; }
     .segmented-control { display: inline-flex; border: 1px solid rgba(0,0,0,0.2); border-radius: 999px; padding: 2px; background: rgba(0,0,0,0.05); gap: 2px; }
+    .segmented-control.compact { width: fit-content; justify-self: start; }
     .segmented-button { border: none; background: transparent; font: inherit; font-size: 0.85rem; padding: 0.35rem 0.65rem; border-radius: 999px; cursor: pointer; color: inherit; opacity: 0.75; transition: background 0.15s ease, opacity 0.15s ease; white-space: nowrap; }
     .segmented-button:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
     .segmented-button.is-active { background: rgba(49,101,212,0.1); opacity: 1; font-weight: 600; }
@@ -464,41 +469,75 @@ hreflangs:
             </details>
           </fieldset>
 
-          <fieldset>
-            <legend>Position</legend>
-            <div class="position-row">
-              <label for="position-horizontal">Preset</label>
-              <div class="position-inputs">
-                <select id="position-horizontal" name="positionHorizontal">
-                  <option value="" hidden></option>
-                  <option value="left">Left side</option>
-                  <option value="center" selected>Center</option>
-                  <option value="right">Right side</option>
-                </select>
-                <span>of</span>
-                <select id="position-vertical" name="positionVertical">
-                  <option value="" hidden></option>
-                  <option value="stage" selected>Stage</option>
-                  <option value="left-platform">Left platform</option>
-                  <option value="right-platform">Right platform</option>
-                  <option value="top-platform">Top platform</option>
-                </select>
+          <div class="form-subcolumn">
+            <fieldset>
+              <legend>Position</legend>
+              <div class="position-row">
+                <label for="position-horizontal">Preset</label>
+                <div class="position-inputs">
+                  <select id="position-horizontal" name="positionHorizontal">
+                    <option value="" hidden></option>
+                    <option value="left">Left side</option>
+                    <option value="center" selected>Center</option>
+                    <option value="right">Right side</option>
+                  </select>
+                  <span>of</span>
+                  <select id="position-vertical" name="positionVertical">
+                    <option value="" hidden></option>
+                    <option value="stage" selected>Stage</option>
+                    <option value="left-platform">Left platform</option>
+                    <option value="right-platform">Right platform</option>
+                    <option value="top-platform">Top platform</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="position-coordinates">
-              <div>
-                <label for="position-x-input">X coordinate</label>
-                <input id="position-x-input" name="positionX" type="number" step="any" inputmode="decimal">
+              <div class="position-coordinates">
+                <div>
+                  <label for="position-x-input">X coordinate</label>
+                  <input id="position-x-input" name="positionX" type="number" step="any" inputmode="decimal">
+                </div>
+                <div>
+                  <label for="position-y-input">Y coordinate</label>
+                  <input id="position-y-input" name="positionY" type="number" step="any" inputmode="decimal">
+                </div>
               </div>
-              <div>
-                <label for="position-y-input">Y coordinate</label>
-                <input id="position-y-input" name="positionY" type="number" step="any" inputmode="decimal">
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
+
+            <fieldset>
+              <legend>Handicap (rare)</legend>
+              <details class="disclosure" id="handicap-details">
+                <summary>Handicap values</summary>
+                <div class="details-content properties-grid">
+                  <div>
+                    <label for="attack-handicap-input">Attack handicap</label>
+                    <input id="attack-handicap-input" name="attackHandicap" type="number" step="1" min="0" max="40" value="9">
+                  </div>
+                  <div>
+                    <label for="defense-handicap-input">Defense handicap</label>
+                    <input id="defense-handicap-input" name="defenseHandicap" type="number" step="1" min="0" max="40" value="9">
+                  </div>
+                  <div class="static-field">
+                    <span class="field-label">Attack multiplier</span>
+                    <span id="attack-multiplier-value" class="static-value">1.00</span>
+                  </div>
+                  <div class="static-field">
+                    <span class="field-label">Defense multiplier</span>
+                    <span id="defense-multiplier-value" class="static-value">1.00</span>
+                  </div>
+                </div>
+              </details>
+            </fieldset>
+          </div>
 
           <fieldset>
             <legend>Move context</legend>
+            <div class="field-group">
+              <span class="field-label">Attack direction</span>
+              <div class="segmented-control compact" id="attack-direction-control" role="group" aria-label="Attack direction">
+                <button type="button" class="segmented-button" data-attack-direction="left" aria-pressed="false">Left</button>
+                <button type="button" class="segmented-button is-active" data-attack-direction="right" aria-pressed="true">Right</button>
+              </div>
+            </div>
             <div class="field-group">
               <span class="field-label">Staleness</span>
               <div class="segmented-control" id="staleness-control" role="group" aria-label="Staleness">
@@ -531,30 +570,6 @@ hreflangs:
               <input id="combo-delay-input" name="comboDelay" type="number" step="1" min="0">
             </div>
           </fieldset>
-        <fieldset>
-          <legend>Handicap (rare)</legend>
-          <details class="disclosure" id="handicap-details">
-            <summary>Handicap values</summary>
-            <div class="details-content properties-grid">
-              <div>
-                <label for="attack-handicap-input">Attack handicap</label>
-                <input id="attack-handicap-input" name="attackHandicap" type="number" step="1" min="0" max="40" value="9">
-              </div>
-              <div>
-                <label for="defense-handicap-input">Defense handicap</label>
-                <input id="defense-handicap-input" name="defenseHandicap" type="number" step="1" min="0" max="40" value="9">
-              </div>
-              <div class="static-field">
-                <span class="field-label">Attack multiplier</span>
-                <span id="attack-multiplier-value" class="static-value">1.00</span>
-              </div>
-              <div class="static-field">
-                <span class="field-label">Defense multiplier</span>
-                <span id="defense-multiplier-value" class="static-value">1.00</span>
-              </div>
-            </div>
-          </details>
-        </fieldset>
         </form>
       </section>
 

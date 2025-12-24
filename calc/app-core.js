@@ -31,6 +31,7 @@
     electricToggle: document.getElementById('electric-toggle'),
     throwToggle: document.getElementById('throw-toggle'),
     targetStateSelect: document.getElementById('target-state-select'),
+    attackDirectionButtons: Array.from(document.querySelectorAll('[data-attack-direction]')),
     simulationSelect: document.getElementById('simulation-select'),
     comboDelayInput: document.getElementById('combo-delay-input'),
     comboDelayRow: document.getElementById('combo-delay-row'),

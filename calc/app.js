@@ -37,6 +37,7 @@
         electricToggle,
         throwToggle,
         targetStateSelect,
+        attackDirectionButtons,
         simulationSelect,
         comboDelayInput,
         comboDelayRow,
@@ -81,6 +82,7 @@
       state.doubleJumpArmorLiftActive = state.doubleJumpArmorLiftActive ?? false;
       state.doubleJumpArmorAnchor = state.doubleJumpArmorAnchor ?? null;
       state.suppressPositionChange = state.suppressPositionChange ?? false;
+      state.attackDirection = state.attackDirection ?? 'right';
 
       const {
         isPositionOnPlatform,
@@ -270,6 +272,23 @@
         if (trigger && changed) calculate();
       }
 
+      function updateAttackDirectionButtons() {
+        if (!Array.isArray(attackDirectionButtons)) return;
+        attackDirectionButtons.forEach((button) => {
+          const isActive = button.dataset.attackDirection === state.attackDirection;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      function setAttackDirection(value, { trigger = true } = {}) {
+        const normalized = ATTACK_DIRECTION_ORDER.includes(value) ? value : ATTACK_DIRECTION_ORDER[0];
+        const changed = state.attackDirection !== normalized;
+        state.attackDirection = normalized;
+        updateAttackDirectionButtons();
+        if (trigger && changed) calculate();
+      }
+
       function updateCameraButtons() {
         cameraButtons.forEach((button) => {
           const isActive = button.dataset.cameraMode === trajectoryState.cameraMode;
@@ -408,6 +427,7 @@
       const STALENESS_ORDER = ['fresh', 'lv3', 'lv2', 'lv1', 'stale'];
       const TARGET_STATE_ORDER = ['standing', 'crouching', 'airborne', 'laying'];
       const SIMULATION_ORDER = ['hitstun', 'velocity', 'custom'];
+      const ATTACK_DIRECTION_ORDER = ['right', 'left'];
       const CAMERA_MODE_ORDER = ['fit', 'stage', 'blastzone'];
       const POSITION_HORIZONTAL_ORDER = ['left', 'center', 'right'];
       const POSITION_VERTICAL_ORDER = ['stage', 'left-platform', 'right-platform', 'top-platform'];
@@ -601,6 +621,11 @@
           write: (value, writer) => writer.writeVarint(findIndexInList(value, SIMULATION_ORDER)),
           read: (reader) => SIMULATION_ORDER[reader.readVarint()] || SIMULATION_ORDER[0],
         },
+        {
+          key: 'attackDirection',
+          write: (value, writer) => writer.writeVarint(findIndexInList(value, ATTACK_DIRECTION_ORDER)),
+          read: (reader) => ATTACK_DIRECTION_ORDER[reader.readVarint()] || ATTACK_DIRECTION_ORDER[0],
+        },
         { key: 'comboDelay', write: (value, writer) => writer.writeVarint(value), read: (reader) => reader.readVarint() },
         { key: 'attackHandicap', write: (value, writer) => writer.writeVarint(value), read: (reader) => reader.readVarint() },
         { key: 'defenseHandicap', write: (value, writer) => writer.writeVarint(value), read: (reader) => reader.readVarint() },
@@ -698,6 +723,7 @@
           moveSlot: Number.isFinite(selectedMoveSlot) ? selectedMoveSlot : null,
           staleness: state.stalenessValue,
           targetState: readSelectValue(targetStateSelect),
+          attackDirection: state.attackDirection,
           simulation: readSelectValue(simulationSelect),
           attackHandicap: readNumber(attackHandicapInput),
           defenseHandicap: readNumber(defenseHandicapInput),
@@ -749,7 +775,7 @@
         const delta = {};
         const keys = [
           'version', 'defender', 'attacker', 'moveSlot',
-          'staleness', 'targetState', 'simulation', 'comboDelay',
+          'staleness', 'targetState', 'simulation', 'attackDirection', 'comboDelay',
           'attackHandicap', 'defenseHandicap',
           'damage', 'angle', 'kbs', 'bkb', 'fkb',
           'electric', 'throwMove',
@@ -1337,6 +1363,9 @@
         if (typeof snapshot.throwMove === 'boolean') throwToggle.checked = snapshot.throwMove;
 
         if (typeof snapshot.targetState === 'string') targetStateSelect.value = snapshot.targetState;
+        if (typeof snapshot.attackDirection === 'string') {
+          setAttackDirection(snapshot.attackDirection, { trigger: false });
+        }
         if (typeof snapshot.simulation === 'string') simulationSelect.value = snapshot.simulation;
         updateComboDelayVisibility();
 
@@ -1472,6 +1501,8 @@
         const defenseIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(defenseHandicapInput, 9))));
 
         const simulationMode = simulationSelect.value;
+        const attackDirection = state.attackDirection || 'right';
+        const attackDirectionSign = attackDirection === 'left' ? -1 : 1;
         const rawComboDelay = numericValue(comboDelayInput, 0);
         const comboDelayValue = Math.max(0, Math.trunc(rawComboDelay));
         const customFrameLimit = simulationMode === 'custom' ? comboDelayValue : null;
@@ -1638,12 +1669,16 @@
           ? result.verticalDirection
           : fallbackVertical;
 
-        const signedInitialVX = result.initialVelocityX * (horizontalDirection === 0 ? 0 : horizontalDirection);
+        const signedInitialVX = result.initialVelocityX
+          * (horizontalDirection === 0 ? 0 : horizontalDirection)
+          * attackDirectionSign;
         const signedInitialVY = result.initialVelocityY * (verticalDirection === 0 ? 0 : verticalDirection);
         outputNodes.initVx.textContent = formatStandard(signedInitialVX);
         outputNodes.initVy.textContent = formatStandard(signedInitialVY);
 
-        const signedXDistance = result.totalDistanceX * (horizontalDirection === 0 ? 0 : horizontalDirection);
+        const signedXDistance = result.totalDistanceX
+          * (horizontalDirection === 0 ? 0 : horizontalDirection)
+          * attackDirectionSign;
         const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
         outputNodes.totalX.textContent = formatStandard(signedXDistance);
         outputNodes.totalY.textContent = formatStandard(signedYDistance);
@@ -1651,7 +1686,7 @@
         const finalY = position.y + signedYDistance;
         outputNodes.finalPosition.textContent = `(${formatIntegral(finalX)}, ${formatIntegral(finalY)})`;
 
-        const trajectoryDirectionX = horizontalDirection === 0 ? 0 : horizontalDirection;
+        const trajectoryDirectionX = (horizontalDirection === 0 ? 0 : horizontalDirection) * attackDirectionSign;
         const trajectoryDirectionY = verticalDirection === 0 ? 0 : verticalDirection;
         const trajectoryPoints = (result.trajectory || []).map((step) => ({
           frame: step.frame,
@@ -1736,7 +1771,9 @@
           const simVerticalDirection = (typeof sim.verticalDirection === 'number')
             ? sim.verticalDirection
             : fallbackSimVertical;
-          const simSignedX = sim.totalDistanceX * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection);
+          const simSignedX = sim.totalDistanceX
+            * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection)
+            * attackDirectionSign;
           const simSignedY = sim.totalDistanceY * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
           const testPos = {
             x: position.x + simSignedX,
@@ -1746,7 +1783,8 @@
           if (Array.isArray(sim.trajectory) && sim.trajectory.length > 0) {
             for (let i = 0; i < sim.trajectory.length; i += 1) {
               const step = sim.trajectory[i];
-              const stepX = position.x + step.x * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection);
+              const stepX = position.x
+                + step.x * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection) * attackDirectionSign;
               const stepY = position.y + step.y * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
               if (isKill(stepX, stepY)) {
                 killsDuringTrajectory = true;
@@ -1836,6 +1874,7 @@
         comboDelayInput, attackHandicapInput, defenseHandicapInput,
         weightInput, fallAccelInput, maxFallInput, hpInput,
         damageInput, angleInput, kbsInput, bkbInput, fkbInput].forEach((node) => {
+        if (!node) return;
         node.addEventListener('input', handleInputChange);
         node.addEventListener('change', handleInputChange);
       });
@@ -1932,6 +1971,17 @@
         });
       });
 
+      if (Array.isArray(attackDirectionButtons)) {
+        attackDirectionButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const value = button.dataset.attackDirection;
+            if (!value) return;
+            setAttackDirection(value);
+            markStateDirty();
+          });
+        });
+      }
+
       cameraButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const mode = button.dataset.cameraMode;
@@ -1999,6 +2049,7 @@
 
       setStaleness(state.stalenessValue, { trigger: false });
       setCameraMode(trajectoryState.cameraMode, { trigger: false });
+      setAttackDirection(state.attackDirection, { trigger: false });
 
       if (trajectoryElements.svg) {
         applyTrajectoryViewBox(trajectoryState.viewBox);

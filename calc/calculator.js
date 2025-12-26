@@ -158,13 +158,18 @@
     }
   }
 
+  function getHitlagBonus() {
+    return currentVersion === 'J' ? 4 : 5;
+  }
+
   function hitlagForCrouch(damage, electric) {
     const base = Math.floor(damage / 3);
+    const bonus = getHitlagBonus();
     if (electric) {
-      const value = base + 5;
+      const value = base + bonus;
       return value & ~1; // round down to the nearest even value
     }
-    const scaled = Math.floor((base * 2 + 10) / 3);
+    const scaled = Math.floor((base * 2 + bonus * 2) / 3);
     return scaled;
   }
 
@@ -172,13 +177,13 @@
     const dmg = Math.max(0, Math.trunc(damage));
     if (state === 'laying') {
       const extra = Math.ceil(dmg / 2);
-      const base = Math.floor(extra / 3) + 5;
+      const base = Math.floor(extra / 3) + getHitlagBonus();
       return electric ? Math.floor(base * 1.5) : base;
     }
     if (state === 'crouching') {
       return hitlagForCrouch(dmg, electric);
     }
-    let base = Math.floor(dmg / 3) + 5;
+    let base = Math.floor(dmg / 3) + getHitlagBonus();
     if (electric) {
       base = Math.floor(base * 1.5);
     }
@@ -371,7 +376,7 @@
       const extraApplied = Math.ceil(damage / 2);
       const extraForKnockback = Math.ceil(damageForKnockback / 2);
       hpForKnockback += extraForKnockback;
-      const base = Math.floor(extraApplied / 3) + 5;
+      const base = Math.floor(extraApplied / 3) + getHitlagBonus();
       hitlag = electric ? Math.floor(base * 1.5) : base;
     } else {
       hpForKnockback += damageForKnockback;

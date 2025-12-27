@@ -81,6 +81,8 @@
     armorThresholdOutput: document.getElementById('armor-threshold-output'),
     armorBlock: document.getElementById('armor-status-block'),
     knockdownRow: document.getElementById('knockdown-row'),
+    shieldDamage: document.getElementById('shield-damage-output'),
+    shieldstun: document.getElementById('shieldstun-output'),
   };
 
   app.constants = {

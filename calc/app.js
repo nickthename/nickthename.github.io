@@ -72,6 +72,7 @@
         },
         DOUBLE_JUMP_ARMOR_LIFT = 160,
       } = constants;
+      const SHIELD_HEALTH_MAX = 55;
 
       const state = app.state || (app.state = {});
       state.suppressCustomPositionInput = state.suppressCustomPositionInput ?? false;
@@ -83,6 +84,7 @@
       state.doubleJumpArmorAnchor = state.doubleJumpArmorAnchor ?? null;
       state.suppressPositionChange = state.suppressPositionChange ?? false;
       state.attackDirection = state.attackDirection ?? 'right';
+      state.selectedMoveShieldDamage = state.selectedMoveShieldDamage ?? 0;
 
       const {
         isPositionOnPlatform,
@@ -1425,6 +1427,7 @@
           const isElectric = (move.effect || '').toLowerCase() === 'electric';
           const isThrow = Boolean(move.throw);
           lastMoveBaseName = move.baseName ?? move.name ?? lastMoveBaseName;
+          state.selectedMoveShieldDamage = Number.isFinite(move.sd) ? Number(move.sd) : 0;
           selectedMoveData = {
             damage: move.damage ?? 0,
             angle: move.angle ?? 0,
@@ -1447,6 +1450,7 @@
         } else {
           selectedMoveIndex = null;
           selectedMoveData = null;
+          state.selectedMoveShieldDamage = 0;
           formatMoveDetails(option);
         }
         suppressCustomFlag = false;
@@ -1580,9 +1584,29 @@
         }
 
         const displayHitstun = Math.max(0, Number.isFinite(result.simulatedHitstun) ? result.simulatedHitstun : result.hitstun);
-        outputNodes.hitlag.textContent = formatIntegral(result.hitlag);
+        const hitlagFrames = Math.max(0, Math.trunc(result.hitlag));
+        const diFrames = Math.max(0, hitlagFrames - 1);
+        outputNodes.hitlag.textContent = UI_TEXT.hitlagFrames({
+          frames: formatIntegral(hitlagFrames),
+          diFrames: formatIntegral(diFrames),
+        });
         outputNodes.hitstun.textContent = UI_TEXT.hitstunFrames({ frames: formatIntegral(displayHitstun) });
         outputNodes.knockdown.textContent = result.hitstun >= 32 ? UI_TEXT.knocksDown : UI_TEXT.noKnockdown;
+        if (outputNodes.shieldDamage && outputNodes.shieldstun) {
+          const shieldDamageTotal = Smash64Calculator.computeShieldDamage(
+            params.baseDamage,
+            params.damageModifier,
+            state.selectedMoveShieldDamage
+          );
+          const shieldstunFrames = Smash64Calculator.computeShieldstun(staledDamage);
+          outputNodes.shieldDamage.textContent = UI_TEXT.shieldDamage({
+            damage: formatIntegral(shieldDamageTotal),
+            max: SHIELD_HEALTH_MAX,
+          });
+          outputNodes.shieldstun.textContent = UI_TEXT.shieldstunFrames({
+            frames: formatIntegral(shieldstunFrames),
+          });
+        }
 
         let knockdownThreshold = null;
         let knockdownTest = 0;

@@ -310,6 +310,9 @@ hreflangs:
     .armor-block { display: none; }
     .status-row.has-armor .armor-block { display: grid; }
     .status-subtext { margin: 0; text-align: center; font-size: 0.85rem; opacity: 0.7; }
+    .shield-block { display: grid; gap: 0.25rem; text-align: center; }
+    .shield-title { margin: 0; font-weight: 600; font-size: 0.95rem; }
+    .shield-line { margin: 0; font-size: 0.9rem; opacity: 0.75; }
     .status-divider { height: 1px; background: rgba(0,0,0,0.12); width: 70%; margin: 0.4rem auto; }
     .position-summary { display: grid; gap: 0.25rem; }
     .meta-line { margin: 0; }
@@ -646,6 +649,11 @@ hreflangs:
             <p class="knockdown-status" id="armor-status">—</p>
             <p class="status-subtext" id="armor-threshold-output"></p>
           </div>
+        </div>
+        <div class="shield-block">
+          <p class="shield-title">ガード時:</p>
+          <p class="shield-line" id="shieldstun-output">—</p>
+          <p class="shield-line" id="shield-damage-output">—</p>
         </div>
         <div class="status-divider" aria-hidden="true"></div>
         <dl>

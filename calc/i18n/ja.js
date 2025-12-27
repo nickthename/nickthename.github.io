@@ -31,6 +31,9 @@ window.CALC_I18N = {
   killsOffLeft: '左バースト',
   killsOffRight: '右バースト',
   killsOnFrame: ({ frame }) => `${frame}Fでバースト`,
+  hitlagFrames: ({ frames, diFrames }) => `ヒットストップ ${frames}F（DI可 ${diFrames}F）`,
+  shieldDamage: ({ damage, max }) => `シールドダメージ: ${damage} (/${max})`,
+  shieldstunFrames: ({ frames }) => `シールド硬直 ${frames}F`,
   afterStaleness: ({ summary }) => `${summary}（OP後）`,
   displacement: {
     after: ({ frames, label }) => (label === 'hitstun' ? `ふっとび硬直${frames}F後` : `${frames}F後`),

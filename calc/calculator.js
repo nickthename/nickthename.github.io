@@ -158,6 +158,18 @@
     }
   }
 
+  function computeShieldDamage(baseDamage, damageModifier, extraShieldDamage = 0) {
+    const staledDamage = applyStaleness(baseDamage, damageModifier);
+    const bonus = Number.isFinite(extraShieldDamage) ? Math.trunc(extraShieldDamage) : 0;
+    return staledDamage + bonus;
+  }
+
+  function computeShieldstun(damage) {
+    const baseDamage = Math.max(0, Math.trunc(Number(damage) || 0));
+    const multiplier = currentVersion === 'J' ? 1.75 : 1.62;
+    return Math.ceil(baseDamage * multiplier + 3);
+  }
+
   function getHitlagBonus() {
     return currentVersion === 'J' ? 4 : 5;
   }
@@ -601,6 +613,8 @@
     defenseMultipliers: DEF_MULTIPLIERS,
     compute: computeKnockback,
     applyStaleness,
+    computeShieldDamage,
+    computeShieldstun,
     doubleJumpArmorValue: currentDoubleJumpArmorValue,
     doubleJumpArmorValues: { ...DOUBLE_JUMP_ARMOR_VALUES },
     currentVersion,

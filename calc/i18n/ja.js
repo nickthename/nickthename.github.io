@@ -31,8 +31,9 @@ window.CALC_I18N = {
   killsOffLeft: '左バースト',
   killsOffRight: '右バースト',
   killsOnFrame: ({ frame }) => `${frame}Fでバースト`,
-  hitlagFrames: ({ frames, diFrames }) => `${frames}F（DI可 ${diFrames}F）`,
-  shieldDamage: ({ damage, max }) => `${damage} (/${max})`,
+  hitlagFrames: ({ frames }) => `${frames}F`,
+  hitlagDIHint: ({ frames }) => `DI入力可能フレーム数: ${frames}F`,
+  shieldDamageHint: ({ max }) => `シールド耐久値: ${max}`,
   shieldstunFrames: ({ frames }) => `${frames}F`,
   afterStaleness: ({ summary }) => `${summary}（OP後）`,
   displacement: {

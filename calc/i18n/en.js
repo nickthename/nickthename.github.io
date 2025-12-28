@@ -31,8 +31,9 @@ window.CALC_I18N = {
   killsOffLeft: 'Kills off left side',
   killsOffRight: 'Kills off right side',
   killsOnFrame: ({ frame }) => `Kills on frame ${frame}`,
-  hitlagFrames: ({ frames, diFrames }) => `${frames} Frames (${diFrames} DI-able)`,
-  shieldDamage: ({ damage, max }) => `${damage} (/${max})`,
+  hitlagFrames: ({ frames }) => `${frames} Frames`,
+  hitlagDIHint: ({ frames }) => `${frames} frames for DI inputs`,
+  shieldDamageHint: ({ max }) => `Shields have ${max} health`,
   shieldstunFrames: ({ frames }) => `${frames} Frames`,
   afterStaleness: ({ summary }) => `${summary} (after staleness)`,
   displacement: {

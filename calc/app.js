@@ -347,6 +347,16 @@
       };
 
       const formatPercent = (value) => `${formatIntegral(value)}%`;
+
+      const setHintedValue = (node, valueText, hintText) => {
+        if (!node) return;
+        node.textContent = '';
+        const span = document.createElement('span');
+        span.className = 'hint-underline';
+        span.textContent = valueText;
+        span.title = hintText;
+        node.append(span);
+      };
       function isKill(x, y) {
         return y >= BLASTZONE_LIMITS.top
           || y <= BLASTZONE_LIMITS.bottom
@@ -1586,10 +1596,9 @@
         const displayHitstun = Math.max(0, Number.isFinite(result.simulatedHitstun) ? result.simulatedHitstun : result.hitstun);
         const hitlagFrames = Math.max(0, Math.trunc(result.hitlag));
         const diFrames = Math.max(0, hitlagFrames - 1);
-        outputNodes.hitlag.textContent = UI_TEXT.hitlagFrames({
-          frames: formatIntegral(hitlagFrames),
-          diFrames: formatIntegral(diFrames),
-        });
+        const hitlagText = UI_TEXT.hitlagFrames({ frames: formatIntegral(hitlagFrames) });
+        const hitlagHint = UI_TEXT.hitlagDIHint({ frames: formatIntegral(diFrames) });
+        setHintedValue(outputNodes.hitlag, hitlagText, hitlagHint);
         outputNodes.hitstun.textContent = UI_TEXT.hitstunFrames({ frames: formatIntegral(displayHitstun) });
         outputNodes.knockdown.textContent = result.hitstun >= 32 ? UI_TEXT.knocksDown : UI_TEXT.noKnockdown;
         if (outputNodes.shieldDamage && outputNodes.shieldstun) {
@@ -1599,10 +1608,9 @@
             state.selectedMoveShieldDamage
           );
           const shieldstunFrames = Smash64Calculator.computeShieldstun(staledDamage);
-          outputNodes.shieldDamage.textContent = UI_TEXT.shieldDamage({
-            damage: formatIntegral(shieldDamageTotal),
-            max: SHIELD_HEALTH_MAX,
-          });
+          const shieldDamageText = formatIntegral(shieldDamageTotal);
+          const shieldDamageHint = UI_TEXT.shieldDamageHint({ max: SHIELD_HEALTH_MAX });
+          setHintedValue(outputNodes.shieldDamage, shieldDamageText, shieldDamageHint);
           outputNodes.shieldstun.textContent = UI_TEXT.shieldstunFrames({
             frames: formatIntegral(shieldstunFrames),
           });
@@ -1874,7 +1882,9 @@
       });
 
       attackerSelect.addEventListener('change', () => {
-        populateMoves(attackerSelect.value);
+        const preferredMove = lastMoveBaseName
+          || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
+        populateMoves(attackerSelect.value, { preferredMove });
         markStateDirty();
       });
 

@@ -297,7 +297,7 @@ html:not([data-hitbox-theme="dark"]) .hitbox-page .link_inline:hover {
 		flex-direction: row;
 		gap: 8px;
 		align-items: center;
-		width: auto;
+		width: 100%;
 	}
 	#language_float select {
 		width: auto;
@@ -310,7 +310,7 @@ html:not([data-hitbox-theme="dark"]) .hitbox-page .link_inline:hover {
 		display: flex;
 		flex-direction: column;
 		grid-template-columns: 1fr;
-		padding: 12px 10px;
+		padding: 0;
 	}
 	.hitbox-topbar {
 		display: flex;
@@ -320,11 +320,28 @@ html:not([data-hitbox-theme="dark"]) .hitbox-page .link_inline:hover {
 	#character_picker {
 		grid-column: auto;
 		order: 2;
+		max-width: 420px;
+		margin: 0 auto;
+		padding: 6px 10px;
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		justify-content: center;
+	}
+	#character_picker img {
+		width: 60px;
+		height: 60px;
+		flex: 0 0 auto;
 	}
 	#language_float {
 		grid-column: auto;
 		justify-self: center;
 		order: 1;
+		box-sizing: border-box;
+		border-left: 0;
+		border-right: 0;
+		border-radius: 0;
 	}
 	.hitbox-panels {
 		grid-template-columns: 1fr;
@@ -335,6 +352,11 @@ html:not([data-hitbox-theme="dark"]) .hitbox-page .link_inline:hover {
 	#links {
 		order: 4;
 		margin-top: 16px;
+		width: 100%;
+		box-sizing: border-box;
+		border-left: 0;
+		border-right: 0;
+		border-radius: 0;
 	}
 	.hitbox-main {
 		order: 1;

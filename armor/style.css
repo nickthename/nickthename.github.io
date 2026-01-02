@@ -1,0 +1,71 @@
+.armor-page * {
+  margin: 0;
+  padding: 0;
+}
+
+.armor-page ul,
+.armor-page ol {
+  margin-left: 0;
+  list-style: none;
+}
+
+.armor-page {
+  background: #e5e2e6;
+  padding: 1rem 0;
+}
+
+.armor-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  overflow-x: auto;
+}
+
+@media (max-width: 800px) {
+  .armor-page {
+    padding: 0.75rem 0;
+  }
+
+  .armor-wrapper {
+    overflow-x: visible;
+  }
+
+  .armor-page .centered .ui-tabs-nav {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .armor-page .centered .ui-tabs-nav li {
+    display: block;
+  }
+
+  .armor-page .ui-tabs .ui-tabs-panel {
+    margin-top: 0;
+    padding-top: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .armor-page .flatTable {
+    min-width: 500px;
+  }
+
+  .armor-page .flatTable td {
+    padding: 0 12px;
+  }
+
+  .armor-page .flatTable tr {
+    height: 44px;
+  }
+
+  .armor-page .flatTable .headingTr {
+    font-size: 14pt;
+  }
+
+  .armor-page .flatTable .titleTr {
+    font-size: 18pt;
+  }
+}

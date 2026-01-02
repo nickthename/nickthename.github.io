@@ -285,10 +285,33 @@
 }
 
 @include media-query($on-palm) {
+  .site-footer {
+    padding-top: $spacing-unit / 2;
+  }
+
+  .footer-col-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
   .footer-col {
     float: none;
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
+    margin-bottom: 0;
+  }
+
+  .footer-col-1 {
+    width: -webkit-calc(40% - (#{$spacing-unit} / 2));
+    width:         calc(40% - (#{$spacing-unit} / 2));
+  }
+
+  .footer-col-2 {
+    width: -webkit-calc(40% - (#{$spacing-unit} / 2));
+    width:         calc(40% - (#{$spacing-unit} / 2));
+  }
+
+  .footer-col-3 {
+    width: -webkit-calc(60% - (#{$spacing-unit} / 2));
+    width:         calc(60% - (#{$spacing-unit} / 2));
   }
 }
 

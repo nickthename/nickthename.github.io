@@ -1,44 +1,19 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <title>Yoshi Armor Breaks</title>
-  <link rel="shortcut icon" href="/favicon_solid.png">
-  <link rel="stylesheet" href="./Armor_files/jquery-ui.css">
-  <script src="./Armor_files/jquery-1.10.2.js"></script>
-  <script src="./Armor_files/jquery-ui.js"></script>
-  <link rel="stylesheet" href="./Armor_files/common.css">
-  <link rel="stylesheet" href="./Armor_files/tables.css">
-  <script>
-$(function() {
-  // Clear any pre-set active classes so jQuery UI can manage them cleanly.
-  $("#tabs .ui-tabs-active, #tabs .ui-state-active").removeClass("ui-tabs-active ui-state-active");
+---
+layout: vods
+title: Yoshi Armor Break %s
+styles:
+  - /armor/style.css
+  - /armor/Armor_files/jquery-ui.css
+  - /armor/Armor_files/common.css
+  - /armor/Armor_files/tables.css
+scripts:
+  - /armor/Armor_files/jquery-1.10.2.js
+  - /armor/Armor_files/jquery-ui.js
+---
 
-  // Pick initial tab based on hash, default to first.
-  var initialIndex = 0;
-  if (window.location.hash) {
-    var $link = $("#tabs a[href='" + window.location.hash + "']");
-    if ($link.length) {
-      initialIndex = $("#tabs a").index($link);
-    }
-  }
-
-  $("#tabs").tabs({
-    active: initialIndex,
-    activate: function(event, ui) {
-        window.location.hash = ui.newPanel.attr('id');
-    }
-  });
-  window.onhashchange = function() {
-    $('a[href=' + window.location.hash + ']').trigger('click');
-  }
-});
-
-
-  </script>
-</head>
-<body>
- 
-<div id="tabs" class="centered ui-tabs ui-widget ui-widget-content ui-corner-all">
+<div class="armor-page">
+  <div class="armor-wrapper">
+    <div id="tabs" class="centered ui-tabs ui-widget ui-widget-content ui-corner-all">
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
     <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="luigi" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#luigi" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1"><span class="stock luigi">&nbsp;</span></a></li>
     <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="mario" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false"><a href="#mario" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2"><span class="stock mario">&nbsp;</span></a></li>
@@ -469,9 +444,50 @@ $(function() {
   <tr class="bodyTr"> <td>Down B (Projctile)</td> <td colspan="5">Never</td> </tr></tbody></table>
 </div>
 
-
 </div>
- 
- 
 
-</body></html>
+    <script>
+      $(function() {
+        // Clear any pre-set active classes so jQuery UI can manage them cleanly.
+        $("#tabs .ui-tabs-active, #tabs .ui-state-active").removeClass("ui-tabs-active ui-state-active");
+
+        function getTabIndexFromHash() {
+          var index = 0;
+          if (window.location.hash) {
+            var $link = $("#tabs a[href='" + window.location.hash + "']");
+            if ($link.length) index = $("#tabs a").index($link);
+          }
+          return index;
+        }
+
+        function setHashNoScroll(id, push) {
+          if (!id) return;
+          var hash = "#" + id;
+          if (push) {
+            history.pushState({ tab: id }, "", hash);
+          } else {
+            history.replaceState({ tab: id }, "", hash);
+          }
+        }
+
+        var $tabs = $("#tabs").tabs({
+          active: getTabIndexFromHash(),
+          activate: function(event, ui) {
+              setHashNoScroll(ui.newPanel.attr("id"), true);
+          }
+        });
+
+        window.addEventListener("popstate", function() {
+          $tabs.tabs("option", "active", getTabIndexFromHash());
+        });
+
+        // If something external changes the hash, switch tabs but keep the scroll position.
+        window.addEventListener("hashchange", function() {
+          var y = window.scrollY;
+          $tabs.tabs("option", "active", getTabIndexFromHash());
+          window.scrollTo(0, y);
+        });
+      });
+    </script>
+  </div>
+</div>

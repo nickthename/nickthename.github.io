@@ -12,7 +12,8 @@
 
 .site-title {
   @include relative-font-size(1.625);
-  font-weight: 300;
+  font-family: "Segoe UI", $base-font-family;
+  font-weight: 400;
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
@@ -21,6 +22,10 @@
   &,
   &:visited {
     color: $grey-color-dark;
+  }
+
+  .site-title-suffix {
+    color: $grey-color;
   }
 }
 

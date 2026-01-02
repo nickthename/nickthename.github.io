@@ -3,7 +3,15 @@
   <div class="header-wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
+      {%- assign title_raw = site.title -%}
+      {%- if title_raw contains ".net" -%}
+        {%- assign title_parts = title_raw | split: ".net" -%}
+        {{ title_parts[0] | escape }}<span class="site-title-suffix">.net</span>{{ title_parts[1] | escape }}
+      {%- else -%}
+        {{ title_raw | escape }}
+      {%- endif -%}
+    </a>
 
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />

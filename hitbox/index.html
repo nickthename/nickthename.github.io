@@ -1,166 +1,124 @@
 ---
-layout: null
+layout: vods
+title: Frame Data Display
+styles:
+  - /hitbox/style.css
+scripts:
+  - /hitbox/config.js
+  - /hitbox/theme.js
+  - /hitbox/move-translations.js
+  - /hitbox/framedisplay.js
+  - /hitbox/characters-U.js
+  - /hitbox/keyboard-shortcuts.js
 ---
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Frame Display</title>
-	<script>
-		// Where to load large assets (videos, legacy images). Hosted on the separate ssbframedata repo.
-    window.HITBOX_ASSET_ROOT = "/ssbframedata/";
-    // Image root stays with the external ssbframedata repo (shared across versions).
-    window.HITBOX_IMAGE_ROOT = "/ssbframedata/images/";
-	</script>
-	<script src="move-translations.js" type="text/javascript"></script>
-	<script src="framedisplay.js" type="text/javascript"></script>
-	<script src="characters-U.js" type="text/javascript"></script>
-	<script src="keyboard-shortcuts.js" type="text/javascript"></script>
-	<link rel="shortcut icon" href="/favicon_solid.png">
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+<div class="hitbox-page">
+  <div class="hitbox-layout">
+    <aside id="links" aria-label="Other Resources">
+      <h2>Other Resources</h2>
+      <a href="/ssbframedata/images/autocancelchart.png" target="_blank" class="link_inline">Aerial Auto Cancel Chart</a>
+      <a href="https://docs.google.com/spreadsheets/d/12AA0uoBkHMFmMWaaYGYe4x8dEp69d5UlxJ1dGwBKIR4/" target="_blank" class="link_inline">Frame data by numbers</a>
+      <a href="https://docs.google.com/spreadsheets/d/1481E6Sf6oB6el_0gEIjISB2PVYX-JMnFqbe9he2AnFM/" target="_blank" class="link_inline">Move Properties (Dmg, KB, angle, etc)</a>
+      <a href="/ssbframedata/images/charpropertieschart.jpg" target="_blank" class="link_inline">Character properties</a>
+      <a href="https://imgur.com/a/Yi6P2" target="_blank" class="link_inline">Character ledge grab distances</a>
+      <a href="/armor/" class="link_inline">Yoshi Armor Break %s</a>
+      <a href="/ssbframedata/12cb/index.html" target="_blank" class="link_inline">12 Character Battle Tool</a>
+    </aside>
 
-	<div id="language_float">
-		<div class="lang-row">
-			<label for="selectLang">🌐</label>
-			<select id="selectLang">
-				<option value="en">English</option>
-				<option value="ja">日本語</option>
-			</select>
-		</div>
-		<select id="selectVersion">
-			<option value="U">(U) Version</option>
-			<option value="J">(J) Version</option>
-		</select>
-	</div>
+    <div class="hitbox-main">
+      <div class="hitbox-app">
+        <div class="hitbox-topbar">
+          <div id="character_picker">
+            <img style="cursor: pointer;" id="luigi_select" src="/ssbframedata/images/luigi_select.png" onclick='selectCharacter("luigi")'>
+            <img style="cursor: pointer;" id="mario_select" src="/ssbframedata/images/mario_select.png" onclick='selectCharacter("mario")'>
+            <img style="cursor: pointer;" id="dk_select" src="/ssbframedata/images/dk_select.png" onclick='selectCharacter("dk")'>
+            <img style="cursor: pointer;" id="link_select" src="/ssbframedata/images/link_select.png" onclick='selectCharacter("link")'>
+            <img style="cursor: pointer;" id="samus_select" src="/ssbframedata/images/samus_select.png" onclick='selectCharacter("samus")'>
+            <img style="cursor: pointer;" id="falcon_select" src="/ssbframedata/images/falcon_select.png" onclick='selectCharacter("falcon")'>
+            <img style="cursor: pointer;" id="ness_select" src="/ssbframedata/images/ness_select.png" onclick='selectCharacter("ness")'>
+            <img style="cursor: pointer;" id="yoshi_select" src="/ssbframedata/images/yoshi_select.png" onclick='selectCharacter("yoshi")'>
+            <img style="cursor: pointer;" id="kirby_select" src="/ssbframedata/images/kirby_select.png" onclick='selectCharacter("kirby")'>
+            <img style="cursor: pointer;" id="fox_select" src="/ssbframedata/images/fox_select.png" onclick='selectCharacter("fox")'>
+            <img style="cursor: pointer;" id="pikachu_select" src="/ssbframedata/images/pikachu_select.png" onclick='selectCharacter("pikachu")'>
+            <img style="cursor: pointer;" id="jiggly_select" src="/ssbframedata/images/jiggly_select.png" onclick='selectCharacter("purin")'>
+            <input type="hidden" id="selectCharHidden" value="luigi">
+          </div>
 
-	<div style='height: auto; width: auto; margin-left: auto; margin-right: auto;'>
+          <div id="language_float">
+            <div class="lang-row">
+              <label for="selectLang">🌐</label>
+              <select id="selectLang">
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+              </select>
+            </div>
+            <select id="selectVersion">
+              <option value="U">U version</option>
+              <option value="J">J version</option>
+            </select>
+          <div class="theme-row">
+            <select id="hitboxThemeSelect" aria-label="Theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-	<div id="character_picker">
-		<img style='cursor: pointer;' id='luigi_select' src='/ssbframedata/images/luigi_select.png'
-			 onclick='selectCharacter("luigi")'>
-		<img style='cursor: pointer;' id='mario_select' src='/ssbframedata/images/mario_select.png'
-			 onclick='selectCharacter("mario")'>
-		<img style='cursor: pointer;' id='dk_select' src='/ssbframedata/images/dk_select.png'
-			 onclick='selectCharacter("dk")'>
-		<img style='cursor: pointer;' id='link_select' src='/ssbframedata/images/link_select.png'
-			 onclick='selectCharacter("link")'>
-		<img style='cursor: pointer;' id='samus_select' src='/ssbframedata/images/samus_select.png'
-			 onclick='selectCharacter("samus")'>
-		<img style='cursor: pointer;' id='falcon_select' src='/ssbframedata/images/falcon_select.png'
-			 onclick='selectCharacter("falcon")'>
-		<img style='cursor: pointer;' id='ness_select' src='/ssbframedata/images/ness_select.png'
-			 onclick='selectCharacter("ness")'>
-		<img style='cursor: pointer;' id='yoshi_select' src='/ssbframedata/images/yoshi_select.png'
-			 onclick='selectCharacter("yoshi")'>
-		<img style='cursor: pointer;' id='kirby_select' src='/ssbframedata/images/kirby_select.png'
-			 onclick='selectCharacter("kirby")'>
-		<img style='cursor: pointer;' id='fox_select' src='/ssbframedata/images/fox_select.png'
-			 onclick='selectCharacter("fox")'>
-		<img style='cursor: pointer;' id='pikachu_select' src='/ssbframedata/images/pikachu_select.png'
-			 onclick='selectCharacter("pikachu")'>
-		<img style='cursor: pointer;' id='jiggly_select' src='/ssbframedata/images/jiggly_select.png'
-			 onclick='selectCharacter("purin")'>
-		<input type='hidden' id='selectCharHidden' value='luigi'>
-	</div>
-	<div style='float: none; clear: both'>
-	</div>
-	<div style='display: table; margin-left: auto; margin-right: auto;'>
-	<div id='p1' style='float: left; vertical-align: middle;'>
-		<div id='p1_select'
-			 style='margin-top: 25px; vertical-align: middle; height: 375px; width: 262px; background-repeat: no-repeat; background-size: 100% 100%; background-image: url("/ssbframedata/images/panel1.png");'>
-			<img src="/ssbframedata/images/luigi_card.png" style='width: 100%; height: 100%;'>
-			</div>
-		</div>
-		<div style='float: right;'>
-			<div id="display_container" style='margin-left: 5%; width: 600px;'>
-				<!--<select id="selectChar" onchange="changeChar()">
-				  <optgroup label="Characters">
-				  <option value="dk">Donkey Kong</option>
-				  <option value="falcon">Captain Falcon</option>
-				  <option value="fox">Fox</option>
-				  <option value="purin">Jigglypuff</option>
-				  <option value="kirby">Kirby</option>
-				  <option value="link">Link</option>
-				  <option value="luigi">Luigi</option>
-				  <option value="mario">Mario</option>
-				  <option value="ness">Ness</option>
-				  <option value="pikachu">Pikachu</option>
-				  <option value="samus">Samus</option>
-				  <option value="yoshi">Yoshi</option>
-				  </optgroup>
-				</select>-->
-				<br>
-				<h1 id="character_display" style='display: inline;'></h1>
-				<br>
-				<h2 id="move_display" style='display: inline;'>Attack: </h2>
-				<select id="selectAtt" onchange="changeAtt(this)">
-					<optgroup label="Attacks">
-					</optgroup>
-				</select>
-				<br>
+        <div class="hitbox-panels">
+          <div id="p1">
+            <div id="p1_select" style='margin-top: 25px; vertical-align: middle; height: 375px; width: 262px; background-repeat: no-repeat; background-size: 100% 100%; background-image: url("/ssbframedata/images/panel1.png");'>
+              <img src="/ssbframedata/images/luigi_card.png" style="width: 100%; height: 100%;">
+            </div>
+          </div>
 
-				<video id="videoPlayer">
-				</video>
+          <div id="display_container">
+            <h1 id="character_display" style="display: inline;"></h1>
+            <br>
+            <h2 id="move_display" style="display: inline;">Attack: </h2>
+            <select id="selectAtt" onchange="changeAtt(this)">
+              <optgroup label="Attacks"></optgroup>
+            </select>
+            <br>
 
+            <video id="videoPlayer"></video>
 
-				<div id="play_controls">
-					<input id="playPauseButton" type="button" onclick="togglePlayPause()" value="Play">
-					<br>
-					<input id="firstFrameButton" type="button" onclick="goToFirstFrame()" value="|<">
-					<input id="previousFrameButton" type="button" onclick="goToPreviousFrame()" accesskey='b' value="<">
-					<input id="manualFrameText" type="text" value="1" maxLength="3" size="1"
-						   onchange="changeManualFrame()">
-					</span><span id="maxFrameSpan">/1</span>
-					<input id="nextFrameButton" type="button" onclick="goToNextFrame()" accesskey='n' value=">">
-					<input id="lastFrameButton" type="button" onclick="goToLastFrame()" value=">|">
-					<br>
-					<div class="controls-row">
-						<span class="control-label">Speed</span>
-						<select id="selectSpeed" onchange="changeSpeed(this)">
-							<option value="60">Normal (60 FPS)</option>
-							<option value="30">0.5x (30 FPS)</option>
-							<option value="20">0.33x (20 FPS)</option>
-							<option value="15">0.25x (15 FPS)</option>
-						</select>
-						<span class="mode-option">
-							<input id="hitboxRadio" type="radio" name="displayModeRadio" value="hitbox"
-							   onclick="changeHitbox(this)">
-							<label class="radio-label" for="hitboxRadio">Hitbox</label>
-						</span>
-						<span class="mode-option">
-							<input id="overlayRadio" type="radio" name="displayModeRadio" value="overlay"
-							   onclick="changeHitbox(this)">
-							<label class="radio-label" for="overlayRadio">Overlay</label>
-						</span>
-						<span class="mode-option loop-option">
-							<input id="repeatCheckbox" type="checkbox" onclick="changeRepeat(this)">
-							<label class="loop-label" for="repeatCheckbox">&#x21bb;</label>
-						</span>
-						<span id="playStatus" class="status-dot paused"></span>
-					</div>
-				</div>
-				<div id="callout" style="margin-top:8px; color:#c00; display:none; font-weight:bold;"></div>
-			</div>
-		</div>
-
-	</div>
-
+            <div id="play_controls">
+              <input id="playPauseButton" type="button" onclick="togglePlayPause()" value="Play">
+              <br>
+              <input id="firstFrameButton" type="button" onclick="goToFirstFrame()" value="|<">
+              <input id="previousFrameButton" type="button" onclick="goToPreviousFrame()" accesskey="b" value="<">
+              <input id="manualFrameText" type="text" value="1" maxLength="3" size="1" onchange="changeManualFrame()">
+              <span id="maxFrameSpan">/1</span>
+              <input id="nextFrameButton" type="button" onclick="goToNextFrame()" accesskey="n" value=">">
+              <input id="lastFrameButton" type="button" onclick="goToLastFrame()" value=">|">
+              <br>
+              <div class="controls-row">
+                <span class="control-label">Speed</span>
+                <select id="selectSpeed" onchange="changeSpeed(this)">
+                  <option value="60">Normal (60 FPS)</option>
+                  <option value="30">0.5x (30 FPS)</option>
+                  <option value="20">0.33x (20 FPS)</option>
+                  <option value="15">0.25x (15 FPS)</option>
+                </select>
+                <span class="mode-option">
+                  <input id="hitboxRadio" type="radio" name="displayModeRadio" value="hitbox" onclick="changeHitbox(this)">
+                  <label class="radio-label" for="hitboxRadio">Hitbox</label>
+                </span>
+                <span class="mode-option">
+                  <input id="overlayRadio" type="radio" name="displayModeRadio" value="overlay" onclick="changeHitbox(this)">
+                  <label class="radio-label" for="overlayRadio">Overlay</label>
+                </span>
+                <span class="mode-option loop-option">
+                  <input id="repeatCheckbox" type="checkbox" onclick="changeRepeat(this)">
+                  <label class="loop-label" for="repeatCheckbox">&#x21bb;</label>
+                </span>
+                <span id="playStatus" class="status-dot paused"></span>
+              </div>
+            </div>
+            <div id="callout" style="margin-top:8px; color:#c00; display:none; font-weight:bold;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div id='links'>
-	<h2>Other Resources</h2>
-	<a href='/ssbframedata/images/autocancelchart.png' target='_blank' class='link_inline'>Aerial Auto Cancel Chart</a>
-	<a href='https://docs.google.com/spreadsheets/d/12AA0uoBkHMFmMWaaYGYe4x8dEp69d5UlxJ1dGwBKIR4/' target='_blank' class='link_inline'>Frame
-		data by numbers</a>
-	<a href='https://docs.google.com/spreadsheets/d/1481E6Sf6oB6el_0gEIjISB2PVYX-JMnFqbe9he2AnFM/' target='_blank' class='link_inline'>Move Properties (Dmg, KB, angle, etc)</a>
-	<a href='/ssbframedata/images/charpropertieschart.jpg' target='_blank' class='link_inline'>Character properties</a>
-	<a href='https://imgur.com/a/Yi6P2' target='_blank' class='link_inline'>Character ledge grab distances</a>
-	<a href='/armor/' target='_blank' class='link_inline'>Yoshi Armor Break %s</a>
-	<a href='/ssbframedata/12cb/index.html' target='_blank' class='link_inline'>12 Character Battle Tool</a>
-</div>
-
-</body>
-</html>

@@ -6,7 +6,7 @@ layout: home
 title: Smash 64 Resources
 ---
 
-# Featured Guides
+<h1 class="box-title-head">Featured Guides</h1>
 <div class="box-holder">
 
 <a href="guides/controllers.html">
@@ -34,9 +34,37 @@ title: Smash 64 Resources
   </div>
 </a>
 </div>
+<h1 class="box-title">Tools</h1>
+<div class="box-holder">
+<a href="/hitbox/">
+  <div>
+    <!-- <img src="/guides/img/controllers/OG.png" width="80" margin="auto"><br /> -->
+    <img src="/guides/img/hitbox.png"><br />
+    <h2>Hitbox Display</h2>
+    <p>Visual hitbox and frame data explorer.</p>
+  </div>
+</a> 
+
+<a href="/vods/">
+<div>
+<img src="/guides/img/vodsearch.png"><br />
+<h2>Vod Search</h2>
+<p>Database of decades of competitive match videos, searchable by player, character, and event.</p>
+</div>
+</a>
+
+<a href="/calc/">
+  <div>
+    <img src="/guides/img/knockback.png"><br />
+    <h2>Knockback Calculator</h2>
+    <p>Comprehensive calculator for determining the effects of a hit.</p>
+  </div>
+</a>
+</div>
 <br />
 
 ---
+
 <br>
 ## Gameplay Guides
 ![](/guides/img/youtube-logo.png){:width="20" }

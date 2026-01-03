@@ -113,6 +113,7 @@
     blastzoneOutside: document.getElementById('trajectory-blastzone-outside'),
     sky: document.getElementById('trajectory-sky'),
     stageImage: document.getElementById('trajectory-stage-image'),
+    stageImageBlur: document.getElementById('trajectory-stage-image-blur'),
     stage: {
       ground: document.getElementById('trajectory-stage-ground'),
       left: document.getElementById('trajectory-stage-left'),
@@ -127,7 +128,7 @@
     pointerId: null,
     cameraMode: 'fit',
     snapEnabled: true,
-    snapDistanceSq: 260 * 260,
+    snapDistanceSq: 130 * 130,
     pendingFitBounds: null,
   };
 })();

@@ -1943,6 +1943,10 @@
           if (!Number.isFinite(x) || !Number.isFinite(y)) {
             return;
           }
+          if (typeof setPositionFromStageCoords === 'function') {
+            setPositionFromStageCoords(x, y, { forceUpdate: true, allowSnap: false });
+            return;
+          }
           setCustomPositionDirect(x, y);
           calculate();
           markStateDirty();
@@ -1970,6 +1974,11 @@
 
       positionHorizontalSelect.addEventListener('change', () => {
         if (state.suppressPositionChange) return;
+        if (typeof setPositionFromStageCoords === 'function') {
+          const coords = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
+          setPositionFromStageCoords(coords.x, coords.y, { forceUpdate: true, forceSnap: true });
+          return;
+        }
         state.customPosition = null;
         syncPositionInputs();
         calculate();
@@ -1978,6 +1987,11 @@
 
       positionVerticalSelect.addEventListener('change', () => {
         if (state.suppressPositionChange) return;
+        if (typeof setPositionFromStageCoords === 'function') {
+          const coords = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
+          setPositionFromStageCoords(coords.x, coords.y, { forceUpdate: true, forceSnap: true });
+          return;
+        }
         state.customPosition = null;
         syncPositionInputs();
         calculate();

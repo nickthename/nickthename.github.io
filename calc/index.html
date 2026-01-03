@@ -1,6 +1,6 @@
 ---
 layout: vods
-title: Smash 64 Knockback Calculator
+title: Knockback Calculator
 lang: en
 redirect_from:
   - /calc/smash64-calculator.html
@@ -19,7 +19,7 @@ hreflangs:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/favicon_solid2.png">
-  <title>Smash 64 Knockback Calculator</title>
+  <title>Knockback Calculator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/version-language-selector-inline.css" | relative_url }}">
@@ -38,40 +38,46 @@ hreflangs:
     }
     */
 
-    main { display: grid; gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); padding-top: 0px; max-width: 1200px; margin: 0 auto; align-items: start; }
+    main { display: grid; row-gap: 0; column-gap: 1.25rem; padding: clamp(0.75rem, 2vw, 1.4rem); padding-top: 0px; max-width: 1200px; margin: 0 auto; align-items: start; }
     header { grid-column: 1 / -1; }
-    .calculator-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .calculator-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
     .calculator-title { display: grid; gap: 0.35rem; min-width: 220px; }
     .calculator-header .version-language-inline { align-self: flex-end; margin-top: 0.6rem; }
-    .title-short { display: none; }
-    h1 { margin: 0 0 0.35rem; font-size: clamp(1.8rem, 2.7vw, 2.6rem); letter-spacing: -0.03em; }
+    h1 { margin: 0 0 0.35rem; font-size: 2rem; letter-spacing: -0.02em; }
     .note { margin: 0; font-size: 0.9rem; opacity: 0.75; }
 
-    .form-panel, .outputs-panel, .action-panel { display: grid; gap: 0.9rem; align-content: start; border-radius: 18px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.08); padding: 0.85rem; backdrop-filter: blur(10px); }
+    .form-panel, .outputs-panel, .action-panel { display: grid; gap: 0.9rem; align-content: start; border-radius: 12px; background: rgba(255,255,255,0.6); padding: 0.85rem; backdrop-filter: blur(10px); }
+    .form-panel { padding-top: 0.65rem; }
+    .form-panel, .outputs-panel { border: 0; }
+    .action-panel { border: 1px solid rgba(0,0,0,0.08); }
     .form-stack { display: grid; gap: 0.9rem; align-content: start; }
+    .calc-divider { display: none; border: 0; border-top: 1px solid rgba(0,0,0,0.12); margin: 0; }
 
     @media (min-width: 960px) {
       main { grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); }
       header { grid-column: 1 / -1; }
+      .calculator-header { align-items: flex-end; }
       .form-stack { grid-column: 1 / 2; }
       .outputs-panel { grid-column: 2 / 3; }
+      .calculator-header .version-language-inline { margin-right: 0.85rem; }
+      .calculator-title { margin-top: 0; }
+      .calculator-header .version-language-inline { margin-top: 0; }
+      h1 { margin-bottom: 0; }
     }
-    @media (max-width: 640px) {
-      .title-full { display: none; }
-      .title-short { display: inline; }
-    }
-
     fieldset { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 0.85rem; display: grid; gap: 0.65rem; align-content: start; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); }
     legend { padding: 0 0.5rem; font-weight: 600; letter-spacing: 0.01em; }
     label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
     label[for="nav-trigger"] { margin-bottom: 0; }
     .inline-input label { margin-bottom: 0; }
     input[type="number"], select { width: 100%; font: inherit; padding: 0.45rem 0.55rem; border: 1px solid rgba(0,0,0,0.18); border-radius: 6px; background: rgba(0,0,0,0.03); }
+    #target-state-select,
+    #simulation-select { color: rgba(0,0,0,0.6); }
     input[readonly] { background: rgba(0,0,0,0.06); color: inherit; }
     input[type="number"]:focus, select:focus { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
     .ss-main {
       width: 100%;
       font: inherit;
+      color: inherit;
       background: rgba(0,0,0,0.03);
     }
     .ss-main .ss-single {
@@ -133,6 +139,7 @@ hreflangs:
     .form-layout { display: grid; gap: 0.9rem; grid-template-columns: 1fr; }
     @media (min-width: 860px) {
       .form-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .action-panel { width: calc(100% - 1.7rem); justify-self: center; }
     }
     .form-subcolumn { display: grid; gap: 0.9rem; align-content: start; }
     .move-grid, .properties-grid { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
@@ -157,9 +164,12 @@ hreflangs:
     .trajectory-svg:active { cursor: grabbing; }
     .trajectory-sky { fill: #9fd5f7; }
     .trajectory-stage-image { opacity: 0.95; pointer-events: none; }
+    .trajectory-stage-image-blur { opacity: 0.55; }
     .trajectory-svg[data-bg="faded"] .trajectory-stage-image { opacity: 0.28; }
+    .trajectory-svg[data-bg="faded"] .trajectory-stage-image-blur { opacity: 0.16; }
     .trajectory-svg[data-bg="faded"] .trajectory-sky { fill: #e8f2fb; }
     .trajectory-svg[data-bg="none"] .trajectory-stage-image { opacity: 0; }
+    .trajectory-svg[data-bg="none"] .trajectory-stage-image-blur { opacity: 0; }
     .trajectory-svg[data-bg="none"] .trajectory-sky { opacity: 0; }
     .trajectory-stage line { stroke: rgba(0,0,0,0.55); stroke-width: 40; stroke-linecap: round; }
     .trajectory-stage .platform { opacity: 0.85; stroke-width: 32; }
@@ -173,7 +183,7 @@ hreflangs:
     .trajectory-kill-marker { fill: none; stroke: rgba(229,57,53,0.95); stroke-width: 52; stroke-linecap: round; opacity: 0; pointer-events: none; }
     .trajectory-kill-marker.is-visible { opacity: 1; }
 
-    details.disclosure { border: 1px dashed rgba(0,0,0,0.25); border-radius: 10px; background: rgba(0,0,0,0.025); }
+    details.disclosure { border: 1px dashed rgba(0,0,0,0.25); border-radius: 6px; background: rgba(0,0,0,0.025); }
     details.disclosure summary { list-style: none; margin: 0; padding: 0.55rem 0.75rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; }
     details.disclosure summary::after { content: '▸'; font-size: 0.85rem; transition: transform 0.2s ease; opacity: 0.7; }
     details.disclosure[open] summary::after { transform: rotate(90deg); }
@@ -264,7 +274,7 @@ hreflangs:
       background: rgba(0,0,0,0.08);
     }
 
-    .action-panel { gap: 0.5rem; padding: 0.65rem 0.75rem; }
+    .action-panel { gap: 0.5rem; padding: 0.65rem 0.65rem; }
     .action-panel h2 { margin: 0; font-size: 0.95rem; letter-spacing: -0.01em; }
     .action-panel .muted { margin: 0; font-size: 0.82rem; }
     .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; }
@@ -288,7 +298,7 @@ hreflangs:
 
     .card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .primary-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
-    .card { border: 1px solid rgba(0,0,0,0.12); border-radius: 16px; background: rgba(255,255,255,0.88); padding: 0.95rem 1.1rem; display: grid; gap: 0.7rem; backdrop-filter: blur(8px); align-content: start; }
+    .card { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; background: rgba(255,255,255,0.88); padding: 0.95rem 1.1rem; display: grid; gap: 0.7rem; backdrop-filter: blur(8px); align-content: start; }
     .card.compact { max-width: 260px; }
     .card h2, .card h3 { margin: 0; font-size: 1.1rem; letter-spacing: 0.01em; }
     .metric { margin: 0; font-size: clamp(1.6rem, 2.4vw, 2.3rem); font-weight: 700; letter-spacing: -0.03em; }
@@ -331,6 +341,11 @@ hreflangs:
       .card.compact { max-width: none; }
       .primary-cards { grid-template-columns: 1fr; }
       .effects-grid { grid-template-columns: 1fr; }
+      .form-stack { display: contents; }
+      .form-panel { order: 1; }
+      .outputs-panel { order: 3; }
+      .action-panel { order: 4; }
+      .calc-divider { display: block; order: 2; }
     }
 
     /*
@@ -386,7 +401,7 @@ hreflangs:
   <main>
     <header class="calculator-header">
       <div class="calculator-title">
-        <h1><span class="title-full">Smash 64 Knockback Calculator</span><span class="title-short">Knockback Calculator</span></h1>
+        <h1>Knockback Calculator</h1>
       </div>
       {% include version-language-selector-inline.html lang_id="language-select" version_id="version-select" %}
     </header>
@@ -547,7 +562,7 @@ hreflangs:
             </div>
             <div class="field-group">
               <span class="field-label">Staleness</span>
-              <div class="segmented-control" id="staleness-control" role="group" aria-label="Staleness">
+              <div class="segmented-control compact" id="staleness-control" role="group" aria-label="Staleness">
                 <button type="button" class="segmented-button is-active" data-staleness="fresh" aria-pressed="true" title="1.00×">Fresh</button>
                 <button type="button" class="segmented-button" data-staleness="lv3" aria-pressed="false" title="0.96×">Lv3</button>
                 <button type="button" class="segmented-button" data-staleness="lv2" aria-pressed="false" title="0.89×">Lv2</button>
@@ -592,6 +607,8 @@ hreflangs:
       </section>
     </div>
 
+    <hr class="calc-divider" aria-hidden="true">
+
     <section class="outputs-panel">
       <article class="card trajectory-card">
         <div class="card-body">
@@ -621,8 +638,21 @@ hreflangs:
           </div>
           <p class="muted trajectory-label">Drag the start marker or click the stage to set defender position.</p>
           <svg id="trajectory-svg" class="trajectory-svg" data-bg="faded" viewBox="0 0 10 10" role="img" aria-label="Defender trajectory visualization">
+            <defs>
+              <filter id="stage-edge-blur" filterUnits="userSpaceOnUse" x="-10000" y="-10000" width="20000" height="20000">
+                <feGaussianBlur stdDeviation="16"></feGaussianBlur>
+              </filter>
+              <filter id="stage-edge-mask-blur" filterUnits="objectBoundingBox">
+                <feGaussianBlur stdDeviation="0.6"></feGaussianBlur>
+              </filter>
+              <mask id="stage-edge-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+                <rect x="0" y="0" width="1" height="1" fill="white"></rect>
+                <rect x="0.08" y="0.08" width="0.84" height="0.84" fill="black" filter="url(#stage-edge-mask-blur)"></rect>
+              </mask>
+            </defs>
             <rect id="trajectory-sky" class="trajectory-sky" x="-40000" y="-40000" width="80000" height="80000"></rect>
             <image id="trajectory-stage-image" class="trajectory-stage-image" href="{{ "/calc/DreamLandSSB.png" | relative_url }}" data-image-width="600" data-image-height="440" data-ground-px="355" data-scale="2" data-offset-y="-0.165" preserveAspectRatio="xMidYMid meet"></image>
+            <image id="trajectory-stage-image-blur" class="trajectory-stage-image trajectory-stage-image-blur" href="{{ "/calc/DreamLandSSB.png" | relative_url }}" data-image-width="600" data-image-height="440" data-ground-px="355" data-scale="2" data-offset-y="-0.165" preserveAspectRatio="xMidYMid meet" filter="url(#stage-edge-blur)" mask="url(#stage-edge-mask)"></image>
 
             <g class="trajectory-stage" id="trajectory-stage">
               <path id="trajectory-blastzone-outside" class="blastzone-outside" d="" fill-rule="evenodd"></path>

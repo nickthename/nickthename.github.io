@@ -201,8 +201,8 @@
     assignLine(stageGroup.right, POSITION_DATA['right-platform']);
     assignLine(stageGroup.top, POSITION_DATA['top-platform']);
 
-    if (trajectoryElements.stageImage && POSITION_DATA.stage) {
-      const image = trajectoryElements.stageImage;
+    const applyStageImage = (image) => {
+      if (!image) return;
       const imageWidth = Number(image.dataset.imageWidth) || 600;
       const imageHeight = Number(image.dataset.imageHeight) || 440;
       const groundPx = Number(image.dataset.groundPx) || 355;
@@ -219,6 +219,23 @@
         image.setAttribute('y', y);
         image.setAttribute('width', scaledWidth);
         image.setAttribute('height', scaledHeight);
+        return { x, y, width: scaledWidth, height: scaledHeight };
+      }
+      return null;
+    };
+
+    if (POSITION_DATA.stage) {
+      const imageBox = applyStageImage(trajectoryElements.stageImage);
+      applyStageImage(trajectoryElements.stageImageBlur);
+      if (imageBox && trajectoryElements.svg) {
+        const blurFilter = trajectoryElements.svg.querySelector('#stage-edge-blur');
+        if (blurFilter) {
+          const pad = Math.max(80, Math.max(imageBox.width, imageBox.height) * 0.06);
+          blurFilter.setAttribute('x', imageBox.x - pad);
+          blurFilter.setAttribute('y', imageBox.y - pad);
+          blurFilter.setAttribute('width', imageBox.width + pad * 2);
+          blurFilter.setAttribute('height', imageBox.height + pad * 2);
+        }
       }
     }
 
@@ -425,7 +442,11 @@
     }
   };
 
-  const setPositionFromStageCoords = (stageX, stageY, forceUpdate = false) => {
+  const setPositionFromStageCoords = (stageX, stageY, options = false) => {
+    const isOptions = typeof options === 'object' && options !== null;
+    const forceUpdate = isOptions ? Boolean(options.forceUpdate) : Boolean(options);
+    const allowSnap = isOptions ? options.allowSnap !== false : true;
+    const forceSnap = isOptions ? Boolean(options.forceSnap) : false;
     const clamped = clampToLiveArea(stageX, stageY);
     stageX = clamped.x;
     stageY = clamped.y;
@@ -437,7 +458,7 @@
     const dx = stageX - snappedPosition.x;
     const dy = stageY - snappedPosition.y;
     const distanceSq = (dx * dx) + (dy * dy);
-    const shouldSnap = trajectoryState.snapEnabled && distanceSq <= trajectoryState.snapDistanceSq;
+    const shouldSnap = forceSnap || (allowSnap && trajectoryState.snapEnabled && distanceSq <= trajectoryState.snapDistanceSq);
 
     let newHorizontal = selection.horizontalKey;
     let newVertical = selection.verticalKey;
@@ -500,8 +521,10 @@
       if (targetStateSelect && targetStateSelect.value !== 'airborne') {
         state.lastGroundState = targetStateSelect.value || state.lastGroundState;
         state.autoAirborneActive = false;
-      } else if (state.autoAirborneActive && targetStateSelect) {
-        const groundState = state.lastGroundState || 'standing';
+      } else if (targetStateSelect) {
+        const groundState = (state.lastGroundState && state.lastGroundState !== 'airborne')
+          ? state.lastGroundState
+          : 'standing';
         if (targetStateSelect.value !== groundState) {
           targetStateSelect.value = groundState;
           positionChanged = true;

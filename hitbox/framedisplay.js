@@ -412,12 +412,19 @@ function readParams()
 
 function setVersion(ver, cb)
 {
+  var previousVersion = globalVar.version;
   globalVar.version = (ver === "J") ? "J" : "U";
   globalVar.fdBase = globalVar.assetRoot + (globalVar.version === "J" ? "J/fd/" : "fd/");
   // Images are identical across versions; always use the shared images directory
   globalVar.imgBase = IMAGE_ROOT;
 
   if (globalVar.selectVersion) { globalVar.selectVersion.value = globalVar.version; }
+
+  if (previousVersion !== "J" && globalVar.version === "J" && globalVar.hitboxRadio)
+  {
+    globalVar.hitboxRadio.checked = true;
+    if (globalVar.overlayRadio) { globalVar.overlayRadio.checked = false; }
+  }
 
   refreshCharacterPickerImages();
   setCardImage(globalVar.character.value);

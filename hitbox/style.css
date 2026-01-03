@@ -87,6 +87,7 @@ html[data-hitbox-theme="dark"] .hitbox-page {
 
 #character_display {
 	font-size: 1.3em;
+	font-weight: 700;
 }
 
 #move_display {

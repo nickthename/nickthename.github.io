@@ -33,21 +33,23 @@
   @include media-query($on-palm) {
     label[for="nav-trigger"] {
       display: block;
-      float: right;
       width: 36px;
       height: 36px;
-      position: relative;
+      position: absolute;
+      top: 0;
+      right: $spacing-unit / 2;
       z-index: 3;
       cursor: pointer;
+      float: none;
     }
     .menu-icon {
       display: block;
-      float: right;
       width: 36px;
       height: 26px;
       line-height: 0;
       padding-top: 20px;
       text-align: center;
+      float: none;
 
       > svg {
         fill: $grey-color-dark;
@@ -57,7 +59,6 @@
 
 		.nav-trigger:checked ~ .trigger {
 			display: block;
-			width: 100%;
 		}
 
     input ~ .trigger {

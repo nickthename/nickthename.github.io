@@ -6393,8 +6393,8 @@
         "bkb": 0
       },
       {
-        "name": "Up B?",
-        "baseName": "Up B?",
+        "name": "Up B",
+        "baseName": "Up B",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,

@@ -1520,7 +1520,6 @@
 
         const simulationMode = simulationSelect.value;
         const attackDirection = state.attackDirection || 'right';
-        const attackDirectionSign = attackDirection === 'left' ? -1 : 1;
         const rawComboDelay = numericValue(comboDelayInput, 0);
         const comboDelayValue = Math.max(0, Math.trunc(rawComboDelay));
         const customFrameLimit = simulationMode === 'custom' ? comboDelayValue : null;
@@ -1561,6 +1560,7 @@
           electric: electricToggle.checked,
           throwMove: throwToggle.checked,
           doubleJumpArmor: doubleJumpArmorActive,
+          attackDirection,
           simulationMode,
           comboDelay: comboDelayFrames,
           startX: position.x,
@@ -1685,36 +1685,22 @@
 
         const resolvedAngleDeg = typeof result.resolvedAngle === 'number' ? result.resolvedAngle : params.angle;
         const angleRadians = resolvedAngleDeg * (Math.PI / 180);
-        const fallbackHorizontal = (() => {
-          if (!Number.isFinite(angleRadians)) return Math.abs(result.initialVelocityX) < 1e-6 ? 0 : 1;
-          const cosValue = Math.cos(angleRadians);
-          if (Math.abs(cosValue) < 1e-6) return 0;
-          return cosValue > 0 ? 1 : -1;
-        })();
         const fallbackVertical = (() => {
           if (!Number.isFinite(angleRadians)) return Math.abs(result.initialVelocityY) < 1e-6 ? 0 : 1;
           const sinValue = Math.sin(angleRadians);
           if (Math.abs(sinValue) < 1e-6) return 0;
           return sinValue > 0 ? 1 : -1;
         })();
-
-        const horizontalDirection = (typeof result.horizontalDirection === 'number')
-          ? result.horizontalDirection
-          : fallbackHorizontal;
         const verticalDirection = (typeof result.verticalDirection === 'number')
           ? result.verticalDirection
           : fallbackVertical;
 
-        const signedInitialVX = result.initialVelocityX
-          * (horizontalDirection === 0 ? 0 : horizontalDirection)
-          * attackDirectionSign;
+        const signedInitialVX = result.initialVelocityX;
         const signedInitialVY = result.initialVelocityY * (verticalDirection === 0 ? 0 : verticalDirection);
         outputNodes.initVx.textContent = formatStandard(signedInitialVX);
         outputNodes.initVy.textContent = formatStandard(signedInitialVY);
 
-        const signedXDistance = result.totalDistanceX
-          * (horizontalDirection === 0 ? 0 : horizontalDirection)
-          * attackDirectionSign;
+        const signedXDistance = result.totalDistanceX;
         const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
         outputNodes.totalX.textContent = formatStandard(signedXDistance);
         outputNodes.totalY.textContent = formatStandard(signedYDistance);
@@ -1722,7 +1708,7 @@
         const finalY = position.y + signedYDistance;
         outputNodes.finalPosition.textContent = `(${formatIntegral(finalX)}, ${formatIntegral(finalY)})`;
 
-        const trajectoryDirectionX = (horizontalDirection === 0 ? 0 : horizontalDirection) * attackDirectionSign;
+        const trajectoryDirectionX = 1;
         const trajectoryDirectionY = verticalDirection === 0 ? 0 : verticalDirection;
         const trajectoryPoints = (result.trajectory || []).map((step) => ({
           frame: step.frame,
@@ -1789,27 +1775,16 @@
           const sim = computeAtPercentForThreshold(testPercent);
           const simResolvedAngle = typeof sim.resolvedAngle === 'number' ? sim.resolvedAngle : resolvedAngleDeg;
           const simAngleRad = simResolvedAngle * (Math.PI / 180);
-          const fallbackSimHorizontal = (() => {
-            if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityX) < 1e-6 ? 0 : 1;
-            const cosValue = Math.cos(simAngleRad);
-            if (Math.abs(cosValue) < 1e-6) return 0;
-            return cosValue > 0 ? 1 : -1;
-          })();
           const fallbackSimVertical = (() => {
             if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityY) < 1e-6 ? 0 : 1;
             const sinValue = Math.sin(simAngleRad);
             if (Math.abs(sinValue) < 1e-6) return 0;
             return sinValue > 0 ? 1 : -1;
           })();
-          const simHorizontalDirection = (typeof sim.horizontalDirection === 'number')
-            ? sim.horizontalDirection
-            : fallbackSimHorizontal;
           const simVerticalDirection = (typeof sim.verticalDirection === 'number')
             ? sim.verticalDirection
             : fallbackSimVertical;
-          const simSignedX = sim.totalDistanceX
-            * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection)
-            * attackDirectionSign;
+          const simSignedX = sim.totalDistanceX;
           const simSignedY = sim.totalDistanceY * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
           const testPos = {
             x: position.x + simSignedX,
@@ -1820,7 +1795,7 @@
             for (let i = 0; i < sim.trajectory.length; i += 1) {
               const step = sim.trajectory[i];
               const stepX = position.x
-                + step.x * (simHorizontalDirection === 0 ? 0 : simHorizontalDirection) * attackDirectionSign;
+                + step.x;
               const stepY = position.y + step.y * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
               if (isKill(stepX, stepY)) {
                 killsDuringTrajectory = true;

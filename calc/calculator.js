@@ -261,8 +261,12 @@
       const prevAbsY = startY + yDistance;
       if (!landed) {
         const prevAbsX = startX + xDistance;
-        if (xVelocity > xDec) {
-          xVelocity = f32(xVelocity - xDec);
+        if (Math.abs(xVelocity) > xDec) {
+          const xSign = Math.sign(xVelocity) || 1;
+          xVelocity = f32(xVelocity - (xDec * xSign));
+          if (Math.sign(xVelocity) !== xSign) {
+            xVelocity = f32(0);
+          }
           xDistance = f32(xDistance + xVelocity);
         }
 
@@ -369,6 +373,8 @@
     const comboDelay = Math.max(0, Math.trunc(Number(params.comboDelay) || 0));
     const throwMove = Boolean(params.throwMove);
     const doubleJumpArmor = Boolean(params.doubleJumpArmor);
+    const attackDirection = params.attackDirection === 'left' ? 'left' : 'right';
+    const attackDirectionSign = attackDirection === 'left' ? -1 : 1;
     const startX = Number.isFinite(params.startX) ? Number(params.startX) : 0;
     const startY = Number.isFinite(params.startY) ? Number(params.startY) : 0;
     const groundY = Number.isFinite(params.groundY) ? Number(params.groundY) : 0;
@@ -454,6 +460,7 @@
     const horizontalDirection = approxEqual(cosAngle, 0)
       ? 0
       : (cosAngle > 0 ? 1 : -1);
+    const signedHorizontalDirection = horizontalDirection === 0 ? 0 : horizontalDirection * attackDirectionSign;
     const verticalDirection = approxEqual(sinAngle, 0)
       ? 0
       : (sinAngle > 0 ? 1 : -1);
@@ -500,7 +507,7 @@
 
     const xDec = xDecOverride ?? f32(VELOCITY_DECAY_FACTOR * xMultiplier);
     const initialVelocityY = f32(yMultiplier * knockback);
-    const initialVelocityX = f32(xMultiplier * knockback);
+    const initialVelocityX = f32(xMultiplier * knockback * signedHorizontalDirection);
 
     const stopOnLanding = isKnockdown;
     const trajectoryResult = simulateHitstunTrajectory({
@@ -554,8 +561,12 @@
       xDistance = f32(lastStep ? lastStep.x : 0);
       yDistance = f32(lastStep ? lastStep.y : 0);
     } else {
-      while (xVelocity > xDec) {
-        xVelocity = f32(xVelocity - xDec);
+      while (Math.abs(xVelocity) > xDec) {
+        const xSign = Math.sign(xVelocity) || 1;
+        xVelocity = f32(xVelocity - (xDec * xSign));
+        if (Math.sign(xVelocity) !== xSign) {
+          xVelocity = f32(0);
+        }
         xDistance = f32(xDistance + xVelocity);
       }
 
@@ -599,7 +610,7 @@
       totalDistanceX: Number(xDistance),
       totalDistanceY: Number(yDistance),
       trajectory,
-      horizontalDirection,
+      horizontalDirection: signedHorizontalDirection,
       verticalDirection: isGroundSpike ? 1 : verticalDirection,
       resolvedAngle: angleDeg,
       knockbackBeforeArmor,

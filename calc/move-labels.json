@@ -319,6 +319,54 @@
     "during": {
       "ja": "during",
       "group": "other"
+    },
+    "back air (weak)": {
+      "ja": "空後（持続）",
+      "group": "aerial"
+    },
+    "dash attack (weak)": {
+      "ja": "ダッシュ攻撃（持続）",
+      "group": "other"
+    },
+    "down air (weak)": {
+      "ja": "空下（持続）",
+      "group": "aerial"
+    },
+    "down smash (weak)": {
+      "ja": "下スマ（持続）",
+      "group": "smash"
+    },
+    "forward tilt (weak)": {
+      "ja": "横強（持続）",
+      "group": "tilt"
+    },
+    "forward air (weak)": {
+      "ja": "空前（持続）",
+      "group": "aerial"
+    },
+    "forward smash (weak)": {
+      "ja": "横スマ（持続）",
+      "group": "smash"
+    },
+    "neutral air (weak)": {
+      "ja": "空N（持続）",
+      "group": "aerial"
+    },
+    "up b (weak)": {
+      "ja": "上B（持続）",
+      "group": "special"
+    },
+    "up air (weak)": {
+      "ja": "空上（持続）",
+      "group": "aerial"
+    },
+    "up smash (weak)": {
+      "ja": "上スマ（持続）",
+      "group": "smash"
+    },
+    "up tilt (weak)": {
+      "ja": "上強（持続）",
+      "group": "tilt"
     }
   }
 }

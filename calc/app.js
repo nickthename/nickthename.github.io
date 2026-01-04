@@ -412,9 +412,13 @@
 
       const getMoveLabelEntry = (move) => {
         if (!moveLabelMap || !moveLabelMap.moves) return null;
+        const nameKey = normalizeMoveKey(move.name || '');
+        if (nameKey && moveLabelMap.moves[nameKey]) {
+          return moveLabelMap.moves[nameKey];
+        }
         const baseName = move.baseName || move.name || '';
-        const key = normalizeMoveKey(baseName);
-        return moveLabelMap.moves[key] || null;
+        const baseKey = normalizeMoveKey(baseName);
+        return moveLabelMap.moves[baseKey] || null;
       };
 
       const getMoveLabel = (move) => {

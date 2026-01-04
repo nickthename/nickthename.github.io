@@ -216,10 +216,6 @@
       "ja": "上B(飛び道具)",
       "group": "special"
     },
-    "up b?": {
-      "ja": "上B?",
-      "group": "special"
-    },
     "up b (pk thunder head)": {
       "ja": "上B(PKサンダーヘッド)",
       "group": "special"
@@ -238,10 +234,6 @@
     },
     "down b (ground)": {
       "ja": "下B(地上)",
-      "group": "special"
-    },
-    "down b (ground?)": {
-      "ja": "下B(地上?)",
       "group": "special"
     },
     "down b (ground connect)": {
@@ -264,16 +256,8 @@
       "ja": "下B(飛び道具)",
       "group": "special"
     },
-    "down b (?)": {
-      "ja": "下B(?)",
-      "group": "special"
-    },
-    "down b (fall?)": {
-      "ja": "下B(落下?)",
-      "group": "special"
-    },
-    "down b (landing?)": {
-      "ja": "下B(着地?)",
+    "down b (landing)": {
+      "ja": "下B(着地)",
       "group": "special"
     },
     "forward throw": {

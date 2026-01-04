@@ -53,33 +53,33 @@
   ];
 
   const CHARACTERS = [
-    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
-    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
-    { name: 'DK', key: 'DK', weight: 0.83, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
-    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
     { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42, traction: 0.7 },
+    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
+    { name: 'DK', key: 'DK', weight: 0.83, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
     { name: 'Link', key: 'Link', weight: 0.96, fallAccel: 3.4, maxFall: 64, traction: 2.0 },
+    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
+    { name: 'Captain Falcon', key: 'Falcon', weight: 0.96, fallAccel: 3.4, maxFall: 66, traction: 1.8 },
+    { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55, traction: 2.0 },
     { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.8, maxFall: 58, traction: 1.6 },
-    { name: 'Falcon', key: 'Falcon', weight: 0.96, fallAccel: 3.4, maxFall: 66, traction: 1.8 },
     { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48, traction: 1.4 },
+    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
     { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52, traction: 2.0 },
     { name: 'Jigglypuff', key: 'Jigglypuff', weight: 1.3, fallAccel: 2.0, maxFall: 38, traction: 1.1 },
-    { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55, traction: 2.0 },
   ];
 
   const CHARACTERS_J = [
-    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
-    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
-    { name: 'DK',key: 'DK',weight: 0.84, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
-    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
     { name: 'Luigi', key: 'Luigi', weight: 1.0, fallAccel: 2.1, maxFall: 42, traction: 0.7 },
-    { name: 'Link',key: 'Link',weight: 0.96, fallAccel: 3.2, maxFall: 64, traction: 2.0 },
+    { name: 'Mario', key: 'Mario', weight: 1.0, fallAccel: 2.4, maxFall: 44, traction: 1.5 },
+    { name: 'DK', key: 'DK', weight: 0.84, fallAccel: 3.0, maxFall: 56, traction: 1.7 },
+    { name: 'Link', key: 'Link', weight: 0.96, fallAccel: 3.2, maxFall: 64, traction: 2.0 },
+    { name: 'Samus', key: 'Samus', weight: 0.92, fallAccel: 1.9, maxFall: 42, traction: 2.0 },
+    { name: 'Captain Falcon', key: 'Falcon', weight: 0.96, fallAccel: 3.4, maxFall: 60, traction: 1.8 },
+    { name: 'Ness', key: 'Ness', weight: 1.1, fallAccel: 2.7, maxFall: 55, traction: 2.0 },
     { name: 'Yoshi', key: 'Yoshi', weight: 0.93, fallAccel: 2.7, maxFall: 55, traction: 1.6 },
-    { name: 'Falcon',key: 'Falcon',weight: 0.96, fallAccel: 3.4, maxFall: 60, traction: 1.8 },
     { name: 'Kirby', key: 'Kirby', weight: 1.19, fallAccel: 2.4, maxFall: 48, traction: 1.4 },
+    { name: 'Fox', key: 'Fox', weight: 1.0, fallAccel: 4.0, maxFall: 60, traction: 2.0 },
     { name: 'Pikachu', key: 'Pikachu', weight: 1.16, fallAccel: 3.0, maxFall: 52, traction: 2.0 },
-    { name: 'Jigglypuff',key: 'Jigglypuff',weight: 1.3,fallAccel: 2.0, maxFall: 38, traction: 1.1 },
-    { name: 'Ness',key: 'Ness',weight: 1.1,fallAccel: 2.7, maxFall: 55, traction: 2.0 },
+    { name: 'Jigglypuff', key: 'Jigglypuff', weight: 1.3, fallAccel: 2.0, maxFall: 38, traction: 1.1 },
   ];
 
   const normalizeVersion = (value) => (String(value || '').toUpperCase() === 'J' ? 'J' : 'U');

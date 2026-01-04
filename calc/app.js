@@ -2088,10 +2088,13 @@
       }
 
       const defaultCharacter = Smash64Calculator.characters[0];
+      const defaultAttacker = Smash64Calculator.characters.find((entry) => entry.key === 'Mario') || defaultCharacter;
       if (defaultCharacter) {
         setDefender(defaultCharacter.key);
         setSelectValue(defenderDropdown, defenderSelect, defaultCharacter.key);
-        setSelectValue(attackerDropdown, attackerSelect, defaultCharacter.key);
+        if (defaultAttacker) {
+          setSelectValue(attackerDropdown, attackerSelect, defaultAttacker.key);
+        }
         populateMoves(attackerSelect.value);
       }
       updateDoubleJumpArmorVisibility({ skipCalculate: true });

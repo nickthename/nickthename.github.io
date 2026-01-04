@@ -449,6 +449,12 @@
       const POSITION_HORIZONTAL_ORDER = ['left', 'center', 'right'];
       const POSITION_VERTICAL_ORDER = ['stage', 'left-platform', 'right-platform', 'top-platform'];
       const CHARACTER_CUSTOM_CODE = 15;
+      const CHARACTER_KEYS_LEGACY = [
+        'Mario', 'Fox', 'DK', 'Samus', 'Luigi', 'Link', 'Yoshi', 'Falcon', 'Kirby', 'Pikachu', 'Jigglypuff', 'Ness',
+      ];
+      const CHARACTER_KEYS_DISPLAY = [
+        'Luigi', 'Mario', 'DK', 'Link', 'Samus', 'Falcon', 'Ness', 'Yoshi', 'Kirby', 'Fox', 'Pikachu', 'Jigglypuff',
+      ];
       const SCALE_COORD = 10;
       const SCALE_STATS = 100;
       const SCALE_DAMAGE = 10;
@@ -542,14 +548,13 @@
 
       const getCharacterIndex = (key) => {
         if (!key) return CHARACTER_CUSTOM_CODE;
-        const index = Smash64Calculator.characters.findIndex((entry) => entry.key === key);
+        const index = CHARACTER_KEYS_LEGACY.indexOf(key);
         return index >= 0 ? index : CHARACTER_CUSTOM_CODE;
       };
 
       const getCharacterKey = (index) => {
-        const list = Smash64Calculator.characters;
-        if (Number.isFinite(index) && index >= 0 && index < list.length) {
-          return list[index].key;
+        if (Number.isFinite(index) && index >= 0 && index < CHARACTER_KEYS_LEGACY.length) {
+          return CHARACTER_KEYS_LEGACY[index];
         }
         return '__custom__';
       };
@@ -1134,7 +1139,14 @@
         return character.name;
       };
 
-      Smash64Calculator.characters.forEach((character) => {
+      const characterMap = Smash64Calculator.characters.reduce((acc, character) => {
+        acc[character.key] = character;
+        return acc;
+      }, {});
+
+      CHARACTER_KEYS_DISPLAY.forEach((key) => {
+        const character = characterMap[key];
+        if (!character) return;
         const displayName = getCharacterDisplayName(character);
         const optionMarkup = getCharacterOptionMarkup(character, displayName);
         const defenderOption = document.createElement('option');
@@ -2102,10 +2114,11 @@
       }
 
       const defaultCharacter = Smash64Calculator.characters[0];
+      const defaultDefender = Smash64Calculator.characters.find((entry) => entry.key === 'Luigi') || defaultCharacter;
       const defaultAttacker = Smash64Calculator.characters.find((entry) => entry.key === 'Mario') || defaultCharacter;
       if (defaultCharacter) {
-        setDefender(defaultCharacter.key);
-        setSelectValue(defenderDropdown, defenderSelect, defaultCharacter.key);
+        setDefender(defaultDefender.key);
+        setSelectValue(defenderDropdown, defenderSelect, defaultDefender.key);
         if (defaultAttacker) {
           setSelectValue(attackerDropdown, attackerSelect, defaultAttacker.key);
         }

@@ -2686,21 +2686,8 @@
         "bkb": 70
       },
       {
-        "name": "Down B (fall?)",
-        "baseName": "Down B (fall?)",
-        "damage": 20,
-        "effect": "Normal",
-        "angle": 50,
-        "kbs": 70,
-        "fkb": 0,
-        "gt": 1,
-        "at": 1,
-        "sd": 0,
-        "bkb": 70
-      },
-      {
-        "name": "Down B (landing?)",
-        "baseName": "Down B (landing?)",
+        "name": "Down B",
+        "baseName": "Down B",
         "damage": 20,
         "effect": "Normal",
         "angle": 50,

@@ -98,10 +98,11 @@
         renderStageGeometry,
       } = app;
 
-      const getCharacterOptionMarkup = (character) => {
+      const getCharacterOptionMarkup = (character, labelOverride = null) => {
         const iconPath = CHARACTER_ICONS[character.key];
         if (!iconPath) return null;
-        return `<img src="${iconPath}" alt="" role="presentation">${character.name}`;
+        const label = labelOverride || character.name;
+        return `<img src="${iconPath}" alt="" role="presentation">${label}`;
       };
 
       const setSelectValue = (dropdown, select, value, { triggerChange = false } = {}) => {
@@ -1121,11 +1122,24 @@
         versionSelect.value = initialVersion;
       }
 
+      const CHARACTER_NAME_OVERRIDES = {
+        Jigglypuff: { ja: 'Purin' },
+      };
+
+      const getCharacterDisplayName = (character) => {
+        const override = CHARACTER_NAME_OVERRIDES[character.key];
+        if (override && currentLanguage === 'ja' && override.ja) {
+          return override.ja;
+        }
+        return character.name;
+      };
+
       Smash64Calculator.characters.forEach((character) => {
+        const displayName = getCharacterDisplayName(character);
+        const optionMarkup = getCharacterOptionMarkup(character, displayName);
         const defenderOption = document.createElement('option');
         defenderOption.value = character.key;
-        defenderOption.textContent = character.name;
-        const optionMarkup = getCharacterOptionMarkup(character);
+        defenderOption.textContent = displayName;
         if (optionMarkup) {
           defenderOption.dataset.html = optionMarkup;
         }
@@ -1133,7 +1147,7 @@
 
         const attackerOption = document.createElement('option');
         attackerOption.value = character.key;
-        attackerOption.textContent = character.name;
+        attackerOption.textContent = displayName;
         if (optionMarkup) {
           attackerOption.dataset.html = optionMarkup;
         }

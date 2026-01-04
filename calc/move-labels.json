@@ -379,6 +379,182 @@
     "ledge attack (slow)": {
       "ja": "崖攻撃（100%超え）",
       "group": "other"
+    },
+    "back air (2)": {
+      "ja": "空後（２）",
+      "group": "aerial"
+    },
+    "dash attack (2)": {
+      "ja": "ダッシュ攻撃（２）",
+      "group": "other"
+    },
+    "dash attack (3)": {
+      "ja": "ダッシュ攻撃（３）",
+      "group": "other"
+    },
+    "dash attack (4)": {
+      "ja": "ダッシュ攻撃（４）",
+      "group": "other"
+    },
+    "down b (air) (2)": {
+      "ja": "下B(空中)（２）",
+      "group": "special"
+    },
+    "down b (air) (3)": {
+      "ja": "下B(空中)（３）",
+      "group": "special"
+    },
+    "down b (ground) (2)": {
+      "ja": "下B(地上)（２）",
+      "group": "special"
+    },
+    "down b (ground) (3)": {
+      "ja": "下B(地上)（３）",
+      "group": "special"
+    },
+    "down air (2)": {
+      "ja": "空下（２）",
+      "group": "aerial"
+    },
+    "down smash (2)": {
+      "ja": "下スマ（２）",
+      "group": "smash"
+    },
+    "down smash (3)": {
+      "ja": "下スマ（３）",
+      "group": "smash"
+    },
+    "down smash (4)": {
+      "ja": "下スマ（４）",
+      "group": "smash"
+    },
+    "down tilt (2)": {
+      "ja": "下強（２）",
+      "group": "tilt"
+    },
+    "forward air (2)": {
+      "ja": "空前（２）",
+      "group": "aerial"
+    },
+    "forward smash (ang down) (2)": {
+      "ja": "横スマ下シフト（２）",
+      "group": "smash"
+    },
+    "forward smash (ang mid-down) (2)": {
+      "ja": "横スマ下シフト(1段階)（２）",
+      "group": "smash"
+    },
+    "forward smash (ang mid-up) (2)": {
+      "ja": "横スマ上シフト(1段階)（２）",
+      "group": "smash"
+    },
+    "forward smash (ang side) (2)": {
+      "ja": "横スマ（２）",
+      "group": "smash"
+    },
+    "forward smash (ang up) (2)": {
+      "ja": "横スマ上シフト（２）",
+      "group": "smash"
+    },
+    "jab inf (2)": {
+      "ja": "弱連打（２）",
+      "group": "other"
+    },
+    "neutral b (air) (2)": {
+      "ja": "NB(空中)（２）",
+      "group": "special"
+    },
+    "neutral b (air) (3)": {
+      "ja": "NB(空中)（３）",
+      "group": "special"
+    },
+    "neutral b (ground) (2)": {
+      "ja": "NB(地上)（２）",
+      "group": "special"
+    },
+    "neutral b (ground) (3)": {
+      "ja": "NB(地上)（３）",
+      "group": "special"
+    },
+    "up b (air) (2)": {
+      "ja": "上B(空中)（２）",
+      "group": "special"
+    },
+    "up b (air) (3)": {
+      "ja": "上B(空中)（３）",
+      "group": "special"
+    },
+    "up b (ground) (2)": {
+      "ja": "上B(地上)（２）",
+      "group": "special"
+    },
+    "up b (ground) (3)": {
+      "ja": "上B(地上)（３）",
+      "group": "special"
+    },
+    "up b (ground) (4)": {
+      "ja": "上B(地上)（４）",
+      "group": "special"
+    },
+    "up b (ground) (5)": {
+      "ja": "上B(地上)（５）",
+      "group": "special"
+    },
+    "up b (ground) (6)": {
+      "ja": "上B(地上)（６）",
+      "group": "special"
+    },
+    "up b (ground) (7)": {
+      "ja": "上B(地上)（７）",
+      "group": "special"
+    },
+    "up b (up) (2)": {
+      "ja": "上B(上)（２）",
+      "group": "special"
+    },
+    "up b (up) (3)": {
+      "ja": "上B(上)（３）",
+      "group": "special"
+    },
+    "up b (up) (4)": {
+      "ja": "上B(上)（４）",
+      "group": "special"
+    },
+    "up b (up) (5)": {
+      "ja": "上B(上)（５）",
+      "group": "special"
+    },
+    "up air (2)": {
+      "ja": "空上（２）",
+      "group": "aerial"
+    },
+    "up air (3)": {
+      "ja": "空上（３）",
+      "group": "aerial"
+    },
+    "up air (4)": {
+      "ja": "空上（４）",
+      "group": "aerial"
+    },
+    "up smash (2)": {
+      "ja": "上スマ（２）",
+      "group": "smash"
+    },
+    "up smash (3)": {
+      "ja": "上スマ（３）",
+      "group": "smash"
+    },
+    "up smash (4)": {
+      "ja": "上スマ（４）",
+      "group": "smash"
+    },
+    "up smash (5)": {
+      "ja": "上スマ（５）",
+      "group": "smash"
+    },
+    "up tilt (2)": {
+      "ja": "上強（２）",
+      "group": "tilt"
     }
   }
 }

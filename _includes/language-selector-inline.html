@@ -1,0 +1,13 @@
+{% assign lang_id = include.lang_id | default: "language-select" %}
+{% assign lang_path_en = include.lang_path_en | default: "/vods/" %}
+{% assign lang_path_ja = include.lang_path_ja | default: "/ja/vods/" %}
+<div class="version-language-inline" data-language-selector data-lang-path-en="{{ lang_path_en }}" data-lang-path-ja="{{ lang_path_ja }}">
+  <div class="inline-group" role="group" aria-label="Language">
+    <button type="button" class="inline-chip" data-lang-option="en">EN</button>
+    <button type="button" class="inline-chip" data-lang-option="ja">日本語</button>
+  </div>
+  <select id="{{ lang_id }}" data-lang-select class="sr-only" aria-label="Language">
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+  </select>
+</div>

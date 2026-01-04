@@ -1,6 +1,18 @@
 body { display: block; }
 .full-page { font-family: sans-serif; padding:1rem; line-height: 1.4; max-width: 1400px; margin: 0 auto; }
 
+.vods-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.vods-header h1 {
+  margin: 0;
+}
+
 .main-layout {
   display: flex;
   gap: 2rem;
@@ -45,6 +57,13 @@ tbody tr:hover { background:#f5faff; }
 .pagination button { margin:0 .2rem; padding:.4rem .8rem; }
 
 @media (max-width: 800px) {
+  .vods-header {
+    justify-content: center;
+  }
+  .vods-header h1 {
+    width: 100%;
+    text-align: center;
+  }
   .main-layout {
     flex-direction: column;
     align-items: stretch;
@@ -257,6 +276,11 @@ tbody tr:hover { background:#f5faff; }
   height: 24px;
 }
 .versus { font-weight: bold; margin: 0 0.5rem; }
+.alias-name {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+}
 
 /* Slim Select custom styles to match native look */
 .ss-main, .ss-content {

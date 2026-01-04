@@ -1,7 +1,7 @@
 ---
 layout: vods
-title: Vod Search
-lang: en
+title: VOD検索
+lang: ja
 styles:
   - https://cdn.jsdelivr.net/npm/slim-select@2.8.0/dist/slimselect.min.css
   - /assets/vods.css
@@ -12,37 +12,37 @@ scripts:
 ---
 <div class="full-page">
   <div class="vods-header">
-    <h1>Smash 64 Vod Search</h1>
+    <h1>Smash 64 VOD検索</h1>
     {% include language-selector-inline.html lang_id="vods-language-select" lang_path_en="/vods/" lang_path_ja="/ja/vods/" %}
   </div>
   <div class="main-layout">
     <div class="filters">
       <div class="filter-group">
         <div class="clearable">
-          <input type="text" id="player1Filter" placeholder="Any player" />
+          <input type="text" id="player1Filter" placeholder="プレイヤー指定なし" />
           <button class="clear-btn" data-target="player1Filter">×</button>
         </div>
-        <label for="char1Filter" style="margin-top: 0.5rem;">using</label>
-        <select id="char1Filter"><option value="">Any character</option></select>
+        <label for="char1Filter" style="margin-top: 0.5rem;">使用キャラ</label>
+        <select id="char1Filter"><option value="">キャラ指定なし</option></select>
       </div>
 
       <div style="text-align: center; margin: 1rem 0; font-weight: bold; font-size: 1.0rem;">VS</div>
 
       <div class="filter-group">
         <div class="clearable">
-          <input type="text" id="player2Filter" placeholder="Any player" />
+          <input type="text" id="player2Filter" placeholder="プレイヤー指定なし" />
           <button class="clear-btn" data-target="player2Filter">×</button>
         </div>
-        <label for="char2Filter" style="margin-top: 0.5rem;">using</label>
-        <select id="char2Filter"><option value="">Any character</option></select>
+        <label for="char2Filter" style="margin-top: 0.5rem;">使用キャラ</label>
+        <select id="char2Filter"><option value="">キャラ指定なし</option></select>
       </div>
       <div class="filter-group">
-        <label for="eventFilterInput">Event:</label>
+        <label for="eventFilterInput">大会:</label>
         <div class="searchable-select clearable" id="eventSelect">
           <input
             type="text"
             id="eventFilterInput"
-            placeholder="All events"
+            placeholder="大会指定なし"
             autocomplete="off"
           />
           <button class="clear-btn" data-target="eventFilterInput" id="clearEvent">×</button>
@@ -50,11 +50,11 @@ scripts:
         </div>
       </div>
       <div class="filter-group">
-        <label for="dateFromFilter">From:</label>
+        <label for="dateFromFilter">開始日:</label>
         <input type="date" id="dateFromFilter"/>
       </div>
       <div class="filter-group">
-        <label for="dateToFilter">To:</label>
+        <label for="dateToFilter">終了日:</label>
         <input type="date" id="dateToFilter"/>
       </div>
     </div>
@@ -63,17 +63,17 @@ scripts:
       <table id="vodTable">
         <thead>
           <tr>
-            <th>Event</th><th>Round</th><th>Matchup</th>
-            <th>Date</th><th>VOD</th>
+            <th>大会</th><th>ラウンド</th><th>対戦</th>
+            <th>日付</th><th>VOD</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
 
       <div class="pagination">
-        <button id="prevPage">« Prev</button>
+        <button id="prevPage">« 前へ</button>
         <span id="pageInfo"></span>
-        <button id="nextPage">Next »</button>
+        <button id="nextPage">次へ »</button>
       </div>
     </div>
   </div>
@@ -87,18 +87,18 @@ scripts:
     let playerAliasIndex = null;
 
     const CHAR_IMAGES = {
-      "Captain Falcon": "img/chars/captain-falcon.png",
-      "Donkey Kong":    "img/chars/dk.png",
-      "Fox":            "img/chars/fox.png",
-      "Jigglypuff":     "img/chars/jigglypuff.png",
-      "Kirby":          "img/chars/kirby.png",
-      "Link":           "img/chars/link.png",
-      "Luigi":          "img/chars/luigi.png",
-      "Mario":          "img/chars/mario.png",
-      "Ness":           "img/chars/ness.png",
-      "Pikachu":        "img/chars/pikachu.png",
-      "Samus":          "img/chars/samus.png",
-      "Yoshi":          "img/chars/yoshi.png",
+      "Captain Falcon": "/vods/img/chars/captain-falcon.png",
+      "Donkey Kong":    "/vods/img/chars/dk.png",
+      "Fox":            "/vods/img/chars/fox.png",
+      "Jigglypuff":     "/vods/img/chars/jigglypuff.png",
+      "Kirby":          "/vods/img/chars/kirby.png",
+      "Link":           "/vods/img/chars/link.png",
+      "Luigi":          "/vods/img/chars/luigi.png",
+      "Mario":          "/vods/img/chars/mario.png",
+      "Ness":           "/vods/img/chars/ness.png",
+      "Pikachu":        "/vods/img/chars/pikachu.png",
+      "Samus":          "/vods/img/chars/samus.png",
+      "Yoshi":          "/vods/img/chars/yoshi.png",
     };
 
     // cache filter elements
@@ -350,7 +350,7 @@ scripts:
     }
 
     async function loadCSV(){
-      const resp = await fetch('vods.csv');
+      const resp = await fetch('/vods/vods.csv');
       const text = await resp.text();
       return text.trim().split('\n').map(l=>l.split(',').map(s=>s.trim()))
         .map(([event,round,p1,c1r,p2,c2r,date,url])=>({
@@ -384,7 +384,7 @@ scripts:
 
       // Populate character selects with images for Slim Select
       function populateCharSelect(select, charImages) {
-        select.innerHTML = '<option value="">Any character</option>';
+        select.innerHTML = '<option value="">キャラ指定なし</option>';
         Object.entries(charImages).forEach(([name, img]) => {
           const opt = document.createElement('option');
           opt.value = name;
@@ -446,9 +446,9 @@ scripts:
 
         return `
         <tr>
-          <td data-label="Event" class="event-cell">${d.event}<div class="date-in-event">${d.date}</div></td>
-          <td data-label="Round">${d.round}</td>
-          <td data-label="Matchup">
+          <td data-label="大会" class="event-cell">${d.event}<div class="date-in-event">${d.date}</div></td>
+          <td data-label="ラウンド">${d.round}</td>
+          <td data-label="対戦">
             <div class="matchup-cell">
               <div class="player-info">
                 <span>${p1Name}</span><div class="chars">${p1chars}</div>
@@ -459,13 +459,13 @@ scripts:
               </div>
             </div>
           </td>
-          <td data-label="Date">${d.date}</td>
-          <td data-label="VOD"><a class="vod-button" href="https://www.youtube.com/watch?v=${d.url}" target="_blank">Watch</a></td>
+          <td data-label="日付">${d.date}</td>
+          <td data-label="VOD"><a class="vod-button" href="https://www.youtube.com/watch?v=${d.url}" target="_blank">視聴</a></td>
         </tr>`
       }).join('');
 
       const totalPages = Math.max(1, Math.ceil(filtered.length/ROWS_PER_PAGE));
-      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      pageInfo.textContent = `ページ ${currentPage} / ${totalPages}`;
       prevPage.disabled = currentPage===1;
       nextPage.disabled = currentPage===totalPages;
     }
@@ -549,11 +549,11 @@ scripts:
       // Initialize Slim Select for character dropdowns
       new SlimSelect({
         select: '#char1Filter',
-        settings: { showSearch: false, placeholderText: 'Any character' }
+        settings: { showSearch: false, placeholderText: 'キャラ指定なし' }
       });
       new SlimSelect({
         select: '#char2Filter',
-        settings: { showSearch: false, placeholderText: 'Any character' }
+        settings: { showSearch: false, placeholderText: 'キャラ指定なし' }
       });
       function setPlaceholderClass(selectId) {
         const select = document.getElementById(selectId);

@@ -367,6 +367,18 @@
     "up tilt (weak)": {
       "ja": "上強（持続）",
       "group": "tilt"
+    },
+    "getup attack (front) (weak)": {
+      "ja": "起き上がり攻撃(前)（持続）",
+      "group": "other"
+    },
+    "getup attack (back) (weak)": {
+      "ja": "起き上がり攻撃(後)（持続）",
+      "group": "other"
+    },
+    "ledge attack (slow)": {
+      "ja": "崖攻撃（100%超え）",
+      "group": "other"
     }
   }
 }

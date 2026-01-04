@@ -645,8 +645,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1235,8 +1235,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2165,8 +2165,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Forward throw (collateral)",
+        "baseName": "Forward throw (collateral)",
         "damage": 7,
         "effect": "Normal",
         "angle": 361,
@@ -2767,8 +2767,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Forward throw (collateral)",
+        "baseName": "Forward throw (collateral)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2794,8 +2794,8 @@
         "throw": true
       },
       {
-        "name": "during (2)",
-        "baseName": "during",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -3357,8 +3357,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3907,8 +3907,8 @@
         "throw": true
       },
       {
-        "name": "Back throw 3rd party",
-        "baseName": "Back throw 3rd party",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4443,8 +4443,8 @@
         "throw": true
       },
       {
-        "name": "during",
-        "baseName": "during",
+        "name": "Forward throw (collateral)",
+        "baseName": "Forward throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4470,8 +4470,8 @@
         "throw": true
       },
       {
-        "name": "during (2)",
-        "baseName": "during",
+        "name": "Back throw (collateral)",
+        "baseName": "Back throw (collateral)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5295,8 +5295,8 @@
     ],
     "Samus": [
       {
-        "name": "Forward throw damage",
-        "baseName": "Forward throw damage",
+        "name": "Forward throw",
+        "baseName": "Forward throw",
         "damage": 16,
         "effect": "Electric",
         "angle": 40,

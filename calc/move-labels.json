@@ -264,16 +264,16 @@
       "ja": "前投げ",
       "group": "throw"
     },
-    "forward throw damage": {
-      "ja": "前投げ(ダメージ)",
+    "forward throw (collateral)": {
+      "ja": "前投げ(巻き込み)",
       "group": "throw"
     },
     "back throw": {
       "ja": "後投げ",
       "group": "throw"
     },
-    "back throw 3rd party": {
-      "ja": "後投げ(3人目)",
+    "back throw (collateral)": {
+      "ja": "後投げ(巻き込み)",
       "group": "throw"
     },
     "jab": {

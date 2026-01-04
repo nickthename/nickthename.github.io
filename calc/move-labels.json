@@ -308,12 +308,12 @@
       "ja": "崖攻撃",
       "group": "other"
     },
-    "floor attack f": {
-      "ja": "起き上がり攻撃(F)",
+    "getup attack (front)": {
+      "ja": "起き上がり攻撃(前)",
       "group": "other"
     },
-    "floor attack s": {
-      "ja": "起き上がり攻撃(S)",
+    "getup attack (back)": {
+      "ja": "起き上がり攻撃(後)",
       "group": "other"
     },
     "during": {

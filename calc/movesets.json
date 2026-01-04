@@ -563,8 +563,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -576,8 +576,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -1153,8 +1153,8 @@
         "throw": true
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -1166,8 +1166,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -1664,8 +1664,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -1677,8 +1677,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2097,8 +2097,8 @@
         "bkb": 60
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2110,8 +2110,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2699,8 +2699,8 @@
         "bkb": 70
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -2712,8 +2712,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -3249,8 +3249,8 @@
         "bkb": 10
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 8,
         "effect": "Slash",
         "angle": 361,
@@ -3262,8 +3262,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack F (weak)",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front) (weak)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Slash",
         "angle": 361,
@@ -3275,8 +3275,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 8,
         "effect": "Slash",
         "angle": 361,
@@ -3288,8 +3288,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S (weak)",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back) (weak)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Slash",
         "angle": 361,
@@ -3825,8 +3825,8 @@
         "bkb": 80
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -3838,8 +3838,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4375,8 +4375,8 @@
         "bkb": 120
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4388,8 +4388,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4847,8 +4847,8 @@
         "bkb": 40
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -4860,8 +4860,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5241,8 +5241,8 @@
         "bkb": 100
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5254,8 +5254,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5986,8 +5986,8 @@
         "bkb": 50
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -5999,8 +5999,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6393,8 +6393,8 @@
         "bkb": 50
       },
       {
-        "name": "Floor attack F",
-        "baseName": "Floor attack F",
+        "name": "Getup attack (front)",
+        "baseName": "Getup attack (front)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6406,8 +6406,8 @@
         "bkb": 0
       },
       {
-        "name": "Floor attack S",
-        "baseName": "Floor attack S",
+        "name": "Getup attack (back)",
+        "baseName": "Getup attack (back)",
         "damage": 6,
         "effect": "Normal",
         "angle": 361,
@@ -6544,13 +6544,13 @@
     },
     {
       "character": "Ness",
-      "name": "Floor attack F",
-      "line": "Floor attack F           6      Normal  361 100  90  1  1   1     0"
+      "name": "Getup attack (front)",
+      "line": "Getup attack (front)           6      Normal  361 100  90  1  1   1     0"
     },
     {
       "character": "Ness",
-      "name": "Floor attack S",
-      "line": "Floor attack S           6      Normal  361 100  90  1  1   1     0"
+      "name": "Getup attack (back)",
+      "line": "Getup attack (back)           6      Normal  361 100  90  1  1   1     0"
     },
     {
       "character": "Ness",

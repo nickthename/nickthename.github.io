@@ -1113,8 +1113,8 @@
         "bkb": 40
       },
       {
-        "name": "Down B (ground?)",
-        "baseName": "Down B (ground?)",
+        "name": "Down B",
+        "baseName": "Down B",
         "damage": 15,
         "effect": "Flame",
         "angle": 361,
@@ -1126,8 +1126,8 @@
         "bkb": 40
       },
       {
-        "name": "Down B (?)",
-        "baseName": "Down B (?)",
+        "name": "Down B (landing)",
+        "baseName": "Down B (landing)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,

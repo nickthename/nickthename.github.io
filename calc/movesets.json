@@ -69,8 +69,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -82,8 +82,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -95,8 +95,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -736,8 +736,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 15,
         "effect": "Normal",
         "angle": 361,
@@ -749,8 +749,8 @@
         "bkb": 6
       },
       {
-        "name": "Forward Tilt (ang mid-up)",
-        "baseName": "Forward Tilt (ang mid-up)",
+        "name": "Forward tilt (ang mid-up)",
+        "baseName": "Forward tilt (ang mid-up)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -762,8 +762,8 @@
         "bkb": 6
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -775,8 +775,8 @@
         "bkb": 6
       },
       {
-        "name": "Forward Tilt (ang mid-down)",
-        "baseName": "Forward Tilt (ang mid-down)",
+        "name": "Forward tilt (ang mid-down)",
+        "baseName": "Forward tilt (ang mid-down)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -788,8 +788,8 @@
         "bkb": 6
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -1326,8 +1326,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -1339,8 +1339,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang mid-up)",
-        "baseName": "Forward Tilt (ang mid-up)",
+        "name": "Forward tilt (ang mid-up)",
+        "baseName": "Forward tilt (ang mid-up)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -1352,8 +1352,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -1365,8 +1365,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang mid-down)",
-        "baseName": "Forward Tilt (ang mid-down)",
+        "name": "Forward tilt (ang mid-down)",
+        "baseName": "Forward tilt (ang mid-down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1378,8 +1378,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1798,8 +1798,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1811,8 +1811,8 @@
         "bkb": 5
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -1824,8 +1824,8 @@
         "bkb": 5
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 8,
         "effect": "Normal",
         "angle": 361,
@@ -2257,8 +2257,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -2270,8 +2270,8 @@
         "bkb": 8
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -2283,8 +2283,8 @@
         "bkb": 8
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -2911,8 +2911,8 @@
         "bkb": 5
       },
       {
-        "name": "Forward Tilt",
-        "baseName": "Forward Tilt",
+        "name": "Forward tilt",
+        "baseName": "Forward tilt",
         "damage": 18,
         "effect": "Slash",
         "angle": 361,
@@ -2924,8 +2924,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (weak)",
-        "baseName": "Forward Tilt",
+        "name": "Forward tilt (weak)",
+        "baseName": "Forward tilt",
         "damage": 17,
         "effect": "Slash",
         "angle": 361,
@@ -3435,8 +3435,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3448,8 +3448,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3461,8 +3461,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -3985,8 +3985,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 14,
         "effect": "Normal",
         "angle": 361,
@@ -3998,8 +3998,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 361,
@@ -4011,8 +4011,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -4548,8 +4548,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4561,8 +4561,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4574,8 +4574,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -4955,8 +4955,8 @@
         "bkb": 40
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -4968,8 +4968,8 @@
         "bkb": 8
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -4981,8 +4981,8 @@
         "bkb": 6
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -5375,8 +5375,8 @@
         "bkb": 0
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 12,
         "effect": "Normal",
         "angle": 361,
@@ -5388,8 +5388,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang mid-up)",
-        "baseName": "Forward Tilt (ang mid-up)",
+        "name": "Forward tilt (ang mid-up)",
+        "baseName": "Forward tilt (ang mid-up)",
         "damage": 11,
         "effect": "Normal",
         "angle": 361,
@@ -5401,8 +5401,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 10,
         "effect": "Normal",
         "angle": 361,
@@ -5414,8 +5414,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang mid-down)",
-        "baseName": "Forward Tilt (ang mid-down)",
+        "name": "Forward tilt (ang mid-down)",
+        "baseName": "Forward tilt (ang mid-down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -5427,8 +5427,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 9,
         "effect": "Normal",
         "angle": 361,
@@ -6120,8 +6120,8 @@
         "bkb": 10
       },
       {
-        "name": "Forward Tilt (ang up)",
-        "baseName": "Forward Tilt (ang up)",
+        "name": "Forward tilt (ang up)",
+        "baseName": "Forward tilt (ang up)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -6133,8 +6133,8 @@
         "bkb": 8
       },
       {
-        "name": "Forward Tilt (ang side)",
-        "baseName": "Forward Tilt (ang side)",
+        "name": "Forward tilt (ang side)",
+        "baseName": "Forward tilt (ang side)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,
@@ -6146,8 +6146,8 @@
         "bkb": 8
       },
       {
-        "name": "Forward Tilt (ang down)",
-        "baseName": "Forward Tilt (ang down)",
+        "name": "Forward tilt (ang down)",
+        "baseName": "Forward tilt (ang down)",
         "damage": 13,
         "effect": "Normal",
         "angle": 70,

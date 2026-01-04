@@ -3565,6 +3565,19 @@
         "bkb": 30
       },
       {
+        "name": "Up smash",
+        "baseName": "Up smash",
+        "damage": 19,
+        "effect": "Normal",
+        "angle": 85,
+        "kbs": 120,
+        "fkb": 0,
+        "gt": 1,
+        "at": 1,
+        "sd": 0,
+        "bkb": 26
+      },
+      {
         "name": "Down smash",
         "baseName": "Down smash",
         "damage": 17,

@@ -147,22 +147,6 @@
         return { x, y: platform.y };
       }
 
-      const mirrorGroundPlanes = (planes, originX) => {
-        if (!Number.isFinite(originX)) return planes;
-        return planes.map((plane) => ({
-          y: plane.y,
-          xMin: originX * 2 - plane.xMax,
-          xMax: originX * 2 - plane.xMin,
-        }));
-      };
-
-      const getHorizontalDirectionFromAngle = (angleDeg) => {
-        if (!Number.isFinite(angleDeg)) return 0;
-        const angleRad = angleDeg * (Math.PI / 180);
-        const cosValue = Math.cos(angleRad);
-        if (Math.abs(cosValue) < 1e-6) return 0;
-        return cosValue > 0 ? 1 : -1;
-      };
 
       app.computePosition = computePosition;
 
@@ -389,15 +373,18 @@
       const readMoveFromInputs = ({ includeDerived = false } = {}) => {
         const simulation = readSelectValue(simulationSelect) || SIMULATION_ORDER[0];
         const comboDelay = simulation === 'custom' ? readNumber(comboDelayInput) : null;
+        const moveSlot = getSelectedMoveSlot();
+        const isCustom = !Number.isFinite(moveSlot);
+        const shouldStoreMoveData = isCustom || hasMoveOverride();
         const move = {
-          moveSlot: getSelectedMoveSlot(),
-          damage: readNumber(damageInput),
-          angle: readNumber(angleInput),
-          kbs: readNumber(kbsInput),
-          bkb: readNumber(bkbInput),
-          fkb: readNumber(fkbInput),
-          electric: Boolean(electricToggle && electricToggle.checked),
-          throwMove: Boolean(throwToggle && throwToggle.checked),
+          moveSlot,
+          damage: shouldStoreMoveData ? readNumber(damageInput) : null,
+          angle: shouldStoreMoveData ? readNumber(angleInput) : null,
+          kbs: shouldStoreMoveData ? readNumber(kbsInput) : null,
+          bkb: shouldStoreMoveData ? readNumber(bkbInput) : null,
+          fkb: shouldStoreMoveData ? readNumber(fkbInput) : null,
+          electric: shouldStoreMoveData ? Boolean(electricToggle && electricToggle.checked) : null,
+          throwMove: shouldStoreMoveData ? Boolean(throwToggle && throwToggle.checked) : null,
           simulation,
           comboDelay,
           attackDirection: state.attackDirection,
@@ -414,14 +401,13 @@
       };
 
       const syncGlobalFromUI = () => {
+        const defenderOverridesActive = (defenderCustomOption && defenderSelect.value === defenderCustomOption.value)
+          || hasDefenderOverride();
         comboState.global = {
           version: currentVersion,
           defender: readSelectValue(defenderSelect),
           attacker: readSelectValue(attackerSelect),
           hp: readNumber(hpInput),
-          weight: readNumber(weightInput),
-          fallAccel: readNumber(fallAccelInput),
-          maxFall: readNumber(maxFallInput),
           doubleJumpArmor: Boolean(doubleJumpArmorToggle && doubleJumpArmorToggle.checked),
           position: {
             custom: state.customPosition !== null,
@@ -434,6 +420,11 @@
           cameraMode: trajectoryState.cameraMode,
           debug: Boolean(debugToggle && debugToggle.checked),
         };
+        if (defenderOverridesActive) {
+          comboState.global.weight = readNumber(weightInput);
+          comboState.global.fallAccel = readNumber(fallAccelInput);
+          comboState.global.maxFall = readNumber(maxFallInput);
+        }
       };
 
       const syncGlobalExtrasFromUI = () => {
@@ -705,6 +696,14 @@
         applyMoveConfigToUI(comboState.moves[nextIndex], { skipCalculate: true });
         if (nextIndex === 0) {
           applyGlobalFieldsToUI();
+          const move = comboState.moves[0] || {};
+          const desiredStaleness = (typeof move.staleness === 'string')
+            ? move.staleness
+            : STALENESS_ORDER[0];
+          setStaleness(desiredStaleness, { trigger: false });
+          if (typeof move.targetState === 'string') {
+            targetStateSelect.value = move.targetState;
+          }
         }
         renderComboStrip();
         applyComboLocks();
@@ -722,6 +721,11 @@
         comboState.activeIndex = comboState.moves.length - 1;
         applyMoveConfigToUI(nextMove, { skipCalculate: true });
         renderComboStrip();
+        if (comboStrip) {
+          window.requestAnimationFrame(() => {
+            comboStrip.scrollTo({ left: comboStrip.scrollWidth, behavior: 'smooth' });
+          });
+        }
         applyComboLocks();
         calculate();
         markStateDirty();
@@ -2034,11 +2038,11 @@
       if (window.SlimSelect) {
         attackerDropdown = new SlimSelect({
           select: attackerSelect,
-          settings: { showSearch: false }
+          settings: { showSearch: false, keepOrder: true }
         });
         defenderDropdown = new SlimSelect({
           select: defenderSelect,
-          settings: { showSearch: false }
+          settings: { showSearch: false, keepOrder: true }
         });
       }
 
@@ -2551,11 +2555,8 @@
 
       const computeMoveOutcome = (params) => {
         const result = Smash64Calculator.compute(params);
-        const { resolvedAngleDeg, horizontalDirection, verticalDirection } = resolveDirections(result, params.angle);
-        const attackDirectionSign = params.attackDirection === 'left' ? -1 : 1;
-        const signedXDistance = result.totalDistanceX
-          * (horizontalDirection === 0 ? 0 : horizontalDirection)
-          * attackDirectionSign;
+        const { resolvedAngleDeg, verticalDirection } = resolveDirections(result, params.angle);
+        const signedXDistance = result.totalDistanceX;
         const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
         const finalPosition = {
           x: params.startX + signedXDistance,
@@ -2647,12 +2648,7 @@
             : (moveDefaults ? moveDefaults.throwMove : false);
 
           const attackDirection = move.attackDirection || ATTACK_DIRECTION_ORDER[0];
-          const attackDirectionSign = attackDirection === 'left' ? -1 : 1;
-          const predictedHorizontal = getHorizontalDirectionFromAngle(baseAngle);
-          const travelSign = predictedHorizontal === 0 ? 0 : predictedHorizontal * attackDirectionSign;
-          const groundPlanes = travelSign < 0
-            ? mirrorGroundPlanes(baseGroundPlanes, currentPosition.x)
-            : baseGroundPlanes;
+          const groundPlanes = baseGroundPlanes;
           const params = {
             weight: Number.isFinite(global.weight) ? global.weight : numericValue(weightInput, 1),
             fallAccel: Number.isFinite(global.fallAccel) ? global.fallAccel : numericValue(fallAccelInput, 0),
@@ -2724,12 +2720,21 @@
       const applyActiveDerivedFields = () => {
         if (comboState.activeIndex === 0) {
           state.comboLockStaleness = false;
-          const move = comboState.moves[0];
+          const move = comboState.moves[0] || {};
+          const derived = comboState.derived[0];
           if (move && typeof move.targetState === 'string') {
             targetStateSelect.value = move.targetState;
           }
-          if (move && typeof move.staleness === 'string') {
-            setStaleness(move.staleness, { trigger: false });
+          const desiredStaleness = (typeof move.staleness === 'string')
+            ? move.staleness
+            : (derived && typeof derived.stalenessValue === 'string'
+              ? derived.stalenessValue
+              : STALENESS_ORDER[0]);
+          if (typeof desiredStaleness === 'string') {
+            setStaleness(desiredStaleness, { trigger: false });
+            if (typeof move.staleness !== 'string') {
+              comboState.moves[0] = { ...move, staleness: desiredStaleness };
+            }
           }
           return;
         }
@@ -2786,11 +2791,7 @@
         const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
 
         const baseAngle = numericValue(angleInput, 0);
-        const predictedHorizontal = getHorizontalDirectionFromAngle(baseAngle);
-        const travelSign = predictedHorizontal === 0 ? 0 : predictedHorizontal * attackDirectionSign;
-        const groundPlanes = travelSign < 0
-          ? mirrorGroundPlanes(baseGroundPlanes, position.x)
-          : baseGroundPlanes;
+        const groundPlanes = baseGroundPlanes;
         const params = {
           weight: numericValue(weightInput, 1),
           fallAccel: numericValue(fallAccelInput, 0),
@@ -2962,13 +2963,11 @@
             if (!entry || index === comboState.activeIndex) return;
             const move = comboState.moves[index] || {};
             if (!entry.result || !entry.startPosition || !entry.endPosition) return;
-            const { horizontalDirection: secondaryHoriz, verticalDirection: secondaryVert } = resolveDirections(
+            const { verticalDirection: secondaryVert } = resolveDirections(
               entry.result,
               Number.isFinite(move.angle) ? move.angle : 0
             );
-            const secondaryAttackDir = move.attackDirection || ATTACK_DIRECTION_ORDER[0];
-            const secondaryAttackSign = secondaryAttackDir === 'left' ? -1 : 1;
-            const secondaryDirectionX = (secondaryHoriz === 0 ? 0 : secondaryHoriz) * secondaryAttackSign;
+            const secondaryDirectionX = 1;
             const secondaryDirectionY = secondaryVert === 0 ? 0 : secondaryVert;
             const secondaryPoints = (entry.result.trajectory || []).map((step) => ({
               frame: step.frame,

@@ -36,6 +36,7 @@ window.CALC_I18N = {
   shieldDamageHint: ({ max }) => `シールド耐久値: ${max}`,
   shieldstunFrames: ({ frames }) => `${frames}F`,
   afterStaleness: ({ summary }) => `${summary}（OP後）`,
+  lockedFieldHint: '前のコンボヒットにより固定されています。',
   displacement: {
     after: ({ frames, label }) => (label === 'hitstun' ? `ふっとび硬直${frames}F後` : `${frames}F後`),
     whenZero: '速度が0になるまで',

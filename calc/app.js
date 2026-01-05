@@ -23,6 +23,7 @@
         attackerSelect,
         moveSelect,
         moveDetails,
+        stalenessControl,
         weightInput,
         fallAccelInput,
         maxFallInput,
@@ -60,6 +61,7 @@
         backgroundToggle,
         backgroundMenu,
         backgroundOptions,
+        comboStrip,
       } = elements;
 
       const {
@@ -85,6 +87,15 @@
       state.suppressPositionChange = state.suppressPositionChange ?? false;
       state.attackDirection = state.attackDirection ?? 'right';
       state.selectedMoveShieldDamage = state.selectedMoveShieldDamage ?? 0;
+      state.comboLockPosition = state.comboLockPosition ?? false;
+      state.suppressComboCalculation = state.suppressComboCalculation ?? false;
+      state.comboLockStaleness = state.comboLockStaleness ?? false;
+
+      const comboState = state.combo || (state.combo = {});
+      comboState.activeIndex = Number.isFinite(comboState.activeIndex) ? comboState.activeIndex : 0;
+      comboState.moves = Array.isArray(comboState.moves) ? comboState.moves : [];
+      comboState.derived = Array.isArray(comboState.derived) ? comboState.derived : [];
+      comboState.global = comboState.global && typeof comboState.global === 'object' ? comboState.global : {};
 
       const {
         isPositionOnPlatform,
@@ -135,6 +146,23 @@
         }
         return { x, y: platform.y };
       }
+
+      const mirrorGroundPlanes = (planes, originX) => {
+        if (!Number.isFinite(originX)) return planes;
+        return planes.map((plane) => ({
+          y: plane.y,
+          xMin: originX * 2 - plane.xMax,
+          xMax: originX * 2 - plane.xMin,
+        }));
+      };
+
+      const getHorizontalDirectionFromAngle = (angleDeg) => {
+        if (!Number.isFinite(angleDeg)) return 0;
+        const angleRad = angleDeg * (Math.PI / 180);
+        const cosValue = Math.cos(angleRad);
+        if (Math.abs(cosValue) < 1e-6) return 0;
+        return cosValue > 0 ? 1 : -1;
+      };
 
       app.computePosition = computePosition;
 
@@ -267,6 +295,33 @@
         });
       }
 
+      const LOCKED_FIELD_HINT = UI_TEXT.lockedFieldHint || 'Field locked from preceding combo hit.';
+
+      const setLockedField = (node, locked) => {
+        if (!node) return;
+        node.classList.toggle('is-locked-field', locked);
+        if (node.tagName === 'INPUT') {
+          node.readOnly = locked;
+        } else if (node.tagName === 'SELECT') {
+          node.disabled = locked;
+        }
+        const label = node.id ? document.querySelector(`label[for="${node.id}"]`) : null;
+        if (label) {
+          if (locked) {
+            label.dataset.lockedTitle = LOCKED_FIELD_HINT;
+            label.title = LOCKED_FIELD_HINT;
+          } else if (label.dataset.lockedTitle) {
+            label.removeAttribute('title');
+            delete label.dataset.lockedTitle;
+          }
+        }
+        if (locked) {
+          node.title = LOCKED_FIELD_HINT;
+        } else if (node.title === LOCKED_FIELD_HINT) {
+          node.removeAttribute('title');
+        }
+      };
+
       function setStaleness(value, { trigger = true } = {}) {
         if (!value) return;
         const changed = state.stalenessValue !== value;
@@ -318,6 +373,379 @@
       const updateComboDelayVisibility = () => {
         if (!comboDelayRow) return;
         comboDelayRow.classList.toggle('hidden', simulationSelect.value !== 'custom');
+      };
+
+      const clampComboIndex = (index) => {
+        if (comboState.moves.length === 0) return 0;
+        return Math.min(Math.max(0, Math.trunc(index)), comboState.moves.length - 1);
+      };
+
+      const getSelectedMoveSlot = () => {
+        if (!moveSelect || moveSelect.value === '') return null;
+        const slot = Number(moveSelect.value);
+        return Number.isFinite(slot) ? Math.max(0, Math.trunc(slot)) : null;
+      };
+
+      const readMoveFromInputs = ({ includeDerived = false } = {}) => {
+        const simulation = readSelectValue(simulationSelect) || SIMULATION_ORDER[0];
+        const comboDelay = simulation === 'custom' ? readNumber(comboDelayInput) : null;
+        const move = {
+          moveSlot: getSelectedMoveSlot(),
+          damage: readNumber(damageInput),
+          angle: readNumber(angleInput),
+          kbs: readNumber(kbsInput),
+          bkb: readNumber(bkbInput),
+          fkb: readNumber(fkbInput),
+          electric: Boolean(electricToggle && electricToggle.checked),
+          throwMove: Boolean(throwToggle && throwToggle.checked),
+          simulation,
+          comboDelay,
+          attackDirection: state.attackDirection,
+          attackHandicap: numericValue(attackHandicapInput, 9),
+          defenseHandicap: numericValue(defenseHandicapInput, 9),
+        };
+
+        if (includeDerived) {
+          move.staleness = state.stalenessValue;
+          move.targetState = readSelectValue(targetStateSelect) || TARGET_STATE_ORDER[0];
+        }
+
+        return move;
+      };
+
+      const syncGlobalFromUI = () => {
+        comboState.global = {
+          version: currentVersion,
+          defender: readSelectValue(defenderSelect),
+          attacker: readSelectValue(attackerSelect),
+          hp: readNumber(hpInput),
+          weight: readNumber(weightInput),
+          fallAccel: readNumber(fallAccelInput),
+          maxFall: readNumber(maxFallInput),
+          doubleJumpArmor: Boolean(doubleJumpArmorToggle && doubleJumpArmorToggle.checked),
+          position: {
+            custom: state.customPosition !== null,
+            horizontal: readSelectValue(positionHorizontalSelect),
+            vertical: readSelectValue(positionVerticalSelect),
+            x: readNumber(positionXInput),
+            y: readNumber(positionYInput),
+          },
+          snap: Boolean(snapToggle && snapToggle.checked),
+          cameraMode: trajectoryState.cameraMode,
+          debug: Boolean(debugToggle && debugToggle.checked),
+        };
+      };
+
+      const syncGlobalExtrasFromUI = () => {
+        const global = comboState.global && typeof comboState.global === 'object' ? comboState.global : {};
+        global.version = currentVersion;
+        if (typeof doubleJumpArmorToggle !== 'undefined' && doubleJumpArmorToggle) {
+          global.doubleJumpArmor = Boolean(doubleJumpArmorToggle.checked);
+        }
+        if (snapToggle) {
+          global.snap = Boolean(snapToggle.checked);
+        }
+        global.cameraMode = trajectoryState.cameraMode;
+        if (debugToggle) {
+          global.debug = Boolean(debugToggle.checked);
+        }
+        comboState.global = global;
+      };
+
+      const applyGlobalFieldsToUI = () => {
+        const global = comboState.global || {};
+        if (Number.isFinite(global.hp)) hpInput.value = global.hp;
+        if (Number.isFinite(global.weight)) weightInput.value = global.weight;
+        if (Number.isFinite(global.fallAccel)) fallAccelInput.value = global.fallAccel;
+        if (Number.isFinite(global.maxFall)) maxFallInput.value = global.maxFall;
+        if (typeof global.doubleJumpArmor === 'boolean' && doubleJumpArmorToggle) {
+          doubleJumpArmorToggle.checked = global.doubleJumpArmor;
+        }
+        if (global.position && global.position.custom && typeof global.position.x === 'number' && typeof global.position.y === 'number') {
+          setCustomPositionDirect(global.position.x, global.position.y);
+        } else if (global.position) {
+          state.suppressPositionChange = true;
+          if (typeof global.position.horizontal === 'string') {
+            positionHorizontalSelect.value = global.position.horizontal;
+          }
+          if (typeof global.position.vertical === 'string') {
+            positionVerticalSelect.value = global.position.vertical;
+          }
+          state.customPosition = null;
+          state.suppressPositionChange = false;
+          syncPositionInputs();
+        }
+      };
+
+      const getMoveBaseNameFromSlot = (slot, moveset) => {
+        if (!Number.isFinite(slot) || !Array.isArray(moveset)) return null;
+        const move = moveset[slot];
+        if (!move) return null;
+        return move.baseName || move.name || null;
+      };
+
+      const findMoveSlotByBaseName = (moveset, baseName) => {
+        if (!baseName || !Array.isArray(moveset)) return null;
+        const index = moveset.findIndex((move) => {
+          const candidate = move.baseName || move.name || '';
+          return candidate === baseName || move.name === baseName;
+        });
+        return index >= 0 ? index : null;
+      };
+
+      const getMoveStaleKey = (move) => {
+        const attacker = move.attacker || (comboState.global && comboState.global.attacker)
+          || attackerSelect.value;
+        const moveset = movesets[attacker] || currentMoves;
+        if (Number.isFinite(move.moveSlot) && Array.isArray(moveset)) {
+          const data = moveset[move.moveSlot];
+          const baseName = data ? (data.baseName || data.name || `slot-${move.moveSlot}`) : `slot-${move.moveSlot}`;
+          return `${attacker}:${baseName}`;
+        }
+        const customSignature = [
+          move.damage, move.angle, move.kbs, move.bkb, move.fkb,
+          move.electric ? 1 : 0,
+          move.throwMove ? 1 : 0,
+        ].map((value) => (Number.isFinite(value) ? value : 'x')).join(':');
+        return `${attacker}:custom:${customSignature}`;
+      };
+
+      const buildStartPosition = (position) => {
+        const pos = position || {};
+        if (pos.custom && Number.isFinite(pos.x) && Number.isFinite(pos.y)) {
+          return { x: pos.x, y: pos.y };
+        }
+        const horizontal = typeof pos.horizontal === 'string' ? pos.horizontal : POSITION_HORIZONTAL_ORDER[0];
+        const vertical = typeof pos.vertical === 'string' ? pos.vertical : POSITION_VERTICAL_ORDER[0];
+        return computePosition(horizontal, vertical);
+      };
+
+      const ensureComboMoves = () => {
+        if (comboState.moves.length === 0) {
+          comboState.moves = [readMoveFromInputs({ includeDerived: true })];
+        }
+      };
+
+      const syncActiveMoveFromUI = () => {
+        ensureComboMoves();
+        const index = clampComboIndex(comboState.activeIndex);
+        const includeDerived = index === 0;
+        const nextMove = readMoveFromInputs({ includeDerived });
+        const currentMove = comboState.moves[index] || {};
+        if (index > 0 && !state.comboLockStaleness && typeof state.stalenessValue === 'string') {
+          nextMove.staleness = state.stalenessValue;
+        }
+        if (index > 0) {
+          const selectedAttacker = readSelectValue(attackerSelect);
+          const globalAttacker = comboState.global && comboState.global.attacker
+            ? comboState.global.attacker
+            : readSelectValue(attackerSelect);
+          nextMove.attacker = (selectedAttacker && selectedAttacker !== globalAttacker) ? selectedAttacker : undefined;
+        } else {
+          nextMove.attacker = undefined;
+        }
+        comboState.moves[index] = { ...currentMove, ...nextMove };
+        if (index === 0) {
+          syncGlobalFromUI();
+        } else {
+          syncGlobalExtrasFromUI();
+        }
+      };
+
+      const renderComboStrip = () => {
+        if (!comboStrip) return;
+        comboStrip.innerHTML = '';
+        const totalSteps = comboState.moves.length;
+        const makeArrow = () => {
+          const arrow = document.createElement('span');
+          arrow.className = 'combo-arrow';
+          arrow.setAttribute('aria-hidden', 'true');
+          arrow.textContent = '→';
+          return arrow;
+        };
+        comboState.moves.forEach((move, index) => {
+          const wrap = document.createElement('div');
+          wrap.className = 'combo-step-wrap';
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'combo-step';
+          button.dataset.comboStep = String(index);
+          button.textContent = String(index + 1);
+          button.setAttribute('aria-label', `Select move ${index + 1}`);
+          if (index === comboState.activeIndex) {
+            button.classList.add('is-active');
+          }
+          wrap.append(button);
+          if (index > 0) {
+            const remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'combo-remove';
+            remove.dataset.comboRemove = String(index);
+            remove.textContent = '×';
+            remove.setAttribute('aria-label', `Remove move ${index + 1}`);
+            wrap.append(remove);
+          }
+          comboStrip.append(wrap);
+          if (index < totalSteps) {
+            comboStrip.append(makeArrow());
+          }
+        });
+        const addWrap = document.createElement('div');
+        addWrap.className = 'combo-step-wrap';
+        const addButton = document.createElement('button');
+        addButton.type = 'button';
+        addButton.className = 'combo-step add-step';
+        addButton.dataset.comboAdd = 'true';
+        addButton.textContent = '+';
+        addButton.setAttribute('aria-label', 'Add move');
+        addWrap.append(addButton);
+        comboStrip.append(addWrap);
+      };
+
+      const applyComboLocks = () => {
+        const locked = comboState.activeIndex > 0;
+        state.comboLockPosition = locked;
+        if (comboStrip) {
+          comboStrip.classList.toggle('is-locked', locked);
+        }
+        setLockedField(defenderSelect, locked);
+        if (defenderDropdown && typeof defenderDropdown.disable === 'function') {
+          locked ? defenderDropdown.disable() : defenderDropdown.enable();
+        }
+        [weightInput, fallAccelInput, maxFallInput, hpInput, positionXInput, positionYInput].forEach((input) => {
+          setLockedField(input, locked);
+        });
+        setLockedField(positionHorizontalSelect, locked);
+        setLockedField(positionVerticalSelect, locked);
+        setLockedField(targetStateSelect, locked);
+        if (doubleJumpArmorToggle) {
+          doubleJumpArmorToggle.disabled = locked;
+          doubleJumpArmorToggle.classList.toggle('is-locked-field', locked);
+          doubleJumpArmorToggle.title = locked ? LOCKED_FIELD_HINT : '';
+        }
+        if (stalenessControl) {
+          stalenessControl.classList.toggle('is-locked', state.comboLockStaleness);
+          stalenessControl.setAttribute('aria-disabled', state.comboLockStaleness ? 'true' : 'false');
+          stalenessControl.title = state.comboLockStaleness ? LOCKED_FIELD_HINT : '';
+        }
+        if (Array.isArray(stalenessButtons)) {
+          stalenessButtons.forEach((button) => {
+            button.disabled = state.comboLockStaleness;
+            button.classList.toggle('is-locked-field', state.comboLockStaleness);
+          });
+        }
+        if (trajectoryElements && trajectoryElements.svg) {
+          trajectoryElements.svg.classList.toggle('is-locked', locked);
+        }
+      };
+
+      const applyMoveConfigToUI = (move, { skipCalculate = false } = {}) => {
+        if (!move) return;
+        const previousSuppress = state.suppressComboCalculation;
+        if (skipCalculate) {
+          state.suppressComboCalculation = true;
+        }
+
+        const desiredAttacker = (move.attacker
+          || (comboState.global && comboState.global.attacker)
+          || (attackerSelect ? attackerSelect.value : null));
+        if (attackerSelect && desiredAttacker && attackerSelect.value !== desiredAttacker) {
+          const preferredSlot = Number.isFinite(move.moveSlot) ? move.moveSlot : null;
+          setSelectValue(attackerDropdown, attackerSelect, desiredAttacker);
+          const suppressMoves = state.suppressComboCalculation;
+          state.suppressComboCalculation = true;
+          populateMoves(desiredAttacker, { preferredSlot });
+          state.suppressComboCalculation = suppressMoves;
+        }
+
+        const desiredSlot = Number.isFinite(move.moveSlot) ? String(move.moveSlot) : '';
+        if (moveSelect) {
+          if (desiredSlot && moveSelect.querySelector(`option[value="${desiredSlot}"]`)) {
+            moveSelect.value = desiredSlot;
+          } else {
+            moveSelect.value = '';
+          }
+        }
+        const option = moveSelect && moveSelect.value !== ''
+          ? moveSelect.options[moveSelect.selectedIndex]
+          : customOption;
+        if (option) {
+          applyMove(option);
+        }
+
+        if (Number.isFinite(move.damage)) damageInput.value = move.damage;
+        if (Number.isFinite(move.angle)) angleInput.value = move.angle;
+        if (Number.isFinite(move.kbs)) kbsInput.value = move.kbs;
+        if (Number.isFinite(move.bkb)) bkbInput.value = move.bkb;
+        if (Number.isFinite(move.fkb)) fkbInput.value = move.fkb;
+        if (typeof move.electric === 'boolean') electricToggle.checked = move.electric;
+        if (typeof move.throwMove === 'boolean') throwToggle.checked = move.throwMove;
+        if (typeof move.simulation === 'string') simulationSelect.value = move.simulation;
+        if (Number.isFinite(move.comboDelay)) {
+          comboDelayInput.value = move.comboDelay;
+        } else {
+          comboDelayInput.value = '';
+        }
+        if (Number.isFinite(move.attackHandicap)) attackHandicapInput.value = move.attackHandicap;
+        if (Number.isFinite(move.defenseHandicap)) defenseHandicapInput.value = move.defenseHandicap;
+        if (typeof move.attackDirection === 'string') {
+          setAttackDirection(move.attackDirection, { trigger: false });
+        }
+
+        updateComboDelayVisibility();
+
+        state.suppressComboCalculation = previousSuppress;
+      };
+
+      const selectComboIndex = (index) => {
+        const nextIndex = clampComboIndex(index);
+        if (comboState.activeIndex === nextIndex) return;
+        syncActiveMoveFromUI();
+        comboState.activeIndex = nextIndex;
+        applyMoveConfigToUI(comboState.moves[nextIndex], { skipCalculate: true });
+        if (nextIndex === 0) {
+          applyGlobalFieldsToUI();
+        }
+        renderComboStrip();
+        applyComboLocks();
+        calculate();
+        markStateDirty();
+      };
+
+      const addComboMove = () => {
+        syncActiveMoveFromUI();
+        const sourceMove = comboState.moves[comboState.activeIndex] || readMoveFromInputs({ includeDerived: comboState.activeIndex === 0 });
+        const nextMove = { ...sourceMove };
+        delete nextMove.staleness;
+        delete nextMove.targetState;
+        comboState.moves.push(nextMove);
+        comboState.activeIndex = comboState.moves.length - 1;
+        applyMoveConfigToUI(nextMove, { skipCalculate: true });
+        renderComboStrip();
+        applyComboLocks();
+        calculate();
+        markStateDirty();
+      };
+
+      const removeComboMove = (index) => {
+        if (index <= 0 || comboState.moves.length <= 1) return;
+        syncActiveMoveFromUI();
+        comboState.moves.splice(index, 1);
+        if (comboState.activeIndex >= comboState.moves.length) {
+          comboState.activeIndex = comboState.moves.length - 1;
+        } else if (comboState.activeIndex > index) {
+          comboState.activeIndex -= 1;
+        } else if (comboState.activeIndex === index) {
+          comboState.activeIndex = Math.max(0, index - 1);
+        }
+        applyMoveConfigToUI(comboState.moves[comboState.activeIndex], { skipCalculate: true });
+        if (comboState.activeIndex === 0) {
+          applyGlobalFieldsToUI();
+        }
+        renderComboStrip();
+        applyComboLocks();
+        calculate();
+        markStateDirty();
       };
 
       let debugMode = false;
@@ -487,6 +915,10 @@
           return null;
         }
       };
+
+      const COMBO_DATA_PREFIX = 'c:';
+      const COMBO_VERSION = 2;
+      const COMBO_PARAM = 'c';
 
       class ByteWriter {
         constructor() {
@@ -714,6 +1146,139 @@
         }
       };
 
+      const COMBO_MOVE_BITS = {
+        moveSlot: 0,
+        damage: 1,
+        angle: 2,
+        kbs: 3,
+        bkb: 4,
+        fkb: 5,
+        electric: 6,
+        throwMove: 7,
+        simulation: 8,
+        comboDelay: 9,
+        attackDirection: 10,
+        attackHandicap: 11,
+        defenseHandicap: 12,
+        staleness: 13,
+        targetState: 14,
+        attacker: 15,
+      };
+
+      const encodeComboPayload = (payload) => {
+        if (!payload || typeof payload !== 'object') return null;
+        const writer = new ByteWriter();
+        writer.writeVarint(COMBO_VERSION);
+        writer.writeVarint(Math.max(0, Math.trunc(payload.active || 0)));
+
+        const moves = Array.isArray(payload.moves) ? payload.moves : [];
+        writer.writeVarint(moves.length);
+        moves.forEach((move) => {
+          let mask = 0;
+          const setBit = (key) => { mask |= (1 << COMBO_MOVE_BITS[key]); };
+          if (Number.isFinite(move.moveSlot)) setBit('moveSlot');
+          if (Number.isFinite(move.damage)) setBit('damage');
+          if (Number.isFinite(move.angle)) setBit('angle');
+          if (Number.isFinite(move.kbs)) setBit('kbs');
+          if (Number.isFinite(move.bkb)) setBit('bkb');
+          if (Number.isFinite(move.fkb)) setBit('fkb');
+          if (typeof move.electric === 'boolean') setBit('electric');
+          if (typeof move.throwMove === 'boolean') setBit('throwMove');
+          if (typeof move.simulation === 'string') setBit('simulation');
+          if (Number.isFinite(move.comboDelay)) setBit('comboDelay');
+          if (typeof move.attackDirection === 'string') setBit('attackDirection');
+          if (Number.isFinite(move.attackHandicap)) setBit('attackHandicap');
+          if (Number.isFinite(move.defenseHandicap)) setBit('defenseHandicap');
+          if (typeof move.staleness === 'string') setBit('staleness');
+          if (typeof move.targetState === 'string') setBit('targetState');
+          if (typeof move.attacker === 'string') setBit('attacker');
+
+          writer.writeVarint(mask);
+          if (mask & (1 << COMBO_MOVE_BITS.moveSlot)) writer.writeVarint(Math.max(0, Math.trunc(move.moveSlot)));
+          if (mask & (1 << COMBO_MOVE_BITS.damage)) writer.writeVarint(Math.round(move.damage * SCALE_DAMAGE));
+          if (mask & (1 << COMBO_MOVE_BITS.angle)) writer.writeZigZag(move.angle);
+          if (mask & (1 << COMBO_MOVE_BITS.kbs)) writer.writeVarint(Math.max(0, Math.trunc(move.kbs)));
+          if (mask & (1 << COMBO_MOVE_BITS.bkb)) writer.writeVarint(Math.max(0, Math.trunc(move.bkb)));
+          if (mask & (1 << COMBO_MOVE_BITS.fkb)) writer.writeVarint(Math.max(0, Math.trunc(move.fkb)));
+          if (mask & (1 << COMBO_MOVE_BITS.electric)) writer.writeVarint(move.electric ? 1 : 0);
+          if (mask & (1 << COMBO_MOVE_BITS.throwMove)) writer.writeVarint(move.throwMove ? 1 : 0);
+          if (mask & (1 << COMBO_MOVE_BITS.simulation)) {
+            writer.writeVarint(findIndexInList(move.simulation, SIMULATION_ORDER));
+          }
+          if (mask & (1 << COMBO_MOVE_BITS.comboDelay)) writer.writeVarint(Math.max(0, Math.trunc(move.comboDelay)));
+          if (mask & (1 << COMBO_MOVE_BITS.attackDirection)) {
+            writer.writeVarint(findIndexInList(move.attackDirection, ATTACK_DIRECTION_ORDER));
+          }
+          if (mask & (1 << COMBO_MOVE_BITS.attackHandicap)) writer.writeVarint(Math.max(0, Math.trunc(move.attackHandicap)));
+          if (mask & (1 << COMBO_MOVE_BITS.defenseHandicap)) writer.writeVarint(Math.max(0, Math.trunc(move.defenseHandicap)));
+          if (mask & (1 << COMBO_MOVE_BITS.staleness)) {
+            writer.writeVarint(findIndexInList(move.staleness, STALENESS_ORDER));
+          }
+          if (mask & (1 << COMBO_MOVE_BITS.targetState)) {
+            writer.writeVarint(findIndexInList(move.targetState, TARGET_STATE_ORDER));
+          }
+          if (mask & (1 << COMBO_MOVE_BITS.attacker)) {
+            writer.writeVarint(getCharacterIndex(move.attacker));
+          }
+        });
+
+        return encodeBytes(writer.bytes);
+      };
+
+      const decodeComboPayload = (encoded) => {
+        const bytes = decodeBytes(encoded);
+        if (!bytes) return null;
+        try {
+          const reader = new ByteReader(bytes);
+          const version = reader.readVarint();
+          if (version === null || version !== COMBO_VERSION) return null;
+          const active = reader.readVarint() ?? 0;
+          const moveCount = reader.readVarint();
+          if (moveCount === null) return null;
+          const moves = [];
+          for (let i = 0; i < moveCount; i += 1) {
+            const mask = reader.readVarint();
+            if (mask === null) return null;
+            const move = {};
+            if (mask & (1 << COMBO_MOVE_BITS.moveSlot)) move.moveSlot = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.damage)) move.damage = reader.readVarint() / SCALE_DAMAGE;
+            if (mask & (1 << COMBO_MOVE_BITS.angle)) move.angle = reader.readZigZag();
+            if (mask & (1 << COMBO_MOVE_BITS.kbs)) move.kbs = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.bkb)) move.bkb = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.fkb)) move.fkb = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.electric)) move.electric = reader.readVarint() === 1;
+            if (mask & (1 << COMBO_MOVE_BITS.throwMove)) move.throwMove = reader.readVarint() === 1;
+            if (mask & (1 << COMBO_MOVE_BITS.simulation)) {
+              const idx = reader.readVarint();
+              move.simulation = SIMULATION_ORDER[idx] || SIMULATION_ORDER[0];
+            }
+            if (mask & (1 << COMBO_MOVE_BITS.comboDelay)) move.comboDelay = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.attackDirection)) {
+              const idx = reader.readVarint();
+              move.attackDirection = ATTACK_DIRECTION_ORDER[idx] || ATTACK_DIRECTION_ORDER[0];
+            }
+            if (mask & (1 << COMBO_MOVE_BITS.attackHandicap)) move.attackHandicap = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.defenseHandicap)) move.defenseHandicap = reader.readVarint();
+            if (mask & (1 << COMBO_MOVE_BITS.staleness)) {
+              const idx = reader.readVarint();
+              move.staleness = STALENESS_ORDER[idx] || STALENESS_ORDER[0];
+            }
+            if (mask & (1 << COMBO_MOVE_BITS.targetState)) {
+              const idx = reader.readVarint();
+              move.targetState = TARGET_STATE_ORDER[idx] || TARGET_STATE_ORDER[0];
+            }
+            if (mask & (1 << COMBO_MOVE_BITS.attacker)) {
+              move.attacker = getCharacterKey(reader.readVarint());
+            }
+            moves.push(move);
+          }
+          return { v: version, active, moves };
+        } catch (error) {
+          console.error('Failed to decode combo payload', error);
+          return null;
+        }
+      };
+
       const readNumber = (input) => {
         if (!input) return null;
         const value = Number(input.value);
@@ -851,20 +1416,277 @@
         return merged;
       };
 
+      const getGlobalFromSnapshot = (snapshot) => {
+        if (!snapshot || typeof snapshot !== 'object') return {};
+        return {
+          version: snapshot.version,
+          defender: snapshot.defender,
+          attacker: snapshot.attacker,
+          hp: snapshot.hp,
+          weight: snapshot.weight,
+          fallAccel: snapshot.fallAccel,
+          maxFall: snapshot.maxFall,
+          doubleJumpArmor: snapshot.doubleJumpArmor,
+          position: snapshot.position ? { ...snapshot.position } : undefined,
+          snap: snapshot.snap,
+          cameraMode: snapshot.cameraMode,
+          debug: snapshot.debug,
+        };
+      };
+
+      const getMoveDefaults = (slot, attackerKey) => {
+        const moveset = movesets[attackerKey] || currentMoves;
+        if (!Number.isFinite(slot) || !Array.isArray(moveset)) return null;
+        const move = moveset[slot];
+        if (!move) return null;
+        return {
+          damage: Number(move.damage ?? 0),
+          angle: Number(move.angle ?? 0),
+          kbs: Number(move.kbs ?? 0),
+          bkb: Number(move.bkb ?? 0),
+          fkb: Number(move.fkb ?? 0),
+          electric: (move.effect || '').toLowerCase() === 'electric',
+          throwMove: Boolean(move.throw),
+        };
+      };
+
+      const buildMoveOverrides = (move, attackerKey) => {
+        if (!move) return null;
+        const isCustom = !Number.isFinite(move.moveSlot);
+        const defaults = isCustom ? null : getMoveDefaults(move.moveSlot, attackerKey);
+        const overrides = {};
+        const tolerance = 1e-4;
+        const maybeSet = (key, value, fallback) => {
+          if (!Number.isFinite(value)) return;
+          const base = Number.isFinite(fallback) ? fallback : 0;
+          if (Math.abs(value - base) > tolerance) {
+            overrides[key] = value;
+          }
+        };
+
+        if (isCustom) {
+          maybeSet('damage', move.damage, 0);
+          maybeSet('angle', move.angle, 0);
+          maybeSet('kbs', move.kbs, 0);
+          maybeSet('bkb', move.bkb, 0);
+          maybeSet('fkb', move.fkb, 0);
+          if (move.electric) overrides.electric = true;
+          if (move.throwMove) overrides.throwMove = true;
+        } else if (defaults) {
+          maybeSet('damage', move.damage, defaults.damage);
+          maybeSet('angle', move.angle, defaults.angle);
+          maybeSet('kbs', move.kbs, defaults.kbs);
+          maybeSet('bkb', move.bkb, defaults.bkb);
+          maybeSet('fkb', move.fkb, defaults.fkb);
+          if (typeof move.electric === 'boolean' && move.electric !== defaults.electric) {
+            overrides.electric = move.electric;
+          }
+          if (typeof move.throwMove === 'boolean' && move.throwMove !== defaults.throwMove) {
+            overrides.throwMove = move.throwMove;
+          }
+        } else {
+          maybeSet('damage', move.damage, 0);
+          maybeSet('angle', move.angle, 0);
+          maybeSet('kbs', move.kbs, 0);
+          maybeSet('bkb', move.bkb, 0);
+          maybeSet('fkb', move.fkb, 0);
+          if (move.electric) overrides.electric = true;
+          if (move.throwMove) overrides.throwMove = true;
+        }
+
+        if (Object.keys(overrides).length === 0) return null;
+        return overrides;
+      };
+
+      const buildComboBaseSnapshot = () => {
+        ensureComboMoves();
+        const globalState = comboState.global && typeof comboState.global === 'object'
+          ? { ...comboState.global }
+          : {};
+        const baselineGlobal = getGlobalFromSnapshot(baselineState) || {};
+        const resolveString = (key) => {
+          const value = globalState[key];
+          if (typeof value === 'string') return value;
+          const fallback = baselineGlobal[key];
+          return typeof fallback === 'string' ? fallback : undefined;
+        };
+        const resolveBool = (key) => {
+          const value = globalState[key];
+          if (typeof value === 'boolean') return value;
+          const fallback = baselineGlobal[key];
+          return typeof fallback === 'boolean' ? fallback : undefined;
+        };
+        const resolveNumber = (key) => {
+          const value = globalState[key];
+          if (Number.isFinite(value) || value === null) return value;
+          const fallback = baselineGlobal[key];
+          if (Number.isFinite(fallback) || fallback === null) return fallback;
+          return undefined;
+        };
+        const resolvedPosition = globalState.position || baselineGlobal.position;
+        const baseMove = comboState.moves[0] || {};
+        const baselineAttackHandicap = Number.isFinite(baselineState?.attackHandicap) ? baselineState.attackHandicap : 9;
+        const baselineDefenseHandicap = Number.isFinite(baselineState?.defenseHandicap) ? baselineState.defenseHandicap : 9;
+        const snapshot = {
+          version: resolveString('version') || currentVersion,
+          defender: resolveString('defender'),
+          attacker: resolveString('attacker'),
+          moveSlot: Number.isFinite(baseMove.moveSlot) ? baseMove.moveSlot : null,
+          staleness: (typeof baseMove.staleness === 'string') ? baseMove.staleness : STALENESS_ORDER[0],
+          targetState: (typeof baseMove.targetState === 'string') ? baseMove.targetState : TARGET_STATE_ORDER[0],
+          attackDirection: baseMove.attackDirection || ATTACK_DIRECTION_ORDER[0],
+          simulation: baseMove.simulation || SIMULATION_ORDER[0],
+          attackHandicap: Number.isFinite(baseMove.attackHandicap) ? baseMove.attackHandicap : baselineAttackHandicap,
+          defenseHandicap: Number.isFinite(baseMove.defenseHandicap) ? baseMove.defenseHandicap : baselineDefenseHandicap,
+          hp: resolveNumber('hp'),
+          weight: resolveNumber('weight'),
+          fallAccel: resolveNumber('fallAccel'),
+          maxFall: resolveNumber('maxFall'),
+          doubleJumpArmor: resolveBool('doubleJumpArmor'),
+          position: resolvedPosition ? { ...resolvedPosition } : undefined,
+          snap: resolveBool('snap'),
+          cameraMode: resolveString('cameraMode'),
+          debug: resolveBool('debug'),
+        };
+
+        if (snapshot.simulation === 'custom' && Number.isFinite(baseMove.comboDelay)) {
+          snapshot.comboDelay = baseMove.comboDelay;
+        }
+
+        const moveAttacker = baseMove.attacker || globalState.attacker;
+        const overrides = buildMoveOverrides(baseMove, moveAttacker);
+        if (overrides) {
+          Object.assign(snapshot, overrides);
+        }
+        return snapshot;
+      };
+
+      const buildComboPayload = () => {
+        syncActiveMoveFromUI();
+        const globalState = comboState.global && typeof comboState.global === 'object'
+          ? { ...comboState.global }
+          : {};
+        const baselineGlobal = getGlobalFromSnapshot(baselineState) || {};
+        if (!globalState.attacker) {
+          globalState.attacker = baselineGlobal.attacker;
+        }
+        const defaultAttackHandicap = Number.isFinite(baselineState?.attackHandicap) ? baselineState.attackHandicap : 9;
+        const defaultDefenseHandicap = Number.isFinite(baselineState?.defenseHandicap) ? baselineState.defenseHandicap : 9;
+        const tolerance = 1e-4;
+        const moves = comboState.moves.slice(1).map((move) => {
+          const moveAttacker = move.attacker || globalState.attacker;
+          const payload = {};
+          if (Number.isFinite(move.moveSlot)) {
+            payload.moveSlot = move.moveSlot;
+          }
+          const isCustom = !Number.isFinite(move.moveSlot);
+          const defaults = isCustom ? null : getMoveDefaults(move.moveSlot, moveAttacker);
+          const defaultValue = (value, fallback) => (Number.isFinite(value) ? value : fallback);
+
+          const maybeSet = (key, value, fallback) => {
+            if (!Number.isFinite(value)) return;
+            const base = Number.isFinite(fallback) ? fallback : 0;
+            if (Math.abs(value - base) > tolerance) {
+              payload[key] = value;
+            }
+          };
+
+          if (isCustom) {
+            maybeSet('damage', move.damage, 0);
+            maybeSet('angle', move.angle, 0);
+            maybeSet('kbs', move.kbs, 0);
+            maybeSet('bkb', move.bkb, 0);
+            maybeSet('fkb', move.fkb, 0);
+            if (move.electric) payload.electric = true;
+            if (move.throwMove) payload.throwMove = true;
+          } else if (defaults) {
+            maybeSet('damage', move.damage, defaults.damage);
+            maybeSet('angle', move.angle, defaults.angle);
+            maybeSet('kbs', move.kbs, defaults.kbs);
+            maybeSet('bkb', move.bkb, defaults.bkb);
+            maybeSet('fkb', move.fkb, defaults.fkb);
+            if (typeof move.electric === 'boolean' && move.electric !== defaults.electric) {
+              payload.electric = move.electric;
+            }
+            if (typeof move.throwMove === 'boolean' && move.throwMove !== defaults.throwMove) {
+              payload.throwMove = move.throwMove;
+            }
+          } else {
+            maybeSet('damage', move.damage, 0);
+            maybeSet('angle', move.angle, 0);
+            maybeSet('kbs', move.kbs, 0);
+            maybeSet('bkb', move.bkb, 0);
+            maybeSet('fkb', move.fkb, 0);
+            if (move.electric) payload.electric = true;
+            if (move.throwMove) payload.throwMove = true;
+          }
+
+          const simulation = move.simulation || SIMULATION_ORDER[0];
+          if (simulation !== SIMULATION_ORDER[0] || Number.isFinite(move.comboDelay)) {
+            payload.simulation = simulation;
+          }
+          if (simulation === 'custom' && Number.isFinite(move.comboDelay)) {
+            payload.comboDelay = move.comboDelay;
+          }
+          if (move.attackDirection && move.attackDirection !== ATTACK_DIRECTION_ORDER[0]) {
+            payload.attackDirection = move.attackDirection;
+          }
+          if (Number.isFinite(move.attackHandicap) && move.attackHandicap !== defaultAttackHandicap) {
+            payload.attackHandicap = move.attackHandicap;
+          }
+          if (Number.isFinite(move.defenseHandicap) && move.defenseHandicap !== defaultDefenseHandicap) {
+            payload.defenseHandicap = move.defenseHandicap;
+          }
+          if (move.staleness && move.staleness !== STALENESS_ORDER[0]) {
+            payload.staleness = move.staleness;
+          }
+          if (move.attacker && move.attacker !== globalState.attacker) {
+            payload.attacker = move.attacker;
+          }
+          return payload;
+        });
+        return {
+          v: COMBO_VERSION,
+          active: clampComboIndex(comboState.activeIndex),
+          moves,
+        };
+      };
+
+      const getEncodedDataParam = () => {
+        if (comboState.moves.length > 1) {
+          const snapshot = buildComboBaseSnapshot();
+          const delta = buildStateDelta(snapshot, baselineState);
+          if (!delta) return null;
+          return encodeState(delta) || null;
+        }
+        const snapshot = buildStateSnapshot();
+        const delta = buildStateDelta(snapshot, baselineState);
+        if (!delta) return null;
+        const encoded = encodeState(delta);
+        return encoded || null;
+      };
+
+      const getEncodedComboParam = () => {
+        if (comboState.moves.length <= 1) return null;
+        const payload = buildComboPayload();
+        const encoded = encodeComboPayload(payload);
+        return encoded || null;
+      };
+
       const updateUrlFromState = () => {
         if (suppressUrlSync) return;
         const url = new URL(window.location.href);
-        const snapshot = buildStateSnapshot();
-        const delta = buildStateDelta(snapshot, baselineState);
-        if (delta) {
-          const encoded = encodeState(delta);
-          if (encoded) {
-            url.searchParams.set('data', encoded);
-          } else {
-            url.searchParams.delete('data');
-          }
+        const encoded = getEncodedDataParam();
+        const encodedCombo = getEncodedComboParam();
+        if (encoded) {
+          url.searchParams.set('data', encoded);
         } else {
           url.searchParams.delete('data');
+        }
+        if (encodedCombo) {
+          url.searchParams.set(COMBO_PARAM, encodedCombo);
+        } else {
+          url.searchParams.delete(COMBO_PARAM);
         }
         window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
       };
@@ -971,17 +1793,17 @@
         const normalized = normalizeLanguage(language);
         const targetPath = LANGUAGE_PATHS[normalized] || LANGUAGE_PATHS.en;
         const url = new URL(targetPath, window.location.origin);
-        const snapshot = buildStateSnapshot();
-        const delta = buildStateDelta(snapshot, baselineState);
-        if (delta) {
-          const encoded = encodeState(delta);
-          if (encoded) {
-            url.searchParams.set('data', encoded);
-          } else {
-            url.searchParams.delete('data');
-          }
+        const encoded = getEncodedDataParam();
+        const encodedCombo = getEncodedComboParam();
+        if (encoded) {
+          url.searchParams.set('data', encoded);
         } else {
           url.searchParams.delete('data');
+        }
+        if (encodedCombo) {
+          url.searchParams.set(COMBO_PARAM, encodedCombo);
+        } else {
+          url.searchParams.delete(COMBO_PARAM);
         }
         if (replace) {
           window.location.replace(url.toString());
@@ -992,10 +1814,17 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const dataParam = urlParams.get('data');
+      const comboParam = urlParams.get(COMBO_PARAM);
       const langParam = urlParams.get('lang');
-      hadDataParam = Boolean(dataParam);
+      hadDataParam = Boolean(dataParam || comboParam);
+      let initialComboState = null;
       if (dataParam) {
-        initialDataState = decodeState(dataParam);
+        if (!dataParam.startsWith(COMBO_DATA_PREFIX)) {
+          initialDataState = decodeState(dataParam);
+        }
+      }
+      if (comboParam) {
+        initialComboState = decodeComboPayload(comboParam);
       }
 
       const normalizedLangParam = langParam ? normalizeLanguage(langParam) : null;
@@ -1004,6 +1833,9 @@
         const url = new URL(targetPath, window.location.origin);
         if (dataParam) {
           url.searchParams.set('data', dataParam);
+        }
+        if (comboParam) {
+          url.searchParams.set(COMBO_PARAM, comboParam);
         }
         window.location.replace(url.toString());
         return;
@@ -1050,6 +1882,8 @@
       const applyGameVersion = async (version, { initial = false } = {}) => {
         const normalized = normalizeVersion(version);
         if (!initial && normalized === currentVersion) return;
+        const previousMoveset = !initial && Array.isArray(currentMoves) ? [...currentMoves] : [];
+        const previousMovesets = !initial ? movesets : null;
         await loadMoveLabels();
         currentVersion = normalized;
         if (Smash64Calculator && typeof Smash64Calculator.setVersion === 'function') {
@@ -1066,11 +1900,37 @@
 
         if (initial) return;
 
-        const preferredMove = lastMoveBaseName
+        const globalAttackerKey = comboState.global && comboState.global.attacker
+          ? comboState.global.attacker
+          : attackerSelect.value;
+        const baseNames = comboState.moves.map((move) => {
+          const attackerKey = move.attacker || globalAttackerKey;
+          const oldMoveset = previousMovesets && previousMovesets[attackerKey]
+            ? previousMovesets[attackerKey]
+            : previousMoveset;
+          return getMoveBaseNameFromSlot(move.moveSlot, oldMoveset);
+        });
+        const preferredMove = baseNames[comboState.activeIndex]
+          || lastMoveBaseName
           || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
         setDefender(defenderSelect.value);
         updateDoubleJumpArmorVisibility({ skipCalculate: true });
+        const previousSuppress = state.suppressComboCalculation;
+        state.suppressComboCalculation = true;
         populateMoves(attackerSelect.value, { preferredMove });
+        state.suppressComboCalculation = previousSuppress;
+
+        comboState.moves = comboState.moves.map((move, index) => {
+          if (!Number.isFinite(move.moveSlot)) return move;
+          const baseName = baseNames[index];
+          if (!baseName) return move;
+          const attackerKey = move.attacker || globalAttackerKey;
+          const nextMoveset = movesets[attackerKey] || currentMoves;
+          const remappedSlot = findMoveSlotByBaseName(nextMoveset, baseName);
+          if (!Number.isFinite(remappedSlot)) return move;
+          return { ...move, moveSlot: remappedSlot };
+        });
+        applyMoveConfigToUI(comboState.moves[comboState.activeIndex], { skipCalculate: true });
         calculate();
       };
 
@@ -1364,8 +2224,126 @@
         applyMove(selectedOption);
       }
 
+      async function applyGlobalState(globalState) {
+        const targetVersion = globalState.version ? normalizeVersion(globalState.version) : currentVersion;
+        await applyGameVersion(targetVersion, { initial: true });
+        if (versionSelect) {
+          versionSelect.value = targetVersion;
+        }
+
+        if (globalState.defender) {
+          setSelectValue(defenderDropdown, defenderSelect, globalState.defender);
+          setDefender(globalState.defender);
+        }
+
+        if (globalState.attacker) {
+          setSelectValue(attackerDropdown, attackerSelect, globalState.attacker);
+        }
+
+        if (typeof globalState.hp === 'number') hpInput.value = globalState.hp;
+        if (typeof globalState.weight === 'number') weightInput.value = globalState.weight;
+        if (typeof globalState.fallAccel === 'number') fallAccelInput.value = globalState.fallAccel;
+        if (typeof globalState.maxFall === 'number') maxFallInput.value = globalState.maxFall;
+
+        if (globalState.position && globalState.position.custom && typeof globalState.position.x === 'number' && typeof globalState.position.y === 'number') {
+          setCustomPositionDirect(globalState.position.x, globalState.position.y);
+        } else if (globalState.position) {
+          state.suppressPositionChange = true;
+          if (typeof globalState.position.horizontal === 'string') {
+            positionHorizontalSelect.value = globalState.position.horizontal;
+          }
+          if (typeof globalState.position.vertical === 'string') {
+            positionVerticalSelect.value = globalState.position.vertical;
+          }
+          state.customPosition = null;
+          state.suppressPositionChange = false;
+          syncPositionInputs();
+        }
+
+        if (typeof globalState.snap === 'boolean' && snapToggle) {
+          snapToggle.checked = globalState.snap;
+          trajectoryState.snapEnabled = globalState.snap;
+        }
+
+        if (typeof globalState.cameraMode === 'string') {
+          setCameraMode(globalState.cameraMode, { trigger: false });
+        }
+
+        if (typeof globalState.doubleJumpArmor === 'boolean' && doubleJumpArmorToggle) {
+          doubleJumpArmorToggle.checked = globalState.doubleJumpArmor;
+        }
+
+        if (typeof globalState.debug === 'boolean' && debugToggle) {
+          debugToggle.checked = globalState.debug;
+          debugMode = globalState.debug;
+        }
+
+        maybeMarkDefenderCustom();
+        updateDoubleJumpArmorVisibility({ skipCalculate: true });
+      }
+
+      const sanitizeComboMove = (move = {}, index = 0) => {
+        const hasSlot = Number.isFinite(move.moveSlot);
+        const sanitized = {
+          attacker: typeof move.attacker === 'string' ? move.attacker : undefined,
+          moveSlot: hasSlot ? Math.max(0, Math.trunc(move.moveSlot)) : null,
+          damage: Number.isFinite(move.damage) ? move.damage : (hasSlot ? null : 0),
+          angle: Number.isFinite(move.angle) ? move.angle : (hasSlot ? null : 0),
+          kbs: Number.isFinite(move.kbs) ? move.kbs : (hasSlot ? null : 0),
+          bkb: Number.isFinite(move.bkb) ? move.bkb : (hasSlot ? null : 0),
+          fkb: Number.isFinite(move.fkb) ? move.fkb : (hasSlot ? null : 0),
+          electric: (typeof move.electric === 'boolean') ? move.electric : (hasSlot ? undefined : false),
+          throwMove: (typeof move.throwMove === 'boolean') ? move.throwMove : (hasSlot ? undefined : false),
+          simulation: SIMULATION_ORDER.includes(move.simulation) ? move.simulation : SIMULATION_ORDER[0],
+          comboDelay: Number.isFinite(move.comboDelay) ? move.comboDelay : null,
+          attackDirection: ATTACK_DIRECTION_ORDER.includes(move.attackDirection) ? move.attackDirection : ATTACK_DIRECTION_ORDER[0],
+          attackHandicap: Number.isFinite(move.attackHandicap) ? move.attackHandicap : numericValue(attackHandicapInput, 9),
+          defenseHandicap: Number.isFinite(move.defenseHandicap) ? move.defenseHandicap : numericValue(defenseHandicapInput, 9),
+        };
+        const stalenessValue = STALENESS_ORDER.includes(move.staleness)
+          ? move.staleness
+          : (index === 0 ? STALENESS_ORDER[0] : undefined);
+        if (stalenessValue !== undefined) {
+          sanitized.staleness = stalenessValue;
+        }
+        if (index === 0) {
+          sanitized.targetState = TARGET_STATE_ORDER.includes(move.targetState) ? move.targetState : TARGET_STATE_ORDER[0];
+        }
+        return sanitized;
+      };
+
+      async function applyComboPayload(payload) {
+        if (!payload || typeof payload !== 'object') return;
+        suppressUrlSync = true;
+        state.suppressComboCalculation = true;
+        ensureComboMoves();
+        const baseMove = readMoveFromInputs({ includeDerived: true });
+        const rawMoves = Array.isArray(payload.moves) ? payload.moves : [];
+        const extraMoves = rawMoves.map((move, index) => sanitizeComboMove(move, index + 1));
+        comboState.moves = [baseMove, ...extraMoves];
+        comboState.activeIndex = clampComboIndex(payload.active ?? 0);
+        syncGlobalFromUI();
+
+        const activeMove = comboState.moves[comboState.activeIndex];
+        const preferredSlot = Number.isFinite(activeMove.moveSlot) ? activeMove.moveSlot : null;
+        const activeAttacker = activeMove.attacker || comboState.global.attacker || attackerSelect.value;
+        populateMoves(activeAttacker, { preferredSlot });
+        applyMoveConfigToUI(activeMove, { skipCalculate: true });
+
+        renderComboStrip();
+        applyComboLocks();
+
+        state.suppressComboCalculation = false;
+        calculate();
+
+        stateDirty = false;
+        suppressUrlSync = false;
+      }
+
       async function applyStateSnapshot(snapshot) {
         if (!snapshot || typeof snapshot !== 'object') return;
+        const previousSuppress = state.suppressComboCalculation;
+        state.suppressComboCalculation = true;
         suppressUrlSync = true;
         const targetVersion = snapshot.version ? normalizeVersion(snapshot.version) : currentVersion;
         await applyGameVersion(targetVersion, { initial: true });
@@ -1452,6 +2430,13 @@
 
         updateDoubleJumpArmorVisibility({ skipCalculate: true });
 
+        comboState.activeIndex = 0;
+        comboState.moves = [readMoveFromInputs({ includeDerived: true })];
+        syncGlobalFromUI();
+        renderComboStrip();
+        applyComboLocks();
+
+        state.suppressComboCalculation = previousSuppress;
         calculate();
 
         stateDirty = false;
@@ -1540,7 +2525,238 @@
         outputNodes.velocityMag.textContent = formatStandard(magnitude);
       }
 
-      function calculate() {
+      const resolveDirections = (result, angleValue) => {
+        const resolvedAngleDeg = typeof result.resolvedAngle === 'number' ? result.resolvedAngle : angleValue;
+        const angleRadians = resolvedAngleDeg * (Math.PI / 180);
+        const fallbackHorizontal = (() => {
+          if (!Number.isFinite(angleRadians)) return Math.abs(result.initialVelocityX) < 1e-6 ? 0 : 1;
+          const cosValue = Math.cos(angleRadians);
+          if (Math.abs(cosValue) < 1e-6) return 0;
+          return cosValue > 0 ? 1 : -1;
+        })();
+        const fallbackVertical = (() => {
+          if (!Number.isFinite(angleRadians)) return Math.abs(result.initialVelocityY) < 1e-6 ? 0 : 1;
+          const sinValue = Math.sin(angleRadians);
+          if (Math.abs(sinValue) < 1e-6) return 0;
+          return sinValue > 0 ? 1 : -1;
+        })();
+        const horizontalDirection = (typeof result.horizontalDirection === 'number')
+          ? result.horizontalDirection
+          : fallbackHorizontal;
+        const verticalDirection = (typeof result.verticalDirection === 'number')
+          ? result.verticalDirection
+          : fallbackVertical;
+        return { resolvedAngleDeg, horizontalDirection, verticalDirection };
+      };
+
+      const computeMoveOutcome = (params) => {
+        const result = Smash64Calculator.compute(params);
+        const { resolvedAngleDeg, horizontalDirection, verticalDirection } = resolveDirections(result, params.angle);
+        const attackDirectionSign = params.attackDirection === 'left' ? -1 : 1;
+        const signedXDistance = result.totalDistanceX
+          * (horizontalDirection === 0 ? 0 : horizontalDirection)
+          * attackDirectionSign;
+        const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const finalPosition = {
+          x: params.startX + signedXDistance,
+          y: params.startY + signedYDistance,
+        };
+        const staledDamage = Smash64Calculator.applyStaleness(params.baseDamage, params.damageModifier);
+        const appliedDamage = params.targetState === 'laying' ? Math.ceil(staledDamage / 2) : staledDamage;
+        const finalPercent = Math.max(0, Number(params.hp) || 0) + appliedDamage;
+        return {
+          result,
+          resolvedAngleDeg,
+          verticalDirection,
+          signedXDistance,
+          signedYDistance,
+          finalPosition,
+          staledDamage,
+          appliedDamage,
+          finalPercent,
+        };
+      };
+
+      const computeComboDerived = () => {
+        ensureComboMoves();
+        const global = comboState.global || {};
+        const startPosition = buildStartPosition(global.position);
+        const startPercent = Number.isFinite(global.hp) ? global.hp : numericValue(hpInput, 0);
+        const defenderTraction = Number.isFinite(selectedDefenderTraction)
+          ? selectedDefenderTraction
+          : (selectedDefenderData && Number.isFinite(selectedDefenderData.traction)
+            ? selectedDefenderData.traction
+            : 1);
+        const baseGroundPlanes = Object.values(POSITION_DATA).reduce((planes, platform) => {
+          if (!platform) return planes;
+          const xMin = platform.center - platform.halfWidth;
+          const xMax = platform.center + platform.halfWidth;
+          planes.push({ xMin, xMax, y: platform.y });
+          return planes;
+        }, []);
+        const yoshiSelected = isYoshiDefender();
+        const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
+
+        let currentPercent = startPercent;
+        let currentPosition = { ...startPosition };
+        let currentTargetState = comboState.moves[0].targetState || TARGET_STATE_ORDER[0];
+        const stalenessLevels = new Map();
+        const derived = [];
+
+        comboState.moves.forEach((move, index) => {
+          const moveAttacker = move.attacker || global.attacker;
+          const moveDefaults = Number.isFinite(move.moveSlot)
+            ? getMoveDefaults(move.moveSlot, moveAttacker)
+            : null;
+          const stalenessKey = getMoveStaleKey(move);
+          const previousLevel = stalenessLevels.get(stalenessKey) || 0;
+          const manualStaleness = STALENESS_ORDER.includes(move.staleness)
+            ? move.staleness
+            : STALENESS_ORDER[0];
+          const forcedIndex = Math.min(previousLevel, STALENESS_ORDER.length - 1);
+          const stalenessForced = forcedIndex > 0;
+          const stalenessValue = stalenessForced
+            ? STALENESS_ORDER[forcedIndex]
+            : manualStaleness;
+
+          const simulationMode = move.simulation || SIMULATION_ORDER[0];
+          const rawComboDelay = Number.isFinite(move.comboDelay) ? move.comboDelay : 0;
+          const comboDelayValue = Math.max(0, Math.trunc(rawComboDelay));
+          const comboDelayFrames = simulationMode === 'custom' ? comboDelayValue + 1 : 0;
+
+          const baseDamage = Number.isFinite(move.damage)
+            ? move.damage
+            : (moveDefaults ? moveDefaults.damage : 0);
+          const baseAngle = Number.isFinite(move.angle)
+            ? move.angle
+            : (moveDefaults ? moveDefaults.angle : 0);
+          const baseKbs = Number.isFinite(move.kbs)
+            ? move.kbs
+            : (moveDefaults ? moveDefaults.kbs : 0);
+          const baseBkb = Number.isFinite(move.bkb)
+            ? move.bkb
+            : (moveDefaults ? moveDefaults.bkb : 0);
+          const baseFkb = Number.isFinite(move.fkb)
+            ? move.fkb
+            : (moveDefaults ? moveDefaults.fkb : 0);
+          const baseElectric = (typeof move.electric === 'boolean')
+            ? move.electric
+            : (moveDefaults ? moveDefaults.electric : false);
+          const baseThrow = (typeof move.throwMove === 'boolean')
+            ? move.throwMove
+            : (moveDefaults ? moveDefaults.throwMove : false);
+
+          const attackDirection = move.attackDirection || ATTACK_DIRECTION_ORDER[0];
+          const attackDirectionSign = attackDirection === 'left' ? -1 : 1;
+          const predictedHorizontal = getHorizontalDirectionFromAngle(baseAngle);
+          const travelSign = predictedHorizontal === 0 ? 0 : predictedHorizontal * attackDirectionSign;
+          const groundPlanes = travelSign < 0
+            ? mirrorGroundPlanes(baseGroundPlanes, currentPosition.x)
+            : baseGroundPlanes;
+          const params = {
+            weight: Number.isFinite(global.weight) ? global.weight : numericValue(weightInput, 1),
+            fallAccel: Number.isFinite(global.fallAccel) ? global.fallAccel : numericValue(fallAccelInput, 0),
+            maxFall: Number.isFinite(global.maxFall) ? global.maxFall : numericValue(maxFallInput, 0),
+            hp: currentPercent,
+            baseDamage,
+            baseKnockback: baseBkb,
+            knockbackScaling: baseKbs,
+            fixedKnockback: baseFkb,
+            angle: baseAngle,
+            attackHandicapIndex: Math.min(40, Math.max(0, Math.trunc(
+              Number.isFinite(move.attackHandicap) ? move.attackHandicap : numericValue(attackHandicapInput, 9)
+            ))),
+            defenseHandicapIndex: Math.min(40, Math.max(0, Math.trunc(
+              Number.isFinite(move.defenseHandicap) ? move.defenseHandicap : numericValue(defenseHandicapInput, 9)
+            ))),
+            damageModifier: stalenessValue,
+            targetState: currentTargetState,
+            electric: baseElectric,
+            throwMove: baseThrow,
+            doubleJumpArmor: doubleJumpArmorActive,
+            attackDirection,
+            simulationMode,
+            comboDelay: comboDelayFrames,
+            startX: currentPosition.x,
+            startY: currentPosition.y,
+            traction: defenderTraction,
+            groundPlanes,
+          };
+
+          const outcome = computeMoveOutcome(params);
+          const endPosition = outcome.finalPosition;
+
+          derived[index] = {
+            startPercent: currentPercent,
+            startPosition: { ...currentPosition },
+            targetState: currentTargetState,
+            stalenessValue,
+            stalenessForced,
+            endPosition,
+            finalPercent: outcome.finalPercent,
+            appliedDamage: outcome.appliedDamage,
+            result: outcome.result,
+          };
+
+          stalenessLevels.forEach((value, key) => {
+            if (key === stalenessKey) return;
+            if (value > 0) {
+              stalenessLevels.set(key, value - 1);
+            }
+          });
+          stalenessLevels.set(stalenessKey, STALENESS_ORDER.length - 1);
+
+          currentPercent = outcome.finalPercent;
+          currentPosition = endPosition;
+          const grounded = typeof isPositionOnPlatform === 'function'
+            ? isPositionOnPlatform(endPosition)
+            : false;
+          if (grounded) {
+            currentTargetState = outcome.result.hitstun >= 32 ? 'laying' : 'standing';
+          } else {
+            currentTargetState = 'airborne';
+          }
+        });
+
+        comboState.derived = derived;
+      };
+
+      const applyActiveDerivedFields = () => {
+        if (comboState.activeIndex === 0) {
+          state.comboLockStaleness = false;
+          const move = comboState.moves[0];
+          if (move && typeof move.targetState === 'string') {
+            targetStateSelect.value = move.targetState;
+          }
+          if (move && typeof move.staleness === 'string') {
+            setStaleness(move.staleness, { trigger: false });
+          }
+          return;
+        }
+        const derived = comboState.derived[comboState.activeIndex];
+        if (!derived) return;
+        state.comboLockStaleness = Boolean(derived.stalenessForced);
+        if (Number.isFinite(derived.startPercent)) {
+          hpInput.value = derived.startPercent;
+        }
+        if (derived.startPosition && typeof setCustomPositionDirect === 'function') {
+          setCustomPositionDirect(derived.startPosition.x, derived.startPosition.y);
+        }
+        if (typeof derived.targetState === 'string') {
+          targetStateSelect.value = derived.targetState;
+          if (derived.targetState !== 'airborne') {
+            state.lastGroundState = derived.targetState;
+            state.autoAirborneActive = false;
+          } else {
+            state.autoAirborneActive = true;
+          }
+        }
+        if (typeof derived.stalenessValue === 'string') {
+          setStaleness(derived.stalenessValue, { trigger: false });
+        }
+      };
+
+      function calculateOutput() {
         const attackIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(attackHandicapInput, 9))));
         const defenseIndex = Math.min(40, Math.max(0, Math.trunc(numericValue(defenseHandicapInput, 9))));
 
@@ -1558,7 +2774,7 @@
           : (selectedDefenderData && Number.isFinite(selectedDefenderData.traction)
             ? selectedDefenderData.traction
             : 1);
-        const groundPlanes = Object.values(POSITION_DATA).reduce((planes, platform) => {
+        const baseGroundPlanes = Object.values(POSITION_DATA).reduce((planes, platform) => {
           if (!platform) return planes;
           const xMin = platform.center - platform.halfWidth;
           const xMax = platform.center + platform.halfWidth;
@@ -1569,6 +2785,12 @@
         const yoshiSelected = isYoshiDefender();
         const doubleJumpArmorActive = yoshiSelected && doubleJumpArmorToggle && doubleJumpArmorToggle.checked;
 
+        const baseAngle = numericValue(angleInput, 0);
+        const predictedHorizontal = getHorizontalDirectionFromAngle(baseAngle);
+        const travelSign = predictedHorizontal === 0 ? 0 : predictedHorizontal * attackDirectionSign;
+        const groundPlanes = travelSign < 0
+          ? mirrorGroundPlanes(baseGroundPlanes, position.x)
+          : baseGroundPlanes;
         const params = {
           weight: numericValue(weightInput, 1),
           fallAccel: numericValue(fallAccelInput, 0),
@@ -1578,7 +2800,7 @@
           baseKnockback: numericValue(bkbInput, 0),
           knockbackScaling: numericValue(kbsInput, 0),
           fixedKnockback: numericValue(fkbInput, 0),
-          angle: numericValue(angleInput, 0),
+          angle: baseAngle,
           attackHandicapIndex: attackIndex,
           defenseHandicapIndex: defenseIndex,
           damageModifier: state.stalenessValue,
@@ -1709,17 +2931,7 @@
           outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
         }
 
-        const resolvedAngleDeg = typeof result.resolvedAngle === 'number' ? result.resolvedAngle : params.angle;
-        const angleRadians = resolvedAngleDeg * (Math.PI / 180);
-        const fallbackVertical = (() => {
-          if (!Number.isFinite(angleRadians)) return Math.abs(result.initialVelocityY) < 1e-6 ? 0 : 1;
-          const sinValue = Math.sin(angleRadians);
-          if (Math.abs(sinValue) < 1e-6) return 0;
-          return sinValue > 0 ? 1 : -1;
-        })();
-        const verticalDirection = (typeof result.verticalDirection === 'number')
-          ? result.verticalDirection
-          : fallbackVertical;
+        const { verticalDirection } = resolveDirections(result, params.angle);
 
         const signedInitialVX = result.initialVelocityX;
         const signedInitialVY = result.initialVelocityY * (verticalDirection === 0 ? 0 : verticalDirection);
@@ -1744,9 +2956,50 @@
         if (trajectoryPoints.length === 0) {
           trajectoryPoints.push({ frame: 0, x: position.x, y: position.y });
         }
+        const secondaryTrajectories = [];
+        if (comboState.moves.length > 1 && Array.isArray(comboState.derived)) {
+          comboState.derived.forEach((entry, index) => {
+            if (!entry || index === comboState.activeIndex) return;
+            const move = comboState.moves[index] || {};
+            if (!entry.result || !entry.startPosition || !entry.endPosition) return;
+            const { horizontalDirection: secondaryHoriz, verticalDirection: secondaryVert } = resolveDirections(
+              entry.result,
+              Number.isFinite(move.angle) ? move.angle : 0
+            );
+            const secondaryAttackDir = move.attackDirection || ATTACK_DIRECTION_ORDER[0];
+            const secondaryAttackSign = secondaryAttackDir === 'left' ? -1 : 1;
+            const secondaryDirectionX = (secondaryHoriz === 0 ? 0 : secondaryHoriz) * secondaryAttackSign;
+            const secondaryDirectionY = secondaryVert === 0 ? 0 : secondaryVert;
+            const secondaryPoints = (entry.result.trajectory || []).map((step) => ({
+              frame: step.frame,
+              x: entry.startPosition.x + step.x * secondaryDirectionX,
+              y: entry.startPosition.y + step.y * secondaryDirectionY,
+            }));
+            if (secondaryPoints.length === 0) {
+              secondaryPoints.push({
+                frame: 0,
+                x: entry.startPosition.x,
+                y: entry.startPosition.y,
+              });
+            }
+            const secondaryHitstun = Math.max(
+              0,
+              Number.isFinite(entry.result.simulatedHitstun) ? entry.result.simulatedHitstun : entry.result.hitstun
+            );
+            secondaryTrajectories.push({
+              startPosition: entry.startPosition,
+              trajectoryPoints: secondaryPoints,
+              finalPosition: entry.endPosition,
+              hitstunFrames: secondaryHitstun,
+              label: index + 1,
+            });
+          });
+        }
+
         updateTrajectoryDisplay(position, trajectoryPoints, { x: finalX, y: finalY }, displayHitstun, {
           killFrameLimit: customFrameLimit,
           allowEndPointWhenKill: customFrameLimit !== null,
+          secondaryTrajectories,
         });
 
         outputNodes.killThresholdOutput.textContent = '';
@@ -1868,6 +3121,14 @@
         updateVector(signedInitialVX, signedInitialVY);
         updateHandicapMultipliers(attackIndex, defenseIndex);
       }
+      function calculate() {
+        if (state.suppressComboCalculation) return;
+        syncActiveMoveFromUI();
+        computeComboDerived();
+        applyActiveDerivedFields();
+        applyComboLocks();
+        calculateOutput();
+      }
       app.calculate = calculate;
 
       const handleInputChange = () => {
@@ -1887,9 +3148,67 @@
       });
 
       attackerSelect.addEventListener('change', () => {
-        const preferredMove = lastMoveBaseName
+        syncActiveMoveFromUI();
+        const selectedAttacker = attackerSelect.value;
+        if (comboState.activeIndex > 0) {
+          const previousMoveset = Array.isArray(currentMoves) ? [...currentMoves] : [];
+          const activeMove = comboState.moves[comboState.activeIndex] || {};
+          const baseName = getMoveBaseNameFromSlot(activeMove.moveSlot, previousMoveset);
+          const preferredMove = baseName
+            || lastMoveBaseName
+            || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
+          const previousSuppress = state.suppressComboCalculation;
+          state.suppressComboCalculation = true;
+          populateMoves(selectedAttacker, { preferredMove });
+          state.suppressComboCalculation = previousSuppress;
+
+          if (baseName) {
+            const remappedSlot = findMoveSlotByBaseName(currentMoves, baseName);
+            if (Number.isFinite(remappedSlot)) {
+              activeMove.moveSlot = remappedSlot;
+            }
+          }
+          const globalAttacker = comboState.global && comboState.global.attacker
+            ? comboState.global.attacker
+            : selectedAttacker;
+          activeMove.attacker = (selectedAttacker && selectedAttacker !== globalAttacker) ? selectedAttacker : undefined;
+          comboState.moves[comboState.activeIndex] = { ...comboState.moves[comboState.activeIndex], ...activeMove };
+          applyMoveConfigToUI(comboState.moves[comboState.activeIndex], { skipCalculate: true });
+          calculate();
+          markStateDirty();
+          return;
+        }
+
+        const previousMoveset = Array.isArray(currentMoves) ? [...currentMoves] : [];
+        const baseNames = comboState.moves.map((move) => (
+          move.attacker ? null : getMoveBaseNameFromSlot(move.moveSlot, previousMoveset)
+        ));
+        const preferredMove = baseNames[comboState.activeIndex]
+          || lastMoveBaseName
           || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
-        populateMoves(attackerSelect.value, { preferredMove });
+        const previousSuppress = state.suppressComboCalculation;
+        state.suppressComboCalculation = true;
+        populateMoves(selectedAttacker, { preferredMove });
+        state.suppressComboCalculation = previousSuppress;
+
+        comboState.moves = comboState.moves.map((move, index) => {
+          if (move.attacker) {
+            if (move.attacker === selectedAttacker) {
+              const { attacker, ...rest } = move;
+              return rest;
+            }
+            return move;
+          }
+          if (!Number.isFinite(move.moveSlot)) return move;
+          const baseName = baseNames[index];
+          if (!baseName) return move;
+          const remappedSlot = findMoveSlotByBaseName(currentMoves, baseName);
+          if (!Number.isFinite(remappedSlot)) return move;
+          return { ...move, moveSlot: remappedSlot };
+        });
+
+        applyMoveConfigToUI(comboState.moves[comboState.activeIndex], { skipCalculate: true });
+        calculate();
         markStateDirty();
       });
 
@@ -1920,12 +3239,14 @@
 
       if (doubleJumpArmorToggle) {
         doubleJumpArmorToggle.addEventListener('change', () => {
+          if (comboState.activeIndex > 0) return;
           enforceDoubleJumpArmorState({ forceCalculate: true });
           markStateDirty();
         });
       }
 
       targetStateSelect.addEventListener('change', () => {
+        if (comboState.activeIndex > 0) return;
         if (isYoshiDefender() && doubleJumpArmorToggle && doubleJumpArmorToggle.checked) {
           if (targetStateSelect.value !== 'airborne') {
             targetStateSelect.value = 'airborne';
@@ -1942,6 +3263,7 @@
 
       if (positionXInput && positionYInput) {
         const handlePositionInput = () => {
+          if (state.comboLockPosition) return;
           if (state.suppressCustomPositionInput) return;
           const x = Number.parseFloat(positionXInput.value);
           const y = Number.parseFloat(positionYInput.value);
@@ -1958,6 +3280,7 @@
         };
 
         const handlePositionKeydown = (event) => {
+          if (state.comboLockPosition) return;
           if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
             return;
           }
@@ -1978,6 +3301,7 @@
       }
 
       positionHorizontalSelect.addEventListener('change', () => {
+        if (state.comboLockPosition) return;
         if (state.suppressPositionChange) return;
         if (typeof setPositionFromStageCoords === 'function') {
           const coords = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
@@ -1991,6 +3315,7 @@
       });
 
       positionVerticalSelect.addEventListener('change', () => {
+        if (state.comboLockPosition) return;
         if (state.suppressPositionChange) return;
         if (typeof setPositionFromStageCoords === 'function') {
           const coords = computePosition(positionHorizontalSelect.value, positionVerticalSelect.value);
@@ -2017,12 +3342,45 @@
 
       stalenessButtons.forEach((button) => {
         button.addEventListener('click', () => {
+          if (state.comboLockStaleness) return;
           const value = button.dataset.staleness;
           if (!value) return;
+          if (comboState.activeIndex > 0) {
+            const move = comboState.moves[comboState.activeIndex] || {};
+            comboState.moves[comboState.activeIndex] = { ...move, staleness: value };
+          }
           setStaleness(value);
           markStateDirty();
         });
       });
+
+      if (comboStrip) {
+        comboStrip.addEventListener('click', (event) => {
+          const removeButton = event.target.closest('[data-combo-remove]');
+          if (removeButton) {
+            event.preventDefault();
+            const index = Number(removeButton.dataset.comboRemove);
+            if (Number.isFinite(index)) {
+              removeComboMove(index);
+            }
+            return;
+          }
+          const addButton = event.target.closest('[data-combo-add]');
+          if (addButton) {
+            event.preventDefault();
+            addComboMove();
+            return;
+          }
+          const stepButton = event.target.closest('[data-combo-step]');
+          if (stepButton) {
+            event.preventDefault();
+            const index = Number(stepButton.dataset.comboStep);
+            if (Number.isFinite(index)) {
+              selectComboIndex(index);
+            }
+          }
+        });
+      }
 
       if (Array.isArray(attackDirectionButtons)) {
         attackDirectionButtons.forEach((button) => {
@@ -2048,7 +3406,7 @@
         trajectoryState.snapEnabled = snapToggle.checked;
         snapToggle.addEventListener('change', () => {
           trajectoryState.snapEnabled = snapToggle.checked;
-          if (trajectoryState.snapEnabled && state.customPosition) {
+          if (trajectoryState.snapEnabled && state.customPosition && !state.comboLockPosition) {
             setPositionFromStageCoords(state.customPosition.x, state.customPosition.y, true);
           }
           markStateDirty();
@@ -2135,12 +3493,25 @@
         : 'full';
       setBackgroundMode(storedBackground || defaultBackground, { save: false });
 
-      if (initialDataState) {
+      if (initialComboState) {
+        if (initialDataState) {
+          const expandedState = expandStateFromDelta(baselineState, initialDataState);
+          if (expandedState) {
+            await applyStateSnapshot(expandedState);
+          }
+        }
+        await applyComboPayload(initialComboState);
+      } else if (initialDataState) {
         const expandedState = expandStateFromDelta(baselineState, initialDataState);
         if (expandedState) {
           await applyStateSnapshot(expandedState);
         }
       } else {
+        comboState.activeIndex = 0;
+        comboState.moves = [readMoveFromInputs({ includeDerived: true })];
+        syncGlobalFromUI();
+        renderComboStrip();
+        applyComboLocks();
         calculate();
         suppressUrlSync = false;
       }

@@ -36,6 +36,7 @@ window.CALC_I18N = {
   shieldDamageHint: ({ max }) => `Shields have ${max} health`,
   shieldstunFrames: ({ frames }) => `${frames} Frames`,
   afterStaleness: ({ summary }) => `${summary} (after staleness)`,
+  lockedFieldHint: 'Field locked from preceding combo hit.',
   displacement: {
     after: ({ frames, label }) => `After ${frames} ${label}`,
     whenZero: 'When velocity reaches zero',

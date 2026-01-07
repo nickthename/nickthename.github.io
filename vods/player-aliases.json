@@ -5,6 +5,9 @@
       "en": "Grain",
       "ja": "エタブ"
     },
-    "aliases": ["Grain", "Etab", "エタブ"]
+    "aliases": {
+      "aka": ["Maeve"],
+      "previous": ["Etab"]
+    }
   }
 ]

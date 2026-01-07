@@ -124,27 +124,44 @@ scripts:
       (entries || []).forEach((entry) => {
         if (!entry) return;
         const display = entry.display || {};
-        const aliasList = [];
-        if (Array.isArray(entry.aliases)) {
-          aliasList.push(...entry.aliases);
-        } else if (entry.aliases && typeof entry.aliases === 'object') {
-          if (Array.isArray(entry.aliases.en)) aliasList.push(...entry.aliases.en);
-          if (Array.isArray(entry.aliases.ja)) aliasList.push(...entry.aliases.ja);
-        }
-        if (display.en) aliasList.push(display.en);
-        if (display.ja) aliasList.push(display.ja);
-        const baseId = entry.id || normalizeName(display.en || display.ja || aliasList[0] || '');
-        if (!baseId) return;
-        const unique = [];
+        const aliasRecords = [];
         const seen = new Set();
-        aliasList.forEach((name) => {
+        const addAlias = (name, type) => {
           const norm = normalizeName(name);
           if (!norm || seen.has(norm)) return;
           seen.add(norm);
-          unique.push(name);
-          byAlias.set(norm, { id: baseId, name });
+          aliasRecords.push({ name, type });
+        };
+        const collectAliasGroup = (group, type) => {
+          if (!group) return;
+          if (Array.isArray(group)) {
+            group.forEach((name) => addAlias(name, type));
+            return;
+          }
+          if (typeof group === 'object') {
+            if (Array.isArray(group.en)) group.en.forEach((name) => addAlias(name, type));
+            if (Array.isArray(group.ja)) group.ja.forEach((name) => addAlias(name, type));
+          }
+        };
+        const aliasSource = entry.aliases;
+        if (aliasSource && typeof aliasSource === 'object' && ('aka' in aliasSource || 'previous' in aliasSource)) {
+          collectAliasGroup(aliasSource.aka, 'aka');
+          collectAliasGroup(aliasSource.previous, 'previous');
+        } else if (aliasSource) {
+          collectAliasGroup(aliasSource, 'aka');
+        }
+        if (display.en) addAlias(display.en, 'display');
+        if (display.ja) addAlias(display.ja, 'display');
+
+        const baseId = entry.id || normalizeName(display.en || display.ja || (aliasRecords[0] && aliasRecords[0].name) || '');
+        if (!baseId) return;
+
+        aliasRecords.forEach((alias) => {
+          const norm = normalizeName(alias.name);
+          if (!norm) return;
+          byAlias.set(norm, { id: baseId, name: alias.name, type: alias.type });
         });
-        byId.set(baseId, { id: baseId, display, aliases: unique });
+        byId.set(baseId, { id: baseId, display, aliases: aliasRecords });
       });
       return { byAlias, byId };
     }
@@ -180,7 +197,7 @@ scripts:
       if (!filter) return true;
       const entry = resolveAliasEntry(playerName);
       if (entry) {
-        return entry.aliases.some((alias) => normalizeName(alias).includes(filter));
+        return entry.aliases.some((alias) => normalizeName(alias.name).includes(filter));
       }
       return normalizeName(playerName).includes(filter);
     }
@@ -190,10 +207,10 @@ scripts:
       if (!filter) return null;
       const entry = resolveAliasEntry(playerName);
       if (!entry) return null;
-      const matched = entry.aliases.find((alias) => normalizeName(alias).includes(filter));
+      const matched = entry.aliases.find((alias) => alias.type !== 'display' && normalizeName(alias.name).includes(filter));
       if (!matched) return null;
       const display = getPlayerDisplayName(playerName);
-      if (normalizeName(display) === normalizeName(matched)) return null;
+      if (normalizeName(display) === normalizeName(matched.name)) return null;
       return matched;
     }
 
@@ -210,8 +227,14 @@ scripts:
       const displayName = getPlayerDisplayName(playerName);
       const safeDisplay = escapeHtml(displayName);
       if (!aliasHint) return safeDisplay;
-      const safeAlias = escapeHtml(aliasHint);
-      const aliasLabel = PAGE_LANGUAGE === 'ja' ? '別名' : 'aka';
+      const aliasData = typeof aliasHint === 'string' ? { name: aliasHint, type: 'aka' } : aliasHint;
+      const safeAlias = escapeHtml(aliasData.name);
+      const aliasLabels = {
+        en: { aka: 'aka', previous: 'previously known as' },
+        ja: { aka: '別名', previous: '旧名' }
+      };
+      const labelSet = aliasLabels[PAGE_LANGUAGE] || aliasLabels.en;
+      const aliasLabel = labelSet[aliasData.type] || labelSet.aka;
       return `<span class="alias-name" title="${aliasLabel} ${safeAlias}">${safeDisplay}</span>`;
     }
 

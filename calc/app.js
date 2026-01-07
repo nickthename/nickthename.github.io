@@ -468,20 +468,30 @@
         }
       };
 
-      const getMoveBaseNameFromSlot = (slot, moveset) => {
+      const getMoveIdentityFromSlot = (slot, moveset) => {
         if (!Number.isFinite(slot) || !Array.isArray(moveset)) return null;
         const move = moveset[slot];
         if (!move) return null;
-        return move.baseName || move.name || null;
+        const name = move.name ?? '';
+        const baseName = move.baseName ?? '';
+        if (!name && !baseName) return null;
+        return { name, baseName };
       };
 
-      const findMoveSlotByBaseName = (moveset, baseName) => {
-        if (!baseName || !Array.isArray(moveset)) return null;
-        const index = moveset.findIndex((move) => {
-          const candidate = move.baseName || move.name || '';
-          return candidate === baseName || move.name === baseName;
-        });
-        return index >= 0 ? index : null;
+      const findMoveSlotByIdentity = (moveset, identity) => {
+        if (!identity || !Array.isArray(moveset)) return null;
+        if (identity.name) {
+          const nameIndex = moveset.findIndex((move) => (move.name || '') === identity.name);
+          if (nameIndex >= 0) return nameIndex;
+        }
+        if (identity.baseName) {
+          const baseIndex = moveset.findIndex((move) => {
+            const candidate = move.baseName || move.name || '';
+            return candidate === identity.baseName;
+          });
+          if (baseIndex >= 0) return baseIndex;
+        }
+        return null;
       };
 
       const getMoveStaleKey = (move) => {
@@ -1907,16 +1917,17 @@
         const globalAttackerKey = comboState.global && comboState.global.attacker
           ? comboState.global.attacker
           : attackerSelect.value;
-        const baseNames = comboState.moves.map((move) => {
+        const identities = comboState.moves.map((move) => {
           const attackerKey = move.attacker || globalAttackerKey;
           const oldMoveset = previousMovesets && previousMovesets[attackerKey]
             ? previousMovesets[attackerKey]
             : previousMoveset;
-          return getMoveBaseNameFromSlot(move.moveSlot, oldMoveset);
+          return getMoveIdentityFromSlot(move.moveSlot, oldMoveset);
         });
-        const preferredMove = baseNames[comboState.activeIndex]
+        const preferredIdentity = identities[comboState.activeIndex];
+        const preferredMove = (preferredIdentity && (preferredIdentity.name || preferredIdentity.baseName))
           || lastMoveBaseName
-          || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
+          || (selectedMoveData ? (selectedMoveData.name || selectedMoveData.baseName || null) : null);
         setDefender(defenderSelect.value);
         updateDoubleJumpArmorVisibility({ skipCalculate: true });
         const previousSuppress = state.suppressComboCalculation;
@@ -1926,11 +1937,11 @@
 
         comboState.moves = comboState.moves.map((move, index) => {
           if (!Number.isFinite(move.moveSlot)) return move;
-          const baseName = baseNames[index];
-          if (!baseName) return move;
+          const identity = identities[index];
+          if (!identity) return move;
           const attackerKey = move.attacker || globalAttackerKey;
           const nextMoveset = movesets[attackerKey] || currentMoves;
-          const remappedSlot = findMoveSlotByBaseName(nextMoveset, baseName);
+          const remappedSlot = findMoveSlotByIdentity(nextMoveset, identity);
           if (!Number.isFinite(remappedSlot)) return move;
           return { ...move, moveSlot: remappedSlot };
         });
@@ -3152,17 +3163,17 @@
         if (comboState.activeIndex > 0) {
           const previousMoveset = Array.isArray(currentMoves) ? [...currentMoves] : [];
           const activeMove = comboState.moves[comboState.activeIndex] || {};
-          const baseName = getMoveBaseNameFromSlot(activeMove.moveSlot, previousMoveset);
-          const preferredMove = baseName
+          const identity = getMoveIdentityFromSlot(activeMove.moveSlot, previousMoveset);
+          const preferredMove = (identity && (identity.name || identity.baseName))
             || lastMoveBaseName
-            || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
+            || (selectedMoveData ? (selectedMoveData.name || selectedMoveData.baseName || null) : null);
           const previousSuppress = state.suppressComboCalculation;
           state.suppressComboCalculation = true;
           populateMoves(selectedAttacker, { preferredMove });
           state.suppressComboCalculation = previousSuppress;
 
-          if (baseName) {
-            const remappedSlot = findMoveSlotByBaseName(currentMoves, baseName);
+          if (identity) {
+            const remappedSlot = findMoveSlotByIdentity(currentMoves, identity);
             if (Number.isFinite(remappedSlot)) {
               activeMove.moveSlot = remappedSlot;
             }
@@ -3179,12 +3190,13 @@
         }
 
         const previousMoveset = Array.isArray(currentMoves) ? [...currentMoves] : [];
-        const baseNames = comboState.moves.map((move) => (
-          move.attacker ? null : getMoveBaseNameFromSlot(move.moveSlot, previousMoveset)
+        const identities = comboState.moves.map((move) => (
+          move.attacker ? null : getMoveIdentityFromSlot(move.moveSlot, previousMoveset)
         ));
-        const preferredMove = baseNames[comboState.activeIndex]
+        const preferredIdentity = identities[comboState.activeIndex];
+        const preferredMove = (preferredIdentity && (preferredIdentity.name || preferredIdentity.baseName))
           || lastMoveBaseName
-          || (selectedMoveData ? (selectedMoveData.baseName || selectedMoveData.name || null) : null);
+          || (selectedMoveData ? (selectedMoveData.name || selectedMoveData.baseName || null) : null);
         const previousSuppress = state.suppressComboCalculation;
         state.suppressComboCalculation = true;
         populateMoves(selectedAttacker, { preferredMove });
@@ -3199,9 +3211,9 @@
             return move;
           }
           if (!Number.isFinite(move.moveSlot)) return move;
-          const baseName = baseNames[index];
-          if (!baseName) return move;
-          const remappedSlot = findMoveSlotByBaseName(currentMoves, baseName);
+          const identity = identities[index];
+          if (!identity) return move;
+          const remappedSlot = findMoveSlotByIdentity(currentMoves, identity);
           if (!Number.isFinite(remappedSlot)) return move;
           return { ...move, moveSlot: remappedSlot };
         });

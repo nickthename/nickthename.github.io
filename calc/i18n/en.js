@@ -31,11 +31,18 @@ window.CALC_I18N = {
   killsOffLeft: 'Kills off left side',
   killsOffRight: 'Kills off right side',
   killsOnFrame: ({ frame }) => `Kills on frame ${frame}`,
+  comboKillsHit: ({ hit }) => `Kills (hit ${hit})`,
+  totalDamageBreakdown: ({ total, breakdown }) => (
+    breakdown && breakdown.includes('+')
+      ? `Total: ${total}% (${breakdown})`
+      : `Total: ${total}%`
+  ),
   hitlagFrames: ({ frames }) => `${frames} Frames`,
   hitlagDIHint: ({ frames }) => `${frames} frames for DI inputs`,
   shieldDamageHint: ({ max }) => `Shields have ${max} health`,
   shieldstunFrames: ({ frames }) => `${frames} Frames`,
   afterStaleness: ({ summary }) => `${summary} (after staleness)`,
+  lockedFieldHint: 'Field locked from preceding combo hit.',
   displacement: {
     after: ({ frames, label }) => `After ${frames} ${label}`,
     whenZero: 'When velocity reaches zero',

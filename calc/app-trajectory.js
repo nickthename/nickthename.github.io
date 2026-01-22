@@ -48,6 +48,27 @@
     });
   };
 
+  const applyPlatformMagnetism = (stageX, stageY) => {
+    const MAGNET_MARGIN_X = 70;
+    const MAGNET_DISTANCE_Y = 70;
+    let bestY = null;
+    let bestDy = Number.POSITIVE_INFINITY;
+    Object.values(POSITION_DATA).forEach((platform) => {
+      if (!platform) return;
+      const minX = platform.center - platform.halfWidth - MAGNET_MARGIN_X;
+      const maxX = platform.center + platform.halfWidth + MAGNET_MARGIN_X;
+      if (stageX < minX || stageX > maxX) return;
+      const dy = Math.abs(stageY - platform.y);
+      if (dy > MAGNET_DISTANCE_Y) return;
+      if (dy < bestDy) {
+        bestDy = dy;
+        bestY = platform.y;
+      }
+    });
+    if (bestY === null) return stageY;
+    return bestY;
+  };
+
   const STAGE_EXTENTS = (() => {
     const xs = [-STAGE_HALF_WIDTH, STAGE_HALF_WIDTH];
     const ys = [0];
@@ -263,11 +284,9 @@
     }
   };
 
-  const updateTrajectoryDisplay = (startPosition, trajectoryPoints, finalPosition, hitstunFrames, options = {}) => {
-    if (!trajectoryElements.svg) return;
+  const buildTrajectoryData = (startPosition, trajectoryPoints, finalPosition, hitstunFrames, options = {}) => {
     const killFrameLimit = Number.isFinite(options.killFrameLimit) ? Math.max(0, Math.trunc(options.killFrameLimit)) : null;
     const allowEndPointWhenKill = Boolean(options.allowEndPointWhenKill);
-
     const usablePoints = trajectoryPoints.length > 0
       ? trajectoryPoints
       : [{ frame: 0, x: startPosition.x, y: startPosition.y }];
@@ -296,7 +315,146 @@
 
     const boundsAnchor = killEntryPoint || finalPosition;
     const bounds = computeTrajectoryBounds([...trimmedPoints, startPosition, boundsAnchor]);
-    const viewBounds = getCameraBounds(trajectoryState.cameraMode, bounds);
+
+    const displayPoints = trimmedPoints.map((pt) => ({
+      frame: pt.frame,
+      x: pt.x,
+      y: stageToDisplayY(pt.y),
+    }));
+
+    return {
+      startPosition,
+      finalPosition,
+      hitstunFrames,
+      allowEndPointWhenKill,
+      killEntryPoint,
+      killDisplayPoint,
+      trimmedPoints,
+      bounds,
+      displayPoints,
+    };
+  };
+
+  const mergeBounds = (boundsList, fallback) => {
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    boundsList.forEach((bounds) => {
+      if (!bounds) return;
+      minX = Math.min(minX, bounds.minX);
+      minY = Math.min(minY, bounds.minY);
+      maxX = Math.max(maxX, bounds.maxX);
+      maxY = Math.max(maxY, bounds.maxY);
+    });
+    if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) {
+      return fallback;
+    }
+    return {
+      minX,
+      minY,
+      maxX,
+      maxY,
+      width: maxX - minX,
+      height: maxY - minY,
+    };
+  };
+
+  const ensureSecondaryGroup = () => {
+    if (!trajectoryElements.svg) return null;
+    if (trajectoryElements.secondaryGroup) return trajectoryElements.secondaryGroup;
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    group.setAttribute('id', 'trajectory-secondary');
+    group.setAttribute('class', 'trajectory-secondary');
+    if (trajectoryElements.path && trajectoryElements.path.parentNode) {
+      trajectoryElements.path.parentNode.insertBefore(group, trajectoryElements.path);
+    } else {
+      trajectoryElements.svg.appendChild(group);
+    }
+    trajectoryElements.secondaryGroup = group;
+    return group;
+  };
+
+  const ensureStartLabelsGroup = () => {
+    if (!trajectoryElements.svg) return null;
+    if (trajectoryElements.startLabelsGroup) return trajectoryElements.startLabelsGroup;
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    group.setAttribute('id', 'trajectory-start-labels');
+    group.setAttribute('class', 'trajectory-start-labels');
+    if (trajectoryElements.svg) {
+      trajectoryElements.svg.appendChild(group);
+    }
+    trajectoryElements.startLabelsGroup = group;
+    return group;
+  };
+
+  const renderSecondaryTrajectories = (secondaryData) => {
+    const group = ensureSecondaryGroup();
+    if (!group) return;
+    group.innerHTML = '';
+    if (!Array.isArray(secondaryData) || secondaryData.length === 0) return;
+    secondaryData.forEach((data) => {
+      if (!data || !Array.isArray(data.displayPoints)) return;
+      const displayPoints = data.displayPoints;
+      if (displayPoints.length > 1) {
+        const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        polyline.setAttribute('class', 'trajectory-path is-secondary');
+        polyline.setAttribute('points', displayPoints.map((pt) => `${pt.x},${pt.y}`).join(' '));
+        group.appendChild(polyline);
+      }
+    });
+  };
+
+  const renderStartLabels = (secondaryData) => {
+    const group = ensureStartLabelsGroup();
+    if (!group) return;
+    group.innerHTML = '';
+    if (Array.isArray(secondaryData)) {
+      secondaryData.forEach((data) => {
+        if (!data || !data.startPosition || !data.label) return;
+        const labelGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        labelGroup.setAttribute('class', 'trajectory-start-label is-secondary');
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', data.startPosition.x);
+        circle.setAttribute('cy', stageToDisplayY(data.startPosition.y));
+        circle.setAttribute('r', 65);
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', data.startPosition.x);
+        text.setAttribute('y', stageToDisplayY(data.startPosition.y));
+        text.setAttribute('dy', '15');
+        text.textContent = String(data.label);
+        labelGroup.appendChild(circle);
+        labelGroup.appendChild(text);
+        group.appendChild(labelGroup);
+      });
+    }
+  };
+
+  const updateTrajectoryDisplay = (startPosition, trajectoryPoints, finalPosition, hitstunFrames, options = {}) => {
+    if (!trajectoryElements.svg) return;
+    const primaryData = buildTrajectoryData(startPosition, trajectoryPoints, finalPosition, hitstunFrames, options);
+
+    const secondaryInputs = Array.isArray(options.secondaryTrajectories) ? options.secondaryTrajectories : [];
+    const secondaryData = secondaryInputs.map((entry) => {
+      if (!entry) return null;
+      const start = entry.startPosition || entry.start || entry.startPos;
+      const points = entry.trajectoryPoints || entry.points || [];
+      const end = entry.finalPosition || entry.end || entry.final;
+      const hitstun = Number.isFinite(entry.hitstunFrames) ? entry.hitstunFrames : (Number.isFinite(entry.hitstun) ? entry.hitstun : 0);
+      if (!start || !end) return null;
+      const data = buildTrajectoryData(start, points, end, hitstun, {
+        killFrameLimit: entry.killFrameLimit,
+        allowEndPointWhenKill: entry.allowEndPointWhenKill,
+      });
+      data.label = entry.label;
+      return data;
+    }).filter(Boolean);
+
+    const mergedBounds = mergeBounds(
+      [primaryData.bounds, ...secondaryData.map((data) => data.bounds)],
+      primaryData.bounds
+    );
+    const viewBounds = getCameraBounds(trajectoryState.cameraMode, mergedBounds);
     if (trajectoryState.cameraMode === 'fit' && trajectoryState.dragging) {
       trajectoryState.pendingFitBounds = viewBounds;
     } else {
@@ -305,11 +463,10 @@
     }
     renderStageGeometry();
 
-    const displayPoints = trimmedPoints.map((pt) => ({
-      frame: pt.frame,
-      x: pt.x,
-      y: stageToDisplayY(pt.y),
-    }));
+    renderSecondaryTrajectories(secondaryData);
+    renderStartLabels(secondaryData);
+
+    const displayPoints = primaryData.displayPoints;
 
     if (trajectoryElements.path) {
       if (displayPoints.length > 1) {
@@ -339,33 +496,33 @@
     }
 
     if (trajectoryElements.start) {
-      const startDisplay = stageToDisplayY(startPosition.y);
-      trajectoryElements.start.setAttribute('cx', startPosition.x);
+      const startDisplay = stageToDisplayY(primaryData.startPosition.y);
+      trajectoryElements.start.setAttribute('cx', primaryData.startPosition.x);
       trajectoryElements.start.setAttribute('cy', startDisplay);
-      trajectoryElements.start.dataset.stageX = startPosition.x.toFixed(2);
-      trajectoryElements.start.dataset.stageY = startPosition.y.toFixed(2);
+      trajectoryElements.start.dataset.stageX = primaryData.startPosition.x.toFixed(2);
+      trajectoryElements.start.dataset.stageY = primaryData.startPosition.y.toFixed(2);
     }
 
     if (trajectoryElements.end) {
-      const finalDisplay = stageToDisplayY(finalPosition.y);
-      trajectoryElements.end.setAttribute('cx', finalPosition.x);
+      const finalDisplay = stageToDisplayY(primaryData.finalPosition.y);
+      trajectoryElements.end.setAttribute('cx', primaryData.finalPosition.x);
       trajectoryElements.end.setAttribute('cy', finalDisplay);
-      trajectoryElements.end.dataset.stageX = finalPosition.x.toFixed(2);
-      trajectoryElements.end.dataset.stageY = finalPosition.y.toFixed(2);
-      const killDiffers = !killDisplayPoint
-        || Math.abs(finalPosition.x - killDisplayPoint.x) > 0.5
-        || Math.abs(finalPosition.y - killDisplayPoint.y) > 0.5;
-      trajectoryElements.end.style.display = (killDisplayPoint && (killDiffers || !allowEndPointWhenKill)) ? 'none' : '';
+      trajectoryElements.end.dataset.stageX = primaryData.finalPosition.x.toFixed(2);
+      trajectoryElements.end.dataset.stageY = primaryData.finalPosition.y.toFixed(2);
+      const killDiffers = !primaryData.killDisplayPoint
+        || Math.abs(primaryData.finalPosition.x - primaryData.killDisplayPoint.x) > 0.5
+        || Math.abs(primaryData.finalPosition.y - primaryData.killDisplayPoint.y) > 0.5;
+      trajectoryElements.end.style.display = (primaryData.killDisplayPoint && (killDiffers || !primaryData.allowEndPointWhenKill)) ? 'none' : '';
     }
 
     if (trajectoryElements.killMarker) {
-      if (killDisplayPoint) {
-        const killDisplayY = stageToDisplayY(killDisplayPoint.y);
+      if (primaryData.killDisplayPoint) {
+        const killDisplayY = stageToDisplayY(primaryData.killDisplayPoint.y);
         const viewSpan = Math.max(trajectoryState.viewBox.width, trajectoryState.viewBox.height);
         const size = Math.max(120, Math.min(320, viewSpan * 0.035)) * 0.7;
         const pathData = [
-          `M ${killDisplayPoint.x - size} ${killDisplayY - size} L ${killDisplayPoint.x + size} ${killDisplayY + size}`,
-          `M ${killDisplayPoint.x + size} ${killDisplayY - size} L ${killDisplayPoint.x - size} ${killDisplayY + size}`,
+          `M ${primaryData.killDisplayPoint.x - size} ${killDisplayY - size} L ${primaryData.killDisplayPoint.x + size} ${killDisplayY + size}`,
+          `M ${primaryData.killDisplayPoint.x + size} ${killDisplayY - size} L ${primaryData.killDisplayPoint.x - size} ${killDisplayY + size}`,
         ].join(' ');
         trajectoryElements.killMarker.setAttribute('d', pathData);
         trajectoryElements.killMarker.classList.add('is-visible');
@@ -376,7 +533,7 @@
     }
 
     if (trajectoryElements.svg) {
-      trajectoryElements.svg.setAttribute('data-hitstun', String(hitstunFrames));
+      trajectoryElements.svg.setAttribute('data-hitstun', String(primaryData.hitstunFrames));
     }
   };
 
@@ -474,6 +631,9 @@
       stageY = snappedPosition.y;
       grounded = true;
     } else {
+      if (allowSnap && trajectoryState.snapEnabled && trajectoryState.dragging) {
+        stageY = applyPlatformMagnetism(stageX, stageY);
+      }
       const prev = state.customPosition ? { ...state.customPosition } : null;
       setCustomPositionDirect(stageX, stageY);
       const current = state.customPosition;
@@ -560,6 +720,7 @@
 
   const handleTrajectoryPointerDown = (evt) => {
     if (typeof evt.button === 'number' && evt.button !== 0) return;
+    if (state.comboLockPosition) return;
     const coords = getStageCoordinatesFromEvent(evt);
     if (!coords) return;
     evt.preventDefault();
@@ -572,6 +733,7 @@
   };
 
   const handleTrajectoryPointerMove = (evt) => {
+    if (state.comboLockPosition) return;
     if (!trajectoryState.dragging || evt.pointerId !== trajectoryState.pointerId) return;
     const coords = getStageCoordinatesFromEvent(evt);
     if (!coords) return;

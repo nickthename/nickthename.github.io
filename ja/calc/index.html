@@ -176,6 +176,19 @@ hreflangs:
     .trajectory-point { fill: #3165d4; opacity: 0.75; }
     .trajectory-start { fill: #e53935; stroke: #ffffff; stroke-width: 18; }
     .trajectory-end { fill: #2e7d32; stroke: #ffffff; stroke-width: 18; }
+    .trajectory-secondary { pointer-events: none; }
+    .trajectory-path.is-secondary { stroke: rgba(0,0,0,0.42); opacity: 1; stroke-width: 48; }
+    .trajectory-start-labels { pointer-events: none; }
+    .trajectory-start-label circle { fill: rgba(255,255,255,0.9); stroke: rgba(0,0,0,0.25); stroke-width: 10; }
+    .trajectory-start-label text {
+      fill: rgba(0,0,0,0.99);
+      font-size: 120px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .trajectory-start-label.is-secondary circle { fill: rgba(240,240,240,0.85); stroke: rgba(0,0,0,0.25); }
+    .trajectory-start-label.is-secondary text { fill: rgba(0,0,0,0.6); }
     .trajectory-label { font-size: 0.8rem; opacity: 0.7; }
     .blastzone-outside { fill: rgba(244,67,54,0.18); stroke: none; pointer-events: none; }
     .blastzone-bounds { fill: none; stroke: rgba(244,67,54,0.45); stroke-width: 26; stroke-dasharray: 240 160; pointer-events: none; }
@@ -294,6 +307,53 @@ hreflangs:
     .action-button:active { transform: translateY(1px); }
     .action-button:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
     .action-button.secondary { background: rgba(0,0,0,0.02); }
+    .combo-strip { display: flex; align-items: center; gap: 0.45rem; overflow-x: auto; overflow-y: visible; padding: 0.35rem 0.15rem 0.15rem; }
+    .link-button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      text-decoration: underline dotted rgba(0,0,0,0.55);
+      text-underline-offset: 2px;
+    }
+    .link-button[disabled] { cursor: default; opacity: 0.6; text-decoration: none; }
+    .combo-step-wrap { position: relative; flex: 0 0 auto; }
+    .combo-step {
+      width: 2.05rem;
+      height: 2.05rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.03);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .combo-step.is-active { border-color: rgba(0,0,0,0.4); background: rgba(0,0,0,0.08); }
+    .combo-step.add-step { border-style: dashed; color: rgba(0,0,0,0.55); }
+    .combo-arrow { opacity: 0.55; font-size: 0.85rem; }
+	    .combo-remove {
+	      position: absolute;
+	      top: -0.35rem;
+	      right: -0.35rem;
+	      width: 1.1rem;
+	      height: 1.1rem;
+	      padding: 0;
+	      border-radius: 999px;
+	      border: 1px solid rgba(0,0,0,0.25);
+	      background: #f7f7f7;
+	      display: grid;
+	      place-items: center;
+	      font-size: 0.7rem;
+	      line-height: 1;
+	      cursor: pointer;
+	    }
+    .combo-remove:hover { border-color: rgba(0,0,0,0.4); }
+    .segmented-control.is-locked .segmented-button { opacity: 0.55; cursor: default; }
+    .trajectory-svg.is-locked { cursor: default; }
+    .is-locked-field { cursor: default; }
+    .is-locked-field * { cursor: default; }
     #debug-toggle { width: 1rem; height: 1rem; }
 
     .card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -386,6 +446,11 @@ hreflangs:
       .trajectory-point { fill: #82a8ff; }
       .trajectory-start { fill: #ef5350; }
       .trajectory-end { fill: #66bb6a; }
+      .trajectory-path.is-secondary { stroke: rgba(255,255,255,0.35); opacity: 0.45; stroke-width: 48; }
+      .trajectory-start-label circle { fill: rgba(20,20,20,0.7); stroke: rgba(255,255,255,0.25); }
+      .trajectory-start-label text { fill: rgba(255,255,255,0.8); }
+      .trajectory-start-label.is-secondary circle { fill: rgba(20,20,20,0.6); stroke: rgba(255,255,255,0.2); }
+      .trajectory-start-label.is-secondary text { fill: rgba(255,255,255,0.65); }
       .blastzone-outside { fill: rgba(244,67,54,0.26); }
       .blastzone-bounds { stroke: rgba(244,67,54,0.55); }
       .trajectory-kill-marker { stroke: rgba(255,82,82,0.95); }
@@ -595,6 +660,14 @@ hreflangs:
         </form>
       </section>
 
+      <section class="action-panel" aria-label="コンボチェーン">
+        <div>
+          <h2>コンボチェーン</h2>
+          <p class="muted">ステップをクリックして編集、または追加してください。</p>
+        </div>
+        <div class="combo-strip" id="combo-strip" aria-label="コンボステップ"></div>
+      </section>
+
       <section class="action-panel" aria-label="共有とリセット">
         <div>
           <h2>共有・リセット</h2>
@@ -707,9 +780,31 @@ hreflangs:
         </div>
       </article>
 
+      <article class="card hidden" id="combo-summary-card">
+        <h3>コンボ効果</h3>
+        <div class="effects-grid">
+          <div class="effect-item">
+            <dt>合計ダメージ</dt>
+            <dd id="combo-total-damage-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>最終%</dt>
+            <dd id="combo-final-percent-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>結果</dt>
+            <dd id="combo-kill-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>バースト開始%</dt>
+            <dd><button type="button" class="link-button" id="combo-kill-threshold-button" disabled>—</button></dd>
+          </div>
+        </div>
+      </article>
+
       <div class="card-grid primary-cards">
         <article class="card compact" id="damage-card">
-          <h2>合計％</h2>
+          <h2>ダメージ</h2>
           <p class="metric" id="final-percent-output">—</p>
           <p class="muted" id="percent-breakdown">—</p>
         </article>

@@ -17,6 +17,7 @@
     attackerSelect: document.getElementById('attacker-select'),
     moveSelect: document.getElementById('move-select'),
     moveDetails: document.getElementById('move-details'),
+    stalenessControl: document.getElementById('staleness-control'),
     weightInput: document.getElementById('weight-input'),
     fallAccelInput: document.getElementById('fall-accel-input'),
     maxFallInput: document.getElementById('max-fall-input'),
@@ -54,6 +55,12 @@
     backgroundToggle: document.querySelector('[data-bg-toggle]'),
     backgroundMenu: document.getElementById('bg-menu'),
     backgroundOptions: Array.from(document.querySelectorAll('[data-bg-option]')),
+    comboStrip: document.getElementById('combo-strip'),
+    comboSummaryCard: document.getElementById('combo-summary-card'),
+    comboTotalDamageOutput: document.getElementById('combo-total-damage-output'),
+    comboFinalPercentOutput: document.getElementById('combo-final-percent-output'),
+    comboKillOutput: document.getElementById('combo-kill-output'),
+    comboKillThresholdButton: document.getElementById('combo-kill-threshold-button'),
   };
 
   app.outputNodes = {

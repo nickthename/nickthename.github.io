@@ -31,11 +31,18 @@ window.CALC_I18N = {
   killsOffLeft: '左バースト',
   killsOffRight: '右バースト',
   killsOnFrame: ({ frame }) => `${frame}Fでバースト`,
+  comboKillsHit: ({ hit }) => `バースト（${hit}ヒット目）`,
+  totalDamageBreakdown: ({ total, breakdown }) => (
+    breakdown && breakdown.includes('+')
+      ? `合計: ${total}%（${breakdown}）`
+      : `合計: ${total}%`
+  ),
   hitlagFrames: ({ frames }) => `${frames}F`,
   hitlagDIHint: ({ frames }) => `DI入力可能フレーム数: ${frames}F`,
   shieldDamageHint: ({ max }) => `シールド耐久値: ${max}`,
   shieldstunFrames: ({ frames }) => `${frames}F`,
   afterStaleness: ({ summary }) => `${summary}（OP後）`,
+  lockedFieldHint: '前のコンボヒットにより固定されています。',
   displacement: {
     after: ({ frames, label }) => (label === 'hitstun' ? `ふっとび硬直${frames}F後` : `${frames}F後`),
     whenZero: '速度が0になるまで',

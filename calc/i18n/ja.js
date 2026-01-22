@@ -31,6 +31,12 @@ window.CALC_I18N = {
   killsOffLeft: '左バースト',
   killsOffRight: '右バースト',
   killsOnFrame: ({ frame }) => `${frame}Fでバースト`,
+  comboKillsHit: ({ hit }) => `バースト（${hit}ヒット目）`,
+  totalDamageBreakdown: ({ total, breakdown }) => (
+    breakdown && breakdown.includes('+')
+      ? `合計: ${total}%（${breakdown}）`
+      : `合計: ${total}%`
+  ),
   hitlagFrames: ({ frames }) => `${frames}F`,
   hitlagDIHint: ({ frames }) => `DI入力可能フレーム数: ${frames}F`,
   shieldDamageHint: ({ max }) => `シールド耐久値: ${max}`,

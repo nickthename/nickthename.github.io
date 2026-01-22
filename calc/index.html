@@ -308,6 +308,17 @@ hreflangs:
     .action-button:focus-visible { outline: 2px solid rgba(40,120,255,0.35); outline-offset: 2px; }
     .action-button.secondary { background: rgba(0,0,0,0.02); }
     .combo-strip { display: flex; align-items: center; gap: 0.45rem; overflow-x: auto; overflow-y: visible; padding: 0.35rem 0.15rem 0.15rem; }
+    .link-button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      text-decoration: underline dotted rgba(0,0,0,0.55);
+      text-underline-offset: 2px;
+    }
+    .link-button[disabled] { cursor: default; opacity: 0.6; text-decoration: none; }
     .combo-step-wrap { position: relative; flex: 0 0 auto; }
     .combo-step {
       width: 2.05rem;
@@ -322,19 +333,22 @@ hreflangs:
     .combo-step.is-active { border-color: rgba(0,0,0,0.4); background: rgba(0,0,0,0.08); }
     .combo-step.add-step { border-style: dashed; color: rgba(0,0,0,0.55); }
     .combo-arrow { opacity: 0.55; font-size: 0.85rem; }
-    .combo-remove {
-      position: absolute;
-      top: -0.35rem;
-      right: -0.35rem;
-      width: 1.1rem;
-      height: 1.1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.25);
-      background: #f7f7f7;
-      font-size: 0.7rem;
-      line-height: 1;
-      cursor: pointer;
-    }
+	    .combo-remove {
+	      position: absolute;
+	      top: -0.35rem;
+	      right: -0.35rem;
+	      width: 1.1rem;
+	      height: 1.1rem;
+	      padding: 0;
+	      border-radius: 999px;
+	      border: 1px solid rgba(0,0,0,0.25);
+	      background: #f7f7f7;
+	      display: grid;
+	      place-items: center;
+	      font-size: 0.7rem;
+	      line-height: 1;
+	      cursor: pointer;
+	    }
     .combo-remove:hover { border-color: rgba(0,0,0,0.4); }
     .segmented-control.is-locked .segmented-button { opacity: 0.55; cursor: default; }
     .trajectory-svg.is-locked { cursor: default; }
@@ -767,9 +781,31 @@ hreflangs:
         </div>
       </article>
 
+      <article class="card hidden" id="combo-summary-card">
+        <h3>Combo effects</h3>
+        <div class="effects-grid">
+          <div class="effect-item">
+            <dt>Total damage</dt>
+            <dd id="combo-total-damage-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>Final %</dt>
+            <dd id="combo-final-percent-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>Result</dt>
+            <dd id="combo-kill-output">—</dd>
+          </div>
+          <div class="effect-item">
+            <dt>Start % to kill</dt>
+            <dd><button type="button" class="link-button" id="combo-kill-threshold-button" disabled>—</button></dd>
+          </div>
+        </div>
+      </article>
+
       <div class="card-grid primary-cards">
         <article class="card compact" id="damage-card">
-          <h2>Total Damage</h2>
+          <h2>Damage</h2>
           <p class="metric" id="final-percent-output">—</p>
           <p class="muted" id="percent-breakdown">—</p>
         </article>

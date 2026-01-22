@@ -62,6 +62,11 @@
         backgroundMenu,
         backgroundOptions,
         comboStrip,
+        comboSummaryCard,
+        comboTotalDamageOutput,
+        comboFinalPercentOutput,
+        comboKillOutput,
+        comboKillThresholdButton,
       } = elements;
 
       const {
@@ -533,9 +538,6 @@
         const includeDerived = index === 0;
         const nextMove = readMoveFromInputs({ includeDerived });
         const currentMove = comboState.moves[index] || {};
-        if (index > 0 && !state.comboLockStaleness && typeof state.stalenessValue === 'string') {
-          nextMove.staleness = state.stalenessValue;
-        }
         if (index > 0) {
           const selectedAttacker = readSelectValue(attackerSelect);
           const globalAttacker = comboState.global && comboState.global.attacker
@@ -790,6 +792,138 @@
       };
 
       const formatPercent = (value) => `${formatIntegral(value)}%`;
+
+      const doesDerivedEntryKill = (entry) => {
+        if (!entry || !entry.result || !entry.startPosition) return false;
+        const { result, startPosition } = entry;
+        const { verticalDirection } = resolveDirections(result, Number.isFinite(entry.angle) ? entry.angle : 0);
+        const signedXDistance = result.totalDistanceX;
+        const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const finalX = startPosition.x + signedXDistance;
+        const finalY = startPosition.y + signedYDistance;
+
+        if (Array.isArray(result.trajectory) && result.trajectory.length > 0) {
+          for (let i = 0; i < result.trajectory.length; i += 1) {
+            const step = result.trajectory[i];
+            const x = startPosition.x + step.x;
+            const y = startPosition.y + step.y * (verticalDirection === 0 ? 0 : verticalDirection);
+            if (isKill(x, y)) return true;
+          }
+        }
+
+        return isKill(finalX, finalY);
+      };
+
+      const getFirstKillIndex = (derived) => {
+        if (!Array.isArray(derived)) return null;
+        for (let i = 0; i < derived.length; i += 1) {
+          if (doesDerivedEntryKill(derived[i])) return i;
+        }
+        return null;
+      };
+
+      const updateComboSummary = ({ search }) => {
+        if (!comboSummaryCard) return;
+        const enabled = comboState.moves.length > 1;
+        comboSummaryCard.classList.toggle('hidden', !enabled);
+        if (!enabled) return;
+
+        const derived = comboState.derived;
+        if (!Array.isArray(derived) || derived.length === 0) return;
+        const last = derived[derived.length - 1];
+        if (!last) return;
+
+        if (comboTotalDamageOutput) {
+          const totalDamage = derived.reduce((sum, entry) => (
+            sum + (Number.isFinite(entry && entry.appliedDamage) ? entry.appliedDamage : 0)
+          ), 0);
+          comboTotalDamageOutput.textContent = formatPercent(totalDamage);
+        }
+
+        if (comboFinalPercentOutput && Number.isFinite(last.finalPercent)) {
+          comboFinalPercentOutput.textContent = formatPercent(last.finalPercent);
+        } else if (comboFinalPercentOutput) {
+          comboFinalPercentOutput.textContent = '—';
+        }
+
+        if (comboKillOutput) {
+          const firstKillIndex = getFirstKillIndex(derived);
+          if (firstKillIndex === null) {
+            comboKillOutput.textContent = UI_TEXT.noKill || "Doesn't kill";
+          } else {
+            comboKillOutput.textContent = typeof UI_TEXT.comboKillsHit === 'function'
+              ? UI_TEXT.comboKillsHit({ hit: firstKillIndex + 1 })
+              : `Kills (hit ${firstKillIndex + 1})`;
+          }
+        }
+
+        if (comboKillThresholdButton) {
+          if (!search) {
+            comboKillThresholdButton.textContent = '—';
+            comboKillThresholdButton.disabled = true;
+            state.comboSummaryStartToKill = null;
+          } else {
+            const minStart = search.findMinStartPercent((entry) => entry.firstKillIndex !== null);
+            if (Number.isFinite(minStart)) {
+              comboKillThresholdButton.textContent = formatPercent(minStart);
+              comboKillThresholdButton.disabled = false;
+              state.comboSummaryStartToKill = minStart;
+            } else {
+              comboKillThresholdButton.textContent = '—';
+              comboKillThresholdButton.disabled = true;
+              state.comboSummaryStartToKill = null;
+            }
+          }
+        }
+      };
+
+      const makeComboSearch = ({ maxPercent = 300 } = {}) => {
+        const cache = new Map();
+
+        const evaluate = (startPercent) => {
+          const key = Math.max(0, Math.trunc(startPercent));
+          const cached = cache.get(key);
+          if (cached) return cached;
+          const derived = buildComboDerived({ startPercentOverride: key });
+          const killByHit = Array.isArray(derived) ? derived.map((entry) => doesDerivedEntryKill(entry)) : [];
+          const firstKillIndex = (() => {
+            for (let i = 0; i < killByHit.length; i += 1) {
+              if (killByHit[i]) return i;
+            }
+            return null;
+          })();
+          const summary = { startPercent: key, derived, killByHit, firstKillIndex };
+          cache.set(key, summary);
+          return summary;
+        };
+
+        const findMinStartPercent = (predicate) => {
+          if (typeof predicate !== 'function') return null;
+          if (predicate(evaluate(0))) return 0;
+          if (!predicate(evaluate(maxPercent))) return null;
+          let low = 0;
+          let high = maxPercent;
+          while (low + 1 < high) {
+            const mid = Math.floor((low + high) / 2);
+            if (predicate(evaluate(mid))) {
+              high = mid;
+            } else {
+              low = mid;
+            }
+          }
+          for (let i = 0; i < 12; i += 1) {
+            if (high <= 0) break;
+            if (predicate(evaluate(high - 1))) {
+              high -= 1;
+            } else {
+              break;
+            }
+          }
+          return high;
+        };
+
+        return { evaluate, findMinStartPercent, maxPercent };
+      };
 
       const setHintedValue = (node, valueText, hintText) => {
         if (!node) return;
@@ -2589,11 +2723,13 @@
         };
       };
 
-      const computeComboDerived = () => {
+      const buildComboDerived = ({ startPercentOverride = null } = {}) => {
         ensureComboMoves();
         const global = comboState.global || {};
         const startPosition = buildStartPosition(global.position);
-        const startPercent = Number.isFinite(global.hp) ? global.hp : numericValue(hpInput, 0);
+        const startPercent = Number.isFinite(startPercentOverride)
+          ? startPercentOverride
+          : (Number.isFinite(global.hp) ? global.hp : numericValue(hpInput, 0));
         const defenderTraction = Number.isFinite(selectedDefenderTraction)
           ? selectedDefenderTraction
           : (selectedDefenderData && Number.isFinite(selectedDefenderData.traction)
@@ -2699,6 +2835,7 @@
             targetState: currentTargetState,
             stalenessValue,
             stalenessForced,
+            angle: baseAngle,
             endPosition,
             finalPercent: outcome.finalPercent,
             appliedDamage: outcome.appliedDamage,
@@ -2725,7 +2862,11 @@
           }
         });
 
-        comboState.derived = derived;
+        return derived;
+      };
+
+      const computeComboDerived = () => {
+        comboState.derived = buildComboDerived();
       };
 
       const applyActiveDerivedFields = () => {
@@ -2840,13 +2981,28 @@
         const startPercent = params.hp;
         const staledDamage = Smash64Calculator.applyStaleness(params.baseDamage, params.damageModifier);
         const appliedDamage = params.targetState === 'laying' ? Math.ceil(staledDamage / 2) : staledDamage;
-        const finalPercent = startPercent + appliedDamage;
+        outputNodes.finalPercent.textContent = formatPercent(appliedDamage);
 
-        outputNodes.finalPercent.textContent = formatPercent(finalPercent);
-        const percentSummary = `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)}`;
-        outputNodes.percentBreakdown.textContent = state.stalenessValue !== 'fresh'
-          ? UI_TEXT.afterStaleness({ summary: percentSummary })
-          : percentSummary;
+        const finalPercent = startPercent + appliedDamage;
+        const comboActive = comboState.moves.length > 1 && Array.isArray(comboState.derived) && comboState.derived.length > 0;
+        const activeIndex = clampComboIndex(comboState.activeIndex);
+        const activeDerived = comboActive ? comboState.derived[activeIndex] : null;
+
+        const totalAfterHit = (activeDerived && Number.isFinite(activeDerived.finalPercent))
+          ? activeDerived.finalPercent
+          : finalPercent;
+        const breakdown = (activeDerived && Number.isFinite(activeDerived.startPercent) && Number.isFinite(activeDerived.appliedDamage))
+          ? `${formatPercent(activeDerived.startPercent)} + ${formatPercent(activeDerived.appliedDamage)}`
+          : `${formatPercent(startPercent)} + ${formatPercent(appliedDamage)}`;
+        const breakdownText = typeof UI_TEXT.totalDamageBreakdown === 'function'
+          ? UI_TEXT.totalDamageBreakdown({ total: formatIntegral(totalAfterHit), breakdown })
+          : `Total: ${formatPercent(totalAfterHit)} (${breakdown})`;
+        const stalenessLabel = (activeDerived && typeof activeDerived.stalenessValue === 'string')
+          ? activeDerived.stalenessValue
+          : state.stalenessValue;
+        outputNodes.percentBreakdown.textContent = (stalenessLabel !== 'fresh' && typeof UI_TEXT.afterStaleness === 'function')
+          ? UI_TEXT.afterStaleness({ summary: breakdownText })
+          : breakdownText;
 
         if (params.fixedKnockback > 0) {
           outputNodes.knockbackBreakdown.textContent = UI_TEXT.fixedKnockbackOnly;
@@ -3102,6 +3258,11 @@
         outputNodes.killThresholdOutput.textContent = killThreshold !== null && killThreshold <= thresholdMaxPercent
           ? UI_TEXT.killsAt({ percent: formatIntegral(killThreshold) })
           : '';
+
+        const comboSearch = comboState.moves.length > 1
+          ? makeComboSearch({ maxPercent: thresholdMaxPercent })
+          : null;
+        updateComboSummary({ search: comboSearch });
 
         const landedDuringHitstun = Number.isFinite(result.simulatedHitstun)
           && Number.isFinite(result.hitstun)
@@ -3390,6 +3551,18 @@
               selectComboIndex(index);
             }
           }
+        });
+      }
+
+      if (comboKillThresholdButton) {
+        comboKillThresholdButton.addEventListener('click', () => {
+          const suggestedStart = Number(state.comboSummaryStartToKill);
+          if (!Number.isFinite(suggestedStart)) return;
+          comboState.global = comboState.global && typeof comboState.global === 'object' ? comboState.global : {};
+          comboState.global.hp = suggestedStart;
+          hpInput.value = suggestedStart;
+          calculate();
+          markStateDirty();
         });
       }
 

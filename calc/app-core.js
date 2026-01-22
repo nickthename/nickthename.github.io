@@ -56,6 +56,11 @@
     backgroundMenu: document.getElementById('bg-menu'),
     backgroundOptions: Array.from(document.querySelectorAll('[data-bg-option]')),
     comboStrip: document.getElementById('combo-strip'),
+    comboSummaryCard: document.getElementById('combo-summary-card'),
+    comboTotalDamageOutput: document.getElementById('combo-total-damage-output'),
+    comboFinalPercentOutput: document.getElementById('combo-final-percent-output'),
+    comboKillOutput: document.getElementById('combo-kill-output'),
+    comboKillThresholdButton: document.getElementById('combo-kill-threshold-button'),
   };
 
   app.outputNodes = {

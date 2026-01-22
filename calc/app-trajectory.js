@@ -48,6 +48,27 @@
     });
   };
 
+  const applyPlatformMagnetism = (stageX, stageY) => {
+    const MAGNET_MARGIN_X = 70;
+    const MAGNET_DISTANCE_Y = 70;
+    let bestY = null;
+    let bestDy = Number.POSITIVE_INFINITY;
+    Object.values(POSITION_DATA).forEach((platform) => {
+      if (!platform) return;
+      const minX = platform.center - platform.halfWidth - MAGNET_MARGIN_X;
+      const maxX = platform.center + platform.halfWidth + MAGNET_MARGIN_X;
+      if (stageX < minX || stageX > maxX) return;
+      const dy = Math.abs(stageY - platform.y);
+      if (dy > MAGNET_DISTANCE_Y) return;
+      if (dy < bestDy) {
+        bestDy = dy;
+        bestY = platform.y;
+      }
+    });
+    if (bestY === null) return stageY;
+    return bestY;
+  };
+
   const STAGE_EXTENTS = (() => {
     const xs = [-STAGE_HALF_WIDTH, STAGE_HALF_WIDTH];
     const ys = [0];
@@ -610,6 +631,9 @@
       stageY = snappedPosition.y;
       grounded = true;
     } else {
+      if (allowSnap && trajectoryState.snapEnabled && trajectoryState.dragging) {
+        stageY = applyPlatformMagnetism(stageX, stageY);
+      }
       const prev = state.customPosition ? { ...state.customPosition } : null;
       setCustomPositionDirect(stageX, stageY);
       const current = state.customPosition;

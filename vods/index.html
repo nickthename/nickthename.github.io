@@ -51,12 +51,20 @@ scripts:
         <label for="dateToFilter">To:</label>
         <input type="date" id="dateToFilter"/>
       </div>
+      <div class="filter-group">
+        <label for="fullBroadcastFilter">Full Broadcasts:</label>
+        <select id="fullBroadcastFilter">
+          <option value="show">Show</option>
+          <option value="only">Show only</option>
+          <option value="hide">Hide</option>
+        </select>
+      </div>
     </div>
 
     <div class="content-panel">
       <table id="vodTable">
         <thead>
-          <tr>
+          <tr id="tableHeaderRow">
             <th>Event</th><th>Round</th><th>Matchup</th>
             <th>Date</th><th>VOD</th>
           </tr>
@@ -100,11 +108,13 @@ scripts:
           player1Filter = document.getElementById('player1Filter'),
           player2Filter = document.getElementById('player2Filter'),
           dateFromFilter= document.getElementById('dateFromFilter'),
+          fullBroadcastFilter = document.getElementById('fullBroadcastFilter'),
           dateToFilter  = document.getElementById('dateToFilter'),
           tbody         = document.querySelector('#vodTable tbody'),
+          tableHeaderRow = document.getElementById('tableHeaderRow'),
           prevPage      = document.getElementById('prevPage'),
           nextPage      = document.getElementById('nextPage'),
-          pageInfo      = document.getElementById('pageInfo');
+          pageInfo      = document.getElementById('pageInfo'),
           clearBtn      = document.getElementById('clearEvent');
 
 
@@ -132,7 +142,8 @@ scripts:
         p1:      player1Filter.value,
         p2:      player2Filter.value,
         from:    dateFromFilter.value,
-        to:      dateToFilter.value
+        to:      dateToFilter.value,
+        full:    fullBroadcastFilter.value === 'show' ? '' : fullBroadcastFilter.value
       };
     }
 
@@ -216,16 +227,53 @@ scripts:
       return new Date(y,m-1,d);
     }
 
+    function getVodHref(url) {
+      return /^https?:\/\//i.test(url) ? url : `https://www.youtube.com/watch?v=${url}`;
+    }
+
     async function loadCSV(){
       const resp = await fetch('vods.csv');
       const text = await resp.text();
-      return text.trim().split('\n').map(l=>l.split(',').map(s=>s.trim()))
-        .map(([event,round,p1,c1r,p2,c2r,date,url])=>({
-          event, round, p1,
-          c1:c1r.split(';').map(s=>s.trim()).filter(Boolean),
-          p2,  c2:c2r.split(';').map(s=>s.trim()).filter(Boolean),
-          date, dateObj:parseDate(date), url
-        }));
+      return text.trim().split(/\r?\n/)
+        .map(l => l.split(',').map(s => s.trim()))
+        .filter(fields => fields.some(Boolean))
+        .map((fields, index) => {
+          if (fields.length === 4) {
+            const [event, fullLabel, date, url] = fields;
+            return {
+              type: 'full',
+              isFullBroadcast: true,
+              event,
+              round: fullLabel,
+              p1: '',
+              c1: [],
+              p2: '',
+              c2: [],
+              date,
+              dateObj: parseDate(date),
+              url
+            };
+          }
+
+          if (fields.length === 8) {
+            const [event, round, p1, c1r, p2, c2r, date, url] = fields;
+            return {
+              type: 'set',
+              isFullBroadcast: false,
+              event,
+              round,
+              p1,
+              c1: c1r.split(';').map(s => s.trim()).filter(Boolean),
+              p2,
+              c2: c2r.split(';').map(s => s.trim()).filter(Boolean),
+              date,
+              dateObj: parseDate(date),
+              url
+            };
+          }
+
+          throw new Error(`Unexpected column count in vods.csv on line ${index + 1}: ${fields.length}`);
+        });
     }
 
     function populateFilters(data) {
@@ -269,8 +317,10 @@ scripts:
             c1 = char1Filter.value, c2 = char2Filter.value,
             p1v=player1Filter.value.trim().toLowerCase(),
             p2v=player2Filter.value.trim().toLowerCase(),
+            fullMode = fullBroadcastFilter.value,
             dfrom = dateFromFilter.value && new Date(dateFromFilter.value),
             dto   = dateToFilter.value   && new Date(dateToFilter.value);
+      const hasPlayerCharFilters = !!(p1v || c1 || p2v || c2);
 
       function playerCharMatch(player, chars, pFilter, cFilter) {
         // Both player and character specified
@@ -293,8 +343,12 @@ scripts:
         if (dfrom && d.dateObj < dfrom) return false;
         if (dto   && d.dateObj > dto)   return false;
 
+        if (fullMode === 'only' && !d.isFullBroadcast) return false;
+        if (fullMode === 'hide' && d.isFullBroadcast) return false;
+        if (d.isFullBroadcast) return !hasPlayerCharFilters;
+
         // If no player/char filters, skip to true
-        if (!p1v && !c1 && !p2v && !c2) return true;
+        if (!hasPlayerCharFilters) return true;
 
         // Try both possible assignments (order doesn't matter)
         // (p1, c1) vs (p2, c2) or (p2, c1) vs (p1, c2)
@@ -308,7 +362,26 @@ scripts:
       if (!skipURLUpdate) updateURL();
     }
 
+    function updateTableHeader() {
+      const usingFullBroadcastHeader = fullBroadcastFilter.value === 'only'
+        || (filtered.length > 0 && filtered.every(d => d.isFullBroadcast));
+
+      if (usingFullBroadcastHeader) {
+        tableHeaderRow.innerHTML = `
+          <th>Event</th><th colspan="2">Broadcast</th>
+          <th>Date</th><th>VOD</th>
+        `;
+        return;
+      }
+
+      tableHeaderRow.innerHTML = `
+        <th>Event</th><th>Round</th><th>Matchup</th>
+        <th>Date</th><th>VOD</th>
+      `;
+    }
+
     function renderPage(){
+      updateTableHeader();
       filtered.sort((a,b)=>{
         const dateDiff = b.dateObj - a.dateObj;
         // console.log(a,b,dateDiff,getRoundScore(a.round),getRoundScore(b.round));
@@ -319,6 +392,16 @@ scripts:
             pageData = filtered.slice(start, start+ROWS_PER_PAGE);
 
       tbody.innerHTML = pageData.map(d=>{
+        if (d.isFullBroadcast) {
+          return `
+        <tr class="full-broadcast-row">
+          <td data-label="Event" class="event-cell">${d.event}<div class="date-in-event">${d.date}</div></td>
+          <td data-label="Broadcast" class="full-broadcast-cell" colspan="2"><span class="full-broadcast-label">${d.round}</span></td>
+          <td data-label="Date">${d.date}</td>
+          <td data-label="VOD"><a class="vod-button" href="${getVodHref(d.url)}" target="_blank">Watch</a></td>
+        </tr>`;
+        }
+
         const p1chars = d.c1.map(c=>CHAR_IMAGES[c] ? `<img src="${CHAR_IMAGES[c]}" alt="${c}" title="${c}">` : c).join('');
         const p2chars = d.c2.map(c=>CHAR_IMAGES[c] ? `<img src="${CHAR_IMAGES[c]}" alt="${c}" title="${c}">` : c).join('');
 
@@ -338,7 +421,7 @@ scripts:
             </div>
           </td>
           <td data-label="Date">${d.date}</td>
-          <td data-label="VOD"><a class="vod-button" href="https://www.youtube.com/watch?v=${d.url}" target="_blank">Watch</a></td>
+          <td data-label="VOD"><a class="vod-button" href="${getVodHref(d.url)}" target="_blank">Watch</a></td>
         </tr>`
       }).join('');
 
@@ -367,6 +450,7 @@ scripts:
       if (qs.has("p2"))     player2Filter.value   = qs.get("p2");
       if (qs.has("from"))   dateFromFilter.value  = qs.get("from");
       if (qs.has("to"))     dateToFilter.value    = qs.get("to");
+      if (qs.has("full"))   fullBroadcastFilter.value = qs.get("full");
 
       // Show any clear‑btns for prefilled inputs
       document.querySelectorAll('.clear-btn').forEach(btn => {
@@ -381,21 +465,14 @@ scripts:
       document.addEventListener('click', e => {
         if (!e.target.closest('#eventSelect')) optionsUL.style.display = 'none';
       });
-      eventInput.addEventListener('input', debounce(()=>{
+      eventInput.addEventListener('input', ()=>{
         const val = eventInput.value.toLowerCase();
         optionsUL.querySelectorAll('li').forEach(li=>{
           li.style.display = li.textContent.toLowerCase().includes(val) ? 'block' : 'none';
         });
-      }));
-      clearBtn.addEventListener('click', () => {
-        eventInput.value = '';
-        clearBtn.style.display = 'none';
-        applyFilters();
       });
-
-
       // other filters
-      [char1Filter, char2Filter, dateFromFilter, dateToFilter]
+      [char1Filter, char2Filter, dateFromFilter, dateToFilter, fullBroadcastFilter]
         .forEach(el=>el.addEventListener('change', () => applyFilters()));
       [player1Filter, player2Filter]
         .forEach(el => el.addEventListener('input', debounce(() => applyFilters())));

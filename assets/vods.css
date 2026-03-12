@@ -114,6 +114,10 @@ tbody tr:hover { background:#f5faff; }
     font-size: 0.9rem;
     color: #555;
   }
+  tbody tr td.full-broadcast-cell {
+    justify-content: center;
+    font-weight: 600;
+  }
 
   tbody tr td[data-label="VOD"] {
     padding: 0;
@@ -257,6 +261,16 @@ tbody tr:hover { background:#f5faff; }
   height: 24px;
 }
 .versus { font-weight: bold; margin: 0 0.5rem; }
+.full-broadcast-cell {
+  text-align: center;
+  color: #444;
+  font-weight: 600;
+}
+.full-broadcast-label {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 
 /* Slim Select custom styles to match native look */
 .ss-main, .ss-content {

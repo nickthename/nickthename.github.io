@@ -95,10 +95,10 @@
   app.constants = {
     BLASTZONE_LIMITS: { left: -9000, right: 9000, bottom: -3500, top: 8300 },
     POSITION_DATA: {
-      stage: { y: 0, center: 0, halfWidth: 2318 },
-      'left-platform': { y: 904, center: -1396, halfWidth: 445 },
-      'right-platform': { y: 907, center: 1421.5, halfWidth: 470.5 },
-      'top-platform': { y: 1542, center: 0, halfWidth: 570 },
+      stage: { y: 0, center: 0, spawnX: 0, halfWidth: 2318 },
+      'left-platform': { y: 904, center: -1396, spawnX: -1397, halfWidth: 445 },
+      'right-platform': { y: 907, center: 1421.5, spawnX: 1421, halfWidth: 470.5 },
+      'top-platform': { y: 1542, center: 0, spawnX: 1, halfWidth: 570 },
     },
     STAGE_VIEW_MARGIN_X: 420,
     STAGE_VIEW_TOP_MARGIN: 1800,

@@ -72,10 +72,10 @@
       const {
         BLASTZONE_LIMITS = { left: -9000, right: 9000, bottom: -3500, top: 8300 },
         POSITION_DATA = {
-          stage: { y: 0, center: 0, halfWidth: 2318 },
-          'left-platform': { y: 904, center: -1396, halfWidth: 445 },
-          'right-platform': { y: 907, center: 1421.5, halfWidth: 470.5 },
-          'top-platform': { y: 1542, center: 0, halfWidth: 570 },
+          stage: { y: 0, center: 0, spawnX: 0, halfWidth: 2318 },
+          'left-platform': { y: 904, center: -1396, spawnX: -1397, halfWidth: 445 },
+          'right-platform': { y: 907, center: 1421.5, spawnX: 1421, halfWidth: 470.5 },
+          'top-platform': { y: 1542, center: 0, spawnX: 1, halfWidth: 570 },
         },
         DOUBLE_JUMP_ARMOR_LIFT = 160,
       } = constants;
@@ -143,7 +143,8 @@
 
       function computePosition(horizontalKey, verticalKey) {
         const platform = POSITION_DATA[verticalKey] || POSITION_DATA.stage;
-        let x = platform.center;
+        const presetCenterX = Number.isFinite(platform.spawnX) ? platform.spawnX : platform.center;
+        let x = presetCenterX;
         if (horizontalKey === 'left') {
           x = platform.center - platform.halfWidth;
         } else if (horizontalKey === 'right') {

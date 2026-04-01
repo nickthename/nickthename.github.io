@@ -15,7 +15,7 @@ Every controller has its advantages and disadvantages, but none are objectively 
 
 ## Original (OG) N64
 
-![OG](/guides/img/controllers/OG.png){:width="40%"}<br>
+![Original N64 controller](/guides/img/controllers/OG-medium.jpg){:width="40%"}<br>
 Estimated Price: **$20 - $50**
 
 The original N64 controller is by far the most popular controller among casual and competitive players alike. Often called the OG (‘original’) or OEM (‘original equipment manufacturer’) stick, the OG is great in new condition, but degrades very quickly if not lubricated. As a result, although the OG controller is extremely common, it can sometimes pose a challenge to find one in excellent condition. Worn OG joysticks become loose and rough feeling, and make moving quickly and performing advanced techniques more difficult.
@@ -77,7 +77,7 @@ Since the debut of the original Steel Stick 64 project in 2016, metal sticks hav
 A complete steel stick module has two parts: the stick, usually with a rubber or plastic cap and teflon tip, and the bowl. **Steel bowls tend to be more widely available than sticks, and a bowl alone, when lubed, still provides a significant durability boost.**
 
 ### Steel Stick 64
-[![Steel Stick](/guides/img/controllers/steelstick.png){:width="50%"}](http://steelsticks64.com)
+[![Steel Stick](/guides/img/controllers/steelstick-medium.jpg){:width="50%"}](http://steelsticks64.com)
 [![Steel bowl](/guides/img/controllers/steelbowl.jpg){:width="40%"}](https://steelsticks64.com/?post_type=product)
 
 The SteelStick64 is the original metal replacement N64 joystick. The creator Linus Hofmann initially produced roughly 500 complete modules for those on a waitlist, but seems to be in hiatus. He has still continued very occasional releases of steel bowls in "A" and "B" grade.
@@ -144,7 +144,7 @@ Injection moulded gears. More expensive than Kitsch-Bent gears, but have recieve
 
 
 ### eL maN Parts
-[![El Man stick](/guides/img/controllers/elman.png){:width="40%"}](https://elman64.com)
+[![El Man stick](/guides/img/controllers/elman-medium.jpg){:width="40%"}](https://elman64.com)
 
 California Smash player eL maN has experimented with various 3D printed and CNC milled replacement parts, such as thinner plastic sticks, brass gears, and brass bowl inserts. His projects have started to catch on as a more affordable way to imitate the SteelStick’s durability and feel.
 
@@ -353,7 +353,7 @@ There are no keyboard adapters currently in production, so you might need to ass
 </p>
 
 ## Lodgenet
-![Lodgenet](/guides/img/controllers/lodgenet.png){:width="40%"}
+![Lodgenet](/guides/img/controllers/lodgenet-medium.jpg){:width="40%"}
 
 The LodgeNet controller was created for use in hotel LodgeNet systems, which allowed guests to pay for playtime on N64 games on their room TV. The V1 Lodgenet controller, not pictured, was essentially identical to the OG, with the addition of the Lodgenet buttons replacing the Nintendo logo. The later Lodgenet V2, shown above, improved on its predecessor by replacing the OG joystick with a potentiometer based design created by Hori, and by replacing all button pads with stiffer, clickier versions.
 
@@ -405,4 +405,3 @@ A few important cases under the League ruleset:
 
 #### Credits
 This guide was created by nickthename from the [SSB64 Discord](https://discord.gg/ssb64) server. Send complaints or questions to me there. Thanks to Zantetsu, Annex, and Pizza for suggestions.
-

@@ -11,8 +11,7 @@ title: Smash 64 Resources
 
 <a href="guides/controllers.html">
   <div>
-    <!-- <img src="/guides/img/controllers/OG.png" width="80" margin="auto"><br /> -->
-    <img src="/guides/img/controllers/OG.png"><br />
+    <img src="/guides/img/controllers/OG-thumb.jpg" alt="Original N64 controller"><br />
     <h2>Controller Guide</h2>
     <p>A complete guide to the common controller types used in competitive Smash.</p>
   </div>
@@ -38,7 +37,6 @@ title: Smash 64 Resources
 <div class="box-holder">
 <a href="/hitbox/">
   <div>
-    <!-- <img src="/guides/img/controllers/OG.png" width="80" margin="auto"><br /> -->
     <img src="/guides/img/hitbox.png"><br />
     <h2>Hitbox Display</h2>
     <p>Visual hitbox and frame data explorer.</p>

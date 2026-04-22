@@ -797,9 +797,8 @@
       const doesDerivedEntryKill = (entry) => {
         if (!entry || !entry.result || !entry.startPosition) return false;
         const { result, startPosition } = entry;
-        const { verticalDirection } = resolveDirections(result, Number.isFinite(entry.angle) ? entry.angle : 0);
         const signedXDistance = result.totalDistanceX;
-        const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const signedYDistance = result.totalDistanceY;
         const finalX = startPosition.x + signedXDistance;
         const finalY = startPosition.y + signedYDistance;
 
@@ -807,7 +806,7 @@
           for (let i = 0; i < result.trajectory.length; i += 1) {
             const step = result.trajectory[i];
             const x = startPosition.x + step.x;
-            const y = startPosition.y + step.y * (verticalDirection === 0 ? 0 : verticalDirection);
+            const y = startPosition.y + step.y;
             if (isKill(x, y)) return true;
           }
         }
@@ -2701,9 +2700,9 @@
 
       const computeMoveOutcome = (params) => {
         const result = Smash64Calculator.compute(params);
-        const { resolvedAngleDeg, verticalDirection } = resolveDirections(result, params.angle);
+        const { resolvedAngleDeg } = resolveDirections(result, params.angle);
         const signedXDistance = result.totalDistanceX;
-        const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const signedYDistance = result.totalDistanceY;
         const finalPosition = {
           x: params.startX + signedXDistance,
           y: params.startY + signedYDistance,
@@ -2714,7 +2713,6 @@
         return {
           result,
           resolvedAngleDeg,
-          verticalDirection,
           signedXDistance,
           signedYDistance,
           finalPosition,
@@ -3100,27 +3098,23 @@
           outputNodes.positionOutput.textContent = `(${formatIntegral(position.x)}, ${formatIntegral(position.y)})`;
         }
 
-        const { verticalDirection } = resolveDirections(result, params.angle);
-
         const signedInitialVX = result.initialVelocityX;
-        const signedInitialVY = result.initialVelocityY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const signedInitialVY = result.initialVelocityY;
         outputNodes.initVx.textContent = formatStandard(signedInitialVX);
         outputNodes.initVy.textContent = formatStandard(signedInitialVY);
 
         const signedXDistance = result.totalDistanceX;
-        const signedYDistance = result.totalDistanceY * (verticalDirection === 0 ? 0 : verticalDirection);
+        const signedYDistance = result.totalDistanceY;
         outputNodes.totalX.textContent = formatStandard(signedXDistance);
         outputNodes.totalY.textContent = formatStandard(signedYDistance);
         const finalX = position.x + signedXDistance;
         const finalY = position.y + signedYDistance;
         outputNodes.finalPosition.textContent = `(${formatIntegral(finalX)}, ${formatIntegral(finalY)})`;
 
-        const trajectoryDirectionX = 1;
-        const trajectoryDirectionY = verticalDirection === 0 ? 0 : verticalDirection;
         const trajectoryPoints = (result.trajectory || []).map((step) => ({
           frame: step.frame,
-          x: position.x + step.x * trajectoryDirectionX,
-          y: position.y + step.y * trajectoryDirectionY,
+          x: position.x + step.x,
+          y: position.y + step.y,
         }));
         if (trajectoryPoints.length === 0) {
           trajectoryPoints.push({ frame: 0, x: position.x, y: position.y });
@@ -3129,18 +3123,11 @@
         if (comboState.moves.length > 1 && Array.isArray(comboState.derived)) {
           comboState.derived.forEach((entry, index) => {
             if (!entry || index === comboState.activeIndex) return;
-            const move = comboState.moves[index] || {};
             if (!entry.result || !entry.startPosition || !entry.endPosition) return;
-            const { verticalDirection: secondaryVert } = resolveDirections(
-              entry.result,
-              Number.isFinite(move.angle) ? move.angle : 0
-            );
-            const secondaryDirectionX = 1;
-            const secondaryDirectionY = secondaryVert === 0 ? 0 : secondaryVert;
             const secondaryPoints = (entry.result.trajectory || []).map((step) => ({
               frame: step.frame,
-              x: entry.startPosition.x + step.x * secondaryDirectionX,
-              y: entry.startPosition.y + step.y * secondaryDirectionY,
+              x: entry.startPosition.x + step.x,
+              y: entry.startPosition.y + step.y,
             }));
             if (secondaryPoints.length === 0) {
               secondaryPoints.push({
@@ -3219,19 +3206,8 @@
         let testPercent = 0;
         while (testPercent <= thresholdMaxPercent) {
           const sim = computeAtPercentForThreshold(testPercent);
-          const simResolvedAngle = typeof sim.resolvedAngle === 'number' ? sim.resolvedAngle : resolvedAngleDeg;
-          const simAngleRad = simResolvedAngle * (Math.PI / 180);
-          const fallbackSimVertical = (() => {
-            if (!Number.isFinite(simAngleRad)) return Math.abs(sim.initialVelocityY) < 1e-6 ? 0 : 1;
-            const sinValue = Math.sin(simAngleRad);
-            if (Math.abs(sinValue) < 1e-6) return 0;
-            return sinValue > 0 ? 1 : -1;
-          })();
-          const simVerticalDirection = (typeof sim.verticalDirection === 'number')
-            ? sim.verticalDirection
-            : fallbackSimVertical;
           const simSignedX = sim.totalDistanceX;
-          const simSignedY = sim.totalDistanceY * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
+          const simSignedY = sim.totalDistanceY;
           const testPos = {
             x: position.x + simSignedX,
             y: position.y + simSignedY,
@@ -3242,7 +3218,7 @@
               const step = sim.trajectory[i];
               const stepX = position.x
                 + step.x;
-              const stepY = position.y + step.y * (simVerticalDirection === 0 ? 0 : simVerticalDirection);
+              const stepY = position.y + step.y;
               if (isKill(stepX, stepY)) {
                 killsDuringTrajectory = true;
                 break;

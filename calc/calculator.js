@@ -202,16 +202,20 @@
     return base;
   }
 
-  function applyGroundFriction(velocity, friction) {
+  function applyDecayTowardZero(velocity, decay) {
     let next = f32(velocity);
     if (next < 0.0) {
-      next = f32(next + friction);
+      next = f32(next + decay);
       if (next > 0.0) next = 0.0;
     } else {
-      next = f32(next - friction);
+      next = f32(next - decay);
       if (next < 0.0) next = 0.0;
     }
     return next;
+  }
+
+  function applyGroundFriction(velocity, friction) {
+    return applyDecayTowardZero(velocity, friction);
   }
 
   function simulateKnockbackSteps(config) {
@@ -254,7 +258,7 @@
     let activeGroundPlane = null;
 
     if (spikeMode !== 'air') {
-      yVelocityCurrent = f32(yVelocityCurrent - yDec);
+      yVelocityCurrent = applyDecayTowardZero(yVelocityCurrent, yDec);
     }
 
     for (let frame = 1; frame <= totalFrames; frame += 1) {
@@ -275,16 +279,15 @@
           if (fall > maxFall) {
             fall = maxFall;
           }
-          yVelocityCurrent = f32(yVelocityCurrent - yDec);
-          yDistance = f32(yDistance + yVelocityCurrent + fall);
+          yVelocityCurrent = applyDecayTowardZero(yVelocityCurrent, yDec);
+          yDistance = f32(yDistance + yVelocityCurrent - fall);
         } else {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
             fall = maxFall;
           }
           yDistance = f32(yDistance + (yVelocityCurrent - fall));
-          const nextVelocity = f32(yVelocityCurrent - yDec);
-          yVelocityCurrent = nextVelocity > 0 ? nextVelocity : 0;
+          yVelocityCurrent = applyDecayTowardZero(yVelocityCurrent, yDec);
         }
 
         const newAbsX = startX + xDistance;
@@ -505,8 +508,9 @@
       }
     }
 
+    const effectiveVerticalDirection = isGroundSpike ? 1 : verticalDirection;
     const xDec = xDecOverride ?? f32(VELOCITY_DECAY_FACTOR * xMultiplier);
-    const initialVelocityY = f32(yMultiplier * knockback);
+    const initialVelocityY = f32(yMultiplier * knockback * effectiveVerticalDirection);
     const initialVelocityX = f32(xMultiplier * knockback * signedHorizontalDirection);
 
     const stopOnLanding = isKnockdown;
@@ -571,24 +575,23 @@
       }
 
       if (spikeMode === 'air') {
-        while (yVelocity > yDec) {
+        while (Math.abs(yVelocity) > yDec) {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
             fall = maxFall;
           }
-          yVelocity = f32(yVelocity - yDec);
-          yDistance = f32(yDistance + yVelocity + fall);
+          yVelocity = applyDecayTowardZero(yVelocity, yDec);
+          yDistance = f32(yDistance + yVelocity - fall);
         }
       } else {
-        yVelocity = f32(yVelocity - yDec);
-        while (yVelocity > 0 || fall < maxFall) {
+        yVelocity = applyDecayTowardZero(yVelocity, yDec);
+        while (yVelocity !== 0 || fall < maxFall) {
           fall = f32(fall + fallAccel);
           if (fall > maxFall) {
             fall = maxFall;
           }
           yDistance = f32(yDistance + (yVelocity - fall));
-          const nextVelocity = f32(yVelocity - yDec);
-          yVelocity = nextVelocity > 0 ? nextVelocity : f32(0);
+          yVelocity = applyDecayTowardZero(yVelocity, yDec);
 
           if (yVelocity === 0 && fall === maxFall) {
             break;
@@ -611,7 +614,7 @@
       totalDistanceY: Number(yDistance),
       trajectory,
       horizontalDirection: signedHorizontalDirection,
-      verticalDirection: isGroundSpike ? 1 : verticalDirection,
+      verticalDirection: effectiveVerticalDirection,
       resolvedAngle: angleDeg,
       knockbackBeforeArmor,
     };

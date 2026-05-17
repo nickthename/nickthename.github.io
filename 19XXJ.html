@@ -1,0 +1,1058 @@
+---
+layout: page
+title: 19XX+J 1.0 Patcher
+permalink: /19XXJ/
+lang: ja
+---
+
+<style>
+  .rom-patcher {
+    max-width: 760px;
+  }
+
+  .rom-patcher fieldset {
+    border: 1px solid #d0d0d0;
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .rom-patcher label,
+  .rom-patcher button {
+    display: inline-block;
+    margin: 0.25rem 0;
+  }
+
+  .rom-patcher input[type="file"] {
+    max-width: 100%;
+  }
+
+  .rom-patcher button {
+    cursor: pointer;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .rom-patcher button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .rom-patcher table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .rom-patcher th,
+  .rom-patcher td {
+    border: 1px solid #d0d0d0;
+    padding: 0.35rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .rom-patcher th {
+    width: 9rem;
+  }
+
+  .rom-patcher code {
+    overflow-wrap: anywhere;
+  }
+
+  .patcher-intro-row {
+    align-items: baseline;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .patcher-intro-row p {
+    margin-top: 0;
+  }
+
+  .patcher-language {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .patcher-language .lang-row {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.35rem;
+  }
+
+  .patcher-language select {
+    font: inherit;
+  }
+
+  .patcher-warning {
+    border-left: 4px solid #aa7600;
+    margin: 1rem 0;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .patcher-status {
+    border-left: 4px solid #777;
+    margin: 1rem 0;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .patcher-status[data-state="ok"] {
+    border-color: #267326;
+  }
+
+  .patcher-status[data-state="warn"] {
+    border-color: #aa7600;
+  }
+
+  .patcher-status[data-state="error"] {
+    border-color: #b00020;
+  }
+
+  .patcher-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .patcher-rmg-instructions pre {
+    overflow-x: auto;
+  }
+</style>
+
+<div class="rom-patcher" id="rom-patcher">
+  <div class="patcher-intro-row">
+    <p data-i18n="intro">
+      19XX+Jは対戦プレイ向けの改造ROMです。
+    </p>
+
+    <div id="language_float" class="patcher-language">
+      <div class="lang-row">
+        <label for="patcher-lang" data-i18n-aria-label="languageLabel" aria-label="言語">🌐</label>
+        <select id="patcher-lang" aria-label="言語" data-i18n-aria-label="languageLabel">
+          <option value="ja" selected>日本語</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <p><strong data-i18n="featuresHeading">特徴:</strong></p>
+  <ul>
+    <li data-i18n="featureUnlocks">キャラクター/アイテム解禁済み</li>
+    <li data-i18n="featureCompetitiveDefaults">対戦向け設定がデフォルト</li>
+    <li data-i18n="featureNeutralSpawns">1v1/2v2でニュートラルスポーン</li>
+    <li data-i18n="featureHoldPause">長押しでポーズ</li>
+  </ul>
+
+  <div class="patcher-warning" data-i18n="betaWarning">
+    このROMはベータ版です。
+  </div>
+
+  <fieldset>
+    <legend data-i18n="romLegend">ROM</legend>
+    <label for="rom-file" data-i18n="romFileLabel">J版ROMを選択し、「パッチ適用」をクリックしてダウンロードしてください。パッチ適用はブラウザ内で行われます。</label><br>
+    <input id="rom-file" type="file" accept=".z64,.v64,.n64">
+  </fieldset>
+
+  <table data-i18n-aria-label="romDetailsLabel" aria-label="ROM情報">
+    <tbody>
+      <tr>
+        <th scope="row" data-i18n="formatLabel">形式</th>
+        <td><code id="rom-format">-</code></td>
+      </tr>
+      <tr>
+        <th scope="row" data-i18n="n64CrcsLabel">N64 CRC</th>
+        <td><code id="rom-crcs">-</code></td>
+      </tr>
+      <tr>
+        <th scope="row">CRC32</th>
+        <td><code id="rom-crc32">-</code></td>
+      </tr>
+      <tr>
+        <th scope="row">SHA1</th>
+        <td><code id="rom-sha1">-</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="patcher-actions">
+    <button id="patch-button" type="button" disabled data-i18n="applyButton">パッチ適用</button>
+    <button id="clear-button" type="button" data-i18n="clearButton">クリア</button>
+  </div>
+
+  <div class="patcher-status" id="patcher-status" role="status" aria-live="polite" data-state="warn">
+    ROMファイルを選択してください。
+  </div>
+
+  <section class="patcher-rmg-instructions">
+    <p data-i18n-html="rmgInstructions">
+      RMG-Kを使う場合は、RMG-K.exeがインストールされている場所の<strong>Data/</strong>フォルダを開き、<strong>mupen64plus.ini</strong>の末尾に以下を追加してください:
+    </p>
+    <pre><code>[CF2E6503CFF6CC74BF54BF8DFFE7432A]
+GoodName=19XXTE+J 1.0
+CRC=0F87AF08 AC2FDCEC
+RefMD5=66DB457B130D31A286A23D6E4DD9726E
+CountPerOp=1</code></pre>
+  </section>
+
+  <p data-i18n="disclaimer">
+    このサイトは著作権侵害を推奨しません。ROMパッチ処理はMarc Robledo氏のRomPatcher.jsをベースにしています。
+  </p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var PATCH_CONFIG = {
+    patchName: "19XXTE+J 1.0",
+    patchUrl: "",
+    patchBase64: "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",
+    outputFileName: "19XXTE+J_1.0.z64",
+    source: {
+      crc32: 0x04c9d3b1,
+      size: 16777216,
+      format: "z64"
+    },
+    target: {
+      crc32: 0x782fd25c,
+      sha1: "01dae33b586a6b5c7527195d7b01c4d78ee18c5c",
+      size: 33554432
+    },
+    mismatchMessageKey: "invalidBaseRom"
+  };
+
+  var state = {
+    romBytes: null,
+    romName: "",
+    patchBytes: null,
+    validSource: false
+  };
+
+  var dom = {};
+  var currentLanguage = "ja";
+  var lastStatus = { key: "selectRomFile", stateName: "", params: {} };
+
+  var I18N = {
+    ja: {
+      languageLabel: "言語",
+      intro: "19XX+Jは対戦プレイ向けの改造ROMです。",
+      featuresHeading: "特徴:",
+      featureUnlocks: "キャラクター/アイテム解禁済み",
+      featureCompetitiveDefaults: "対戦向け設定がデフォルト",
+      featureNeutralSpawns: "1v1/2v2でニュートラルスポーン",
+      featureHoldPause: "長押しでポーズ",
+      betaWarning: "このROMはベータ版です。",
+      romLegend: "ROM",
+      romFileLabel: "J版ROMを選択し、「パッチ適用」をクリックしてダウンロードしてください。パッチ適用はブラウザ内で行われます。",
+      rmgInstructions: "RMG-Kを使う場合は、RMG-K.exeがインストールされている場所の<strong>Data/</strong>フォルダを開き、<strong>mupen64plus.ini</strong>の末尾に以下を追加してください:",
+      romDetailsLabel: "ROM情報",
+      formatLabel: "形式",
+      n64CrcsLabel: "N64 CRC",
+      applyButton: "パッチ適用",
+      clearButton: "クリア",
+      disclaimer: "このサイトは著作権侵害を推奨しません。ROMパッチ処理はMarc Robledo氏のRomPatcher.jsをベースにしています。",
+      selectRomFile: "ROMファイルを選択してください。",
+      patchDataNotConfigured: "パッチデータが未設定です。",
+      readingRom: "ROMを読み込み中...",
+      unknownRomFormat: "ROM形式を認識できません。",
+      calculating: "計算中...",
+      hashError: "エラー",
+      romVerified: "ROMを確認しました。",
+      selectConfiguredRom: "J版ROMを選択してください。",
+      loadingPatch: "パッチを読み込み中...",
+      patchingRom: "ROMにパッチを適用中...",
+      verifyingPatchedRom: "パッチ済みROMを確認中...",
+      patchedRomSaved: "パッチ済みROMを保存しました。",
+      unableToReadRom: "ROMを読み込めませんでした。",
+      patchFailed: "ROMパッチに失敗しました。",
+      invalidBaseRom: "ベースROMが無効です。",
+      unexpectedPatchEnd: "パッチファイルが途中で終了しました。",
+      secondaryCompression: "このxdeltaは二次圧縮を使用しています。",
+      unsupportedPatchFormat: "対応していないパッチ形式です。",
+      customCodeTable: "カスタムVCDIFFコードテーブルには対応していません。",
+      invalidInstruction: "VCDIFF命令が無効です。",
+      patchedChecksumFailed: "パッチ済みROMのチェックサム検証に失敗しました。",
+      noPatchData: "パッチデータが未設定です。",
+      downloadFailed: "パッチのダウンロードに失敗しました: HTTP {status}",
+      zipPatchUnsupported: "ZIP形式のパッチには対応していません。",
+      romFormatNotRecognized: "ROM形式を認識できません。",
+      wrongFileSize: "ファイルサイズが違います。期待値: {size} bytes",
+      expectedSourceMissing: "期待するベースROM CRC32が未設定です。",
+      patchedSizeMismatch: "パッチ済みROMのサイズが期待値と一致しません。",
+      patchedCrcMismatch: "パッチ済みROMのCRC32が期待値と一致しません。",
+      patchedSha1Mismatch: "パッチ済みROMのSHA1が期待値と一致しません。"
+    },
+    en: {
+      languageLabel: "Language",
+      intro: "19XX+J is a modified rom for competitive play.",
+      featuresHeading: "Features:",
+      featureUnlocks: "Characters/items unlocked",
+      featureCompetitiveDefaults: "Competitive settings set by default",
+      featureNeutralSpawns: "Neutral spawns in 1v1 and 2v2",
+      featureHoldPause: "Hold-to-pause",
+      betaWarning: "This ROM is a beta.",
+      romLegend: "ROM",
+      romFileLabel: "Select J version ROM and click \"Apply Patch\" to download. Patching happens in your browser.",
+      rmgInstructions: "For RMG-K, open the <strong>Data/</strong> folder where RMG-K.exe is installed and add this to the end of <strong>mupen64plus.ini</strong>:",
+      romDetailsLabel: "ROM details",
+      formatLabel: "Format",
+      n64CrcsLabel: "N64 CRCs",
+      applyButton: "Apply Patch",
+      clearButton: "Clear",
+      disclaimer: "This website does not condone piracy. ROM patching is based on RomPatcher.js by Marc Robledo.",
+      selectRomFile: "Select a ROM file.",
+      patchDataNotConfigured: "Patch data has not been configured yet.",
+      readingRom: "Reading ROM...",
+      unknownRomFormat: "Unknown ROM format.",
+      calculating: "Calculating...",
+      hashError: "Error",
+      romVerified: "ROM verified.",
+      selectConfiguredRom: "Select J version ROM first.",
+      loadingPatch: "Loading patch...",
+      patchingRom: "Patching ROM...",
+      verifyingPatchedRom: "Verifying patched ROM...",
+      patchedRomSaved: "Patched ROM saved.",
+      unableToReadRom: "Unable to read ROM.",
+      patchFailed: "ROM patching failed.",
+      invalidBaseRom: "Invalid base ROM.",
+      unexpectedPatchEnd: "Unexpected end of patch.",
+      secondaryCompression: "This xdelta uses secondary compression.",
+      unsupportedPatchFormat: "Unsupported patch format.",
+      customCodeTable: "Custom VCDIFF code tables are not supported.",
+      invalidInstruction: "Invalid VCDIFF instruction.",
+      patchedChecksumFailed: "Patched ROM checksum validation failed.",
+      noPatchData: "Patch data has not been configured yet.",
+      downloadFailed: "Failed to download patch: HTTP {status}",
+      zipPatchUnsupported: "ZIP patches are not supported.",
+      romFormatNotRecognized: "ROM format is not recognized.",
+      wrongFileSize: "Wrong file size. Expected {size} bytes.",
+      expectedSourceMissing: "Expected source CRC32 has not been configured.",
+      patchedSizeMismatch: "Patched ROM size did not match the expected output.",
+      patchedCrcMismatch: "Patched ROM CRC32 did not match the expected output.",
+      patchedSha1Mismatch: "Patched ROM SHA1 did not match the expected output."
+    }
+  };
+
+  function hasDocument() {
+    return typeof document !== "undefined";
+  }
+
+  function getConfiguredSourceCrc() {
+    if (PATCH_CONFIG.source && typeof PATCH_CONFIG.source.crc32 === "number") {
+      return PATCH_CONFIG.source.crc32 >>> 0;
+    }
+    return null;
+  }
+
+  function isPatchConfigured() {
+    return Boolean((PATCH_CONFIG.patchUrl || PATCH_CONFIG.patchBase64) && getConfiguredSourceCrc() !== null);
+  }
+
+  function normalizeLanguage(value) {
+    return String(value || "").toLowerCase() === "en" ? "en" : "ja";
+  }
+
+  function translate(key, params) {
+    var pack = I18N[currentLanguage] || I18N.ja;
+    var fallback = I18N.en || {};
+    var text = pack[key] || fallback[key] || key;
+    return text.replace(/\{([a-zA-Z0-9_]+)\}/g, function (match, name) {
+      return params && typeof params[name] !== "undefined" ? params[name] : match;
+    });
+  }
+
+  function applyLanguage(language) {
+    currentLanguage = normalizeLanguage(language);
+    if (document.documentElement) {
+      document.documentElement.lang = currentLanguage;
+    }
+
+    document.querySelectorAll("[data-i18n]").forEach(function (node) {
+      node.textContent = translate(node.getAttribute("data-i18n"));
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach(function (node) {
+      node.innerHTML = translate(node.getAttribute("data-i18n-html"));
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function (node) {
+      node.setAttribute("aria-label", translate(node.getAttribute("data-i18n-aria-label")));
+    });
+
+    if (dom.status && lastStatus) {
+      dom.status.textContent = translate(lastStatus.key, lastStatus.params);
+    }
+  }
+
+  function patcherError(key, params) {
+    var error = new Error(translate(key, params));
+    error.messageKey = key;
+    error.params = params || {};
+    return error;
+  }
+
+  function setText(id, value) {
+    if (dom[id]) {
+      dom[id].textContent = value || "-";
+    }
+  }
+
+  function setStatus(key, stateName, params) {
+    if (!dom.status) {
+      return;
+    }
+    lastStatus = { key: key, stateName: stateName || "", params: params || {} };
+    dom.status.textContent = translate(key, params);
+    dom.status.dataset.state = stateName || "";
+  }
+
+  function setPatchEnabled() {
+    if (dom.patchButton) {
+      dom.patchButton.disabled = !(state.validSource && isPatchConfigured());
+    }
+  }
+
+  function resetDetails() {
+    setText("format", "-");
+    setText("crcs", "-");
+    setText("crc32", "-");
+    setText("sha1", "-");
+  }
+
+  function hexByte(value) {
+    return value.toString(16).padStart(2, "0");
+  }
+
+  function hex32(value) {
+    return "0x" + (value >>> 0).toString(16).padStart(8, "0");
+  }
+
+  function bytesToHex(bytes, offset, length) {
+    var hex = "";
+    for (var i = 0; i < length; i += 1) {
+      hex += hexByte(bytes[offset + i] || 0);
+    }
+    return hex;
+  }
+
+  function cloneBytes(bytes) {
+    return new Uint8Array(bytes);
+  }
+
+  function detectRomFormat(bytes) {
+    var magic = bytesToHex(bytes, 0, 4);
+    if (magic === "80371240") {
+      return "z64";
+    }
+    if (magic === "37804012") {
+      return "v64";
+    }
+    if (magic === "40123780") {
+      return "n64";
+    }
+    return "unknown";
+  }
+
+  function swapBytes(bytes) {
+    for (var i = 0; i + 1 < bytes.length; i += 2) {
+      var tmp = bytes[i];
+      bytes[i] = bytes[i + 1];
+      bytes[i + 1] = tmp;
+    }
+  }
+
+  function swapWords(bytes) {
+    for (var i = 0; i + 3 < bytes.length; i += 4) {
+      var a = bytes[i];
+      var b = bytes[i + 1];
+      bytes[i] = bytes[i + 2];
+      bytes[i + 1] = bytes[i + 3];
+      bytes[i + 2] = a;
+      bytes[i + 3] = b;
+    }
+  }
+
+  function convertToZ64(bytes) {
+    var converted = cloneBytes(bytes);
+    var format = detectRomFormat(converted);
+    if (format === "v64") {
+      swapBytes(converted);
+    } else if (format === "n64") {
+      swapWords(converted);
+      swapBytes(converted);
+    }
+    return {
+      bytes: converted,
+      originalFormat: format,
+      format: detectRomFormat(converted)
+    };
+  }
+
+  function n64HeaderCrcs(bytes) {
+    return "0x" + bytesToHex(bytes, 0x10, 4) + ", 0x" + bytesToHex(bytes, 0x14, 4);
+  }
+
+  var CRC32_TABLE = (function () {
+    var table = [];
+    for (var n = 0; n < 256; n += 1) {
+      var c = n;
+      for (var k = 0; k < 8; k += 1) {
+        c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+      }
+      table[n] = c >>> 0;
+    }
+    return table;
+  }());
+
+  function crc32(bytes) {
+    var crc = 0xffffffff;
+    for (var i = 0; i < bytes.length; i += 1) {
+      crc = (crc >>> 8) ^ CRC32_TABLE[(crc ^ bytes[i]) & 0xff];
+    }
+    return (crc ^ 0xffffffff) >>> 0;
+  }
+
+  function adler32(bytes, offset, length) {
+    var a = 1;
+    var b = 0;
+    for (var i = 0; i < length; i += 1) {
+      a = (a + bytes[offset + i]) % 0xfff1;
+      b = (b + a) % 0xfff1;
+    }
+    return (((b << 16) | a) >>> 0);
+  }
+
+  async function sha1(bytes) {
+    if (typeof crypto === "undefined" || !crypto.subtle || !crypto.subtle.digest) {
+      return "Not supported";
+    }
+
+    var digest = await crypto.subtle.digest("SHA-1", bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength));
+    return Array.from(new Uint8Array(digest)).map(function (byte) {
+      return hexByte(byte);
+    }).join("");
+  }
+
+  function Reader(bytes, offset) {
+    this.bytes = bytes;
+    this.offset = offset || 0;
+  }
+
+  Reader.prototype.isEOF = function () {
+    return this.offset >= this.bytes.length;
+  };
+
+  Reader.prototype.seek = function (offset) {
+    this.offset = offset;
+  };
+
+  Reader.prototype.skip = function (length) {
+    this.offset += length;
+  };
+
+  Reader.prototype.readU8 = function () {
+    if (this.offset >= this.bytes.length) {
+      throw patcherError("unexpectedPatchEnd");
+    }
+    var value = this.bytes[this.offset];
+    this.offset += 1;
+    return value;
+  };
+
+  Reader.prototype.readU32 = function () {
+    var value = (
+      (this.readU8() << 24) |
+      (this.readU8() << 16) |
+      (this.readU8() << 8) |
+      this.readU8()
+    );
+    return value >>> 0;
+  };
+
+  Reader.prototype.read7BitEncodedInt = function () {
+    var value = 0;
+    var bits;
+    do {
+      bits = this.readU8();
+      value = (value << 7) + (bits & 0x7f);
+    } while (bits & 0x80);
+    return value;
+  };
+
+  Reader.prototype.copyTo = function (target, targetOffset, length) {
+    target.set(this.bytes.subarray(this.offset, this.offset + length), targetOffset);
+    this.skip(length);
+  };
+
+  var VCD_DECOMPRESS = 0x01;
+  var VCD_CODETABLE = 0x02;
+  var VCD_APPHEADER = 0x04;
+  var VCD_SOURCE = 0x01;
+  var VCD_TARGET = 0x02;
+  var VCD_ADLER32 = 0x04;
+  var VCD_NOOP = 0;
+  var VCD_ADD = 1;
+  var VCD_RUN = 2;
+  var VCD_COPY = 3;
+
+  var VCD_DEFAULT_CODE_TABLE = (function () {
+    var entries = [];
+    var empty = { type: VCD_NOOP, size: 0, mode: 0 };
+    var size;
+    var mode;
+    var addSize;
+    var copySize;
+
+    entries.push([{ type: VCD_RUN, size: 0, mode: 0 }, empty]);
+
+    for (size = 0; size < 18; size += 1) {
+      entries.push([{ type: VCD_ADD, size: size, mode: 0 }, empty]);
+    }
+
+    for (mode = 0; mode < 9; mode += 1) {
+      entries.push([{ type: VCD_COPY, size: 0, mode: mode }, empty]);
+      for (size = 4; size < 19; size += 1) {
+        entries.push([{ type: VCD_COPY, size: size, mode: mode }, empty]);
+      }
+    }
+
+    for (mode = 0; mode < 6; mode += 1) {
+      for (addSize = 1; addSize < 5; addSize += 1) {
+        for (copySize = 4; copySize < 7; copySize += 1) {
+          entries.push([
+            { type: VCD_ADD, size: addSize, mode: 0 },
+            { type: VCD_COPY, size: copySize, mode: mode }
+          ]);
+        }
+      }
+    }
+
+    for (mode = 6; mode < 9; mode += 1) {
+      for (addSize = 1; addSize < 5; addSize += 1) {
+        entries.push([
+          { type: VCD_ADD, size: addSize, mode: 0 },
+          { type: VCD_COPY, size: 4, mode: mode }
+        ]);
+      }
+    }
+
+    for (mode = 0; mode < 9; mode += 1) {
+      entries.push([
+        { type: VCD_COPY, size: 4, mode: mode },
+        { type: VCD_ADD, size: 1, mode: 0 }
+      ]);
+    }
+
+    return entries;
+  }());
+
+  function AddressCache(nearSize, sameSize) {
+    this.nearSize = nearSize;
+    this.sameSize = sameSize;
+    this.near = new Array(nearSize);
+    this.same = new Array(sameSize * 256);
+  }
+
+  AddressCache.prototype.reset = function (addressStream) {
+    this.nextNearSlot = 0;
+    this.near.fill(0);
+    this.same.fill(0);
+    this.addressStream = addressStream;
+  };
+
+  AddressCache.prototype.decodeAddress = function (here, mode) {
+    var address;
+    if (mode === 0) {
+      address = this.addressStream.read7BitEncodedInt();
+    } else if (mode === 1) {
+      address = here - this.addressStream.read7BitEncodedInt();
+    } else if (mode - 2 < this.nearSize) {
+      address = this.near[mode - 2] + this.addressStream.read7BitEncodedInt();
+    } else {
+      var m = mode - (2 + this.nearSize);
+      address = this.same[m * 256 + this.addressStream.readU8()];
+    }
+
+    this.update(address);
+    return address;
+  };
+
+  AddressCache.prototype.update = function (address) {
+    if (this.nearSize > 0) {
+      this.near[this.nextNearSlot] = address;
+      this.nextNearSlot = (this.nextNearSlot + 1) % this.nearSize;
+    }
+
+    if (this.sameSize > 0) {
+      this.same[address % (this.sameSize * 256)] = address;
+    }
+  };
+
+  function decodeWindowHeader(reader) {
+    var header = {
+      indicator: reader.readU8(),
+      sourceLength: 0,
+      sourcePosition: 0,
+      adler32: false
+    };
+
+    if (header.indicator & (VCD_SOURCE | VCD_TARGET)) {
+      header.sourceLength = reader.read7BitEncodedInt();
+      header.sourcePosition = reader.read7BitEncodedInt();
+    }
+
+    header.deltaLength = reader.read7BitEncodedInt();
+    header.targetWindowLength = reader.read7BitEncodedInt();
+    header.deltaIndicator = reader.readU8();
+      if (header.deltaIndicator !== 0) {
+      throw patcherError("secondaryCompression");
+    }
+
+    header.addRunDataLength = reader.read7BitEncodedInt();
+    header.instructionsLength = reader.read7BitEncodedInt();
+    header.addressesLength = reader.read7BitEncodedInt();
+
+    if (header.indicator & VCD_ADLER32) {
+      header.adler32 = reader.readU32();
+    }
+
+    return header;
+  }
+
+  function applyVcdiff(sourceBytes, patchBytes, validateOutput) {
+    if (
+      patchBytes[0] !== 0xd6 ||
+      patchBytes[1] !== 0xc3 ||
+      patchBytes[2] !== 0xc4
+    ) {
+      throw patcherError("unsupportedPatchFormat");
+    }
+
+    var reader = new Reader(patchBytes);
+    reader.seek(4);
+
+    var headerIndicator = reader.readU8();
+    if (headerIndicator & VCD_DECOMPRESS) {
+      reader.readU8();
+    }
+
+    if (headerIndicator & VCD_CODETABLE) {
+      var codeTableDataLength = reader.read7BitEncodedInt();
+      if (codeTableDataLength !== 0) {
+        throw patcherError("customCodeTable");
+      }
+    }
+
+    if (headerIndicator & VCD_APPHEADER) {
+      reader.skip(reader.read7BitEncodedInt());
+    }
+
+    var headerEndOffset = reader.offset;
+    var newFileSize = 0;
+    while (!reader.isEOF()) {
+      var sizeHeader = decodeWindowHeader(reader);
+      newFileSize += sizeHeader.targetWindowLength;
+      reader.skip(sizeHeader.addRunDataLength + sizeHeader.addressesLength + sizeHeader.instructionsLength);
+    }
+
+    var output = new Uint8Array(newFileSize);
+    reader.seek(headerEndOffset);
+
+    var cache = new AddressCache(4, 3);
+    var targetWindowPosition = 0;
+
+    while (!reader.isEOF()) {
+      var windowHeader = decodeWindowHeader(reader);
+      var addRunDataStream = new Reader(patchBytes, reader.offset);
+      var instructionsStream = new Reader(patchBytes, addRunDataStream.offset + windowHeader.addRunDataLength);
+      var addressesStream = new Reader(patchBytes, instructionsStream.offset + windowHeader.instructionsLength);
+      var addressesStreamEndOffset = addressesStream.offset;
+      var outputWindowOffset = 0;
+
+      cache.reset(addressesStream);
+
+      while (instructionsStream.offset < addressesStreamEndOffset) {
+        var instructionIndex = instructionsStream.readU8();
+        var pair = VCD_DEFAULT_CODE_TABLE[instructionIndex];
+
+        for (var pairIndex = 0; pairIndex < 2; pairIndex += 1) {
+          var instruction = pair[pairIndex];
+          var size = instruction.size;
+
+          if (size === 0 && instruction.type !== VCD_NOOP) {
+            size = instructionsStream.read7BitEncodedInt();
+          }
+
+          if (instruction.type === VCD_NOOP) {
+            continue;
+          }
+
+          if (instruction.type === VCD_ADD) {
+            addRunDataStream.copyTo(output, targetWindowPosition + outputWindowOffset, size);
+            outputWindowOffset += size;
+          } else if (instruction.type === VCD_COPY) {
+            var address = cache.decodeAddress(outputWindowOffset + windowHeader.sourceLength, instruction.mode);
+            var absoluteAddress;
+            var sourceData;
+
+            if (address < windowHeader.sourceLength) {
+              absoluteAddress = windowHeader.sourcePosition + address;
+              sourceData = (windowHeader.indicator & VCD_SOURCE) ? sourceBytes : output;
+            } else {
+              absoluteAddress = targetWindowPosition + (address - windowHeader.sourceLength);
+              sourceData = output;
+            }
+
+            while (size > 0) {
+              output[targetWindowPosition + outputWindowOffset] = sourceData[absoluteAddress];
+              outputWindowOffset += 1;
+              absoluteAddress += 1;
+              size -= 1;
+            }
+          } else if (instruction.type === VCD_RUN) {
+            var runByte = addRunDataStream.readU8();
+            output.fill(runByte, targetWindowPosition + outputWindowOffset, targetWindowPosition + outputWindowOffset + size);
+            outputWindowOffset += size;
+          } else {
+            throw patcherError("invalidInstruction");
+          }
+        }
+      }
+
+      if (
+        validateOutput &&
+        windowHeader.adler32 &&
+        windowHeader.adler32 !== adler32(output, targetWindowPosition, windowHeader.targetWindowLength)
+      ) {
+        throw patcherError("patchedChecksumFailed");
+      }
+
+      reader.skip(windowHeader.addRunDataLength + windowHeader.addressesLength + windowHeader.instructionsLength);
+      targetWindowPosition += windowHeader.targetWindowLength;
+    }
+
+    return output;
+  }
+
+  function base64ToBytes(base64) {
+    var cleaned = base64.replace(/\s+/g, "");
+    var binary = atob(cleaned);
+    var bytes = new Uint8Array(binary.length);
+    for (var i = 0; i < binary.length; i += 1) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    return bytes;
+  }
+
+  async function loadPatchBytes() {
+    if (state.patchBytes) {
+      return state.patchBytes;
+    }
+
+    if (PATCH_CONFIG.patchBase64) {
+      state.patchBytes = base64ToBytes(PATCH_CONFIG.patchBase64);
+      return state.patchBytes;
+    }
+
+    if (!PATCH_CONFIG.patchUrl) {
+      throw patcherError("noPatchData");
+    }
+
+    var response = await fetch(PATCH_CONFIG.patchUrl);
+    if (!response.ok) {
+      throw patcherError("downloadFailed", { status: response.status });
+    }
+
+    state.patchBytes = new Uint8Array(await response.arrayBuffer());
+    if (state.patchBytes[0] === 0x50 && state.patchBytes[1] === 0x4b) {
+      throw patcherError("zipPatchUnsupported");
+    }
+    return state.patchBytes;
+  }
+
+  function saveBytes(bytes, fileName) {
+    var blob = new Blob([bytes], { type: "application/octet-stream" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(function () {
+      URL.revokeObjectURL(url);
+    }, 1000);
+  }
+
+  function validateRom(converted, crcValue) {
+    var errors = [];
+    var source = PATCH_CONFIG.source || {};
+    var expectedCrc = getConfiguredSourceCrc();
+
+    if (converted.format !== (source.format || "z64")) {
+      errors.push({ key: "romFormatNotRecognized" });
+    }
+
+    if (source.size && converted.bytes.length !== source.size) {
+      errors.push({ key: "wrongFileSize", params: { size: source.size } });
+    }
+
+    if (expectedCrc === null) {
+      errors.push({ key: "expectedSourceMissing" });
+    } else if (crcValue !== expectedCrc) {
+      errors.push({ key: PATCH_CONFIG.mismatchMessageKey || "invalidBaseRom" });
+    }
+
+    return errors;
+  }
+
+  async function validatePatchedRom(bytes) {
+    var target = PATCH_CONFIG.target || {};
+
+    if (target.size && bytes.length !== target.size) {
+      throw patcherError("patchedSizeMismatch");
+    }
+
+    if (typeof target.crc32 === "number" && crc32(bytes) !== (target.crc32 >>> 0)) {
+      throw patcherError("patchedCrcMismatch");
+    }
+
+    if (target.sha1 && window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
+      var hash = await sha1(bytes);
+      if (hash !== target.sha1) {
+        throw patcherError("patchedSha1Mismatch");
+      }
+    }
+  }
+
+  async function analyzeRom(file) {
+    setStatus("readingRom", "");
+    state.validSource = false;
+    setPatchEnabled();
+    resetDetails();
+
+    var originalBytes = new Uint8Array(await file.arrayBuffer());
+    var converted = convertToZ64(originalBytes);
+    state.romBytes = converted.bytes;
+    state.romName = file.name;
+
+    if (converted.format === "unknown") {
+      setText("format", converted.originalFormat);
+      setStatus("unknownRomFormat", "error");
+      return;
+    }
+
+    var crcValue = crc32(converted.bytes);
+    setText("format", converted.originalFormat === converted.format ? converted.format : converted.originalFormat + " -> " + converted.format);
+    setText("crcs", n64HeaderCrcs(converted.bytes));
+    setText("crc32", hex32(crcValue));
+    setText("sha1", translate("calculating"));
+
+    sha1(converted.bytes).then(function (hash) {
+      setText("sha1", hash);
+    }).catch(function () {
+      setText("sha1", translate("hashError"));
+    });
+
+    var errors = validateRom(converted, crcValue);
+    if (errors.length) {
+      setStatus(errors[0].key, "error", errors[0].params);
+      state.validSource = false;
+    } else if (!isPatchConfigured()) {
+      setStatus("patchDataNotConfigured", "warn");
+      state.validSource = false;
+    } else {
+      setStatus("romVerified", "ok");
+      state.validSource = true;
+    }
+
+    setPatchEnabled();
+  }
+
+  async function applyConfiguredPatch() {
+    if (!state.validSource || !state.romBytes) {
+      setStatus("selectConfiguredRom", "error");
+      return;
+    }
+
+    try {
+      dom.patchButton.disabled = true;
+      setStatus("loadingPatch", "");
+      var patchBytes = await loadPatchBytes();
+      setStatus("patchingRom", "");
+      var patchedBytes = applyVcdiff(state.romBytes, patchBytes, true);
+      setStatus("verifyingPatchedRom", "");
+      await validatePatchedRom(patchedBytes);
+      saveBytes(patchedBytes, PATCH_CONFIG.outputFileName || (PATCH_CONFIG.patchName + ".z64"));
+      setStatus("patchedRomSaved", "ok");
+    } catch (error) {
+      setStatus(error.messageKey || "patchFailed", "error", error.params);
+    } finally {
+      setPatchEnabled();
+    }
+  }
+
+  function clearPatcher() {
+    state.romBytes = null;
+    state.romName = "";
+    state.validSource = false;
+    if (dom.fileInput) {
+      dom.fileInput.value = "";
+    }
+    resetDetails();
+    setStatus(isPatchConfigured() ? "selectRomFile" : "patchDataNotConfigured", isPatchConfigured() ? "" : "warn");
+    setPatchEnabled();
+  }
+
+  function init() {
+    dom.languageSelect = document.getElementById("patcher-lang");
+    dom.fileInput = document.getElementById("rom-file");
+    dom.patchButton = document.getElementById("patch-button");
+    dom.clearButton = document.getElementById("clear-button");
+    dom.status = document.getElementById("patcher-status");
+    dom.format = document.getElementById("rom-format");
+    dom.crcs = document.getElementById("rom-crcs");
+    dom.crc32 = document.getElementById("rom-crc32");
+    dom.sha1 = document.getElementById("rom-sha1");
+
+    if (dom.languageSelect) {
+      dom.languageSelect.value = "ja";
+      dom.languageSelect.addEventListener("change", function () {
+        applyLanguage(this.value);
+      });
+    }
+
+    applyLanguage(dom.languageSelect ? dom.languageSelect.value : "ja");
+
+    dom.fileInput.addEventListener("change", function () {
+      if (this.files && this.files[0]) {
+        analyzeRom(this.files[0]).catch(function (error) {
+          setStatus(error.messageKey || "unableToReadRom", "error", error.params);
+        });
+      }
+    });
+
+    dom.patchButton.addEventListener("click", function () {
+      applyConfiguredPatch();
+    });
+
+    dom.clearButton.addEventListener("click", clearPatcher);
+    clearPatcher();
+  }
+
+  if (typeof window !== "undefined") {
+    window.__19XXJPatcherCore = {
+      applyVcdiff: applyVcdiff,
+      convertToZ64: convertToZ64,
+      crc32: crc32,
+      detectRomFormat: detectRomFormat
+    };
+  }
+
+  if (hasDocument()) {
+    document.addEventListener("DOMContentLoaded", init);
+  }
+}());
+</script>

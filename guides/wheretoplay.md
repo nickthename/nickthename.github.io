@@ -20,7 +20,7 @@ You can find a list of upcoming tournaments on [supersmashbros.org](https://supe
 ### Online
 
 ![](/guides/img/Project64-window.png){:width="200px"}{:style="float:left; margin-right:15px;"}
-To play on emulator, all you'll need is a computer or phone. The most popular way to play is by using the [Project 64KSE](https://smash64.online/) netplay emulator, which makes it possible to play over the internet!
+To play on emulator, all you'll need is a computer or phone. The most popular way to play is by using the [RMG-K](https://smash64.online/) netplay emulator, which makes it possible to play over the internet!
 
 To use an N64 controller you'll want a [Raphnet N64 to USB adapter](https://www.raphnet-tech.com/products/dual_n64_to_usb_adapter/index.php); you can also use a keyboard or any USB controller. Online play requires a Windows PC with an ethernet connection, but there are local emulators available for almost every platform.
 

@@ -165,10 +165,6 @@ lang: ja
     gap: 0.5rem;
   }
 
-  .patcher-rmg-instructions pre {
-    overflow-x: auto;
-  }
-
 </style>
 
 <div class="rom-patcher" id="rom-patcher">
@@ -274,17 +270,6 @@ lang: ja
     ROMファイルを選択してください。
   </div>
 
-  <section class="patcher-rmg-instructions">
-    <p data-i18n-html="rmgInstructions">
-      RMG-Kを使う場合は、RMG-K.exeがインストールされている場所の<strong>Data/</strong>フォルダを開き、<strong>mupen64plus.ini</strong>の末尾に以下を追加してください:
-    </p>
-    <pre translate="no"><code id="rmg-config" translate="no">[7D77E34047E5F52F298FDF2B8EA638F0]
-GoodName=19XXTEJ 1.1
-CRC=05C898D6 00E56C73
-RefMD5=66DB457B130D31A286A23D6E4DD9726E
-CountPerOp=1</code></pre>
-  </section>
-
   <p data-i18n="disclaimer">
     このサイトは著作権侵害を推奨しません。ROMパッチ処理はMarc Robledo氏のRomPatcher.jsをベースにしています。
   </p>
@@ -310,14 +295,7 @@ CountPerOp=1</code></pre>
           crc32: 0xbb4ce8c9,
           sha1: "d9fdb0b98b203a81a474742cacf317d0d4c65d45",
           size: 33554432
-        },
-        rmgConfig: [
-          "[7D77E34047E5F52F298FDF2B8EA638F0]",
-          "GoodName=19XXTEJ 1.1",
-          "CRC=05C898D6 00E56C73",
-          "RefMD5=66DB457B130D31A286A23D6E4DD9726E",
-          "CountPerOp=1"
-        ].join("\n")
+        }
       },
       {
         id: "cej-1-1",
@@ -328,14 +306,7 @@ CountPerOp=1</code></pre>
           crc32: 0x1397b6e2,
           sha1: "8d609e6f19f78a5244e3eaee16f80f2b8d951c06",
           size: 33554432
-        },
-        rmgConfig: [
-          "[6536EFED159ADB5DD13DCAF897257004]",
-          "GoodName=19XXCEJ 1.1",
-          "CRC=855FF436 85FDCA9E",
-          "RefMD5=66DB457B130D31A286A23D6E4DD9726E",
-          "CountPerOp=1"
-        ].join("\n")
+        }
       },
       {
         id: "tej-1-0",
@@ -346,14 +317,7 @@ CountPerOp=1</code></pre>
           crc32: 0x782fd25c,
           sha1: "01dae33b586a6b5c7527195d7b01c4d78ee18c5c",
           size: 33554432
-        },
-        rmgConfig: [
-          "[CF2E6503CFF6CC74BF54BF8DFFE7432A]",
-          "GoodName=19XXTE+J 1.0",
-          "CRC=0F87AF08 AC2FDCEC",
-          "RefMD5=66DB457B130D31A286A23D6E4DD9726E",
-          "CountPerOp=1"
-        ].join("\n")
+        }
       }
     ],
     mismatchMessageKey: "invalidBaseRom"
@@ -391,7 +355,6 @@ CountPerOp=1</code></pre>
       romLegend: "ROM",
       patchLabel: "パッチを選択:",
       romFileLabel: "J版ROMを選択し、「パッチ適用」をクリックしてダウンロードしてください。パッチ適用はブラウザ内で行われます。",
-      rmgInstructions: "RMG-Kを使う場合は、RMG-K.exeがインストールされている場所の<strong>Data/</strong>フォルダを開き、<strong>mupen64plus.ini</strong>の末尾に以下を追加してください:",
       romDetailsLabel: "ROM情報",
       formatLabel: "形式",
       n64CrcsLabel: "N64 CRC",
@@ -449,7 +412,6 @@ CountPerOp=1</code></pre>
       romLegend: "ROM",
       patchLabel: "Select Patch:",
       romFileLabel: "Select J version ROM and click \"Apply Patch\" to download. Patching happens in your browser.",
-      rmgInstructions: "For RMG-K, open the <strong>Data/</strong> folder where RMG-K.exe is installed and add this to the end of <strong>mupen64plus.ini</strong>:",
       romDetailsLabel: "ROM details",
       formatLabel: "Format",
       n64CrcsLabel: "N64 CRCs",
@@ -519,14 +481,6 @@ CountPerOp=1</code></pre>
     });
     if (patch) {
       state.selectedPatchId = patch.id;
-    }
-    syncPatchDependentUi();
-  }
-
-  function syncPatchDependentUi() {
-    var patch = getSelectedPatch();
-    if (dom.rmgConfig && patch && patch.rmgConfig) {
-      dom.rmgConfig.textContent = patch.rmgConfig;
     }
   }
 
@@ -1231,7 +1185,6 @@ CountPerOp=1</code></pre>
     dom.crcs = document.getElementById("rom-crcs");
     dom.crc32 = document.getElementById("rom-crc32");
     dom.sha1 = document.getElementById("rom-sha1");
-    dom.rmgConfig = document.getElementById("rmg-config");
     dom.romTabs = Array.prototype.slice.call(document.querySelectorAll(".patcher-rom-tab"));
     dom.romPanels = Array.prototype.slice.call(document.querySelectorAll(".patcher-rom-panel"));
 
@@ -1284,8 +1237,6 @@ CountPerOp=1</code></pre>
         setPatchEnabled();
       });
     }
-
-    syncPatchDependentUi();
 
     dom.fileInput.addEventListener("change", function () {
       if (this.files && this.files[0]) {

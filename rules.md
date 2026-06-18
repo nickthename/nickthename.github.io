@@ -21,8 +21,8 @@ blockquote {
   <div class="sidebar-inner"></div>
 </aside>
 
-The following is the standard Smash 64 ruleset in North America, adapted from SuperNova 2025.<br/>
-The full SuperNova rules, covering all Smash games, can be found [here](https://drive.google.com/file/d/1_cVIlWd38BczdWvOPy7qbGVbBp4wMD5z/view).
+The following is the standard Smash 64 ruleset in North America, adapted from SuperNova 2026.<br/>
+The full SuperNova rules, covering all Smash games, can be found [here](https://docs.google.com/document/d/1w6SDL0jvtRSkO9nNFmDIB__siuiLvZLuujorcXNS1D8/).
 
 ### Game Rules
 
@@ -51,8 +51,12 @@ rounded up.
 
 #### Stalling
  Excessive unwillingness to engage the opponent is disallowed at the risk
- of being forced to forfeit the match by the TO. If there is no movement
- from either Player, the losing Player is considered to be stalling.
+ of being forced to forfeit the match by the TO. If there is no relevant movement
+ from either Player, the losing Player is considered to be stalling. If both 
+ players are tied in stock and % both players are subject to disqualification 
+ at the discretion of the TO. If a game ends with both players at 0% and 4 
+ stocks, both players will be marked down for a loss and subject to total 
+ event disqualification at the discretion of a TO.
 
 #### Pausing
  All games will be played with hold to pause enabled. Pausing is only legal
@@ -148,7 +152,7 @@ discretion of TOs.
 Coaching, defined as deliberately giving or
 receiving advice to/from another person during a Match or between Matches
 during Grand Finals, is allowed and limited to 30 seconds in between games,
-limited to one coach per Player per match.
+limited to one coach per Player per match. A coach must be made known before the match begins to be eligible.
 
 #### Stalling In-Between Games
 The maximum amount of time for counterpicking a stage after a loss is 60
@@ -192,14 +196,17 @@ their teammate with a CPU Player. They may not play without a teammate.
  - Angle modifiers, tilt keys, and any other modifier key or input that
  adjusts joystick inputs, such as those on Melee-style "Box" controllers,
  are not permitted.
-
-Any other external adapters outside of the ones mentioned here are
+ - Any other external adapters outside of the ones mentioned here are
  subject to the TO's discretion.
+
  Violation of above rules will result in immediate disqualification from an
  event and all previous wins in the event are forfeited. Examples of legal
  controllers are, but not limited to, the original N64 controller, Hori Mini
- Pad, GameCube controller, and Xbox/keyboard/other wired input devices
+ Pad, GameCube controller, and other input devices
  as long as they meet the restrictions above.
+
+ If any Player is concerned about the legality of a controller they can request 
+ an examination by a TO.
 
 
 ### Event Rules
@@ -208,13 +215,15 @@ Any other external adapters outside of the ones mentioned here are
  Round Robin standings are determined in the following order: Match
  count, head to head, game count. In the event a tie still exists, the
  Players tied will play another round robin, Best-of-1 and stock differential
- will be recorded. The tiebreaker round robin will use the same tiebreaker
- order with stock differential being the final tiebreaker. This is repeated
- until no ties exist.
+ will be recorded. The tie breaker round robin will use the same tie breaker
+ order with stock differential being the final tie breaker. This is repeated
+ until no ties exist. In the event of a tie involving more than 3 players, 
+ a return to head-to-head may be necessary after using game count.
 
 #### Round Robin Match Order
  Players from the same region must play each other first in a round robin
- pool. A Tournament Official may be summoned to enforce this rule.
+ pool. A Tournament Official may be summoned to enforce this rule. A TO 
+ may also require certain players to play in a certain order.
 
 #### Collusion
 Players suspected of colluding may be immediately disqualified from the

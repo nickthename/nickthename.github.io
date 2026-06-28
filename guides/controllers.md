@@ -109,8 +109,8 @@ Website: [Taostyx64.com](https://taostyx64.com)<br/>
 Discord: [Discord.gg/gNqCVGXUP3](https://discord.gg/gNqCVGXUP3)
 
 ### Rocker Gaming {#rocker}
-[![Rocker Stick](/guides/img/controllers/rocker2.jpg){:width="40%"}](https://koomba64.com/)
-[![Rocker bowl](/guides/img/controllers/rocker1.jpg){:width="30%"}](https://koomba64.com/)
+[![Rocker Stick](/guides/img/controllers/rocker2.jpg){:width="40%"}](https://shop.rockergaming.com/)
+[![Rocker bowl](/guides/img/controllers/rocker1.jpg){:width="30%"}](https://shop.rockergaming.com/)
 
 Modder [Rocker Gaming](https://shop.rockergaming.com/) recently entered the fray with their Renaissance N64 project, which seeks to replace the joystick faceplate along with the bowl and stick.
 
@@ -127,7 +127,7 @@ Email Newsletter: [Signup link](https://shop.rockergaming.com/pages/newsletter-s
 Ocarina of Time speedrunner [@ArthurOudini](https://twitter.com/ArthurOudini) has been making his own custom steel sticks. Unlike SteelSticks64, these do not include gears or a bowl and need to be put into an existing module. The price is quite steep for just a stick, but reviews have been positive.
 
 **Where to Follow**:<br/>
-Website: [Oudini-shop.co](https://oudini-shop.co)<br/>
+Website: [Oudini-shop.com](https://oudini-shop.com)<br/>
 Twitter: [@ArthurOudini](https://x.com/ArthurOudini)<br/>
 
 ## Other replacement parts

@@ -285,6 +285,25 @@ scripts:
       return String(value || '').toLowerCase() === 'ja' ? 'ja' : 'en';
     }
 
+    function detectLanguage(fallback = 'en') {
+      const candidates = [];
+
+      if (Array.isArray(navigator.languages)) {
+        candidates.push(...navigator.languages);
+      }
+      if (navigator.language) {
+        candidates.push(navigator.language);
+      }
+
+      for (const entry of candidates) {
+        const lower = String(entry || '').toLowerCase();
+        if (lower.startsWith('ja')) return 'ja';
+        if (lower.startsWith('en')) return 'en';
+      }
+
+      return normalizeLanguage(fallback);
+    }
+
     function getStoredLanguage() {
       try {
         return window.localStorage ? window.localStorage.getItem(LANGUAGE_STORAGE_KEY) : '';
@@ -701,7 +720,7 @@ scripts:
 
     document.addEventListener('DOMContentLoaded', async()=>{
       const qs = new URLSearchParams(window.location.search);
-      currentLanguage = normalizeLanguage(qs.get("lang") || getStoredLanguage() || 'en');
+      currentLanguage = normalizeLanguage(qs.get("lang") || getStoredLanguage() || detectLanguage('en'));
       languageFilter.value = currentLanguage;
       document.documentElement.lang = currentLanguage;
       saveLanguage(currentLanguage);

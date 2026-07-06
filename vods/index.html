@@ -307,6 +307,26 @@ scripts:
       return String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
     }
 
+    function parsePlayerFilter(value) {
+      const raw = String(value || '').trim();
+      const isQuoted = raw.length >= 2 && raw.startsWith('"') && raw.endsWith('"');
+      const searchValue = isQuoted ? raw.slice(1, -1) : raw;
+
+      return {
+        value: normalizePlayerName(searchValue),
+        exact: isQuoted,
+      };
+    }
+
+    function hasPlayerFilter(filter) {
+      return !!(filter && filter.value);
+    }
+
+    function playerFilterMatchesTerm(term, filter) {
+      if (!hasPlayerFilter(filter)) return true;
+      return filter.exact ? term === filter.value : term.includes(filter.value);
+    }
+
     function uniqueNames(names) {
       const seen = new Set();
       return names.filter(name => {
@@ -405,7 +425,7 @@ scripts:
     }
 
     function getPlayerAlternateMatch(player, filters) {
-      const activeFilters = filters.filter(Boolean);
+      const activeFilters = filters.filter(hasPlayerFilter);
       if (activeFilters.length === 0) return '';
 
       const displayName = getPlayerDisplayName(player);
@@ -414,11 +434,11 @@ scripts:
       const terms = uniqueNames(entry ? [player, ...entry.searchTerms] : [player]);
 
       for (const filter of activeFilters) {
-        if (displayKey.includes(filter)) continue;
+        if (playerFilterMatchesTerm(displayKey, filter)) continue;
 
         const match = terms.find(term => {
           const key = normalizePlayerName(term);
-          return key && key !== displayKey && key.includes(filter);
+          return key && key !== displayKey && playerFilterMatchesTerm(key, filter);
         });
 
         if (match) return match;
@@ -440,8 +460,8 @@ scripts:
     }
 
     function playerMatchesFilter(player, filter) {
-      if (!filter) return true;
-      return getPlayerSearchTerms(player).some(term => term.includes(filter));
+      if (!hasPlayerFilter(filter)) return true;
+      return getPlayerSearchTerms(player).some(term => playerFilterMatchesTerm(term, filter));
     }
 
     function updateLanguageButtons() {
@@ -547,18 +567,18 @@ scripts:
     function applyFilters(skipURLUpdate = false){
       const ev = eventInput.value,
             c1 = char1Filter.value, c2 = char2Filter.value,
-            p1v=normalizePlayerName(player1Filter.value),
-            p2v=normalizePlayerName(player2Filter.value),
+            p1v=parsePlayerFilter(player1Filter.value),
+            p2v=parsePlayerFilter(player2Filter.value),
             fullMode = fullBroadcastFilter.value,
             dfrom = dateFromFilter.value && new Date(dateFromFilter.value),
             dto   = dateToFilter.value   && new Date(dateToFilter.value);
-      const hasPlayerCharFilters = !!(p1v || c1 || p2v || c2);
+      const hasPlayerCharFilters = !!(hasPlayerFilter(p1v) || c1 || hasPlayerFilter(p2v) || c2);
 
       function playerCharMatch(player, chars, pFilter, cFilter) {
         // Both player and character specified
-        if (pFilter && cFilter) {
+        if (hasPlayerFilter(pFilter) && cFilter) {
           return playerMatchesFilter(player, pFilter) && chars.includes(cFilter);
-        } else if (pFilter) {
+        } else if (hasPlayerFilter(pFilter)) {
           return playerMatchesFilter(player, pFilter);
         } else if (cFilter) {
           return chars.includes(cFilter);
@@ -623,8 +643,8 @@ scripts:
       const start = (currentPage-1)*ROWS_PER_PAGE,
             pageData = filtered.slice(start, start+ROWS_PER_PAGE);
       const activePlayerFilters = [
-        normalizePlayerName(player1Filter.value),
-        normalizePlayerName(player2Filter.value),
+        parsePlayerFilter(player1Filter.value),
+        parsePlayerFilter(player2Filter.value),
       ];
 
       tbody.innerHTML = pageData.map(d=>{

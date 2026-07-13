@@ -1,0 +1,35 @@
+# canonical_en must exactly match the event name in vods.csv.
+# Blank canonical_ja falls back to canonical_en.
+# canonical_en,canonical_ja
+Chuo University 2012,中央大学64スマブラ大会2012
+Chuo University 2013,中央大学64スマブラ大会2013
+Kansai 2010,第3回 関西大会 2010
+Kansai 2011,第4回 関西大会 2011
+Kansai 2012,第5回 関西大会 2012
+Kansai 2013,第6回 関西大会 2013
+Kansai 2014,第7回 関西大会 2014
+Kansai 2015,第8回 関西大会 2015
+Kansai 2016,第9回 関西大会 2016
+Kansai 2017,第10回 関西大会 2017
+Kansai 2018,第11回 関西大会 2018
+Kansai 2020,第12回 関西大会 2020
+Kansai 2022,第13回 関西大会 2022
+Kansai Festival,第０回関西スマブラ祭
+Kanto 2009,第4回 関東大会 2009
+Kanto 2010,第5回 関東大会 2010
+Kanto 2011,第6回 関東大会 2011
+Kanto 2012,第7回 関東大会 2012
+Kanto 2013,第8回 関東大会 2013
+Kanto 2014,第9回 関東大会 2014
+Kanto 2015,第10回 関東大会 2015
+Kanto 2016,第11回 関東大会 2016
+Kanto 2017,第12回 関東大会 2017
+Kanto 2017 Autumn,第1回 秋季関東大会 2017
+Kanto 2018,第13回 関東大会 2018
+Kanto 2019 Autumn,第3回 秋季関東大会 2019
+Kanto 2019 Spring,第14回 関東大会 2019
+Kanto 2020,第4回 秋季関東大会 2020
+Kanto 2022 Winter,冬季関東大会 2022
+Kanto 2023 Spring,春季関東大会 2023
+Osaka U 2010,大阪大学64スマブラ大会2010
+Japan Smash Cup 2017,第二回東海大会

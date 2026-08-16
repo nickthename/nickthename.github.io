@@ -12,15 +12,9 @@ These are 3 fundamental Yoshi techniques that will massively improve your punish
 ### Perfect Land / Perfect Land Up Smash
 A staple movement option / finisher in Yoshi's kit. Accomplished by doing a full hop C jump or stick jump, and double jumping when Yoshi is midway through the platform.  Against Pika, Mario, and Luigi, an uptilt below the side platform can true combo into perfect land Up Smash for a very strong kill option.
 
-<video width="45%" preload="auto" muted controls>
-    <source src="https://media.discordapp.net/attachments/1041524109575729162/1041524440904765460/PerfLandUpSmashLuigi.mp4" type="video/mp4"/>
-</video>
-<video width="45%" preload="auto" muted controls>
-    <source src="https://media.discordapp.net/attachments/1041524109575729162/1041524441550700634/PerfLandUpSmashMario.mp4" type="video/mp4"/>
-</video>
-<video width="45%" preload="auto" muted controls>
-    <source src="https://media.discordapp.net/attachments/1041524109575729162/1041524442154672178/PerfLandUpsmashPika.mp4" type="video/mp4"/>
-</video>
+<iframe class="videoembed" width="45%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/8BPKefqFirU" title="Perfect Land Up Smash vs. Luigi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="videoembed" width="45%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/ytD51Lb_ng0" title="Perfect Land Up Smash vs. Mario" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="videoembed" width="45%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/HCdrG4ew0A0" title="Perfect Land Up Smash vs. Pikachu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### DJC Shield Break
 
@@ -30,15 +24,11 @@ These are incredibly easy to practice in Smash Remix on account of the new "Shie
 
 If you have trouble getting the timing right all the way to the end, you can stop one nair early and down smash to get the shield break instead. This is particularly useful against Puff, where a shield break is the deciding factor of getting a full stock off of them.
 
-<video width="60%" preload="auto" muted controls>
-    <source src="https://cdn.discordapp.com/attachments/1041528468921401414/1041529650381332511/DSmash_Shield_Break.mp4" type="video/mp4"/>
-</video>
+<iframe class="videoembed" width="60%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/oS8LtFHvfZQ" title="DJC Shield Break" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Uptilt Pivot DownB vs. Pika
 
 This is a really cool one I see get used every now and again. It is a bit awkward to go for at first, and you can be punished hard if you miss it. However, there are many positions where you may find yourself up-tilting Pika on platforms at a medium %, where it seems like there isn't a good option to outright kill. Having this in your back pocket can be invaluable, proven by Wizzrobe famously using it last stock Game 10 of Inka Fest to win the tournament against Alvin.
 
 The actual input isn't that bad. Simply uptilt pika, dash in the direction you were facing, pivot, and down-B. It might take a few tries to get it. I recommend setting up your spawn and Pika's to be underneath top plat, to make the timing as strict as possible.
-<video width="60%" preload="auto" muted controls>
-    <source src="https://cdn.discordapp.com/attachments/1041452638962733056/1041532350028328970/UpTilt_Pivot_DownB.mp4" type="video/mp4"/>
-</video>
+<iframe class="videoembed" width="60%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/d93aK-16JLE" title="Up Tilt Pivot Down-B vs. Pikachu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

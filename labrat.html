@@ -41,26 +41,8 @@ hide_title: true
     opacity: 0.55;
   }
 
-  .rom-patcher table {
-    border-collapse: collapse;
-    margin: 1rem 0;
-    width: 100%;
-  }
-
-  .rom-patcher th,
-  .rom-patcher td {
-    border: 1px solid #d0d0d0;
-    padding: 0.35rem 0.5rem;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  .rom-patcher th {
-    width: 9rem;
-  }
-
-  .rom-patcher code {
-    overflow-wrap: anywhere;
+  #patch-button:not(:disabled) {
+    font-weight: bold;
   }
 
   .patcher-logo {
@@ -155,6 +137,26 @@ hide_title: true
     gap: 0.5rem;
   }
 
+  .patcher-update-history {
+    border-top: 1px solid #d0d0d0;
+    margin-top: 2rem;
+    padding-top: 1rem;
+  }
+
+  .patcher-update-history h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+  }
+
+  .patcher-update-history h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .patcher-update-history p {
+    margin-top: 0;
+  }
+
   @media (max-width: 600px) {
     .patcher-screenshots {
       grid-template-columns: 1fr;
@@ -215,37 +217,28 @@ hide_title: true
     <legend data-i18n="romLegend">ROM</legend>
     <label for="rom-file" data-i18n="romFileLabel">Select a Smash Remix 2.0.1 ROM and click "Apply Patch" to download.</label><br>
     <input id="rom-file" type="file" accept=".z64,.v64,.n64">
-  </fieldset>
 
-  <table data-i18n-aria-label="romDetailsLabel" aria-label="ROM details">
-    <tbody>
-      <tr>
-        <th scope="row" data-i18n="formatLabel">Format</th>
-        <td><code id="rom-format">-</code></td>
-      </tr>
-      <tr>
-        <th scope="row" data-i18n="n64CrcsLabel">N64 CRC</th>
-        <td><code id="rom-crcs">-</code></td>
-      </tr>
-      <tr>
-        <th scope="row">CRC32</th>
-        <td><code id="rom-crc32">-</code></td>
-      </tr>
-      <tr>
-        <th scope="row">SHA1</th>
-        <td><code id="rom-sha1">-</code></td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="patcher-status" id="patcher-status" role="status" aria-live="polite" hidden></div>
+  </fieldset>
 
   <div class="patcher-actions">
     <button id="patch-button" type="button" disabled data-i18n="applyButton">Apply Patch</button>
     <button id="clear-button" type="button" data-i18n="clearButton">Clear</button>
   </div>
 
-  <div class="patcher-status" id="patcher-status" role="status" aria-live="polite" data-state="warn">
-    Select a ROM file.
-  </div>
+  <section class="patcher-update-history">
+    <div data-language-content="en">
+      <h2>Update history</h2>
+      <h3>Alpha v0.1</h3>
+      <p>Initial release!</p>
+    </div>
+
+    <div data-language-content="ja" lang="ja" hidden>
+      <h2>更新履歴</h2>
+      <h3>Alpha v0.1</h3>
+      <p>初期アルファ版。</p>
+    </div>
+  </section>
 
   <p data-i18n="disclaimer">
     This website does not condone piracy. ROM patching is based on RomPatcher.js by Marc Robledo.
@@ -286,7 +279,7 @@ hide_title: true
 
   var dom = {};
   var currentLanguage = "en";
-  var lastStatus = { key: "selectRomFile", stateName: "", params: {} };
+  var lastStatus = null;
 
   var I18N = {
     ja: {
@@ -294,9 +287,6 @@ hide_title: true
       betaWarning: "このROMは初期アルファ版です。バグを見つけたらご報告ください。",
       romLegend: "ROM",
       romFileLabel: "Smash Remix 2.0.1 ROMを選択し、「パッチ適用」をクリックしてダウンロードしてください。",
-      romDetailsLabel: "ROM情報",
-      formatLabel: "形式",
-      n64CrcsLabel: "N64 CRC",
       applyButton: "パッチ適用",
       clearButton: "クリア",
       disclaimer: "このサイトは著作権侵害を推奨しません。ROMパッチ処理はMarc Robledo氏のRomPatcher.jsをベースにしています。",
@@ -304,8 +294,6 @@ hide_title: true
       patchDataNotConfigured: "パッチデータが未設定です。",
       readingRom: "ROMを読み込み中...",
       unknownRomFormat: "ROM形式を認識できません。",
-      calculating: "計算中...",
-      hashError: "エラー",
       romVerified: "ROMを確認しました。",
       selectConfiguredRom: "Smash Remix 2.0.1 ROMを先に選択してください。",
       loadingPatch: "パッチを読み込み中...",
@@ -336,9 +324,6 @@ hide_title: true
       betaWarning: "This ROM is in early alpha. Please report bugs!",
       romLegend: "ROM",
       romFileLabel: "Select a Smash Remix 2.0.1 ROM and click \"Apply Patch\" to download.",
-      romDetailsLabel: "ROM details",
-      formatLabel: "Format",
-      n64CrcsLabel: "N64 CRCs",
       applyButton: "Apply Patch",
       clearButton: "Clear",
       disclaimer: "This website does not condone piracy. ROM patching is based on RomPatcher.js by Marc Robledo.",
@@ -346,8 +331,6 @@ hide_title: true
       patchDataNotConfigured: "Patch data has not been configured yet.",
       readingRom: "Reading ROM...",
       unknownRomFormat: "Unknown ROM format.",
-      calculating: "Calculating...",
-      hashError: "Error",
       romVerified: "ROM verified.",
       selectConfiguredRom: "Select the Smash Remix 2.0.1 ROM first.",
       loadingPatch: "Loading patch...",
@@ -438,12 +421,6 @@ hide_title: true
     return error;
   }
 
-  function setText(id, value) {
-    if (dom[id]) {
-      dom[id].textContent = value || "-";
-    }
-  }
-
   function setStatus(key, stateName, params) {
     if (!dom.status) {
       return;
@@ -451,6 +428,17 @@ hide_title: true
     lastStatus = { key: key, stateName: stateName || "", params: params || {} };
     dom.status.textContent = translate(key, params);
     dom.status.dataset.state = stateName || "";
+    dom.status.hidden = false;
+  }
+
+  function hideStatus() {
+    if (!dom.status) {
+      return;
+    }
+    lastStatus = null;
+    dom.status.textContent = "";
+    dom.status.dataset.state = "";
+    dom.status.hidden = true;
   }
 
   function setPatchEnabled() {
@@ -459,19 +447,8 @@ hide_title: true
     }
   }
 
-  function resetDetails() {
-    setText("format", "-");
-    setText("crcs", "-");
-    setText("crc32", "-");
-    setText("sha1", "-");
-  }
-
   function hexByte(value) {
     return value.toString(16).padStart(2, "0");
-  }
-
-  function hex32(value) {
-    return "0x" + (value >>> 0).toString(16).padStart(8, "0");
   }
 
   function bytesToHex(bytes, offset, length) {
@@ -533,10 +510,6 @@ hide_title: true
       originalFormat: format,
       format: detectRomFormat(converted)
     };
-  }
-
-  function n64HeaderCrcs(bytes) {
-    return "0x" + bytesToHex(bytes, 0x10, 4) + ", 0x" + bytesToHex(bytes, 0x14, 4);
   }
 
   var CRC32_TABLE = (function () {
@@ -982,7 +955,6 @@ hide_title: true
     setStatus("readingRom", "");
     state.validSource = false;
     setPatchEnabled();
-    resetDetails();
 
     var originalBytes = new Uint8Array(await file.arrayBuffer());
     var converted = convertToZ64(originalBytes);
@@ -990,22 +962,11 @@ hide_title: true
     state.romName = file.name;
 
     if (converted.format === "unknown") {
-      setText("format", converted.originalFormat);
       setStatus("unknownRomFormat", "error");
       return;
     }
 
     var crcValue = crc32(converted.bytes);
-    setText("format", converted.originalFormat === converted.format ? converted.format : converted.originalFormat + " -> " + converted.format);
-    setText("crcs", n64HeaderCrcs(converted.bytes));
-    setText("crc32", hex32(crcValue));
-    setText("sha1", translate("calculating"));
-
-    sha1(converted.bytes).then(function (hash) {
-      setText("sha1", hash);
-    }).catch(function () {
-      setText("sha1", translate("hashError"));
-    });
 
     var errors = validateRom(converted, crcValue);
     if (errors.length) {
@@ -1053,8 +1014,7 @@ hide_title: true
     if (dom.fileInput) {
       dom.fileInput.value = "";
     }
-    resetDetails();
-    setStatus(isPatchConfigured() ? "selectRomFile" : "patchDataNotConfigured", isPatchConfigured() ? "" : "warn");
+    hideStatus();
     setPatchEnabled();
   }
 
@@ -1064,10 +1024,6 @@ hide_title: true
     dom.patchButton = document.getElementById("patch-button");
     dom.clearButton = document.getElementById("clear-button");
     dom.status = document.getElementById("patcher-status");
-    dom.format = document.getElementById("rom-format");
-    dom.crcs = document.getElementById("rom-crcs");
-    dom.crc32 = document.getElementById("rom-crc32");
-    dom.sha1 = document.getElementById("rom-sha1");
 
     if (dom.languageSelect) {
       dom.languageSelect.value = "en";

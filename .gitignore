@@ -7,3 +7,8 @@ vendor
 DI_logo_full.png
 TODO
 ssbframedata/
+
+# Local ROMs used to create and verify distributable patches.
+*.z64
+*.v64
+*.n64

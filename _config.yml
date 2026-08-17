@@ -53,7 +53,10 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
+exclude:
+  - "*.z64"
+  - "*.v64"
+  - "*.n64"
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

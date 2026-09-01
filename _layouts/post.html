@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+{%- assign href_levels = page.href_levels | default: "h2" -%}
+{%- assign sidebar_hidden = page.sidebar_hidden | default: false -%}
+{%- assign sidebar_levels = page.sidebar_levels | default: "h2,h3" -%}
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -15,10 +19,12 @@ layout: default
       {%- endif -%}</p>
   </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <aside id="post-sidebar">
+  <div class="post-content e-content" itemprop="articleBody" data-href-levels="{{ href_levels }}">
+    {%- unless sidebar_hidden -%}
+    <aside id="post-sidebar" data-sidebar-levels="{{ sidebar_levels }}">
       <div class="sidebar-inner"></div>
     </aside>
+    {%- endunless -%}
     {{ content }}
   </div>
 
@@ -29,5 +35,4 @@ layout: default
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
 
-<script type="module" src="/assets/post-sidebar.js"></script>
-<!--  <script>for(let h of document.querySelectorAll('div.post-content > h2[id]'))h.innerHTML+=` <a href="#${h.id}" aria-hidden="true">#</a>`</script> -->
+<script type="module" src="/assets/post.js"></script>

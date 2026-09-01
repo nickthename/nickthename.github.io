@@ -41,6 +41,10 @@ $sidebar-spacing-increment: 5px;
         padding-left: $sidebar-spacing-increment * 3;
         color: #666;
       }
+      &.level-h6 {
+        padding-left: $sidebar-spacing-increment * 4;
+        color: #666;
+      }
     }
   }
 }
@@ -93,6 +97,10 @@ $sidebar-spacing-increment: 5px;
       }
       &.level-h5 {
         padding-left: $sidebar-spacing-increment * 3;
+        color: #666;
+      }
+      &.level-h6 {
+        padding-left: $sidebar-spacing-increment * 4;
         color: #666;
       }
     }

@@ -51,11 +51,29 @@ title: Smash 64 Resources
 </div>
 </a>
 
+<a href="/labrat/">
+  <div>
+    <img src="/assets/labrat_text_with_subline.svg" alt="LabRat — SSB64 Practice ROM"><br />
+    <h2>LabRat</h2>
+    <p>Practice ROM with savestates, CPU recording, and more.</p>
+  </div>
+</a>
+</div>
+
+<div class="box-holder box-holder-two">
 <a href="/calc/">
   <div>
-    <img src="/guides/img/knockback.png"><br />
+    <img src="/guides/img/knockback.png" alt="Knockback trajectory"><br />
     <h2>Knockback Calculator</h2>
     <p>Comprehensive calculator for determining the effects of a hit.</p>
+  </div>
+</a>
+
+<a href="/armor/">
+  <div>
+    <img src="/guides/img/armor-break-table.svg" alt="Excerpt of the Yoshi armor break table"><br />
+    <h2>Yoshi Armor Break Table</h2>
+    <p>Table showing at what percent every move will break Yoshi's Armor.</p>
   </div>
 </a>
 </div>
@@ -119,7 +137,7 @@ Vod reviews of [Breakthrough](https://www.youtube.com/watch?v=yu_XWZHSY8U) and [
   <hr />
   <br />
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/smash64online-logo.svg" width=30><a href="https://smash64.online/">Smash64 Online</a><br /></div>
-  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbl-logo.png" width=30><a href="https://supersmashbros.org/">SSB League</a><br /></div>
+  <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbl-logo.png" width=30><a href="https://supersmashbros.org/">Event Calendar</a><br /></div>
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/ssbwiki-logo.webp" width=30><a href="https://ssbwiki.com/">Smash Wiki</a><br /></div>
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/discord-logo.png" width=30><a href="https://discord.gg/ssb64">SSB64 Discord</a><br /></div>
   <div class="sidebar-line"><img class="sidebar-image" src="/guides/img/facebook-logo.png" width=30><a href="https://www.facebook.com/groups/Smash64Community/">NA 64 Facebook</a></div><br />
